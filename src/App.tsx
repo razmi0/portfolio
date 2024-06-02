@@ -47,8 +47,8 @@ const App = () => {
         </Tabs.Content>
 
         <Tabs.Content value="skills" className="max-w-screen h-full">
-          <section className="w-full h-full grid place-content-center grid-cols-2">
-            <div className="container inline-flex flex-wrap gap-x-1 gap-y-2">
+          <section className="w-full h-full flex items-center justify-start">
+            <div className="flex flex-col flex-wrap gap-x-1 gap-y-2 min-w-fit">
               {skills.map((content, i) => {
                 return (
                   <Button
@@ -63,21 +63,19 @@ const App = () => {
                 );
               })}
             </div>
-            <div>
-              <ul className="h-full">
-                {skills.map((content, i) => {
-                  return (
-                    <li
-                      key={content.id}
-                      className={cn(activeSkills[i].active ? "flex" : "hidden", "justify-start flex-col h-full")}>
-                      <h4 className="sr-only">{content.title}</h4>
-                      <Icon name={content.title.toLowerCase()} size={30} />
-                      <p className="mt-5">{content.content}</p>
-                    </li>
-                  );
-                })}
-              </ul>
-            </div>
+            <ul className="h-full grid place-content-center w-full">
+              {skills.map((content, i) => {
+                return (
+                  <li
+                    key={content.id}
+                    className={cn(activeSkills[i].active ? "flex" : "hidden", "items-start flex-col h-full")}>
+                    <h4 className="sr-only">{content.title}</h4>
+                    <Icon name={content.title.toLowerCase()} size={30} />
+                    <p className="mt-5 text-balance max-w-[50ch]">{content.content}</p>
+                  </li>
+                );
+              })}
+            </ul>
           </section>
         </Tabs.Content>
         <Tabs.Content value="project" className="max-w-screen">
