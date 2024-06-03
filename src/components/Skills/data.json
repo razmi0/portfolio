@@ -4,30 +4,35 @@
       "id": 1,
       "title": "HTML",
       "level": "confirmed",
+      "type": ["front-end"],
       "content": "HTML is the standard markup language for creating Web pages. Even if HTML is not a programming language, it is the squeleton of a webpage. It is a well underrated language. A lot of tags have usefull attributes that can be used to make a website more accessible or are just unknown."
     },
     {
       "id": 2,
       "title": "CSS",
       "level": "confirmed",
+      "type": ["front-end"],
       "content": "CSS is the language used to style the HTML elements. It is a powerfull language with a lot of properties. CSS in 2024 is lot more powerfull than before. A lot of Javascript can be replaced by CSS today."
     },
     {
       "id": 3,
       "title": "JavaScript",
       "level": "confirmed",
+      "type": ["front-end", "back-end"],
       "content": "JavaScript is a programming language that is used to make a website interactive. It is the only language that can be executed in the browser. It is a language that is evolving quickly. I personnally only use Typescript, a super set of Javascript for more robust code."
     },
     {
       "id": 4,
       "title": "React",
       "level": "confirmed",
+      "type": ["front-end"],
       "content": "React is a library to build user interfaces. It is a powerfull library that is used by a lot of companies. It is a library that is easy to learn but hard to master. React is my main framework."
     },
     {
       "id": 5,
       "title": "Node.js",
       "level": "competent",
+      "type": ["back-end"],
       "content": "Node.js is a runtime environment that allows to run Javascript outside of the browser. It is used to build server side applications. It is a powerfull tool that can be used to build a lot of things. The event loop is a powerfull principle that can be used to easily resolve in a better way some develpement problems."
     },
 
@@ -35,36 +40,42 @@
       "id": 7,
       "title": "Tailwind",
       "level": "confirmed",
+      "type": ["front-end"],
       "content": "Tailwind is my main CSS framework."
     },
     {
       "id": 8,
       "title": "Typescript",
       "level": "confirmed",
+      "type": ["front-end", "back-end"],
       "content": "Typescript is a super set of Javascript. It is a language that is more robust than Javascript. Building types makes team work easier. I always use Typescript in my project."
     },
     {
       "id": 9,
       "title": "SolidJs",
       "level": "conpetent",
+      "type": ["front-end"],
       "content": "Solidjs is a declarative Javascript library for building user interfaces like React. It uses signal driven states instead of a virtual dom. SolidJs is a very performant way to build very interactive web application. If your application need a fast javascript framework, SolidJs is the way to go."
     },
     {
       "id": 10,
       "title": "PHP",
       "level": "confirmed",
+      "type": ["back-end"],
       "content": "PHP is my first web language. It is a language that is easy to learn and that is very powerfull. 80% of websites on the web are powered by PHP. Laravel or Symfony are known fullstack frameworks that let you build very complex application with all the features you need."
     },
     {
       "id": 11,
       "title": "NextJs",
       "level": "conpetent",
+      "type": ["front-end", "back-end"],
       "content": "Next is my main React framework server side. I worked with Next in my last job."
     },
     {
       "id": 12,
       "title": "SQL",
       "level": "conpetent",
+      "type": ["back-end"],
       "content": "Sql is mature and reliable. I build a lot of blogs with SQL and Doctrine ORM."
     }
   ],
@@ -72,51 +83,61 @@
     {
       "id": 1,
       "title": "A l'abord d'arbre",
+      "type": "web",
       "href": ""
     },
     {
       "id": 2,
       "title": "PokeStable",
+      "type": "web",
       "href": ""
     },
     {
       "id": 3,
       "title": "WalchCook",
+      "type": "web",
       "href": ""
     },
     {
       "id": 4,
       "title": "Game of Life",
+      "type": "web",
       "href": ""
     },
     {
       "id": 5,
       "title": "Data visualisation Spotify",
+      "type": "documentation",
       "href": ""
     },
     {
       "id": 6,
       "title": "Tranlation Fun",
+      "type": "web",
       "href": ""
     },
     {
       "id": 7,
       "title": "Smallworld helper",
+      "type": "web",
       "href": ""
     },
     {
       "id": 8,
       "title": "RazCli",
+      "type": "outil",
       "href": ""
     },
     {
       "id": 9,
       "title": "Accessibility guidelines",
+      "type": "documentation",
       "href": ""
     },
     {
       "id": 10,
       "title": "Dossier de reflexion MDS",
+      "type": "documentation",
       "href": ""
     }
   ]

@@ -1,14 +1,19 @@
 // simple portfolio
 import { forwardRef, useState } from "react";
+import HeadingTransition from "./components/HeadingTransition";
 import Hero from "./components/Hero";
 import { ModeToggle } from "./components/ModeToggle";
-import { projects, skills } from "./components/Skills/data.json" assert { type: "json" };
-import Separator from "./components/ui/Separator";
-import { Button } from "./components/ui/button";
+import Presentation from "./components/Presentation";
+import { skills } from "./components/Skills/data.json" assert { type: "json" };
 import Icon from "./components/ui/icons/Icon";
 import Slider from "./components/ui/tabs/Slider";
 import Tabs from "./components/ui/tabs/Tabs";
-import { cn } from "./lib/utils";
+
+const groupByType = <T extends { type: ("front-end" | "back-end")[] }>(data: T): { [key: T[type]]: T } => {
+  const grouped = Object.entries(data);
+  console.log(grouped);
+  return grouped;
+};
 
 const App = () => {
   const [activeSkills, setActiveSkills] = useState(new Array(skills.length).fill({ active: false }));
@@ -24,56 +29,82 @@ const App = () => {
 
   console.log(activeSkills);
 
-  const ListItem = forwardRef<HTMLLIElement, { children: React.ReactNode; className: string }>(
-    ({ children, ...props }: { children: React.ReactNode }, ref) => (
-      <li ref={ref} {...props}>
-        <Icon name="chevron-right" size={20} />
-        {children}
-      </li>
-    )
+  const ListItem = forwardRef<HTMLLIElement, { children: React.ReactNode; className: string; alt: string }>(
+    ({ children, alt, className, ...props }: { children: React.ReactNode; className: string; alt: string }, ref) => {
+      const sizes = {
+        v: ["75", "100", "125", "150"],
+        rand: function () {
+          return this.v[Math.floor(Math.random() * this.v.length)];
+        },
+      };
+      const s = [sizes.rand(), sizes.rand()];
+      return (
+        <li ref={ref} {...props} className={className}>
+          <Icon name="chevron-right" size={20} />
+          <img
+            className="object-cover w-full max-h-[150px]"
+            src={`https://placehold.co/${s[1]}x${s[0]}`}
+            height={s[0]}
+            alt={alt}
+          />
+          {children}
+        </li>
+      );
+    }
   );
 
   return (
-    <main className="p-4 gap-36 container min-w-full h-full flex flex-col">
-      <header className="flex items-center justify-between flex-row-reverse h-24 max-h-24 min-h-24">
+    <main className="p-4 container min-w-full h-full flex flex-col">
+      <header className="flex items-center justify-between flex-row-reverse ">
         <ModeToggle />
       </header>
       <Hero />
 
-      <div className="h-[75vh]">
+      {/* PRESENTATION */}
+      {/* PRESENTATION */}
+      {/* PRESENTATION */}
+      {/* PRESENTATION */}
+      <HeadingTransition h2="A propos de moi" small="presentation" />
+      <Presentation />
+      {/* MES COMPETENCES */}
+      {/* MES COMPETENCES */}
+      {/* MES COMPETENCES */}
+      {/* MES COMPETENCES */}
+      {/* MES COMPETENCES */}
+      {/* MES COMPETENCES */}
+      <HeadingTransition h2="Mes compétences" small="skills" />
+      <div>
         <Tabs.Root>
-          <div className="h-3 w-3 bg-red-500">
-            <button onClick={() => console.log("yes")}>
-              <Icon name="tailwind"></Icon>
-            </button>
-          </div>
-          <Tabs.Nav className="h-[10vh] gap-7 bg-blue-900 py-0 mb-5">
-            <Slider className={"bg-blue-800"} />
-            {/* <Tabs.Trigger value="hero" className="group">
-              <h2 className="text-xl group-data-[selected=true]:text-blue-500">Hero</h2>
-            </Tabs.Trigger> */}
-            <Tabs.Trigger value="skills" className="group h-full active:ring-blue-800 active:scale-110">
-              {/* data-[selected=true]:bg-blue-700 */}
-              <h2 className="text-xl group-data-[selected=true]:text-blue-500 ">Skills</h2>
+          <Tabs.Nav className="h-[10vh] gap-7 py-0 mb-5 justify-evenly">
+            <Slider className={"bg-bogoss-600"} />
+            <Tabs.Trigger value="front-end" className="group h-full active:ring-bogoss-700 active:scale-110">
+              <h2 className="text-xl group-data-[selected=true]:text-bogoss-400 ">Front-end</h2>
             </Tabs.Trigger>
-
-            <Tabs.Trigger value="project" className="group h-full active:ring-blue-800 active:scale-110">
-              {/* data-[selected=true]:bg-blue-700 */}
-              <h2 className="text-xl group-data-[selected=true]:text-blue-500 ">Projects</h2>
+            <Tabs.Trigger value="back-end" className="group h-full active:ring-bogoss-700 active:scale-110">
+              <h2 className="text-xl group-data-[selected=true]:text-bogoss-400 ">Back-end</h2>
             </Tabs.Trigger>
-            <Tabs.Trigger value="contact" className="group h-full active:ring-blue-800 active:scale-110">
-              {/* data-[selected=true]:bg-blue-700 */}
-              <h2 className="text-xl group-data-[selected=true]:text-blue-500 ">Contact</h2>
-            </Tabs.Trigger>
-            <Tabs.Trigger value="contact" className="group h-full active:ring-blue-800 active:scale-110">
-              {/* data-[selected=true]:bg-blue-700 */}
-              <h2 className="text-xl group-data-[selected=true]:text-blue-500 ">Lab</h2>
+            <Tabs.Trigger value="soft" className="group h-full active:ring-bogoss-700 active:scale-110">
+              <h2 className="text-xl group-data-[selected=true]:text-bogoss-400 ">Soft</h2>
             </Tabs.Trigger>
           </Tabs.Nav>
-          <Tabs.Content value="skills" className="max-w-screen h-full">
+          <Tabs.Content value="front-end" className="max-w-screen h-full">
+            {skills.map((content, i) => {
+              return <></>;
+            })}
+          </Tabs.Content>
+          <Tabs.Content value="back-end" className="max-w-screen">
+            <div className="h-screen ring-1 ring-white"></div>
+          </Tabs.Content>
+          <Tabs.Content value="soft" className="max-w-screen">
+            Soft
+          </Tabs.Content>
+        </Tabs.Root>
+      </div>
+
+      {/* <Tabs.Content value="skills" className="max-w-screen h-full">
             <div className="h-full flex mt-5">
               <section className="w-full h-fit flex justify-start">
-                <div className="fol inline-flex flex-wrap gap-x-1 gap-y-2 ">
+                <div className="inline-flex flex-wrap gap-x-1 gap-y-2 ">
                   {skills.map((content, i) => {
                     return (
                       <>
@@ -90,7 +121,6 @@ const App = () => {
                     );
                   })}
                 </div>
-                <Separator dir="r" />
                 <ul className="h-full grid place-content-center w-full">
                   {skills.map((content, i) => {
                     return (
@@ -106,39 +136,139 @@ const App = () => {
                 </ul>
               </section>
             </div>
-          </Tabs.Content>
-          <Tabs.Content value="project" className="max-w-screen">
-            <ul className="flex flex-wrap gap-x-3 gap-y-5">
-              {projects.map((content) => {
-                const sizes = {
-                  v: ["75", "100", "125", "150", "175", "200"],
-                  rand: function () {
-                    return this.v[Math.floor(Math.random() * this.v.length)];
-                  },
-                };
-                const s = [sizes.rand(), sizes.rand()];
-                return (
-                  <>
-                    <ListItem key={content.id} className="flex flex-col gap-2 bg-blue-900">
-                      <img
-                        className="object-cover w-full max-h-[200px]"
-                        src={`https://placehold.co/${s[1]}x${s[0]}`}
-                        height={s[0]}
-                        alt={content.title}
-                      />
-                      <h4 className="px-3">{content.title}</h4>
-                      <p className="px-3 mb-2 max-w-[25ch]">Lorem ipsum dolor, sit amet</p>
-                    </ListItem>
-                  </>
-                );
-              })}
-            </ul>
-          </Tabs.Content>
-          <Tabs.Content value="contact" className="max-w-screen"></Tabs.Content>
+          </Tabs.Content> */}
+
+      {/* MES EXPERIENCES */}
+      {/* MES EXPERIENCES */}
+      {/* MES EXPERIENCES */}
+      {/* MES EXPERIENCES */}
+      {/* MES EXPERIENCES */}
+      <HeadingTransition h2="Mes expériences" small="mon parcours" />
+
+      <div>
+        <Tabs.Root>
+          <Tabs.Nav className="h-[10vh] gap-7 bg-slate-900 py-0 mb-5 justify-evenly">
+            <Slider className={"bg-slate-800"} />
+            <Tabs.Trigger value="tous" className="group h-full active:ring-slate-800 active:scale-110">
+              <h2 className="text-xl group-data-[selected=true]:text-slate-500 ">Tous</h2>
+            </Tabs.Trigger>
+            <Tabs.Trigger value="pro" className="group h-full active:ring-slate-800 active:scale-110">
+              <h2 className="text-xl group-data-[selected=true]:text-slate-500 ">Pro</h2>
+            </Tabs.Trigger>
+            <Tabs.Trigger value="formation" className="group h-full active:ring-slate-800 active:scale-110">
+              <h2 className="text-xl group-data-[selected=true]:text-slate-500 ">Formation</h2>
+            </Tabs.Trigger>
+          </Tabs.Nav>
+          <Tabs.Content value="tous">tous</Tabs.Content>
+          <Tabs.Content value="pro">pro</Tabs.Content>
+          <Tabs.Content value="formation">formation</Tabs.Content>
+        </Tabs.Root>
+
+        <HeadingTransition h2="Mes projets" small="portfolio" />
+
+        <Tabs.Root>
+          <Tabs.Nav className="h-[10vh] gap-7 bg-slate-900 py-0 mb-5 justify-evenly">
+            <Slider className={"bg-slate-800"} />
+            <Tabs.Trigger value="tous" className="group h-full active:ring-slate-800 active:scale-110">
+              <h2 className="text-xl group-data-[selected=true]:text-slate-500 ">Tous</h2>
+            </Tabs.Trigger>
+            <Tabs.Trigger value="web" className="group h-full active:ring-slate-800 active:scale-110">
+              <h2 className="text-xl group-data-[selected=true]:text-slate-500 ">Web</h2>
+            </Tabs.Trigger>
+            <Tabs.Trigger value="outil" className="group h-full active:ring-slate-800 active:scale-110">
+              <h2 className="text-xl group-data-[selected=true]:text-slate-500 ">Outils</h2>
+            </Tabs.Trigger>
+          </Tabs.Nav>
+          <Tabs.Content value="tous">tous</Tabs.Content>
+          <Tabs.Content value="pro">pro</Tabs.Content>
+          <Tabs.Content value="outil">outils</Tabs.Content>
         </Tabs.Root>
       </div>
-      <div className="ring-1 ring-blue-800 h-screen"></div>
+      <div className="h-screen">Contactez-moi</div>
     </main>
   );
 };
 export default App;
+
+{
+  /* PROJETS */
+}
+{
+  /* PROJETS */
+}
+{
+  /* PROJETS */
+}
+{
+  /* PROJETS */
+}
+{
+  /* PROJETS */
+}
+
+{
+  /* <Tabs.Content value="project" className="max-w-screen">
+            <ul className="flex flex-wrap gap-x-3 gap-y-5">
+              {projects.map((content) => {
+                return (
+                  <ListItem
+                    key={content.id}
+                    className="flex flex-col gap-2 bg-slate-500 overflow-hidden rounded-xl card"
+                    alt={content.title}>
+                    <h4 className="px-3">{content.title}</h4>
+                    <p className="px-3 mb-2 max-w-[25ch]">Lorem ipsum dolor, sit amet</p>
+                  </ListItem>
+                );
+              })}
+            </ul>
+          </Tabs.Content> */
+}
+{
+  /* Contact */
+}
+{
+  /* Contact */
+}
+{
+  /* Contact */
+}
+{
+  /* Contact */
+}
+{
+  /* Contact */
+}
+
+{
+  /* <Tabs.Content value="contact" className="max-w-screen">
+            <form
+              className="w-full px-10 py-5 gap-8 flex justify-center"
+              onSubmit={(e) => {
+                console.log(e);
+                e.preventDefault();
+              }}>
+              <div className="w-[40%]">
+                <div className="form__group field">
+                  <input type="text" className="form__field" placeholder="Name" id="name" required />
+                  <label htmlFor="name" className="form__label">
+                    Name
+                  </label>
+                </div>
+                <div className="form__group field">
+                  <input type="email" className="form__field" placeholder="Email" id="email" required />
+                  <label htmlFor="email" className="form__label">
+                    Email
+                  </label>
+                </div>
+              </div>
+              <div className="flex flex-col w-full">
+                <label htmlFor="message">Message</label>
+                <textarea
+                  name="message"
+                  id="message"
+                  placeholder="Message..."
+                  className="h-32 ps-2 bg-slate-400 placeholder:text-white"></textarea>
+              </div>
+            </form>
+          </Tabs.Content> */
+}

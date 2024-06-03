@@ -1,30 +1,31 @@
+import { GithubIcon, LinkedinIcon } from "lucide-react";
+import VerticalText from "./VerticalText";
 import { Button } from "./ui/button";
 
 const Hero = () => {
   return (
-    <div className="flex items-center justify-between w-full h-[50vh]">
-      <div className="text-left text-balance grid place-content-center gap-5">
-        <div>
-          <h2 className="text-xl">Hello there, </h2>
-          <h1 className="text-3xl">I'm Thomas</h1>
-          <h2 className="text-xl">I'm web developer</h2>
-        </div>
-        <p className="mt-2 max-w-[40ch]">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit ratione eaque nemo non, voluptates cum minus
-          corporis nam dolorum, ipsum aut tempore perspiciatis asperiores expedita nihil rerum molestiae sunt hic. Lorem
-        </p>
-
-        <div className="flex items-center justify-start gap-5">
-          <Button variant="solid" className="dark:bg-blue-900 bg-blue-700 text-black dark:text-white">
+    <div className="flex flex-col items-center justify-evenly h-screen w-full">
+      <div className="text-center [&>h2]:text-bogoss-700 [&>h2]:dark:text-bogoss-200  ">
+        <h2 className="text-lg ">Hello there, </h2>
+        <h1 className="text-3xl !text-bogoss-400">I'm Thomas</h1>
+        <h2 className="text-lg mb-4">I'm web developer</h2>
+        <div className="flex items-center justify-start gap-4">
+          <Button variant="solid" className="">
             Telecharger mon CV
           </Button>
-          <Button variant="outline" className=" ring-2 border-0 ring-blue-800 text-black dark:text-white">
+          <Button variant="outline" className="">
             En savoir plus
           </Button>
         </div>
       </div>
-      <div className="grow"></div>
-      <img src="/pp_2024.png" className="max-h-[200px] card" alt="profile picture" />
+      <div className="relative w-full grid place-content-center">
+        <div className="absolute left-0 bottom-0 space-y-3 text-bogoss-400">
+          <LinkedinIcon />
+          <GithubIcon />
+        </div>
+        <img src="/pp_large.png" className="h-[300px]" alt="profile picture" />
+        <VerticalText text="Présentation" />
+      </div>
     </div>
   );
 };
