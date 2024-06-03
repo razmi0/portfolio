@@ -67,5 +67,57 @@
       "level": "conpetent",
       "content": "Sql is mature and reliable. I build a lot of blogs with SQL and Doctrine ORM."
     }
+  ],
+  "projects": [
+    {
+      "id": 1,
+      "title": "A l'abord d'arbre",
+      "href": ""
+    },
+    {
+      "id": 2,
+      "title": "PokeStable",
+      "href": ""
+    },
+    {
+      "id": 3,
+      "title": "WalchCook",
+      "href": ""
+    },
+    {
+      "id": 4,
+      "title": "Game of Life",
+      "href": ""
+    },
+    {
+      "id": 5,
+      "title": "Data visualisation Spotify",
+      "href": ""
+    },
+    {
+      "id": 6,
+      "title": "Tranlation Fun",
+      "href": ""
+    },
+    {
+      "id": 7,
+      "title": "Smallworld helper",
+      "href": ""
+    },
+    {
+      "id": 8,
+      "title": "RazCli",
+      "href": ""
+    },
+    {
+      "id": 9,
+      "title": "Accessibility guidelines",
+      "href": ""
+    },
+    {
+      "id": 10,
+      "title": "Dossier de reflexion MDS",
+      "href": ""
+    }
   ]
 }

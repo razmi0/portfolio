@@ -98,19 +98,28 @@ interface TabTriggerProps extends HTMLAttributes<HTMLButtonElement> {
   children: ReactNode;
   value: string;
   onClick?: () => void;
-  selected?: boolean;
+  setSelected?: (value: string) => void;
   className?: string;
   getSelected?: (value: string) => boolean;
   updatePos?: ReturnType<typeof usePosition>["update"];
 }
 
-const TabTrigger = ({ children, value, onClick, className, getSelected, updatePos, ...props }: TabTriggerProps) => {
-  const selected = getSelected?.(value) || false;
+const TabTrigger = ({
+  children,
+  setSelected,
+  value,
+  onClick,
+  className,
+  getSelected,
+  updatePos,
+  ...props
+}: TabTriggerProps) => {
+  const isSelected = getSelected?.(value) || false;
   const ref = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
-    if (selected && updatePos) updatePos({ ref });
-  }, [selected]);
+    if (isSelected && updatePos) updatePos({ ref });
+  }, [isSelected]);
 
   const handleOnClick = () => {
     if (updatePos) updatePos({ ref });
@@ -121,7 +130,7 @@ const TabTrigger = ({ children, value, onClick, className, getSelected, updatePo
     <button
       ref={ref}
       key={value}
-      data-selected={selected}
+      data-selected={isSelected}
       onMouseDown={handleOnClick}
       onClick={() => {}}
       data-value={value}

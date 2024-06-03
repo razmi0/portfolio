@@ -24,12 +24,12 @@
   --body-radial-color-1: #ecfeff;
   --body-radial-color-2: #fafafa;
 
-  --body-radial-d-color-1: #181c22;
+  --body-radial-d-color-1: #081231;
   --body-radial-d-color-2: #050e29;
 }
 
 * {
-  @apply outline-none focus-visible:outline-cyan-100 focus-visible:ring-cyan-100 rounded-sm;
+  @apply outline-none focus-visible:outline-blue-100 focus-visible:ring-blue-100 rounded-sm;
 }
 
 a {
@@ -41,30 +41,22 @@ a:hover {
   color: #535bf2;
 }
 
-/* .light-body {
-  background: radial-gradient(circle at center, var(--body-radial-color-1) 0%, var(--body-radial-color-2) 100%);
-  min-height: 100vh;
-}
-
-.dark-body {
-  background: radial-gradient(circle at center, var(--body-radial-d-color-1) 0%, var(--body-radial-d-color-2) 100%);
-  min-height: 100vh;
-}
-
-.bg-body {
-  @apply dark:dark-body light-body;
-} */
-
 body {
-  @apply dark:text-white text-black;
-  background: radial-gradient(circle at center, var(--body-radial-color-1) 0%, var(--body-radial-color-2) 100%);
-  max-height: 100vh;
-  min-height: 100vh;
-  height: 100vh;
+  @apply dark:text-white text-black max-w-4xl container;
+  /* background: radial-gradient(circle at center, var(--body-radial-color-1) 0%, var(--body-radial-color-2) 100%); */
+  background-color: var(--body-radial-color-2);
+  /* max-height: 100vh; */
+  /* min-height: 100vh; */
+  /* height: 100vh; */
 }
 
 html:has(.dark) body {
-  background: radial-gradient(circle at center, var(--body-radial-d-color-1) 0%, var(--body-radial-d-color-2) 100%);
+  /* background: linear-gradient(to bottom, var(--body-radial-d-color-1) 0%, var(--body-radial-d-color-2) 100%); */
+  background-color: var(--body-radial-d-color-2);
+}
+
+html {
+  height: 100%;
 }
 
 h1 {
@@ -84,7 +76,7 @@ h3,
 h4,
 h5,
 h6 {
-  @apply dark:text-cyan-600 text-cyan-600;
+  @apply dark:text-blue-600 text-blue-600;
 }
 
 .font-montserrat {
