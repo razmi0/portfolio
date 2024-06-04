@@ -30,7 +30,7 @@
     },
     {
       "id": 5,
-      "title": "Node.js",
+      "title": "Nodejs",
       "level": "competent",
       "type": ["back-end"],
       "content": "Node.js is a runtime environment that allows to run Javascript outside of the browser. It is used to build server side applications. It is a powerfull tool that can be used to build a lot of things. The event loop is a powerfull principle that can be used to easily resolve in a better way some develpement problems."
@@ -83,61 +83,65 @@
     {
       "id": 1,
       "title": "A l'abord d'arbre",
-      "type": "web",
+      "complexity": "medium",
+      "type": ["web"],
       "href": ""
     },
     {
       "id": 2,
       "title": "PokeStable",
-      "type": "web",
+      "complexity": "medium",
+      "type": ["web"],
       "href": ""
     },
     {
       "id": 3,
       "title": "WalchCook",
-      "type": "web",
+      "complexity": "medium",
+      "type": ["web"],
       "href": ""
     },
     {
       "id": 4,
       "title": "Game of Life",
-      "type": "web",
+      "complexity": "medium",
+      "type": ["web"],
       "href": ""
     },
     {
       "id": 5,
       "title": "Data visualisation Spotify",
-      "type": "documentation",
+      "type": ["documentation"],
       "href": ""
     },
     {
       "id": 6,
       "title": "Tranlation Fun",
-      "type": "web",
+      "type": ["web"],
       "href": ""
     },
     {
       "id": 7,
       "title": "Smallworld helper",
-      "type": "web",
+      "type": ["web"],
       "href": ""
     },
     {
       "id": 8,
       "title": "RazCli",
-      "type": "outil",
+      "type": ["outil"],
       "href": ""
     },
     {
       "id": 9,
       "title": "Accessibility guidelines",
-      "type": "documentation",
+      "type": ["documentation"],
       "href": ""
     },
     {
       "id": 10,
       "title": "Dossier de reflexion MDS",
-      "type": "documentation",
+      "type": ["documentation"],
       "href": ""
     }
   ]
