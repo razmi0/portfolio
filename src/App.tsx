@@ -1,57 +1,31 @@
 // simple portfolio
-import { forwardRef, useState } from "react";
 import HeadingTransition from "./components/HeadingTransition";
 import Hero from "./components/Hero";
 import { ModeToggle } from "./components/ModeToggle";
 import Presentation from "./components/Presentation";
 import { skills } from "./components/Skills/data.json" assert { type: "json" };
-import Icon from "./components/ui/icons/Icon";
 import Slider from "./components/ui/tabs/Slider";
 import Tabs from "./components/ui/tabs/Tabs";
 
-const groupByType = <T extends { type: ("front-end" | "back-end")[] }>(data: T): { [key: T[type]]: T } => {
-  const grouped = Object.entries(data);
-  console.log(grouped);
-  return grouped;
-};
+// const groupByType = <T extends { type: ("front-end" | "back-end")[] }>(data: T): { [key: T[type]]: T } => {
+//   const grouped = Object.entries(data);
+//   console.log(grouped);
+//   return grouped;
+// };
 
 const App = () => {
-  const [activeSkills, setActiveSkills] = useState(new Array(skills.length).fill({ active: false }));
-  const skillClicked = (e: React.MouseEvent<HTMLButtonElement>) => {
-    const index = e.currentTarget.getAttribute("data-index");
-    setActiveSkills((prev) => {
-      const temp = Array.from(prev).fill({ active: false });
-      temp[parseInt(index as string)] = { active: !temp[parseInt(index as string)].active };
-      return temp;
-    });
-    console.log(skills[parseInt(index as string)]);
-  };
+  // const [activeSkills, setActiveSkills] = useState(new Array(skills.length).fill({ active: false }));
+  // const skillClicked = (e: React.MouseEvent<HTMLButtonElement>) => {
+  //   const index = e.currentTarget.getAttribute("data-index");
+  //   setActiveSkills((prev) => {
+  //     const temp = Array.from(prev).fill({ active: false });
+  //     temp[parseInt(index as string)] = { active: !temp[parseInt(index as string)].active };
+  //     return temp;
+  //   });
+  //   console.log(skills[parseInt(index as string)]);
+  // };
 
-  console.log(activeSkills);
-
-  const ListItem = forwardRef<HTMLLIElement, { children: React.ReactNode; className: string; alt: string }>(
-    ({ children, alt, className, ...props }: { children: React.ReactNode; className: string; alt: string }, ref) => {
-      const sizes = {
-        v: ["75", "100", "125", "150"],
-        rand: function () {
-          return this.v[Math.floor(Math.random() * this.v.length)];
-        },
-      };
-      const s = [sizes.rand(), sizes.rand()];
-      return (
-        <li ref={ref} {...props} className={className}>
-          <Icon name="chevron-right" size={20} />
-          <img
-            className="object-cover w-full max-h-[150px]"
-            src={`https://placehold.co/${s[1]}x${s[0]}`}
-            height={s[0]}
-            alt={alt}
-          />
-          {children}
-        </li>
-      );
-    }
-  );
+  // console.log(activeSkills);
 
   return (
     <main className="p-4 container min-w-full h-full flex flex-col">
@@ -89,7 +63,12 @@ const App = () => {
           </Tabs.Nav>
           <Tabs.Content value="front-end" className="max-w-screen h-full">
             {skills.map((content, i) => {
-              return <></>;
+              return (
+                <>
+                  {content.title}
+                  {i}
+                </>
+              );
             })}
           </Tabs.Content>
           <Tabs.Content value="back-end" className="max-w-screen">

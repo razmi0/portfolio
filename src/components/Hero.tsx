@@ -23,7 +23,7 @@ const Hero = () => {
           <LinkedinIcon />
           <GithubIcon />
         </div>
-        <img src="/pp_large.png" className="h-[300px]" alt="profile picture" />
+        <img src="/pp_large.png" className="h-[300px]  brightness-90 contrast-125 " alt="profile picture" />
         <VerticalText text="Présentation" />
       </div>
     </div>

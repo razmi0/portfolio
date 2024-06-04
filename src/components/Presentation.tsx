@@ -8,7 +8,11 @@ const ListItem = ({ children }: { children: ReactNode }) => {
 const Presentation = () => {
   return (
     <section className="w-full p-10 grid grid-cols-2 gap-12 items-center">
-      <img src="/pp_large.png" alt="profile picture" className="rounded-full hover:scale-95 transition-all" />
+      <img
+        src="/pp_large.png"
+        alt="profile picture"
+        className="rounded-full hover:scale-95 transition-all brightness-90 contrast-125"
+      />
       <div className="space-y-7">
         <ul className="flex w-full justify-between gap-5 [&>li]:bg-bogoss-400 [&>li]:text-bogoss-200 [&>li]:p-5 [&>li]:grow [&>li]:rounded-lg [&>li]:grid [&>li]:place-content-center [&_p]:font-semibold">
           <ListItem>
