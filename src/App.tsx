@@ -27,7 +27,7 @@ const projectsByType = groupedByType(projects);
 
 const CardType = ({ title, level }: { title: string; level: string }) => {
   return (
-    <div className="flex flex-col w-fit items-start justify-center card bg-bogoss-300/80 py-3 px-3 mx-1 [&>h4]:text-bogoss-200 gap-2 grow">
+    <div className="flex flex-col w-fit items-start justify-center rounded-lg bg-bogoss-300/80 py-3 px-3 mx-1 [&>h4]:text-bogoss-200 gap-2 grow">
       <Icon name={title.toLowerCase()} size={25} />
       <h4 className="text-left w-full">{title}</h4>
       <p className="text-sm">{level}</p>
@@ -60,14 +60,14 @@ const App = () => {
             </Tabs.Trigger>
           </Tabs.Nav>
           <Tabs.Content value="front-end" className="max-w-screen h-full">
-            <div className="flex">
+            <div className="flex my-20">
               {skillsByType["front-end"].map((content) => {
                 return <CardType key={content.id} title={content.title} level={content.level} />;
               })}
             </div>
           </Tabs.Content>
           <Tabs.Content value="back-end" className="max-w-screen">
-            <div className="flex">
+            <div className="flex my-20">
               {skillsByType["back-end"].map((content) => {
                 return <CardType key={content.id} title={content.title} level={content.level} />;
               })}
