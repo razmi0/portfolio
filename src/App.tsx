@@ -3,7 +3,7 @@ import HeadingTransition from "./components/HeadingTransition";
 import Hero from "./components/Hero";
 import { ModeToggle } from "./components/ModeToggle";
 import Presentation from "./components/Presentation";
-import { projects, skills } from "./components/Skills/data.json" assert { type: "json" };
+import { skills } from "./components/Skills/data.json" assert { type: "json" };
 import Icon from "./components/ui/icons/Icon";
 import Slider from "./components/ui/tabs/Slider";
 import Tabs from "./components/ui/tabs/Tabs";
@@ -23,7 +23,7 @@ const groupedByType = <T extends { type: string[] }>(data: T[]) => {
 };
 
 const skillsByType = groupedByType(skills);
-const projectsByType = groupedByType(projects);
+// const projectsByTypse = groupedByType(projects);
 
 const CardType = ({ title, level }: { title: string; level: string }) => {
   return (
