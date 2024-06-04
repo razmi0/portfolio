@@ -36,38 +36,14 @@ const CardType = ({ title, level }: { title: string; level: string }) => {
 };
 
 const App = () => {
-  // const [activeSkills, setActiveSkills] = useState(new Array(skills.length).fill({ active: false }));
-  // const skillClicked = (e: React.MouseEvent<HTMLButtonElement>) => {
-  //   const index = e.currentTarget.getAttribute("data-index");
-  //   setActiveSkills((prev) => {
-  //     const temp = Array.from(prev).fill({ active: false });
-  //     temp[parseInt(index as string)] = { active: !temp[parseInt(index as string)].active };
-  //     return temp;
-  //   });
-  //   console.log(skills[parseInt(index as string)]);
-  // };
-
-  // console.log(activeSkills);
-
   return (
     <main className="p-4 container min-w-full h-full flex flex-col">
       <header className="flex items-center justify-between flex-row-reverse ">
         <ModeToggle />
       </header>
       <Hero />
-
-      {/* PRESENTATION */}
-      {/* PRESENTATION */}
-      {/* PRESENTATION */}
-      {/* PRESENTATION */}
       <HeadingTransition h2="A propos de moi" small="presentation" />
       <Presentation />
-      {/* MES COMPETENCES */}
-      {/* MES COMPETENCES */}
-      {/* MES COMPETENCES */}
-      {/* MES COMPETENCES */}
-      {/* MES COMPETENCES */}
-      {/* MES COMPETENCES */}
       <HeadingTransition h2="Mes compétences" small="skills" className="my-20" />
       <div>
         <Tabs.Root>
@@ -103,48 +79,6 @@ const App = () => {
         </Tabs.Root>
       </div>
 
-      {/* <Tabs.Content value="skills" className="max-w-screen h-full">
-            <div className="h-full flex mt-5">
-              <section className="w-full h-fit flex justify-start">
-                <div className="inline-flex flex-wrap gap-x-1 gap-y-2 ">
-                  {skills.map((content, i) => {
-                    return (
-                      <>
-                        <Button
-                          key={content.id}
-                          data-index={i}
-                          variant="outline"
-                          className="flex flex-wrap items-center flex-col"
-                          onClick={skillClicked}>
-                          <h4>{content.title}</h4>
-                          <small className="text-neutral-300">{content.level}</small>
-                        </Button>
-                      </>
-                    );
-                  })}
-                </div>
-                <ul className="h-full grid place-content-center w-full">
-                  {skills.map((content, i) => {
-                    return (
-                      <li
-                        key={content.id}
-                        className={cn(activeSkills[i].active ? "flex" : "hidden", "items-start flex-col h-full")}>
-                        <h4 className="sr-only">{content.title}</h4>
-                        <Icon name={content.title.toLowerCase()} size={30} />
-                        <p className="mt-5 text-balance max-w-[50ch]">{content.content}</p>
-                      </li>
-                    );
-                  })}
-                </ul>
-              </section>
-            </div>
-          </Tabs.Content> */}
-
-      {/* MES EXPERIENCES */}
-      {/* MES EXPERIENCES */}
-      {/* MES EXPERIENCES */}
-      {/* MES EXPERIENCES */}
-      {/* MES EXPERIENCES */}
       <HeadingTransition h2="Mes expériences" small="mon parcours" className="my-20" />
 
       <div>
@@ -191,86 +125,3 @@ const App = () => {
   );
 };
 export default App;
-
-{
-  /* PROJETS */
-}
-{
-  /* PROJETS */
-}
-{
-  /* PROJETS */
-}
-{
-  /* PROJETS */
-}
-{
-  /* PROJETS */
-}
-
-{
-  /* <Tabs.Content value="project" className="max-w-screen">
-            <ul className="flex flex-wrap gap-x-3 gap-y-5">
-              {projects.map((content) => {
-                return (
-                  <ListItem
-                    key={content.id}
-                    className="flex flex-col gap-2 bg-slate-500 overflow-hidden rounded-xl card"
-                    alt={content.title}>
-                    <h4 className="px-3">{content.title}</h4>
-                    <p className="px-3 mb-2 max-w-[25ch]">Lorem ipsum dolor, sit amet</p>
-                  </ListItem>
-                );
-              })}
-            </ul>
-          </Tabs.Content> */
-}
-{
-  /* Contact */
-}
-{
-  /* Contact */
-}
-{
-  /* Contact */
-}
-{
-  /* Contact */
-}
-{
-  /* Contact */
-}
-
-{
-  /* <Tabs.Content value="contact" className="max-w-screen">
-            <form
-              className="w-full px-10 py-5 gap-8 flex justify-center"
-              onSubmit={(e) => {
-                console.log(e);
-                e.preventDefault();
-              }}>
-              <div className="w-[40%]">
-                <div className="form__group field">
-                  <input type="text" className="form__field" placeholder="Name" id="name" required />
-                  <label htmlFor="name" className="form__label">
-                    Name
-                  </label>
-                </div>
-                <div className="form__group field">
-                  <input type="email" className="form__field" placeholder="Email" id="email" required />
-                  <label htmlFor="email" className="form__label">
-                    Email
-                  </label>
-                </div>
-              </div>
-              <div className="flex flex-col w-full">
-                <label htmlFor="message">Message</label>
-                <textarea
-                  name="message"
-                  id="message"
-                  placeholder="Message..."
-                  className="h-32 ps-2 bg-slate-400 placeholder:text-white"></textarea>
-              </div>
-            </form>
-          </Tabs.Content> */
-}
