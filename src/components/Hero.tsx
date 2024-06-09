@@ -10,12 +10,8 @@ const Hero = () => {
         <h1 className="text-3xl !text-bogoss-400">I'm Thomas</h1>
         <h2 className="text-lg mb-4">I'm web developer</h2>
         <div className="flex items-center justify-start gap-4">
-          <Button variant="solid" className="">
-            Telecharger mon CV
-          </Button>
-          <Button variant="outline" className="">
-            En savoir plus
-          </Button>
+          <Button variant="solid">Telecharger mon CV</Button>
+          <Button variant="outline">En savoir plus</Button>
         </div>
       </div>
       <div className="relative w-full grid place-content-center">
