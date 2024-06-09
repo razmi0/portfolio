@@ -26,7 +26,7 @@ const App = () => {
           {values.skills.map((value) => {
             return (
               <Button
-                className="w-full"
+                className="whitespace-nowrap"
                 variant={"outline"}
                 key={value}
                 onClick={() => handleFilterChange("skills", value)}>
@@ -50,7 +50,7 @@ const App = () => {
           {values.xp.map((value) => {
             return (
               <Button
-                className="w-full"
+                className="whitespace-nowrap"
                 variant={"outline"}
                 key={value}
                 onClick={() => handleFilterChange("xp", value)}>
@@ -73,7 +73,10 @@ const App = () => {
         <ButtonSection>
           {values.projects.map((value) => {
             return (
-              <Button className="w-full" variant={"outline"} onClick={() => handleFilterChange("projects", value)}>
+              <Button
+                className="whitespace-nowrap"
+                variant={"outline"}
+                onClick={() => handleFilterChange("projects", value)}>
                 <span className="text-xl">{value}</span>
               </Button>
             );
@@ -92,11 +95,11 @@ const App = () => {
 };
 
 const ButtonSection = ({ children }: { children: React.ReactNode }) => (
-  <section className="flex flex-col mb-5 justify-start gap-12">{children}</section>
+  <section className="flex mb-5 justify-start gap-12">{children}</section>
 );
 
 const Flex = ({ children }: { children: React.ReactNode }) => (
-  <div className="flex justify-evenly min-h-[50vh]">{children}</div>
+  <div className="flex flex-col items-center justify-evenly min-h-[50vh]">{children}</div>
 );
 
 export default App;
