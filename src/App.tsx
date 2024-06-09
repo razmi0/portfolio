@@ -3,7 +3,7 @@ import HeadingTransition from "./components/HeadingTransition";
 import Hero from "./components/Hero";
 import { ModeToggle } from "./components/ModeToggle";
 import Presentation from "./components/Presentation";
-import { formation, projects, skills, xp } from "./components/Skills/data.json" assert { type: "json" };
+import { formation, projects, skills, xp } from "./components/Skills/data.json";
 import { Button } from "./components/ui/button";
 import useFilters from "./hooks/useFilter";
 
