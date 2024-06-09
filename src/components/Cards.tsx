@@ -7,7 +7,7 @@ const CardSkill = ({ content, className }: { content: SkillType; className?: str
   return (
     <div
       className={cn(
-        "flex flex-col w-fit items-start justify-center rounded-lg bg-bogoss-300/80 py-3 px-3 mx-1 [&>h4]:text-bogoss-200 gap-2 grow transition-all",
+        "flex flex-col items-start justify-center rounded-lg bg-bogoss-300/80 py-3 px-3 mx-1 [&>h4]:text-bogoss-200 gap-2 grow transition-all w-32 max-w-32 aspect-square",
         className
       )}>
       <Icon name={title.toLowerCase()} size={25} />
@@ -22,7 +22,7 @@ const CardXp = ({ content, className }: { content: ExperienceType | FormationTyp
   return (
     <div
       className={cn(
-        "flex flex-col w-fit items-start justify-center rounded-lg bg-bogoss-300/80 py-3 px-3 mx-1 [&>h4]:text-bogoss-200 gap-2 grow transition-all",
+        "flex flex-col items-start justify-center rounded-lg bg-bogoss-300/80 py-3 px-3 mx-1 [&>h4]:text-bogoss-200 gap-2 grow transition-all w-52 max-w-52 aspect-square",
         className
       )}>
       <h4 className="text-left w-full">{title}</h4>
@@ -36,7 +36,7 @@ const CardProject = ({ content, className }: { content: ProjectType; className?:
   return (
     <div
       className={cn(
-        "flex flex-col w-fit items-start justify-center rounded-lg bg-bogoss-300/80 py-3 px-3 mx-1 [&>h4]:text-bogoss-200 gap-2 grow transition-all",
+        "flex flex-col items-start justify-center rounded-lg bg-bogoss-300/80 py-3 px-3 mx-1 [&>h4]:text-bogoss-200 gap-2 grow transition-all w-52 max-w-52 aspect-square",
         className
       )}>
       <h4 className="text-left w-full">{title}</h4>
@@ -48,15 +48,15 @@ const CardProject = ({ content, className }: { content: ProjectType; className?:
   );
 };
 
-const CardContainer = ({ children, className }: { children: React.ReactNode; className?: string }) => {
-  return <div className={cn("flex my-20 flex-wrap", className)}>{children}</div>;
+const CardGrid = ({ children, className }: { children: React.ReactNode; className?: string }) => {
+  return <div className={cn("grid gap-9 grid-cols-3", className)}>{children}</div>;
 };
 
 const Cards = {
   Skill: CardSkill,
   Xp: CardXp,
   Project: CardProject,
-  Container: CardContainer,
+  Grid: CardGrid,
 };
 
 export default Cards;

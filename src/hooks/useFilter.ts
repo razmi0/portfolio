@@ -21,9 +21,8 @@ const useFilters = () => {
   });
 
   type ValueType<T> = T extends "skills" ? SkillFilter : T extends "xp" ? XpFilter : ProjectFilter;
-  const handleFilterChange = <T>(field: keyof Filters & T, value: ValueType<T>) => {
+  const handleFilterChange = <T>(field: keyof Filters & T, value: ValueType<T>) =>
     setFilters({ ...filters, [field]: value });
-  };
 
   return { filters, handleFilterChange, values };
 };

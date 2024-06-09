@@ -23,12 +23,12 @@ const Button = ({ children, variant, onClick, className, ...props }: ButtonProps
       onClick={onClick}
       data-button="button"
       className={cn(
-        className,
         "rounded-md w-fit", // text-neutral-200
         "active:scale-95",
         "focus:outline-none",
         "transition-all",
-        variants.cl(variant)
+        variants.cl(variant),
+        className
       )}>
       {children}
     </button>

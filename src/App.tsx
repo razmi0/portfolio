@@ -3,7 +3,7 @@ import HeadingTransition from "./components/HeadingTransition";
 import Hero from "./components/Hero";
 import { ModeToggle } from "./components/ModeToggle";
 import Presentation from "./components/Presentation";
-import { projects, skills, xp } from "./components/Skills/data.json" assert { type: "json" };
+import { formation, projects, skills, xp } from "./components/Skills/data.json" assert { type: "json" };
 import { Button } from "./components/ui/button";
 import useFilters from "./hooks/useFilter";
 
@@ -25,18 +25,22 @@ const App = () => {
         <ButtonSection>
           {values.skills.map((value) => {
             return (
-              <Button variant={"outline"} key={value} onClick={() => handleFilterChange("skills", value)}>
-                <h2 className="text-xl">{value}</h2>
+              <Button
+                className="w-full"
+                variant={"outline"}
+                key={value}
+                onClick={() => handleFilterChange("skills", value)}>
+                <span className="text-xl">{value}</span>
               </Button>
             );
           })}
         </ButtonSection>
-        <Cards.Container>
+        <Cards.Grid>
           {skills.map((content) => {
             const hidden = filters.skills === "tous" || content.type.includes(filters.skills) ? "" : "hidden";
             return <Cards.Skill key={content.id} content={content} className={hidden} />;
           })}
-        </Cards.Container>
+        </Cards.Grid>
       </Flex>
 
       <HeadingTransition h2="Mes expériences" small="mon parcours" className="my-20" />
@@ -45,18 +49,22 @@ const App = () => {
         <ButtonSection>
           {values.xp.map((value) => {
             return (
-              <Button variant={"outline"} key={value} onClick={() => handleFilterChange("xp", value)}>
-                <h2 className="text-xl">{value}</h2>
+              <Button
+                className="w-full"
+                variant={"outline"}
+                key={value}
+                onClick={() => handleFilterChange("xp", value)}>
+                <span className="text-xl">{value}</span>
               </Button>
             );
           })}
         </ButtonSection>
-        <Cards.Container>
-          {xp.map((content) => {
+        <Cards.Grid>
+          {[...xp, ...formation].map((content) => {
             const hidden = filters.xp === "tous" || content.type.includes(filters.xp) ? "" : "hidden";
             return <Cards.Xp key={content.id} content={content} className={hidden} />;
           })}
-        </Cards.Container>
+        </Cards.Grid>
       </Flex>
 
       <HeadingTransition h2="Mes projets" small="portfolio" className="my-20" />
@@ -65,18 +73,18 @@ const App = () => {
         <ButtonSection>
           {values.projects.map((value) => {
             return (
-              <Button variant={"outline"} onClick={() => handleFilterChange("projects", value)}>
-                <h2 className="text-xl">{value}</h2>
+              <Button className="w-full" variant={"outline"} onClick={() => handleFilterChange("projects", value)}>
+                <span className="text-xl">{value}</span>
               </Button>
             );
           })}
         </ButtonSection>
-        <Cards.Container>
+        <Cards.Grid>
           {projects.map((content) => {
             const hidden = filters.projects === "tous" || content.type.includes(filters.projects) ? "" : "hidden";
             return <Cards.Project key={content.id} content={content} className={hidden} />;
           })}
-        </Cards.Container>
+        </Cards.Grid>
       </Flex>
       <div className="h-screen">Contactez-moi</div>
     </main>
@@ -84,9 +92,11 @@ const App = () => {
 };
 
 const ButtonSection = ({ children }: { children: React.ReactNode }) => (
-  <section className="flex flex-col mb-5 justify-between">{children}</section>
+  <section className="flex flex-col mb-5 justify-start gap-12">{children}</section>
 );
 
-const Flex = ({ children }: { children: React.ReactNode }) => <div className="flex">{children}</div>;
+const Flex = ({ children }: { children: React.ReactNode }) => (
+  <div className="flex justify-evenly min-h-[50vh]">{children}</div>
+);
 
 export default App;
