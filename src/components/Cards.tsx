@@ -1,8 +1,11 @@
 import { cn } from "@/lib/utils";
 import { ExperienceType, FormationType, ProjectType, SkillType } from "@/types/types";
+import { SquareX } from "lucide-react";
+import { useRef } from "react";
 import Icon from "./ui/icons/Icon";
 
 const CardSkill = ({ content, className }: { content: SkillType; className?: string }) => {
+  const dialogRef = useRef<HTMLDialogElement>(null);
   const { title, level } = content;
   return (
     <div
@@ -13,6 +16,20 @@ const CardSkill = ({ content, className }: { content: SkillType; className?: str
       <Icon name={title.toLowerCase()} size={25} />
       <h4 className="text-left w-full">{title}</h4>
       <p className="text-sm">{level}</p>
+      <button type="button" onClick={() => dialogRef.current?.showModal()}>
+        Voir
+      </button>
+
+      <dialog
+        ref={dialogRef}
+        className="h-52 w-80 backdrop-blur-3xl dark:backdrop:bg-bogoss-600/50 dark:bg-bogoss-700 dark:text-bogoss-200">
+        <div className="size-full flex flex-col">
+          <p>Contenu</p>
+          <button autoFocus type="button" onClick={() => dialogRef.current?.close()}>
+            <SquareX />
+          </button>
+        </div>
+      </dialog>
     </div>
   );
 };

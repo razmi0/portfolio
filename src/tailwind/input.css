@@ -266,3 +266,8 @@ h6 {
 .form__field:invalid {
   box-shadow: none;
 }
+
+dialog::backdrop {
+  backdrop-filter: blur(2px);
+  background-color: rgba(0, 0, 0, 0.5);
+}
