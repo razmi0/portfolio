@@ -22,10 +22,14 @@ const CardSkill = ({ content, className }: { content: SkillType; className?: str
 
       <dialog
         ref={dialogRef}
-        className="h-52 w-80 backdrop-blur-3xl dark:backdrop:bg-bogoss-600/50 dark:bg-bogoss-700 dark:text-bogoss-200">
-        <div className="size-full flex flex-col">
+        className="min-h-64 min-w-96 dark:backdrop:bg-bogoss-600/50 dark:bg-bogoss-700 dark:text-bogoss-200 rounded-md">
+        <div className="relative size-full flex flex-col p-3">
           <p>Contenu</p>
-          <button autoFocus type="button" onClick={() => dialogRef.current?.close()}>
+          <button
+            className="absolute right-0 top-0 hover:text-bogoss-500 text-bogoss-300 p-2 grid place-content-center"
+            autoFocus
+            type="button"
+            onClick={() => dialogRef.current?.close()}>
             <SquareX />
           </button>
         </div>

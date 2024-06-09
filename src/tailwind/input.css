@@ -267,6 +267,17 @@ h6 {
   box-shadow: none;
 }
 
+dialog[open] {
+  opacity: 1;
+  transform: scaleX(1);
+}
+@starting-style {
+  dialog[open] {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+}
+
 dialog::backdrop {
   backdrop-filter: blur(2px);
   background-color: rgba(0, 0, 0, 0.5);
