@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils";
-import { ExperienceType, ProjectType, SkillType } from "@/types/types";
+import { ExperienceType, FormationType, ProjectType, SkillType } from "@/types/types";
 import Icon from "./ui/icons/Icon";
 
 const CardSkill = ({ content, className }: { content: SkillType; className?: string }) => {
@@ -17,7 +17,7 @@ const CardSkill = ({ content, className }: { content: SkillType; className?: str
   );
 };
 
-const CardXp = ({ content, className }: { content: ExperienceType; className?: string }) => {
+const CardXp = ({ content, className }: { content: ExperienceType | FormationType; className?: string }) => {
   const { title, date } = content;
   return (
     <div
@@ -48,10 +48,15 @@ const CardProject = ({ content, className }: { content: ProjectType; className?:
   );
 };
 
+const CardContainer = ({ children, className }: { children: React.ReactNode; className?: string }) => {
+  return <div className={cn("flex my-20 flex-wrap", className)}>{children}</div>;
+};
+
 const Cards = {
   Skill: CardSkill,
   Xp: CardXp,
   Project: CardProject,
+  Container: CardContainer,
 };
 
 export default Cards;

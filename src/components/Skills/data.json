@@ -88,7 +88,7 @@
       "date": "2024",
       "duration": "en cours",
       "subtitle": "Develloppement de site vitrine et de site e-commerce",
-      "programme": [""]
+      "program": [""]
     },
     {
       "id": 2,
@@ -98,7 +98,7 @@
       "date": "2023",
       "duration": "6 mois",
       "subtitle": "Developpement de site de recherche de freelance",
-      "programme": [
+      "program": [
         "Reproduction de maquettes",
         "Developpement de composants React",
         "Intégration web",
@@ -116,12 +116,14 @@
       "date": "2023",
       "duration": "1 mois",
       "subtitle": "Développement d'un site de prestation de cryptominage",
-      "programme": [
+      "program": [
         "Internationalisation du site.",
         "Mise en place du système cookies front-end.",
         "Utilisation de TypeScript, ReactJS, Next.js."
       ]
-    },
+    }
+  ],
+  "formation": [
     {
       "id": 4,
       "type": "formation",
