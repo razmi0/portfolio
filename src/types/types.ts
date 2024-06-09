@@ -17,27 +17,23 @@ export type ProjectType = {
   href: string;
 };
 
-export type ExperienceType = {
-  id: number;
-  type: string;
-  title: string;
-  company: string;
-  date: string;
-  duration: string;
-  subtitle: string;
-  program: string[];
-  lieu?: string;
-  status?: string;
-  level?: string;
-};
-
-export type FormationType = {
+interface Experience {
   id: number;
   type: string;
   title: string;
   lieu: string;
-  duration: string;
-  level: string;
   date: string[];
+  duration: string;
+  description: string;
+}
+
+export interface ProType extends Experience {
+  company: string;
+  subtitle: string;
+  program: string[];
+}
+
+export interface FormationType extends Experience {
+  level: string;
   status: string;
-};
+}

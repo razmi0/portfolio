@@ -679,6 +679,10 @@ video {
   height: 100vh;
 }
 
+.max-h-80{
+  max-height: 20rem;
+}
+
 .max-h-\[150px\]{
   max-height: 150px;
 }
@@ -734,6 +738,10 @@ video {
 
 .max-w-52{
   max-width: 13rem;
+}
+
+.max-w-\[450px\]{
+  max-width: 450px;
 }
 
 .max-w-\[75ch\]{
@@ -825,6 +833,10 @@ video {
 
 .justify-evenly{
   justify-content: space-evenly;
+}
+
+.gap-1{
+  gap: 0.25rem;
 }
 
 .gap-12{
@@ -1573,6 +1585,11 @@ dialog::backdrop {
 .active\:scale-95:active{
   --tw-scale-x: .95;
   --tw-scale-y: .95;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.group:hover .group-hover\:translate-x-2{
+  --tw-translate-x: 0.5rem;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 

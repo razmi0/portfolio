@@ -85,17 +85,20 @@
       "type": "pro",
       "title": "Developpeur front-end",
       "company": "Freelance",
-      "date": "2024",
+      "lieu": "Toulouse",
+      "date": ["2024"],
       "duration": "en cours",
       "subtitle": "Develloppement de site vitrine et de site e-commerce",
-      "program": [""]
+      "program": [""],
+      "description": ""
     },
     {
       "id": 2,
       "type": "pro",
       "title": "Developpeur front-end",
       "company": "SlashBin",
-      "date": "2023",
+      "lieu": "Toulouse",
+      "date": ["2023"],
       "duration": "6 mois",
       "subtitle": "Developpement de site de recherche de freelance",
       "program": [
@@ -106,21 +109,24 @@
         "Adaptation de l'environnement front-end, back-end (configuration du bundler, linter et des containers dockers).",
         "Proposition de nouvelles fonctionnalités pour améliorer l'expérience utilisateur.",
         "Utilisation de HTML, CSS, ChakraUI, TypeScript, ReactJS, Next.js, GraphQL, Docker, Notion."
-      ]
+      ],
+      "description": ""
     },
     {
       "id": 3,
       "type": "pro",
       "title": "Developpeur front-end",
       "company": "SlashBin",
-      "date": "2023",
+      "lieu": "Toulouse",
+      "date": ["2023"],
       "duration": "1 mois",
       "subtitle": "Développement d'un site de prestation de cryptominage",
       "program": [
         "Internationalisation du site.",
         "Mise en place du système cookies front-end.",
         "Utilisation de TypeScript, ReactJS, Next.js."
-      ]
+      ],
+      "description": ""
     }
   ],
   "formation": [
@@ -132,7 +138,8 @@
       "duration": "1 an",
       "level": "bac+3",
       "date": ["octobre 2024", "juillet 2025"],
-      "status": "en cours"
+      "status": "en cours",
+      "description": ""
     },
     {
       "id": 5,
@@ -142,7 +149,8 @@
       "duration": "3 mois",
       "level": "bac+2",
       "date": ["mars 2023", "juin 2023"],
-      "status": "terminé"
+      "status": "terminé",
+      "description": ""
     },
     {
       "id": 6,
@@ -152,7 +160,8 @@
       "duration": "2 ans",
       "level": "bac+2",
       "date": ["2015", "2017"],
-      "status": "terminé"
+      "status": "terminé",
+      "description": ""
     },
     {
       "id": 7,
@@ -162,7 +171,8 @@
       "duration": "2 ans",
       "level": "bac+2",
       "date": ["2012", "2016"],
-      "status": "terminé"
+      "status": "terminé",
+      "description": ""
     }
   ],
   "projects": [
