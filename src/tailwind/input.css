@@ -270,9 +270,10 @@ h6 {
 dialog[open] {
   opacity: 1;
   transform: scaleX(1);
-}
-@starting-style {
-  dialog[open] {
+  transition: all 0.3s ease-in-out;
+  transition-behavior: allow-discrete;
+
+  @starting-style {
     opacity: 0;
     transform: scaleX(0);
   }
