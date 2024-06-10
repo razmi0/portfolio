@@ -291,29 +291,29 @@ dialog::backdrop {
   & > div {
     --init-tx: calc(-100% - 32px - 16px);
     transform: translatex(var(--init-tx));
-    animation: marquee infinite 50s linear;
+    animation: marquee infinite 5s linear;
     flex-wrap: nowrap;
     white-space: nowrap;
 
     &:hover {
       animation-play-state: paused;
     }
-
-    & .element:hover {
-      cursor: pointer;
-      transform: scale(1.2);
-    }
-
-    & .element:has(~ .element:hover) {
-      filter: blur(1px);
-      transform: scale(0.96);
-    }
-
-    & .element:hover ~ .element {
-      filter: blur(1px);
-      transform: scale(0.96);
-    }
   }
+}
+
+.element:hover {
+  cursor: pointer;
+  transform: scale(1.2);
+}
+
+.element:has(~ .element:hover) {
+  filter: blur(1px);
+  transform: scale(0.9);
+}
+
+.element:hover ~ .element {
+  filter: blur(1px);
+  transform: scale(0.9);
 }
 @keyframes marquee {
   to {

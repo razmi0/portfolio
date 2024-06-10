@@ -39,19 +39,17 @@ const App = () => {
       <HeadingTransition h2="Mes compétences" small="skills" className="my-20" />
 
       <div className="w-full overflow-hidden" id="ULTIMATE-WRAPPER">
-        <div className="text-2xl text-center my-10 marquee w-screen">
+        <div className="text-2xl text-center my-10 marquee">
           <div className="text-2xl text-center w-full inline-flex">
             {skills.data.map((skill, i) => {
               return (
-                <div className="flex flex-col relative">
-                  <button
-                    onMouseEnter={() => setSkillsHovered((prev) => prev.map((_, j) => j === i))}
-                    onMouseLeave={() => setSkillsHovered(new Array(skills.data.length).fill(false))}
-                    key={skill.id}
-                    className="inline-flex items-center text-2xl text-center text-bogoss-400 element transition-all peer">
-                    <Icon name={skill.title.toLowerCase()} size={52} className="mx-6" />
-                  </button>
-                </div>
+                <button
+                  onMouseEnter={() => setSkillsHovered((prev) => prev.map((_, j) => j === i))}
+                  onMouseLeave={() => setSkillsHovered(new Array(skills.data.length).fill(false))}
+                  key={skill.id}
+                  className="inline-flex items-center text-2xl text-center text-bogoss-400 element transition-all">
+                  <Icon name={skill.title.toLowerCase()} size={52} className="mx-6" />
+                </button>
               );
             })}
           </div>

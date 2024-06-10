@@ -582,10 +582,6 @@ video {
   border-width: 0;
 }
 
-.pointer-events-none{
-  pointer-events: none;
-}
-
 .absolute{
   position: absolute;
 }
@@ -751,10 +747,6 @@ video {
   width: 100%;
 }
 
-.w-screen{
-  width: 100vw;
-}
-
 .min-w-24{
   min-width: 6rem;
 }
@@ -793,16 +785,6 @@ video {
 
 .-translate-x-\[120\%\]{
   --tw-translate-x: -120%;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-}
-
-.translate-y-full{
-  --tw-translate-y: 100%;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-}
-
-.translate-x-1\/2{
-  --tw-translate-x: 50%;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
@@ -1176,11 +1158,6 @@ video {
 .text-neutral-200{
   --tw-text-opacity: 1;
   color: rgb(229 229 229 / var(--tw-text-opacity));
-}
-
-.text-bogoss-500{
-  --tw-text-opacity: 1;
-  color: rgb(49 46 129 / var(--tw-text-opacity));
 }
 
 .underline{
@@ -1607,25 +1584,28 @@ dialog::backdrop {
   & > div {
     --init-tx: calc(-100% - 32px - 16px);
     transform: translatex(var(--init-tx));
-    animation: marquee infinite 50s linear;
+    animation: marquee infinite 5s linear;
     flex-wrap: nowrap;
     white-space: nowrap;
     &:hover {
       animation-play-state: paused;
     }
-    & .element:hover {
-      cursor: pointer;
-      transform: scale(1.2);
-    }
-    & .element:has(~ .element:hover) {
-      filter: blur(1px);
-      transform: scale(0.96);
-    }
-    & .element:hover ~ .element {
-      filter: blur(1px);
-      transform: scale(0.96);
-    }
   }
+}
+
+.element:hover {
+  cursor: pointer;
+  transform: scale(1.2);
+}
+
+.element:has(~ .element:hover) {
+  filter: blur(1px);
+  transform: scale(0.9);
+}
+
+.element:hover ~ .element {
+  filter: blur(1px);
+  transform: scale(0.9);
 }
 
 @keyframes marquee {
@@ -1692,17 +1672,9 @@ dialog::backdrop {
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
-.group:hover .group-hover\:block{
-  display: block;
-}
-
 .group:hover .group-hover\:translate-x-2{
   --tw-translate-x: 0.5rem;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-}
-
-.peer:hover ~ .peer-hover\:block{
-  display: block;
 }
 
 @keyframes accordion-up{
