@@ -303,20 +303,35 @@ dialog::backdrop {
 
 .element:hover {
   cursor: pointer;
-  transform: scale(1.2);
+  transform: scale(1.5);
 }
 
 .element:has(~ .element:hover) {
-  filter: blur(1px);
-  transform: scale(0.9);
+  transform: scale(0.75);
 }
 
 .element:hover ~ .element {
-  filter: blur(1px);
-  transform: scale(0.9);
+  transform: scale(0.75);
 }
 @keyframes marquee {
   to {
     transform: translateX(100%);
+  }
+}
+
+.animation-start-skill-card {
+  animation: animation-start-skill 0.5s ease-in-out;
+  animation-fill-mode: forwards;
+  opacity: 0;
+}
+
+@keyframes animation-start-skill {
+  0% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
   }
 }

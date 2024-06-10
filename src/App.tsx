@@ -8,6 +8,7 @@ import { formation, projects, skills, xp } from "./components/Skills/data.json";
 import { Button } from "./components/ui/button";
 import Icon from "./components/ui/icons/Icon";
 import useFilters from "./hooks/useFilter";
+import { cn } from "./lib/utils";
 import { SkillType } from "./types/types";
 
 const [front, back] = skills.data.reduce(
@@ -38,8 +39,10 @@ const App = () => {
 
       <HeadingTransition h2="Mes compétences" small="skills" className="my-20" />
 
-      <div className="w-full overflow-hidden" id="ULTIMATE-WRAPPER">
-        <div className="text-2xl text-center my-10 marquee">
+      <p className="mb-10">Je m'accomode de toutes les technologies, jusqu'ici j'ai travaillé avec :</p>
+
+      <div className="w-full overflow-hidden mb-10" id="ULTIMATE-WRAPPER">
+        <div className="text-2xl text-center my-10">
           <div className="text-2xl text-center w-full inline-flex">
             {skills.data.map((skill, i) => {
               return (
@@ -54,6 +57,24 @@ const App = () => {
             })}
           </div>
         </div>
+      </div>
+      <div className="min-h-[300px]">
+        {skills.data.map((skill, i) => {
+          return (
+            <div
+              className={cn(
+                "flex items-center justify-center",
+                skillsHovered[i] ? "animation-start-skill-card" : "hidden"
+              )}>
+              <div className={cn("space-y-4")}>
+                <h3 className="text-3xl">
+                  {skill.title} <small className="text-sm text-bogoss-200">{skill.level}</small>
+                </h3>
+                <p className="max-w-[50ch]">{skill.description}</p>
+              </div>
+            </div>
+          );
+        })}
       </div>
       <HeadingTransition h2="Mes expériences" small="mon parcours" className="my-20" />
 

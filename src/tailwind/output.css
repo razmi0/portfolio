@@ -714,6 +714,10 @@ video {
   min-height: 16rem;
 }
 
+.min-h-\[300px\]{
+  min-height: 300px;
+}
+
 .min-h-\[50vh\]{
   min-height: 50vh;
 }
@@ -765,6 +769,10 @@ video {
 
 .max-w-\[450px\]{
   max-width: 450px;
+}
+
+.max-w-\[50ch\]{
+  max-width: 50ch;
 }
 
 .max-w-\[75ch\]{
@@ -906,6 +914,12 @@ video {
   --tw-space-y-reverse: 0;
   margin-top: calc(1.75rem * calc(1 - var(--tw-space-y-reverse)));
   margin-bottom: calc(1.75rem * var(--tw-space-y-reverse));
+}
+
+.space-y-4 > :not([hidden]) ~ :not([hidden]){
+  --tw-space-y-reverse: 0;
+  margin-top: calc(1rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(1rem * var(--tw-space-y-reverse));
 }
 
 .overflow-hidden{
@@ -1595,22 +1609,38 @@ dialog::backdrop {
 
 .element:hover {
   cursor: pointer;
-  transform: scale(1.2);
+  transform: scale(1.5);
 }
 
 .element:has(~ .element:hover) {
-  filter: blur(1px);
-  transform: scale(0.9);
+  transform: scale(0.75);
 }
 
 .element:hover ~ .element {
-  filter: blur(1px);
-  transform: scale(0.9);
+  transform: scale(0.75);
 }
 
 @keyframes marquee {
   to {
     transform: translateX(100%);
+  }
+}
+
+.animation-start-skill-card {
+  animation: animation-start-skill 0.5s ease-in-out;
+  animation-fill-mode: forwards;
+  opacity: 0;
+}
+
+@keyframes animation-start-skill {
+  0% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
   }
 }
 
