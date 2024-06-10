@@ -1,17 +1,45 @@
 import { cn } from "@/lib/utils";
 import { FormationType, ProType, ProjectType, SkillType } from "@/types/types";
-import { ArrowBigRight, SquareX } from "lucide-react";
-import { useRef } from "react";
+import Dialog from "./Dialog";
 import Icon from "./ui/icons/Icon";
 
-const CardSkill = ({ content, className }: { content: SkillType; className?: string }) => {
-  const { title, level } = content;
+const CardSkill = ({
+  content,
+  cols = 2,
+  className,
+}: {
+  cols?: number;
+  content: { label: string; data: SkillType[] }[];
+  className?: string;
+}) => {
   return (
-    <Ctn className={className} is={`skill-${content.id}`}>
-      <Icon name={title.toLowerCase()} size={25} />
-      <h4 className="text-left w-full">{title}</h4>
-      <p className="text-sm">{level}</p>
-    </Ctn>
+    <>
+      <div
+        className={cn(
+          "flex flex-col justify-between dark:bg-bogoss-500 rounded-md p-10 py-8 w-[350px] h-fit",
+          className
+        )}
+        key={content[0].label}
+        id="WRAPPER-CONTENT">
+        {content.map(({ label, data }) => (
+          <>
+            <h3 className={cn("uppercase text-center mb-10 !text-bogoss-300")}>{label}</h3>
+            <div
+              className="grid gap-7 justify-items-center"
+              id="CARD"
+              style={{ gridTemplateColumns: `repeat(${cols}, minmax(0, 1fr))` }}>
+              {data.map((skill) => (
+                <div key={skill.id} className="w-fit min-w-24 [&>h4]:text-bogoss-200" id="CARD-ELEMENT">
+                  <Icon name={skill.title.toLowerCase()} />
+                  <h4>{skill.title}</h4>
+                  <p className="text-sm text-bogoss-200">{skill.level}</p>
+                </div>
+              ))}
+            </div>
+          </>
+        ))}
+      </div>
+    </>
   );
 };
 
@@ -56,8 +84,10 @@ const CardXp = ({ content, className }: { content: ProType | FormationType; clas
     );
   };
 
+  const is = `${isExperience ? "pro" : "formation"}-${content.id}`;
+
   return (
-    <Ctn is={`${isExperience ? "pro" : "formation"}-${content.id}`} className={className}>
+    <Ctn is={is} className={className}>
       {isExperience ? <Pro /> : <Formation />}
     </Ctn>
   );
@@ -90,44 +120,6 @@ const Ctn = ({ children, className, is }: { children: React.ReactNode; className
       )}>
       {children}
     </div>
-  );
-};
-
-const Dialog = ({ children, className }: { children: React.ReactNode; className?: string }) => {
-  const dialogRef = useRef<HTMLDialogElement>(null);
-  return (
-    <>
-      <button
-        type="button"
-        onClick={() => dialogRef.current?.showModal()}
-        className="flex items-center justify-center gap-1 text-sm group">
-        <p>Voir plus</p>
-        <ArrowBigRight size={18} className="group-hover:translate-x-2 transition-transform" />
-      </button>
-      <dialog
-        ref={dialogRef}
-        className={cn(
-          "min-h-64 max-h-80 min-w-96 max-w-[450px] dark:backdrop:bg-bogoss-600/50 dark:bg-bogoss-700 dark:text-bogoss-200 rounded-md",
-          className
-        )}>
-        <div className="relative size-full flex flex-col p-3">
-          {children}
-          <Close close={() => dialogRef.current?.close()} />
-        </div>
-      </dialog>
-    </>
-  );
-};
-
-const Close = ({ close }: { close: () => void }) => {
-  return (
-    <button
-      className="absolute right-0 top-0 hover:text-bogoss-500 text-bogoss-300 p-2 grid place-content-center"
-      autoFocus
-      type="button"
-      onClick={close}>
-      <SquareX />
-    </button>
   );
 };
 
