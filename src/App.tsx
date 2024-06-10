@@ -8,20 +8,6 @@ import Skills from "./components/Skills/Skills";
 import { formation, projects, skills, xp } from "./components/Skills/data.json";
 import { Button } from "./components/ui/button";
 import useFilters from "./hooks/useFilter";
-import { SkillType } from "./types/types";
-
-const [front, back] = skills.data.reduce(
-  (acc, cur) => {
-    if (!cur.type.some((type) => skills.types.includes(type))) {
-      acc[2].push(cur);
-    } else {
-      if (cur.type.includes("front-end")) acc[0].push(cur);
-      if (cur.type.includes("back-end")) acc[1].push(cur);
-    }
-    return acc;
-  },
-  [[], [], []] as SkillType[][]
-);
 
 const App = () => {
   const [skillsHovered, setSkillsHovered] = useState<boolean[]>(Array(skills.data.length).fill(false));
