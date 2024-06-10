@@ -714,12 +714,12 @@ video {
   min-height: 16rem;
 }
 
-.min-h-\[300px\]{
-  min-height: 300px;
-}
-
 .min-h-\[50vh\]{
   min-height: 50vh;
+}
+
+.min-h-\[75vh\]{
+  min-height: 75vh;
 }
 
 .w-28{
@@ -757,6 +757,10 @@ video {
 
 .min-w-96{
   min-width: 24rem;
+}
+
+.min-w-\[300px\]{
+  min-width: 300px;
 }
 
 .min-w-full{
@@ -826,6 +830,10 @@ video {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
+.grid-cols-4{
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
 .flex-row{
   flex-direction: row;
 }
@@ -840,6 +848,10 @@ video {
 
 .place-content-center{
   place-content: center;
+}
+
+.place-items-center{
+  place-items: center;
 }
 
 .items-start{
@@ -910,16 +922,16 @@ video {
   margin-bottom: calc(0.75rem * var(--tw-space-y-reverse));
 }
 
-.space-y-7 > :not([hidden]) ~ :not([hidden]){
-  --tw-space-y-reverse: 0;
-  margin-top: calc(1.75rem * calc(1 - var(--tw-space-y-reverse)));
-  margin-bottom: calc(1.75rem * var(--tw-space-y-reverse));
-}
-
 .space-y-4 > :not([hidden]) ~ :not([hidden]){
   --tw-space-y-reverse: 0;
   margin-top: calc(1rem * calc(1 - var(--tw-space-y-reverse)));
   margin-bottom: calc(1rem * var(--tw-space-y-reverse));
+}
+
+.space-y-7 > :not([hidden]) ~ :not([hidden]){
+  --tw-space-y-reverse: 0;
+  margin-top: calc(1.75rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(1.75rem * var(--tw-space-y-reverse));
 }
 
 .overflow-hidden{
@@ -1594,19 +1606,6 @@ dialog::backdrop {
   background-color: rgba(0, 0, 0, 0.5);
 }
 
-.marquee {
-  & > div {
-    --init-tx: calc(-100% - 32px - 16px);
-    transform: translatex(var(--init-tx));
-    animation: marquee infinite 5s linear;
-    flex-wrap: nowrap;
-    white-space: nowrap;
-    &:hover {
-      animation-play-state: paused;
-    }
-  }
-}
-
 .element:hover {
   cursor: pointer;
   transform: scale(1.5);
@@ -1620,26 +1619,20 @@ dialog::backdrop {
   transform: scale(0.75);
 }
 
-@keyframes marquee {
-  to {
-    transform: translateX(100%);
-  }
-}
-
 .animation-start-skill-card {
-  animation: animation-start-skill 0.5s ease-in-out;
+  animation: animation-start-skill 0.3s ease-in-out 0.1s;
   animation-fill-mode: forwards;
   opacity: 0;
 }
 
 @keyframes animation-start-skill {
   0% {
-    transform: translateY(100%);
+    transform: translateY(50%), scale(0.5);
     opacity: 0;
   }
 
   100% {
-    transform: translateY(0);
+    transform: translateY(0), scale(1);
     opacity: 1;
   }
 }

@@ -4,11 +4,10 @@ import HeadingTransition from "./components/HeadingTransition";
 import Hero from "./components/Hero";
 import { ModeToggle } from "./components/ModeToggle";
 import Presentation from "./components/Presentation";
+import Skills from "./components/Skills/Skills";
 import { formation, projects, skills, xp } from "./components/Skills/data.json";
 import { Button } from "./components/ui/button";
-import Icon from "./components/ui/icons/Icon";
 import useFilters from "./hooks/useFilter";
-import { cn } from "./lib/utils";
 import { SkillType } from "./types/types";
 
 const [front, back] = skills.data.reduce(
@@ -25,8 +24,8 @@ const [front, back] = skills.data.reduce(
 );
 
 const App = () => {
-  const { filters, handleFilterChange, values } = useFilters();
   const [skillsHovered, setSkillsHovered] = useState<boolean[]>(Array(skills.data.length).fill(false));
+  const { filters, handleFilterChange, values } = useFilters();
 
   return (
     <main className="p-4 container min-w-full h-full flex flex-col" style={{ viewTransitionName: "none" }}>
@@ -37,45 +36,16 @@ const App = () => {
       <HeadingTransition h2="A propos de moi" small="presentation" />
       <Presentation />
 
-      <HeadingTransition h2="Mes compétences" small="skills" className="my-20" />
+      <HeadingTransition h2="Mes compétences" small="skills" className="my-20">
+        <p className="w-full text-center text-bogoss-200">
+          Je m'accomode de toutes les technologies, voici les technologies qui me sont les plus familières
+        </p>
+      </HeadingTransition>
+      <Skills.Root>
+        <Skills.TechGrid setter={setSkillsHovered} skills={skills.data} />
+        <Skills.TechArticle skills={skills.data} skillHovered={skillsHovered} />
+      </Skills.Root>
 
-      <p className="mb-10">Je m'accomode de toutes les technologies, jusqu'ici j'ai travaillé avec :</p>
-
-      <div className="w-full overflow-hidden mb-10" id="ULTIMATE-WRAPPER">
-        <div className="text-2xl text-center my-10">
-          <div className="text-2xl text-center w-full inline-flex">
-            {skills.data.map((skill, i) => {
-              return (
-                <button
-                  onMouseEnter={() => setSkillsHovered((prev) => prev.map((_, j) => j === i))}
-                  onMouseLeave={() => setSkillsHovered(new Array(skills.data.length).fill(false))}
-                  key={skill.id}
-                  className="inline-flex items-center text-2xl text-center text-bogoss-400 element transition-all">
-                  <Icon name={skill.title.toLowerCase()} size={52} className="mx-6" />
-                </button>
-              );
-            })}
-          </div>
-        </div>
-      </div>
-      <div className="min-h-[300px]">
-        {skills.data.map((skill, i) => {
-          return (
-            <div
-              className={cn(
-                "flex items-center justify-center",
-                skillsHovered[i] ? "animation-start-skill-card" : "hidden"
-              )}>
-              <div className={cn("space-y-4")}>
-                <h3 className="text-3xl">
-                  {skill.title} <small className="text-sm text-bogoss-200">{skill.level}</small>
-                </h3>
-                <p className="max-w-[50ch]">{skill.description}</p>
-              </div>
-            </div>
-          );
-        })}
-      </div>
       <HeadingTransition h2="Mes expériences" small="mon parcours" className="my-20" />
 
       <Flex>
