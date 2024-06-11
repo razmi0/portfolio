@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
 import type { FormationType, ProType, ProjectType, SkillType } from "@/types/types";
-import type { HTMLAttributes } from "react";
+import type { ComponentPropsWithoutRef, HTMLAttributes } from "react";
 import Dialog from "./Dialog";
 import Icon from "./ui/icons/Icon";
 
@@ -102,7 +102,7 @@ const CardProject = ({ content, className }: { content: ProjectType; className?:
   };
 
   return (
-    <CardWrapper className={className} is={`project-${id}`} onClick={handle}>
+    <CardWrapper className={className} is={`project-${id}`} onClick={handle} as={"button"}>
       {/* <figure>
         <img src={src[3]} alt={title} className="w-full h-40 object-contain rounded-xl" />
       </figure> */}
@@ -119,18 +119,31 @@ const CardGrid = ({ children, className }: { children: React.ReactNode; classNam
   return <div className={cn("grid gap-9 grid-cols-2 md:grid-cols-3 xl:grid-cols-4", className)}>{children}</div>;
 };
 
-interface CardWrapperProps extends HTMLAttributes<HTMLDivElement> {
+type ValidTags = keyof JSX.IntrinsicElements;
+type CardWrapperProps<T extends ValidTags> = {
   is: string;
   addDEUGPx?: boolean;
-}
+  as?: T | ValidTags;
+} & (ComponentPropsWithoutRef<T> & HTMLAttributes<HTMLOrSVGElement>);
 
-const CardWrapper = ({ children, className, is, addDEUGPx, ...props }: CardWrapperProps) => {
+const DEFAULT_TAG = "div" as const;
+const CardWrapper = <T extends ValidTags = typeof DEFAULT_TAG>({
+  children,
+  className,
+  is,
+  addDEUGPx,
+  as = DEFAULT_TAG,
+  ...props
+}: CardWrapperProps<T>) => {
   /**
    * @description If the title of the content includes "DEUG", add a padding of 10px to the card (formation cards only)
    */
   const cl = addDEUGPx ? "[&>h4]:!px-10 px-5" : "px-5";
+
+  const Tag: ValidTags = as;
+
   return (
-    <div
+    <Tag
       {...props}
       data-is={is}
       className={cn(
@@ -139,7 +152,7 @@ const CardWrapper = ({ children, className, is, addDEUGPx, ...props }: CardWrapp
         className
       )}>
       {children}
-    </div>
+    </Tag>
   );
 };
 
