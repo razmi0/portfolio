@@ -610,21 +610,16 @@ video {
   top: 0px;
 }
 
-.z-10{
-  z-index: 10;
-}
-
-.z-20{
-  z-index: 20;
-}
-
 .-z-10{
   z-index: -10;
 }
 
-.mx-1{
-  margin-left: 0.25rem;
-  margin-right: 0.25rem;
+.z-0{
+  z-index: 0;
+}
+
+.z-10{
+  z-index: 10;
 }
 
 .mx-2{
@@ -709,6 +704,10 @@ video {
   height: 10vh;
 }
 
+.h-\[130px\]{
+  height: 130px;
+}
+
 .h-\[300px\]{
   height: 300px;
 }
@@ -752,6 +751,10 @@ video {
 
 .w-\[1\.4rem\]{
   width: 1.4rem;
+}
+
+.w-\[130px\]{
+  width: 130px;
 }
 
 .w-\[350px\]{
@@ -799,12 +802,12 @@ video {
   flex: 1 1 0%;
 }
 
-.shrink-0{
-  flex-shrink: 0;
+.shrink{
+  flex-shrink: 1;
 }
 
-.grow{
-  flex-grow: 1;
+.shrink-0{
+  flex-shrink: 0;
 }
 
 .-translate-x-\[120\%\]{
@@ -959,6 +962,10 @@ video {
   text-wrap: balance;
 }
 
+.rounded-\[16px\]{
+  border-radius: 16px;
+}
+
 .rounded-full{
   border-radius: 9999px;
 }
@@ -973,10 +980,6 @@ video {
 
 .rounded-xl{
   border-radius: 0.75rem;
-}
-
-.rounded-\[16px\]{
-  border-radius: 16px;
 }
 
 .border{
@@ -1477,45 +1480,35 @@ dialog::backdrop {
  * PROJECT
  */
 
-button[data-selected]{
-  width: 100%;
-  height: 100%;
-  & > h4{
+[data-selected][data-is^="project"]{
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+  & h4{
     width: 100%;
   }
-  & > h4{
+  & h4{
     text-align: center;
   }
-  & > p{
+  & p{
     font-size: 0.875rem;
     line-height: 1.25rem;
   }
-  & > a{
+  & a{
     font-size: 0.875rem;
     line-height: 1.25rem;
   }
-  & > a{
+  & a{
     --tw-text-opacity: 1;
     color: rgb(217 215 247 / var(--tw-text-opacity));
   }
-  & > a:hover{
+  & a:hover{
     --tw-text-opacity: 1;
     color: rgb(217 215 247 / var(--tw-text-opacity));
   }
-  & > a:hover{
+  & a:hover{
     text-decoration-line: underline;
   }
-}
-
-[data-selected="false"][data-is^="project"] {
-  width: 130px;
-  height: 130px;
-}
-
-[data-selected="true"][data-is^="project"] {
-  /* @apply absolute; */
-  width: 230px;
-  height: 230px;
 }
 
 .hover\:scale-95:hover{

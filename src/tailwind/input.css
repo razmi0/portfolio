@@ -145,28 +145,17 @@ dialog::backdrop {
  * PROJECT
  */
 
-button[data-selected] {
-  @apply size-full;
-  & > h4 {
+[data-selected][data-is^="project"] {
+  @apply transition-all;
+  & h4 {
     @apply text-center w-full;
   }
 
-  & > p {
+  & p {
     @apply text-sm;
   }
 
-  & > a {
+  & a {
     @apply text-sm hover:underline hover:text-bogoss-200 text-bogoss-200;
   }
-}
-
-[data-selected="false"][data-is^="project"] {
-  width: 130px;
-  height: 130px;
-}
-
-[data-selected="true"][data-is^="project"] {
-  /* @apply absolute; */
-  width: 230px;
-  height: 230px;
 }

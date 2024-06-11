@@ -12,6 +12,10 @@ import { Button } from "./components/ui/button";
 import useFilters from "./hooks/useFilter";
 import { cn } from "./lib/utils";
 
+const initImgs = projects.map((project) => {
+  return { id: project.id, src: project.src };
+});
+
 const App = () => {
   const [skillsHovered, setSkillsHovered] = useState<boolean[]>(Array(skills.data.length).fill(false));
   const [projectsSelected, setProjectSelected] = useState<boolean[]>(Array(projects.length).fill(false));
@@ -99,21 +103,45 @@ const App = () => {
             );
           })}
         </ButtonSection>
-        <CardProject.Grid>
-          {projects.map((content, i) => {
-            const hidden = filters.projects === "tous" || content.type.includes(filters.projects) ? "" : "hidden";
-            return (
-              <CardProject.Card
-                key={content.id}
-                content={content}
-                index={i}
-                selected={projectsSelected[i]}
-                setSelected={setProjectSelected}
-                className={hidden + " p-0"}
-              />
-            );
-          })}
-        </CardProject.Grid>
+        <section className="grid grid-cols-2">
+          <div className="size-full">
+            <CardProject.Grid>
+              {projects.map((content, i) => {
+                const hidden = filters.projects === "tous" || content.type.includes(filters.projects) ? "" : "hidden";
+                return (
+                  <CardProject.Card
+                    key={content.id}
+                    content={content}
+                    index={i}
+                    selected={projectsSelected[i]}
+                    setSelected={setProjectSelected}
+                    className={hidden + " p-0"}
+                  />
+                );
+              })}
+            </CardProject.Grid>
+          </div>
+          <div className="size-full">
+            {projects.map((content, i) => {
+              return (
+                <div
+                  className={projectsSelected[i] ? "animation-start-skill-card size-full" : "hidden"}
+                  key={content.id}>
+                  <h3>{content.title}</h3>
+                  <figure className="relative size-full z-0">
+                    {content.src.map((path) => {
+                      return (
+                        <div className="absolute inset-0 grid place-content-center -z-10" key={path}>
+                          <img src={path} alt={content.title} key={path} />
+                        </div>
+                      );
+                    })}
+                  </figure>
+                </div>
+              );
+            })}
+          </div>
+        </section>
       </Flex>
       <div className="h-screen">Contactez-moi</div>
     </main>

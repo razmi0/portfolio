@@ -21,7 +21,7 @@ type CardProjectProps = {
 };
 
 const Card = ({ content, className, selected, index, setSelected }: CardProjectProps) => {
-  const { title, type, href, id /*src*/ } = content;
+  const { title, href, id } = content;
   const ref = useRef<HTMLButtonElement>(null);
 
   const handle = () => {
@@ -34,13 +34,15 @@ const Card = ({ content, className, selected, index, setSelected }: CardProjectP
   };
 
   return (
-    <CardWrapper className={className} is={`project-${id}`} data-selected={selected}>
+    <CardWrapper className={className + " shrink w-[130px] h-[130px]"} is={`project-${id}`} data-selected={selected}>
       <button ref={ref} onClick={handle} data-selected={selected}>
         {/* <figure>
-              <img src={src[3]} alt={title} className="w-full h-40 object-contain rounded-xl" />
-            </figure> */}
+          {src &&
+            src.map((srct) => {
+              return <img src={srct} alt={title} className="w-full h-40 object-contain rounded-xl" />;
+            })}
+        </figure> */}
         <h4>{title}</h4>
-        <p>{type}</p>
         <a href={href}>Voir le projet</a>
       </button>
     </CardWrapper>
