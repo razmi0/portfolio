@@ -148,7 +148,7 @@
       "lieu": "My Digital School",
       "duration": "1 an",
       "level": "bac+3",
-      "date": ["octobre 2024", "juillet 2025"],
+      "date": ["2024", "2025"],
       "status": "en cours",
       "description": ""
     },
@@ -159,7 +159,7 @@
       "lieu": "WebForce3",
       "duration": "3 mois",
       "level": "bac+2",
-      "date": ["mars 2023", "juin 2023"],
+      "date": ["2023", "2023"],
       "status": "terminé",
       "description": ""
     },
@@ -192,62 +192,78 @@
       "title": "A l'abord d'arbre",
       "complexity": "medium",
       "type": ["web"],
-      "href": ""
+      "href": "",
+      "src": [""]
     },
     {
       "id": 2,
       "title": "PokeStable",
       "type": ["web"],
-      "href": ""
+      "href": "",
+      "src": [""]
     },
     {
       "id": 3,
       "title": "WalchCook",
       "complexity": "medium",
       "type": ["web"],
-      "href": ""
+      "href": "",
+      "src": [
+        "/mathilda-recipe/mathilda-api-key.jpg",
+        "/mathilda-recipe/mathilda-instructions.jpg",
+        "/mathilda-recipe/mathilda-liste-courses.jpg",
+        "/mathilda-recipe/mathilda-recipe-modal-open.jpg",
+        "/mathilda-recipe/mathilda-global.png"
+      ]
     },
     {
       "id": 4,
       "title": "Game of Life",
       "type": ["web"],
-      "href": ""
+      "href": "",
+      "src": [""]
     },
     {
       "id": 5,
       "title": "Data visualisation Spotify",
       "type": ["documentation"],
-      "href": ""
+      "href": "",
+      "src": [""]
     },
     {
       "id": 6,
       "title": "Tranlation Fun",
       "type": ["web"],
-      "href": ""
+      "href": "",
+      "src": [""]
     },
     {
       "id": 7,
       "title": "Smallworld helper",
       "type": ["web"],
-      "href": ""
+      "href": "",
+      "src": [""]
     },
     {
       "id": 8,
       "title": "RazCli",
       "type": ["outil"],
-      "href": ""
+      "href": "",
+      "src": [""]
     },
     {
       "id": 9,
       "title": "Accessibility guidelines",
       "type": ["documentation"],
-      "href": ""
+      "href": "",
+      "src": [""]
     },
     {
       "id": 10,
       "title": "Dossier de reflexion MDS",
       "type": ["documentation"],
-      "href": ""
+      "href": "",
+      "src": [""]
     }
   ]
 }

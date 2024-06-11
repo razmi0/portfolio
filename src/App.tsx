@@ -8,6 +8,7 @@ import Skills from "./components/Skills/Skills";
 import { formation, projects, skills, xp } from "./components/Skills/data.json";
 import { Button } from "./components/ui/button";
 import useFilters from "./hooks/useFilter";
+import { cn } from "./lib/utils";
 
 const App = () => {
   const [skillsHovered, setSkillsHovered] = useState<boolean[]>(Array(skills.data.length).fill(false));
@@ -21,7 +22,10 @@ const App = () => {
       <Hero />
       <HeadingTransition h2="A propos de moi" small="presentation" />
       <Presentation />
-
+      {/* SKILLS */}
+      {/* SKILLS */}
+      {/* SKILLS */}
+      {/* SKILLS */}
       <HeadingTransition h2="Mes compétences" small="skills" className="my-20">
         <p className="w-full text-center text-bogoss-200">
           Je m'accomode de toutes les technologies, voici les technologies qui me sont les plus familières
@@ -32,6 +36,11 @@ const App = () => {
         <Skills.TechArticle skills={skills.data} skillHovered={skillsHovered} />
       </Skills.Root>
 
+      {/* XP FORMATION */}
+      {/* XP FORMATION */}
+      {/* XP FORMATION */}
+      {/* XP FORMATION */}
+
       <HeadingTransition h2="Mes expériences" small="mon parcours" className="my-20" />
 
       <Flex>
@@ -39,7 +48,7 @@ const App = () => {
           {values.xp.map((value) => {
             return (
               <Button
-                className="whitespace-nowrap"
+                className={cn("whitespace-nowrap", filters.xp === value ? " text-bogoss-200 ring-bogoss-200" : "")}
                 variant={"outline"}
                 key={value}
                 onClick={() => handleFilterChange("xp", value)}>
@@ -56,6 +65,12 @@ const App = () => {
         </Cards.Grid>
       </Flex>
 
+      {/* PROJECT */}
+      {/* PROJECT */}
+      {/* PROJECT */}
+      {/* PROJECT */}
+      {/* PROJECT */}
+
       <HeadingTransition h2="Mes projets" small="portfolio" className="my-20" />
 
       <Flex>
@@ -63,7 +78,10 @@ const App = () => {
           {values.projects.map((value) => {
             return (
               <Button
-                className="whitespace-nowrap"
+                className={cn(
+                  "whitespace-nowrap ",
+                  filters.projects === value ? " text-bogoss-200 ring-bogoss-200" : ""
+                )}
                 variant={"outline"}
                 onClick={() => handleFilterChange("projects", value)}>
                 <span className="text-xl">{value}</span>
@@ -74,7 +92,7 @@ const App = () => {
         <Cards.Grid>
           {projects.map((content) => {
             const hidden = filters.projects === "tous" || content.type.includes(filters.projects) ? "" : "hidden";
-            return <Cards.Project key={content.id} content={content} className={hidden} />;
+            return <Cards.Project key={content.id} content={content} className={hidden + " p-0"} />;
           })}
         </Cards.Grid>
       </Flex>

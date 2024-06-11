@@ -10,8 +10,8 @@ const Dialog = ({ children, className }: { children: React.ReactNode; className?
         type="button"
         onClick={() => dialogRef.current?.showModal()}
         className="flex items-center justify-center gap-1 text-sm group">
-        <p>Voir plus</p>
-        <ArrowBigRight size={18} className="group-hover:translate-x-2 transition-transform" />
+        <p className="text-center w-full text-[15px] font-medium">Voir plus</p>
+        <ArrowBigRight size={24} className="group-hover:translate-x-2 transition-transform translate-y-[2px]" />
       </button>
       <dialog
         ref={dialogRef}

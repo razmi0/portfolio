@@ -1,5 +1,6 @@
 import { cn } from "@/lib/utils";
-import { FormationType, ProType, ProjectType, SkillType } from "@/types/types";
+import type { FormationType, ProType, ProjectType, SkillType } from "@/types/types";
+import type { HTMLAttributes } from "react";
 import Dialog from "./Dialog";
 import Icon from "./ui/icons/Icon";
 
@@ -70,7 +71,7 @@ const CardXp = ({ content, className }: { content: ProType | FormationType; clas
     return (
       <>
         <h4 className="text-left w-full">{title}</h4>
-        <p className="text-sm">{date}</p>
+        <div className="inline-flex">{date.join(" - ")}</div>
         <Dialog>
           <h4 className="text-left w-full">{title}</h4>
           <p className="text-sm">{date}</p>
@@ -86,36 +87,53 @@ const CardXp = ({ content, className }: { content: ProType | FormationType; clas
 
   const is = `${isExperience ? "pro" : "formation"}-${content.id}`;
 
+  let addDEUGPx = false;
+  if (content.title.includes("DEUG")) {
+    addDEUGPx = true;
+  }
+
   return (
-    <Ctn is={is} className={className}>
+    <CardWrapper is={is} className={className} addDEUGPx={addDEUGPx}>
       {isExperience ? <Pro /> : <Formation />}
-    </Ctn>
+    </CardWrapper>
   );
 };
 
 const CardProject = ({ content, className }: { content: ProjectType; className?: string }) => {
-  const { title, type, href, id } = content;
+  const { title, type, href, id /*src*/ } = content;
   return (
-    <Ctn className={className} is={`project-${id}`}>
-      <h4 className="text-left w-full">{title}</h4>
+    <CardWrapper className={className} is={`project-${id}`}>
+      {/* <figure>
+        <img src={src[3]} alt={title} className="w-full h-40 object-contain rounded-xl" />
+      </figure> */}
+      <h4 className="text-center w-full">{title}</h4>
       <p className="text-sm">{type}</p>
-      <a href={href} className="text-sm underline">
+      <a href={href} className="text-sm hover:underline hover:text-bogoss-200 text-bogoss-200">
         Voir le projet
       </a>
-    </Ctn>
+    </CardWrapper>
   );
 };
 
 const CardGrid = ({ children, className }: { children: React.ReactNode; className?: string }) => {
-  return <div className={cn("grid gap-9 grid-cols-3", className)}>{children}</div>;
+  return <div className={cn("grid gap-9 grid-cols-2 md:grid-cols-3 xl:grid-cols-4", className)}>{children}</div>;
 };
 
-const Ctn = ({ children, className, is }: { children: React.ReactNode; className?: string; is: string }) => {
+interface CardWrapperProps extends HTMLAttributes<HTMLDivElement> {
+  is: string;
+  addDEUGPx?: boolean;
+}
+
+const CardWrapper = ({ children, className, is, addDEUGPx }: CardWrapperProps) => {
+  /**
+   * @description If the title of the content includes "DEUG", add a padding of 10px to the card (formation cards only)
+   */
+  const cl = addDEUGPx ? "[&>h4]:!px-10 px-5" : "px-5";
   return (
     <div
       data-is={is}
       className={cn(
-        "flex flex-col items-start justify-center rounded-lg bg-bogoss-300/80 py-3 px-3 mx-1 [&>h4]:text-bogoss-200 gap-2 grow transition-all w-52 max-w-52 aspect-square",
+        `z-10 flex flex-col items-center justify-center rounded-lg bg-bogoss-300/70 py-3 ${cl} mx-1 [&>h4]:text-bogoss-200 [&>h4]:text-center text-balance gap-2 grow transition-all aspect-square glassy-lise`,
         className
       )}>
       {children}

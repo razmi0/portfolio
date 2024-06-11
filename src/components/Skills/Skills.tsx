@@ -20,7 +20,7 @@ const TechArticle = ({ skills, skillHovered }: { skills: SkillType[]; skillHover
             <div className={cn("space-y-4")}>
               <h3 className="text-3xl">
                 {skill.title}
-                <small className="text-sm text-bogoss-200">{skill.level}</small>
+                <small className="ml-2 text-sm text-bogoss-200">{skill.level}</small>
               </h3>
               <p className="max-w-[50ch]">{skill.description}</p>
             </div>
@@ -34,13 +34,13 @@ const TechArticle = ({ skills, skillHovered }: { skills: SkillType[]; skillHover
 const TechGrid = ({ setter, skills }: { setter: Dispatch<SetStateAction<boolean[]>>; skills: SkillType[] }) => {
   return (
     <div className="w-full">
-      <div className="text-2xl text-center grid grid-cols-4 place-items-center my-10 gap-4">
+      <div className="text-2xl text-center grid grid-cols-4 place-items-center my-10">
         {skills.map((skill, i) => {
           return (
             <button
               onMouseEnter={() => setter((prev: boolean[]) => prev.map((_, j) => j === i))}
               key={skill.id}
-              className="inline-flex items-center text-2xl text-center text-bogoss-300 element transition-all">
+              className="inline-flex items-center text-2xl text-center text-bogoss-300 element transition-all  p-5">
               <Icon name={skill.title.toLowerCase()} size={52} className="mx-6" />
             </button>
           );

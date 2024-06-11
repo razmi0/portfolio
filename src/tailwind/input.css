@@ -32,15 +32,6 @@
   @apply outline-none focus-visible:outline-slate-100 focus-visible:ring-slate-100 rounded-sm;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
 body {
   @apply dark:text-white text-black max-w-6xl container dark:bg-bogoss-700 bg-bogoss-200;
 }
@@ -83,188 +74,6 @@ h6 {
   --tw-shadow-colored: inset 0px 1px 0px 0px var(--tw-shadow-color), inset 0px 0px 0px 1px var(--tw-shadow-color),
     0px 0px 0px 1px var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
-}
-
-/* CHECKBOX */
-
-.checkbox-ctn {
-  @apply px-3;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 1rem 0;
-}
-
-/* Hide the default checkbox */
-.checkbox-container input {
-  position: absolute;
-  opacity: 0;
-  cursor: pointer;
-  height: 0;
-  width: 0;
-}
-
-.checkbox-container {
-  display: block;
-  position: relative;
-  cursor: pointer;
-  font-size: 1.5rem;
-  user-select: none;
-}
-
-/* Create a custom checkbox */
-.checkmark {
-  --clr: #54669dff;
-  position: relative;
-  top: 0;
-  left: 0;
-  height: 0.8em;
-  width: 0.8em;
-  background-color: #ccc;
-  border-radius: 50%;
-  transition: 300ms;
-}
-
-/* When the checkbox is checked, add a blue background */
-.checkbox-container input:checked ~ .checkmark {
-  background-color: var(--clr);
-  border-radius: 0.18rem;
-  animation: pulse 500ms ease-in-out;
-}
-
-/* Create the checkmark/indicator (hidden when not checked) */
-.checkmark:after {
-  content: "";
-  position: absolute;
-  display: none;
-}
-
-/* Show the checkmark when checked */
-.checkbox-container input:checked ~ .checkmark:after {
-  display: block;
-}
-
-/* Style the checkmark/indicator */
-.checkbox-container .checkmark:after {
-  left: 0.25em;
-  top: 0.1em;
-  width: 0.3em;
-  height: 0.5em;
-  border: solid #e0e0e2;
-  border-width: 0 0.15em 0.15em 0;
-  transform: rotate(45deg);
-}
-
-/* LOADER */
-
-.loader {
-  --color: #a5a5b0;
-  --size: 20px;
-  width: var(--size);
-  height: var(--size);
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 2px;
-}
-
-.loader span {
-  width: 100%;
-  height: 100%;
-  background-color: var(--color);
-  animation: keyframes-blink 0.5s alternate infinite linear;
-}
-
-.loader span:nth-child(1) {
-  animation-delay: 0ms;
-}
-
-.loader span:nth-child(2) {
-  animation-delay: 150ms;
-}
-
-.loader span:nth-child(3) {
-  animation-delay: 150ms;
-}
-
-.loader span:nth-child(4) {
-  animation-delay: 280ms;
-}
-
-@keyframes keyframes-blink {
-  0% {
-    opacity: 0.5;
-    transform: scale(0.5) rotate(20deg);
-  }
-
-  50% {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-/** Contact section inputs  */
-
-.form__group {
-  position: relative;
-  padding: 20px 0 0;
-  width: 100%;
-}
-
-.form__field {
-  font-family: inherit;
-  width: 100%;
-  border: none;
-  border-bottom: 2px solid #9b9b9b;
-  outline: 0;
-  font-size: 17px;
-  color: #fff;
-  padding: 7px 0;
-  background: transparent;
-  transition: border-color 0.2s;
-}
-
-.form__field::placeholder {
-  color: transparent;
-}
-
-.form__field:placeholder-shown ~ .form__label {
-  font-size: 17px;
-  cursor: text;
-  top: 20px;
-}
-
-.form__label {
-  position: absolute;
-  top: 0;
-  display: block;
-  transition: 0.2s;
-  font-size: 17px;
-  color: #9b9b9b;
-  pointer-events: none;
-}
-
-.form__field:focus {
-  padding-bottom: 6px;
-  font-weight: 700;
-  border-width: 3px;
-  border-image: linear-gradient(to right, #116399, #38caef);
-  border-image-slice: 1;
-}
-
-.form__field:focus ~ .form__label {
-  position: absolute;
-  top: 0;
-  display: block;
-  transition: 0.2s;
-  font-size: 17px;
-  color: #38caef;
-  font-weight: 700;
-}
-
-/* reset input */
-.form__field:required,
-.form__field:invalid {
-  box-shadow: none;
 }
 
 dialog[open] {
@@ -315,4 +124,19 @@ dialog::backdrop {
     transform: translateY(0), scale(1);
     opacity: 1;
   }
+}
+
+.glassy-lise {
+  /* From https://css.glass */
+  background: rgba(255, 255, 255, 0.07);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(6.3px);
+  -webkit-backdrop-filter: blur(6.3px);
+  border: 1px solid rgba(255, 255, 255, 0.26);
+}
+
+.glassy-lise::before {
+  inset: 0px;
+  background: radial-gradient(circle, var(--body-radial-d-color-1), var(--body-radial-d-color-2));
 }
