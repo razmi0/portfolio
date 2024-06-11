@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils";
-import type { ComponentPropsWithoutRef, HTMLAttributes } from "react";
+import { type ComponentPropsWithoutRef, type HTMLAttributes } from "react";
 
 type ValidTags = keyof JSX.IntrinsicElements;
 type CardWrapperProps<T extends ValidTags> = {
