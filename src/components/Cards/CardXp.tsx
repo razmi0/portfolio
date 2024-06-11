@@ -63,7 +63,7 @@ const CardXp = ({
         {isExperience ? <Pro /> : <Formation />}
       </CardWrapper>
       <figure className="absolute -z-10 size-full inset-0 rounded-[16px] overflow-hidden">
-        <img src={`cards-bg/${folder}${index + 1}.png`} />
+        <img src={`cards-bg/${folder}${index + 1}.png`} className="anim-xp-img" />
       </figure>
     </div>
   );

@@ -141,21 +141,18 @@ dialog::backdrop {
   background: radial-gradient(circle, var(--body-radial-d-color-1), var(--body-radial-d-color-2));
 }
 
-/**
- * PROJECT
- */
+.anim-xp-img {
+  animation: float 10s infinite;
+}
 
-[data-selected][data-is^="project"] {
-  @apply transition-all;
-  & h4 {
-    @apply text-center w-full;
+@keyframes float {
+  0% {
+    transform: scale(1);
   }
-
-  & p {
-    @apply text-sm;
+  50% {
+    transform: scale(1.1);
   }
-
-  & a {
-    @apply text-sm hover:underline hover:text-bogoss-200 text-bogoss-200;
+  100% {
+    transform: scale(1);
   }
 }

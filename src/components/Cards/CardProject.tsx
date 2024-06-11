@@ -34,16 +34,12 @@ const Card = ({ content, className, selected, index, setSelected }: CardProjectP
   };
 
   return (
-    <CardWrapper className={className + " shrink w-[130px] h-[130px]"} is={`project-${id}`} data-selected={selected}>
-      <button ref={ref} onClick={handle} data-selected={selected}>
-        {/* <figure>
-          {src &&
-            src.map((srct) => {
-              return <img src={srct} alt={title} className="w-full h-40 object-contain rounded-xl" />;
-            })}
-        </figure> */}
-        <h4>{title}</h4>
-        <a href={href}>Voir le projet</a>
+    <CardWrapper className={className + " w-[130px] h-[130px]"} is={`project-${id}`} data-selected={selected}>
+      <button ref={ref} onClick={handle} data-selected={selected} className="transition-all">
+        <h4 className="text-center w-full">{title}</h4>
+        <a href={href} className="text-sm hover:underline hover:text-bogoss-200 text-bogoss-200">
+          Voir le projet
+        </a>
       </button>
     </CardWrapper>
   );
