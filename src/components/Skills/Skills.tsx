@@ -13,6 +13,7 @@ const TechArticle = ({ skills, skillHovered }: { skills: SkillType[]; skillHover
       {skills.map((skill, i) => {
         return (
           <div
+            key={skill.id}
             className={cn(
               "flex items-center justify-center",
               skillHovered[i] ? "animation-start-skill-card" : "hidden"

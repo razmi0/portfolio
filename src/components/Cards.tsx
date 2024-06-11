@@ -87,13 +87,8 @@ const CardXp = ({ content, className }: { content: ProType | FormationType; clas
 
   const is = `${isExperience ? "pro" : "formation"}-${content.id}`;
 
-  let addDEUGPx = false;
-  if (content.title.includes("DEUG")) {
-    addDEUGPx = true;
-  }
-
   return (
-    <CardWrapper is={is} className={className} addDEUGPx={addDEUGPx}>
+    <CardWrapper is={is} className={className} addDEUGPx={content.title.includes("DEUG")}>
       {isExperience ? <Pro /> : <Formation />}
     </CardWrapper>
   );
@@ -101,8 +96,13 @@ const CardXp = ({ content, className }: { content: ProType | FormationType; clas
 
 const CardProject = ({ content, className }: { content: ProjectType; className?: string }) => {
   const { title, type, href, id /*src*/ } = content;
+
+  const handle = () => {
+    console.log("HI", id);
+  };
+
   return (
-    <CardWrapper className={className} is={`project-${id}`}>
+    <CardWrapper className={className} is={`project-${id}`} onClick={handle}>
       {/* <figure>
         <img src={src[3]} alt={title} className="w-full h-40 object-contain rounded-xl" />
       </figure> */}
@@ -124,16 +124,18 @@ interface CardWrapperProps extends HTMLAttributes<HTMLDivElement> {
   addDEUGPx?: boolean;
 }
 
-const CardWrapper = ({ children, className, is, addDEUGPx }: CardWrapperProps) => {
+const CardWrapper = ({ children, className, is, addDEUGPx, ...props }: CardWrapperProps) => {
   /**
    * @description If the title of the content includes "DEUG", add a padding of 10px to the card (formation cards only)
    */
   const cl = addDEUGPx ? "[&>h4]:!px-10 px-5" : "px-5";
   return (
     <div
+      {...props}
       data-is={is}
       className={cn(
-        `z-10 flex flex-col items-center justify-center rounded-lg bg-bogoss-300/70 py-3 ${cl} mx-1 [&>h4]:text-bogoss-200 [&>h4]:text-center text-balance gap-2 grow transition-all aspect-square glassy-lise`,
+        `z-10 flex flex-col items-center justify-center rounded-lg bg-bogoss-300/70 py-3 mx-1 [&>h4]:text-bogoss-200 [&>h4]:text-center text-balance gap-2 grow transition-all aspect-square glassy-lise`,
+        cl,
         className
       )}>
       {children}

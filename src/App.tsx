@@ -78,6 +78,7 @@ const App = () => {
           {values.projects.map((value) => {
             return (
               <Button
+                key={value}
                 className={cn(
                   "whitespace-nowrap ",
                   filters.projects === value ? " text-bogoss-200 ring-bogoss-200" : ""
