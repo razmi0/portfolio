@@ -1,5 +1,7 @@
+import CardGrid from "@/components/Cards/CardGrid";
+import CardProject from "@/components/Cards/CardProject";
+import CardXp from "@/components/Cards/CardXp";
 import { useState } from "react";
-import Cards from "./components/Cards";
 import HeadingTransition from "./components/HeadingTransition";
 import Hero from "./components/Hero";
 import { ModeToggle } from "./components/ModeToggle";
@@ -57,17 +59,17 @@ const App = () => {
             );
           })}
         </ButtonSection>
-        <Cards.Grid>
+        <CardGrid>
           {[...xp, ...formation].map((content) => {
             return (
-              <Cards.Xp
+              <CardXp
                 key={content.id}
                 content={content}
                 className={filters.xp === "tous" || content.type.includes(filters.xp) ? "" : "hidden"}
               />
             );
           })}
-        </Cards.Grid>
+        </CardGrid>
       </Flex>
 
       {/* PROJECT */}
@@ -95,12 +97,12 @@ const App = () => {
             );
           })}
         </ButtonSection>
-        <Cards.Grid>
+        <CardGrid>
           {projects.map((content) => {
             const hidden = filters.projects === "tous" || content.type.includes(filters.projects) ? "" : "hidden";
-            return <Cards.Project key={content.id} content={content} className={hidden + " p-0"} />;
+            return <CardProject key={content.id} content={content} className={hidden + " p-0"} />;
           })}
-        </Cards.Grid>
+        </CardGrid>
       </Flex>
       <div className="h-screen">Contactez-moi</div>
     </main>
