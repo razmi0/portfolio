@@ -1035,6 +1035,10 @@ video {
      object-fit: cover;
 }
 
+.p-0{
+  padding: 0px;
+}
+
 .p-10{
   padding: 2.5rem;
 }
@@ -1053,10 +1057,6 @@ video {
 
 .p-5{
   padding: 1.25rem;
-}
-
-.p-0{
-  padding: 0px;
 }
 
 .px-4{

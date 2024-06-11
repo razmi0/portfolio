@@ -59,8 +59,13 @@ const App = () => {
         </ButtonSection>
         <Cards.Grid>
           {[...xp, ...formation].map((content) => {
-            const hidden = filters.xp === "tous" || content.type.includes(filters.xp) ? "" : "hidden";
-            return <Cards.Xp key={content.id} content={content} className={hidden} />;
+            return (
+              <Cards.Xp
+                key={content.id}
+                content={content}
+                className={filters.xp === "tous" || content.type.includes(filters.xp) ? "" : "hidden"}
+              />
+            );
           })}
         </Cards.Grid>
       </Flex>
