@@ -12,9 +12,9 @@ import { Button } from "./components/ui/button";
 import useFilters from "./hooks/useFilter";
 import { cn } from "./lib/utils";
 
-const initImgs = projects.map((project) => {
-  return { id: project.id, src: project.src };
-});
+// const initImgs = projects.map((project) => {
+//   return { id: project.id, src: project.src };
+// });
 
 const App = () => {
   const [skillsHovered, setSkillsHovered] = useState<boolean[]>(Array(skills.data.length).fill(false));
