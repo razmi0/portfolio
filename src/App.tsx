@@ -14,6 +14,7 @@ import { cn } from "./lib/utils";
 
 const App = () => {
   const [skillsHovered, setSkillsHovered] = useState<boolean[]>(Array(skills.data.length).fill(false));
+  const [projectsSelected, setProjectSelected] = useState<boolean[]>(Array(projects.length).fill(false));
   const { filters, handleFilterChange, values } = useFilters();
 
   return (
@@ -60,9 +61,10 @@ const App = () => {
           })}
         </ButtonSection>
         <CardGrid>
-          {[...xp, ...formation].map((content) => {
+          {[...xp, ...formation].map((content, i) => {
             return (
               <CardXp
+                index={i}
                 key={content.id}
                 content={content}
                 className={filters.xp === "tous" || content.type.includes(filters.xp) ? "" : "hidden"}
@@ -97,12 +99,21 @@ const App = () => {
             );
           })}
         </ButtonSection>
-        <CardGrid>
-          {projects.map((content) => {
+        <CardProject.Grid>
+          {projects.map((content, i) => {
             const hidden = filters.projects === "tous" || content.type.includes(filters.projects) ? "" : "hidden";
-            return <CardProject key={content.id} content={content} className={hidden + " p-0"} />;
+            return (
+              <CardProject.Card
+                key={content.id}
+                content={content}
+                index={i}
+                selected={projectsSelected[i]}
+                setSelected={setProjectSelected}
+                className={hidden + " p-0"}
+              />
+            );
           })}
-        </CardGrid>
+        </CardProject.Grid>
       </Flex>
       <div className="h-screen">Contactez-moi</div>
     </main>

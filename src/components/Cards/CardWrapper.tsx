@@ -29,7 +29,7 @@ const CardWrapper = <T extends ValidTags = typeof DEFAULT_TAG>({
       {...props}
       data-is={is}
       className={cn(
-        `z-10 flex flex-col items-center justify-center rounded-lg bg-bogoss-300/70 py-3 mx-1 [&>h4]:text-bogoss-200 [&>h4]:text-center text-balance gap-2 grow transition-all aspect-square glassy-lise`,
+        `relative z-10 flex flex-col items-center justify-center rounded-lg bg-bogoss-300/70 py-3 [&>h4]:text-bogoss-200 [&>h4]:text-center text-balance gap-2 grow transition-all aspect-square glassy-lise`,
         cl,
         className
       )}>

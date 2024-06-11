@@ -10,7 +10,7 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  /* background-color: #242424; */
+  /* background-color: hsl(243, 70%, 67%); */
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -139,4 +139,34 @@ dialog::backdrop {
 .glassy-lise::before {
   inset: 0px;
   background: radial-gradient(circle, var(--body-radial-d-color-1), var(--body-radial-d-color-2));
+}
+
+/**
+ * PROJECT
+ */
+
+button[data-selected] {
+  @apply size-full;
+  & > h4 {
+    @apply text-center w-full;
+  }
+
+  & > p {
+    @apply text-sm;
+  }
+
+  & > a {
+    @apply text-sm hover:underline hover:text-bogoss-200 text-bogoss-200;
+  }
+}
+
+[data-selected="false"][data-is^="project"] {
+  width: 130px;
+  height: 130px;
+}
+
+[data-selected="true"][data-is^="project"] {
+  /* @apply absolute; */
+  width: 230px;
+  height: 230px;
 }

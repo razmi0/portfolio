@@ -2,7 +2,15 @@ import type { FormationType, ProType } from "@/types/types";
 import Dialog from "../Dialog";
 import CardWrapper from "./CardWrapper";
 
-const CardXp = ({ content, className }: { content: ProType | FormationType; className?: string }) => {
+const CardXp = ({
+  content,
+  className,
+  index,
+}: {
+  content: ProType | FormationType;
+  className?: string;
+  index: number;
+}) => {
   const isExperience = "company" in content;
 
   const Pro = () => {
@@ -46,9 +54,14 @@ const CardXp = ({ content, className }: { content: ProType | FormationType; clas
   const is = `${isExperience ? "pro" : "formation"}-${content.id}`;
 
   return (
-    <CardWrapper is={is} className={className} addDEUGPx={content.title.includes("DEUG")}>
-      {isExperience ? <Pro /> : <Formation />}
-    </CardWrapper>
+    <div className="relative">
+      <CardWrapper is={is} className={className} addDEUGPx={content.title.includes("DEUG")}>
+        {isExperience ? <Pro /> : <Formation />}
+      </CardWrapper>
+      <figure className="absolute -z-10 size-full inset-0 rounded-[16px] overflow-hidden">
+        <img src={`cards-bg/card-bg-${index + 1}.jpeg`} />
+      </figure>
+    </div>
   );
 };
 
