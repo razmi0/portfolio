@@ -19,3 +19,4 @@ Je suis attentif à l'accessibilité, c'est pourquoi j'ai mis en place une chart
 - [ ] section contact
 - [ ] autre photo de moi
 - [ ] ajouter description des projets
+- [ ] fix hover reveal project carousel
