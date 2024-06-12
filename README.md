@@ -15,8 +15,18 @@ Je suis attentif à l'accessibilité, c'est pourquoi j'ai mis en place une chart
 # TODO
 
 - [x] voir le projet
-- [ ] vignette et adjectif "a propos de moi"
-- [ ] section contact
+- [ ] vignette et adjectif "a propos de moi" 10 min
+- [ ] section contact 2h
 - [ ] autre photo de moi
-- [ ] ajouter description des projets
-- [ ] fix hover reveal project carousel
+- [ ] fix hover reveal project carousel 10 min
+- [ ] check general de tous les details 30 min
+
+<hr />
+
+- [ ] template mail
+- [ ] collection mail
+- [ ] envoie mails
+
+<hr />
+
+- [ ] ajouter description des projets 2h
