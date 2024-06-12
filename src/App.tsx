@@ -55,7 +55,7 @@ const App = () => {
           {values.xp.map((value) => {
             return (
               <Button
-                className={cn("whitespace-nowrap", filters.xp === value ? " text-bogoss-200 ring-bogoss-200" : "")}
+                className={cn("whitespace-nowrap", filters.xp === value ? "text-belgoss-500 ring-belgoss-500" : "")}
                 variant={"outline"}
                 key={value}
                 onClick={() => handleFilterChange("xp", value)}>
@@ -94,7 +94,7 @@ const App = () => {
                 key={value}
                 className={cn(
                   "whitespace-nowrap ",
-                  filters.projects === value ? " text-bogoss-200 ring-bogoss-200" : ""
+                  filters.projects === value ? "text-belgoss-500 ring-belgoss-500" : ""
                 )}
                 variant={"outline"}
                 onClick={() => handleFilterChange("projects", value)}>
@@ -103,7 +103,7 @@ const App = () => {
             );
           })}
         </ButtonSection>
-        <section className="grid grid-cols-2 mt-10 w-full [&>article]:size-full h-[580px]">
+        <section className="grid grid-cols-2 gap-2 mt-10 w-full [&>article]:size-full h-[580px]">
           <article>
             <CardProject.Grid>
               {projects.map((content, i) => {
@@ -138,7 +138,7 @@ const ButtonSection = ({ children }: { children: React.ReactNode }) => (
 );
 
 const Flex = ({ children }: { children: React.ReactNode }) => (
-  <div className="flex flex-col items-center justify-evenly min-h-[50vh]">{children}</div>
+  <div className="flex flex-col items-center gap-14 min-h-[50vh]">{children}</div>
 );
 
 export default App;

@@ -33,10 +33,13 @@ const Card = ({ content, className, selected, index, setSelected }: CardProjectP
   };
 
   return (
-    <CardWrapper className={className + " w-[130px] h-[130px]"} is={`project-${id}`} data-selected={selected}>
-      <div onMouseEnter={handle} data-selected={selected} className="transition-all">
+    <CardWrapper className={className + "p-2 w-[160px] h-[140px]"} is={`project-${id}`} data-selected={selected}>
+      <div
+        onMouseEnter={handle}
+        data-selected={selected}
+        className="transition-all flex flex-col items-center justify-around h-full">
         <h4 className="text-center w-full">{title}</h4>
-        <a href={href} className="text-sm hover:underline hover:text-bogoss-200 text-bogoss-200">
+        <a href={href} className="text-sm w-full text-center hover:underline hover:text-bogoss-200 text-bogoss-200">
           Voir le projet
         </a>
       </div>
@@ -65,8 +68,8 @@ const CardCarousel = ({ selected, content }: { selected: boolean; content: Proje
       <button onClick={handlePrevImage}>
         <ChevronLeft className="hover:text-belgoss-500" />
       </button>
-      <figure className="relative size-full z-0 flex flex-col justify-between">
-        <h3 className="text-center text-2xl">{content.title}</h3>
+      <figure className="relative size-full z-0 flex flex-col justify-between [&>h3]:text-belgoss-500">
+        <h3 className="text-center text-2xl ">{content.title}</h3>
         {"src" in content &&
           (content.src as string[]).map((path, i) => {
             const hidden = i === activeImage ? "" : "hidden";

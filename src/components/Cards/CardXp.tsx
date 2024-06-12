@@ -20,8 +20,8 @@ const CardXp = ({
     const { company, date, description, duration, program, subtitle, title, lieu } = content as ProType;
     return (
       <>
-        <h4 className="text-left w-full">{title}</h4>
-        <p className="text-sm">{date}</p>
+        <h4 className="text-left w-full !text-bogoss-350 dark:!text-bogoss-200">{title}</h4>
+        <p className="text-sm font-semibold">{date}</p>
         <Dialog>
           <h4 className="text-left w-full">{subtitle}</h4>
           <p className="text-sm">{date}</p>
@@ -39,8 +39,8 @@ const CardXp = ({
     const { date, description, duration, level, lieu, status, title } = content as FormationType;
     return (
       <>
-        <h4 className="text-left w-full">{title}</h4>
-        <div className="inline-flex">{date.join(" - ")}</div>
+        <h4 className="text-left w-full !text-bogoss-350 dark:!text-bogoss-200">{title}</h4>
+        <div className="inline-flex text-sm font-semibold">{date.join(" - ")}</div>
         <Dialog>
           <h4 className="text-left w-full">{title}</h4>
           <p className="text-sm">{date}</p>
@@ -58,8 +58,8 @@ const CardXp = ({
   const folder = theme === "dark" ? "dark/" : "";
 
   return (
-    <div className="relative">
-      <CardWrapper is={is} className={className} addDEUGPx={content.title.includes("DEUG")}>
+    <div className={`relative ${className}`}>
+      <CardWrapper is={is} addDEUGPx={content.title.includes("DEUG")}>
         {isExperience ? <Pro /> : <Formation />}
       </CardWrapper>
       <figure className="absolute -z-10 size-full inset-0 rounded-[16px] overflow-hidden">

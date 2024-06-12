@@ -733,6 +733,14 @@ video {
   height: 580px;
 }
 
+.h-\[160px\]{
+  height: 160px;
+}
+
+.h-\[140px\]{
+  height: 140px;
+}
+
 .max-h-80{
   max-height: 20rem;
 }
@@ -776,6 +784,10 @@ video {
 
 .w-full{
   width: 100%;
+}
+
+.w-\[160px\]{
+  width: 160px;
 }
 
 .min-w-24{
@@ -898,6 +910,10 @@ video {
   justify-content: space-between;
 }
 
+.justify-around{
+  justify-content: space-around;
+}
+
 .justify-evenly{
   justify-content: space-evenly;
 }
@@ -936,6 +952,14 @@ video {
 
 .gap-3{
   gap: 0.75rem;
+}
+
+.gap-10{
+  gap: 2.5rem;
+}
+
+.gap-14{
+  gap: 3.5rem;
 }
 
 .space-y-2 > :not([hidden]) ~ :not([hidden]){
@@ -1229,6 +1253,21 @@ video {
   color: rgb(229 229 229 / var(--tw-text-opacity));
 }
 
+.text-bogoss-350{
+  --tw-text-opacity: 1;
+  color: rgb(43 43 130 / var(--tw-text-opacity));
+}
+
+.\!text-bogoss-350{
+  --tw-text-opacity: 1 !important;
+  color: rgb(43 43 130 / var(--tw-text-opacity)) !important;
+}
+
+.text-belgoss-500{
+  --tw-text-opacity: 1;
+  color: rgb(255 103 0 / var(--tw-text-opacity));
+}
+
 .outline{
   outline-style: solid;
 }
@@ -1247,6 +1286,16 @@ video {
 .ring-bogoss-400{
   --tw-ring-opacity: 1;
   --tw-ring-color: rgb(79 70 229 / var(--tw-ring-opacity));
+}
+
+.ring-bogoss-350{
+  --tw-ring-opacity: 1;
+  --tw-ring-color: rgb(43 43 130 / var(--tw-ring-opacity));
+}
+
+.ring-belgoss-500{
+  --tw-ring-opacity: 1;
+  --tw-ring-color: rgb(255 103 0 / var(--tw-ring-opacity));
 }
 
 .brightness-90{
@@ -1654,6 +1703,21 @@ dialog::backdrop {
   color: rgb(14 12 37 / var(--tw-text-opacity));
 }
 
+.dark\:\!text-bogoss-200:is(.dark *){
+  --tw-text-opacity: 1 !important;
+  color: rgb(217 215 247 / var(--tw-text-opacity)) !important;
+}
+
+.dark\:ring-bogoss-200:is(.dark *){
+  --tw-ring-opacity: 1;
+  --tw-ring-color: rgb(217 215 247 / var(--tw-ring-opacity));
+}
+
+.dark\:ring-bogoss-350:is(.dark *){
+  --tw-ring-opacity: 1;
+  --tw-ring-color: rgb(43 43 130 / var(--tw-ring-opacity));
+}
+
 .dark\:backdrop\:bg-bogoss-600\/50:is(.dark *)::backdrop{
   background-color: rgb(23 21 62 / 0.5);
 }
@@ -1698,6 +1762,11 @@ dialog::backdrop {
 .\[\&\>h2\]\:dark\:text-bogoss-200:is(.dark *)>h2{
   --tw-text-opacity: 1;
   color: rgb(217 215 247 / var(--tw-text-opacity));
+}
+
+.\[\&\>h3\]\:text-belgoss-500>h3{
+  --tw-text-opacity: 1;
+  color: rgb(255 103 0 / var(--tw-text-opacity));
 }
 
 .\[\&\>h4\]\:\!px-10>h4{

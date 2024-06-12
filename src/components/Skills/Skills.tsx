@@ -18,8 +18,8 @@ const TechArticle = ({ skills, skillHovered }: { skills: SkillType[]; skillHover
               "flex items-center justify-center",
               skillHovered[i] ? "animation-start-skill-card" : "hidden"
             )}>
-            <div className={cn("space-y-4")}>
-              <h3 className="text-3xl">
+            <div className={cn("space-y-4 [&>h3]:text-belgoss-500")}>
+              <h3 className="text-3xl text-belgoss-500">
                 {skill.title}
                 <small className="ml-2 text-sm text-bogoss-200">{skill.level}</small>
               </h3>
