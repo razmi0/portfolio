@@ -1030,7 +1030,7 @@ video {
 
 .bg-bogoss-200{
   --tw-bg-opacity: 1;
-  background-color: rgb(217 215 247 / var(--tw-bg-opacity));
+  background-color: rgb(242 241 255 / var(--tw-bg-opacity));
 }
 
 .bg-bogoss-300\/70{
@@ -1216,7 +1216,7 @@ video {
 
 .text-bogoss-200{
   --tw-text-opacity: 1;
-  color: rgb(217 215 247 / var(--tw-text-opacity));
+  color: rgb(242 241 255 / var(--tw-text-opacity));
 }
 
 .text-bogoss-300{
@@ -1352,7 +1352,7 @@ body{
 body{
   max-width: 72rem;
   --tw-bg-opacity: 1;
-  background-color: rgb(217 215 247 / var(--tw-bg-opacity));
+  background-color: rgb(242 241 255 / var(--tw-bg-opacity));
   --tw-text-opacity: 1;
   color: rgb(0 0 0 / var(--tw-text-opacity));
 }
@@ -1535,11 +1535,6 @@ dialog::backdrop {
   color: rgb(255 103 0 / var(--tw-text-opacity));
 }
 
-.hover\:text-bogoss-200:hover{
-  --tw-text-opacity: 1;
-  color: rgb(217 215 247 / var(--tw-text-opacity));
-}
-
 .hover\:text-bogoss-500:hover{
   --tw-text-opacity: 1;
   color: rgb(49 46 129 / var(--tw-text-opacity));
@@ -1651,12 +1646,12 @@ dialog::backdrop {
 
 .dark\:\!text-bogoss-200:is(.dark *){
   --tw-text-opacity: 1 !important;
-  color: rgb(217 215 247 / var(--tw-text-opacity)) !important;
+  color: rgb(242 241 255 / var(--tw-text-opacity)) !important;
 }
 
 .dark\:text-bogoss-200:is(.dark *){
   --tw-text-opacity: 1;
-  color: rgb(217 215 247 / var(--tw-text-opacity));
+  color: rgb(242 241 255 / var(--tw-text-opacity));
 }
 
 .dark\:text-bogoss-700:is(.dark *){
@@ -1670,12 +1665,12 @@ dialog::backdrop {
 
 .hover\:dark\:text-bogoss-200:is(.dark *):hover{
   --tw-text-opacity: 1;
-  color: rgb(217 215 247 / var(--tw-text-opacity));
+  color: rgb(242 241 255 / var(--tw-text-opacity));
 }
 
 .hover\:dark\:ring-bogoss-200:is(.dark *):hover{
   --tw-ring-opacity: 1;
-  --tw-ring-color: rgb(217 215 247 / var(--tw-ring-opacity));
+  --tw-ring-color: rgb(242 241 255 / var(--tw-ring-opacity));
 }
 
 @media (min-width: 768px){
@@ -1702,7 +1697,7 @@ dialog::backdrop {
 
 .\[\&\>h2\]\:dark\:text-bogoss-200:is(.dark *)>h2{
   --tw-text-opacity: 1;
-  color: rgb(217 215 247 / var(--tw-text-opacity));
+  color: rgb(242 241 255 / var(--tw-text-opacity));
 }
 
 .\[\&\>h3\]\:text-belgoss-500>h3{
@@ -1721,7 +1716,7 @@ dialog::backdrop {
 
 .\[\&\>h4\]\:text-bogoss-200>h4{
   --tw-text-opacity: 1;
-  color: rgb(217 215 247 / var(--tw-text-opacity));
+  color: rgb(242 241 255 / var(--tw-text-opacity));
 }
 
 .\[\&\>li\]\:grid>li{
@@ -1751,7 +1746,7 @@ dialog::backdrop {
 
 .\[\&\>li\]\:text-bogoss-200>li{
   --tw-text-opacity: 1;
-  color: rgb(217 215 247 / var(--tw-text-opacity));
+  color: rgb(242 241 255 / var(--tw-text-opacity));
 }
 
 .\[\&\[data-state\=open\]\>svg\]\:rotate-180[data-state=open]>svg{

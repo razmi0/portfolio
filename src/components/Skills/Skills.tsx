@@ -19,11 +19,11 @@ const TechArticle = ({ skills, skillHovered }: { skills: SkillType[]; skillHover
               skillHovered[i] ? "animation-start-skill-card" : "hidden"
             )}>
             <div className={cn("space-y-4 [&>h3]:text-belgoss-500")}>
-              <h3 className="text-3xl text-belgoss-500">
+              <h3 className="text-3xl text-belgoss-500*">
                 {skill.title}
                 <small className="ml-2 text-sm text-bogoss-200">{skill.level}</small>
               </h3>
-              <p className="max-w-[50ch]">{skill.description}</p>
+              <p className="max-w-[50ch] text-bogoss-700 dark:text-bogoss-200">{skill.description}</p>
             </div>
           </div>
         );
@@ -41,7 +41,7 @@ const TechGrid = ({ setter, skills }: { setter: Dispatch<SetStateAction<boolean[
             <button
               onMouseEnter={() => setter((prev: boolean[]) => prev.map((_, j) => j === i))}
               key={skill.id}
-              className="inline-flex items-center text-2xl text-center text-bogoss-300 element transition-all  p-5">
+              className="inline-flex items-center text-2xl text-center text-bogoss-400 element transition-all  p-5">
               <Icon name={skill.title.toLowerCase()} size={52} className="mx-6" />
             </button>
           );

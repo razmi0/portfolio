@@ -14,7 +14,7 @@ module.exports = {
     extend: {
       colors: {
         bogoss: {
-          200: "#D9D7F7",
+          200: "#F2F1FF",
           300: "#7670E6",
           350: "#2B2B82", // "accent"
           400: "#4F46E5",
