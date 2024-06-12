@@ -62,30 +62,27 @@ const CardCarousel = ({ selected, content }: { selected: boolean; content: Proje
   };
   return (
     <div
-      className={cn("flex items-center justify-center", selected ? "animation-start-skill-card size-full" : "hidden")}
+      className={cn("flex items-center gap-5", selected ? "animation-start-skill-card size-full" : "hidden")}
       key={content.id}>
       <button onClick={handlePrevImage}>
         <ChevronLeft className="hover:text-belgoss-500" />
       </button>
-      <section className="size-full">
-        <figure className="relative size-full z-0">
-          <h3 className="text-center text-2xl">{content.title}</h3>
-          {"src" in content &&
-            (content.src as string[]).map((path, i) => {
-              const hidden = i === activeImage ? "" : "hidden";
-              return (
-                <div className={`absolute inset-0 grid place-content-center -z-10 ${hidden}`} key={path}>
-                  <img src={path} alt={content.title} key={path} className="object-cover place-self-center" />
-                  <p className="mt-5">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint molestiae aliquam quod, cum beatae
-                    hic. Earum placeat ab et quaerat culpa! Pariatur laudantium et quod maxime labore fugiat corrupti
-                    suscipit!
-                  </p>
-                </div>
-              );
-            })}
-        </figure>
-      </section>
+      <figure className="relative size-full z-0 flex flex-col justify-between">
+        <h3 className="text-center text-2xl">{content.title}</h3>
+        {"src" in content &&
+          (content.src as string[]).map((path, i) => {
+            const hidden = i === activeImage ? "" : "hidden";
+            return (
+              <div className={`grid place-content-center -z-10 ${hidden}`} key={path}>
+                <img src={path} alt={content.title} key={path} className="object-cover place-self-center" />
+              </div>
+            );
+          })}
+        <p className="mt-5">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint molestiae aliquam quod, cum beatae hic. Earum
+          placeat ab et quaerat culpa! Pariatur laudantium et quod maxime labore fugiat corrupti suscipit!
+        </p>
+      </figure>
       <button onClick={handleNextImage}>
         <ChevronRight className="hover:text-belgoss-500" />
       </button>

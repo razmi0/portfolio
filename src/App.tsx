@@ -103,8 +103,8 @@ const App = () => {
             );
           })}
         </ButtonSection>
-        <section className="grid grid-cols-2 mt-10  w-full">
-          <div className="size-full">
+        <section className="grid grid-cols-2 mt-10 w-full [&>article]:size-full h-[580px]">
+          <article>
             <CardProject.Grid>
               {projects.map((content, i) => {
                 const hidden = filters.projects === "tous" || content.type.includes(filters.projects) ? "" : "hidden";
@@ -120,12 +120,12 @@ const App = () => {
                 );
               })}
             </CardProject.Grid>
-          </div>
-          <div className="size-full">
+          </article>
+          <article>
             {projects.map((content, i) => {
               return <CardProject.Carousel content={content} key={i} selected={projectsSelected[i]} />;
             })}
-          </div>
+          </article>
         </section>
       </Flex>
       <div className="h-screen">Contactez-moi</div>

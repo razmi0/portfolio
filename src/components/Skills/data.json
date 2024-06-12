@@ -87,6 +87,13 @@
         "level": "base",
         "type": ["back-end"],
         "description": "Docker is a tool designed to make it easier to create, deploy, and run applications by using containers. Containers allow a developer to package up an application with all of the parts it needs, such as libraries and other dependencies, and ship it all out as one package."
+      },
+      {
+        "id": 15,
+        "title": "Astro",
+        "level": "competent",
+        "type": ["back-end"],
+        "description": "Astro is a meta-framework focused on delivering heavy painted content. Astro is framework agnostic, meaning you can use it with any framework you want. Some benchmark show that Astro is performant and very SEO friendly. Google, Microsoft, Porsche, NordVPN, TheGuardian and many others are already using Astro."
       }
     ]
   },
@@ -199,15 +206,15 @@
       "id": 2,
       "title": "PokeStable",
       "type": ["web"],
-      "href": "",
-      "src": [""]
+      "href": "https://pokestable.netlify.app/",
+      "src": ["/pokstable/pk-1.jpg", "/pokstable/pk-2.jpg"]
     },
     {
       "id": 3,
       "title": "WalchCook",
       "complexity": "medium",
       "type": ["web"],
-      "href": "",
+      "href": "https://walchcooks.netlify.app/",
       "src": [
         "/mathilda-recipe/mathilda-api-key.jpg",
         "/mathilda-recipe/mathilda-instructions.jpg",
@@ -220,50 +227,68 @@
       "id": 4,
       "title": "Game of Life",
       "type": ["web"],
-      "href": "",
-      "src": [""]
+      "href": "https://chic-meerkat-eeb24c.netlify.app/",
+      "src": [
+        "/GOL/GOL-1.jpg",
+        "/GOL/GOL-2.jpg",
+        "/GOL/GOL-3.jpg",
+        "/GOL/GOL-4.jpg",
+        "/GOL/GOL-5.jpg",
+        "/GOL/GOL-6.jpg",
+        "/GOL/GOL-7.jpg",
+        "/GOL/GOL-8.jpg",
+        "/GOL/GOL-9.jpg",
+        "/GOL/GOL-10.jpg"
+      ]
     },
     {
       "id": 5,
       "title": "Data visualisation Spotify",
       "type": ["documentation"],
-      "href": "",
-      "src": [""]
+      "href": "https://www.easyzoom.com/albumaccess/0a2128cef68f4c89ac2ebd20ac535782",
+      "src": ["/graphs/graph-1.jpg", "/graphs/graph-2.jpg", "/graphs/graph-3.jpg", "/graphs/graph-4.jpg"]
     },
     {
       "id": 6,
       "title": "Tranlation Fun",
       "type": ["web"],
-      "href": "",
-      "src": [""]
+      "href": "https://translation-fun.netlify.app/",
+      "src": ["/translations/tr-1.jpg", "/translations/tr-2.jpg", "/translations/tr-3.jpg"]
     },
     {
       "id": 7,
       "title": "Smallworld helper",
       "type": ["web"],
-      "href": "",
-      "src": [""]
+      "href": "https://smallworldhelper.netlify.app/",
+      "src": ["/SM-helper/SM-1.jpg", "/SM-helper/SM-2.jpg", "/SM-helper/SM-3.jpg", "/SM-helper/SM-4.jpg"]
     },
     {
       "id": 8,
       "title": "RazCli",
       "type": ["outil"],
-      "href": "",
-      "src": [""]
+      "href": "https://github.com/razmi0/raz-cli-tools",
+      "src": ["/raz-cli/rc-1.jpg", "/raz-cli/rc-2.jpg"]
     },
     {
       "id": 9,
       "title": "Accessibility guidelines",
       "type": ["documentation"],
-      "href": "",
-      "src": [""]
+      "href": "https://accessibility-guidelines-cuesta-thoma.netlify.app/",
+      "src": ["/acc-guide/ag-1.jpg", "/acc-guide/ag-2.jpg", "/acc-guide/ag-3.jpg"]
     },
     {
       "id": 10,
       "title": "Dossier de reflexion MDS",
       "type": ["documentation"],
-      "href": "",
-      "src": [""]
+      "href": "https://dossier-reflexion-mds-cuesta-thomas.netlify.app/",
+      "src": ["/doss-reflexion/dr-1.jpg", "/doss-reflexion/dr-2.jpg", "/doss-reflexion/dr-3.jpg"]
+    },
+    {
+      "id": 11,
+      "title": "My Github profile",
+      "type": ["documentation"],
+      "href": "https://github.com/razmi0",
+      "src": ["/github/g-1.jpg", "/github/g-2.jpg", "/github/g-3.jpg"]
     }
   ]
 }
