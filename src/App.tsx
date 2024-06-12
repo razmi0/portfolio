@@ -103,7 +103,7 @@ const App = () => {
             );
           })}
         </ButtonSection>
-        <section className="grid grid-cols-2">
+        <section className="grid grid-cols-2 mt-10  w-full">
           <div className="size-full">
             <CardProject.Grid>
               {projects.map((content, i) => {
@@ -123,22 +123,7 @@ const App = () => {
           </div>
           <div className="size-full">
             {projects.map((content, i) => {
-              return (
-                <div
-                  className={projectsSelected[i] ? "animation-start-skill-card size-full" : "hidden"}
-                  key={content.id}>
-                  <h3>{content.title}</h3>
-                  <figure className="relative size-full z-0">
-                    {content.src.map((path) => {
-                      return (
-                        <div className="absolute inset-0 grid place-content-center -z-10" key={path}>
-                          <img src={path} alt={content.title} key={path} />
-                        </div>
-                      );
-                    })}
-                  </figure>
-                </div>
-              );
+              return <CardProject.Carousel content={content} key={i} selected={projectsSelected[i]} />;
             })}
           </div>
         </section>

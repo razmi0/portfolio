@@ -22,6 +22,9 @@ module.exports = {
           600: "#17153E",
           700: "#0E0C25",
         },
+        belgoss: {
+          500: "#ff6700",
+        },
       },
 
       keyframes: {

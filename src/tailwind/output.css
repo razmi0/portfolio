@@ -663,6 +663,14 @@ video {
   margin-left: 0.5rem;
 }
 
+.mt-10{
+  margin-top: 2.5rem;
+}
+
+.mt-5{
+  margin-top: 1.25rem;
+}
+
 .flex{
   display: flex;
 }
@@ -940,6 +948,10 @@ video {
   --tw-space-y-reverse: 0;
   margin-top: calc(1.75rem * calc(1 - var(--tw-space-y-reverse)));
   margin-bottom: calc(1.75rem * var(--tw-space-y-reverse));
+}
+
+.place-self-center{
+  place-self: center;
 }
 
 .overflow-hidden{
@@ -1469,7 +1481,7 @@ dialog::backdrop {
   }
 
   50% {
-    transform: scale(1.1);
+    transform: scale(1.2);
   }
 
   100% {
@@ -1514,6 +1526,16 @@ dialog::backdrop {
 .hover\:text-neutral-300:hover{
   --tw-text-opacity: 1;
   color: rgb(212 212 212 / var(--tw-text-opacity));
+}
+
+.hover\:text-white:hover{
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+.hover\:text-belgoss-500:hover{
+  --tw-text-opacity: 1;
+  color: rgb(255 103 0 / var(--tw-text-opacity));
 }
 
 .hover\:underline:hover{
