@@ -27,7 +27,7 @@ const App = () => {
         <ModeToggle />
       </header>
       <Hero />
-      <HeadingTransition h2="A propos de moi" small="presentation" />
+      <HeadingTransition h2="A propos de moi" small="présentation" />
       <Presentation />
       {/* SKILLS */}
       {/* SKILLS */}

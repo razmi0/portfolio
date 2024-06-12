@@ -39,7 +39,7 @@ const Card = ({ content, className, selected, index, setSelected }: CardProjectP
         data-selected={selected}
         className="transition-all flex flex-col items-center justify-around h-full">
         <h4 className="text-center w-full">{title}</h4>
-        <a href={href} className="text-sm w-full text-center hover:underline hover:text-bogoss-200 text-bogoss-200">
+        <a href={href} className="text-sm w-full text-center hover:underline dark:text-bogoss-200 text-bogoss-700">
           Voir le projet
         </a>
       </div>

@@ -7,7 +7,7 @@ const Hero = () => {
     <div className="flex flex-col items-center justify-evenly h-screen w-full">
       <div className="text-center [&>h2]:text-bogoss-700 [&>h2]:dark:text-bogoss-200  ">
         <h2 className="text-lg ">Hello there, </h2>
-        <h1 className="text-3xl !text-bogoss-400">I'm Thomas</h1>
+        <h1 className="text-3xl !text-belgoss-500">I'm Thomas</h1>
         <h2 className="text-lg mb-4">I'm web developer</h2>
         <div className="flex items-center justify-start gap-4">
           <Button variant="solid">Telecharger mon CV</Button>

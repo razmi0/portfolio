@@ -11,3 +11,11 @@ Je suis à la recherche d'une alternance pour la rentrée 2024, avec l'enthousia
 MES PROJETS
 
 Je suis attentif à l'accessibilité, c'est pourquoi j'ai mis en place une charte dédiée afin d'adopter une approche plus méthodique et professionnelle dans mon travail.
+
+# TODO
+
+- [x] voir le projet
+- [ ] vignette et adjectif "a propos de moi"
+- [ ] section contact
+- [ ] autre photo de moi
+- [ ] ajouter description des projets
