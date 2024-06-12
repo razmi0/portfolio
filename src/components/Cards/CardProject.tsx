@@ -2,7 +2,7 @@ import { cn } from "@/lib/utils";
 import type { ProjectType } from "@/types/types";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import type { ReactNode } from "react";
-import { useRef, useState } from "react";
+import { useState } from "react";
 import CardWrapper from "./CardWrapper";
 
 const CardGrid = ({ children, className }: { children: ReactNode; className?: string }) => {
@@ -23,10 +23,8 @@ type CardProjectProps = {
 
 const Card = ({ content, className, selected, index, setSelected }: CardProjectProps) => {
   const { title, href, id } = content;
-  const ref = useRef<HTMLButtonElement>(null);
 
   const handle = () => {
-    if (!ref.current) return;
     setSelected((prev) => {
       const newSelected = new Array(prev.length).fill(false);
       newSelected[index] = !prev[index];
@@ -36,12 +34,12 @@ const Card = ({ content, className, selected, index, setSelected }: CardProjectP
 
   return (
     <CardWrapper className={className + " w-[130px] h-[130px]"} is={`project-${id}`} data-selected={selected}>
-      <button ref={ref} onClick={handle} data-selected={selected} className="transition-all">
+      <div onMouseEnter={handle} data-selected={selected} className="transition-all">
         <h4 className="text-center w-full">{title}</h4>
         <a href={href} className="text-sm hover:underline hover:text-bogoss-200 text-bogoss-200">
           Voir le projet
         </a>
-      </button>
+      </div>
     </CardWrapper>
   );
 };
