@@ -8,7 +8,7 @@ import CardWrapper from "./CardWrapper";
 const CardGrid = ({ children, className }: { children: ReactNode; className?: string }) => {
   return (
     <>
-      <div className={cn("relative flex flex-wrap gap-5", className)}>{children}</div>
+      <div className={cn("relative grid grid-cols-3 gap-5", className)}>{children}</div>
     </>
   );
 };
@@ -33,14 +33,16 @@ const Card = ({ content, className, selected, index, setSelected }: CardProjectP
   };
 
   return (
-    <CardWrapper className={className + "p-2 w-[160px] h-[140px]"} is={`project-${id}`} data-selected={selected}>
-      <div
-        onMouseEnter={handle}
-        data-selected={selected}
-        className="transition-all flex flex-col items-center justify-around h-full">
+    <CardWrapper
+      className={className + " p-2 w-[160px] h-[140px] hover:scale-105"}
+      is={`project-${id}`}
+      as="button"
+      onClick={handle}
+      data-selected={selected}>
+      <div data-selected={selected} className="transition-all flex flex-col items-center justify-around h-full">
         <h4 className="text-center w-full">{title}</h4>
         <a href={href} className="text-sm w-full text-center hover:underline dark:text-bogoss-200 text-bogoss-700">
-          Voir le projet
+          Voir le projet en ligne
         </a>
       </div>
     </CardWrapper>
@@ -58,7 +60,7 @@ const CardCarousel = ({ selected, content }: { selected: boolean; content: Proje
   };
 
   const handlePrevImage = () => {
-    const newActiveImage = (activeImage - 1) % imgSize;
+    const newActiveImage = (activeImage - 1 + imgSize) % imgSize;
     setActiveImage(newActiveImage);
   };
   return (
@@ -69,7 +71,7 @@ const CardCarousel = ({ selected, content }: { selected: boolean; content: Proje
         <ChevronLeft className="hover:text-belgoss-500" />
       </button>
       <figure className="relative size-full z-0 flex flex-col justify-between [&>h3]:text-belgoss-500">
-        <h3 className="text-center text-2xl ">{content.title}</h3>
+        <h3 className="text-center text-2xl">{content.title}</h3>
         {"src" in content &&
           (content.src as string[]).map((path, i) => {
             const hidden = i === activeImage ? "" : "hidden";

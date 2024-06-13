@@ -15,10 +15,10 @@ Je suis attentif à l'accessibilité, c'est pourquoi j'ai mis en place une chart
 # TODO
 
 - [x] voir le projet
-- [ ] vignette et adjectif "a propos de moi" 10 min
+- [x] vignette et adjectif "a propos de moi" 10 min
 - [ ] section contact 2h
 - [ ] autre photo de moi
-- [ ] fix hover reveal project carousel 10 min
+- [x] fix hover reveal project carousel 10 min
 - [ ] check general de tous les details 30 min
 
 <hr />

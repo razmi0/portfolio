@@ -16,9 +16,18 @@ import { cn } from "./lib/utils";
 //   return { id: project.id, src: project.src };
 // });
 
+const initStates = {
+  skills: Array(skills.data.length)
+    .fill(false)
+    .map((_, i) => i === 0),
+  projects: Array(projects.length)
+    .fill(false)
+    .map((_, i) => i === 0),
+};
+
 const App = () => {
-  const [skillsHovered, setSkillsHovered] = useState<boolean[]>(Array(skills.data.length).fill(false));
-  const [projectsSelected, setProjectSelected] = useState<boolean[]>(Array(projects.length).fill(false));
+  const [skillsHovered, setSkillsHovered] = useState<boolean[]>(initStates.skills);
+  const [projectsSelected, setProjectSelected] = useState<boolean[]>(initStates.projects);
   const { filters, handleFilterChange, values } = useFilters();
 
   return (
@@ -103,8 +112,8 @@ const App = () => {
             );
           })}
         </ButtonSection>
-        <section className="grid grid-cols-2 gap-2 mt-10 w-full [&>article]:size-full h-[580px]">
-          <article>
+        <section className="flex gap-2 mt-10 w-full h-[580px]">
+          <article className="w-7/12">
             <CardProject.Grid>
               {projects.map((content, i) => {
                 const hidden = filters.projects === "tous" || content.type.includes(filters.projects) ? "" : "hidden";

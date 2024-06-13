@@ -1,4 +1,4 @@
-import { BotIcon, BusIcon, CarIcon } from "lucide-react";
+import { ChefHat, PocketKnife, Rocket } from "lucide-react";
 import { ReactNode } from "react";
 
 const ListItem = ({ children }: { children: ReactNode }) => {
@@ -17,21 +17,21 @@ const Presentation = () => {
         <ul className="flex w-full justify-between gap-5 [&>li]:bg-bogoss-400 [&>li]:text-bogoss-200 [&>li]:p-5 [&>li]:grow [&>li]:rounded-lg [&>li]:grid [&>li]:place-content-center [&_p]:font-semibold">
           <ListItem>
             <div className="grid place-content-center">
-              <BotIcon />
+              <Rocket />
             </div>
             <p>Creatif</p>
           </ListItem>
           <ListItem>
             <div className="grid place-content-center">
-              <CarIcon />
+              <PocketKnife />
             </div>
-            <p>Passionné</p>
+            <p>Polyvalent</p>
           </ListItem>
           <ListItem>
             <div className="grid place-content-center">
-              <BusIcon />
+              <ChefHat />
             </div>
-            <p>Adjectif</p>
+            <p>Autonome</p>
           </ListItem>
         </ul>
         <p className="text-balance text-bogoss-700 dark:text-bogoss-200 font-normal">
