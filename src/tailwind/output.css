@@ -647,12 +647,26 @@ video {
   margin-bottom: 5rem;
 }
 
+.my-44{
+  margin-top: 11rem;
+  margin-bottom: 11rem;
+}
+
+.my-5{
+  margin-top: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+
 .mb-10{
   margin-bottom: 2.5rem;
 }
 
 .mb-4{
   margin-bottom: 1rem;
+}
+
+.mb-44{
+  margin-bottom: 11rem;
 }
 
 .mb-5{
@@ -757,6 +771,10 @@ video {
   width: 1rem;
 }
 
+.w-7\/12{
+  width: 58.333333%;
+}
+
 .w-\[1\.4rem\]{
   width: 1.4rem;
 }
@@ -778,14 +796,6 @@ video {
   width: 100%;
 }
 
-.w-5\/12{
-  width: 41.666667%;
-}
-
-.w-7\/12{
-  width: 58.333333%;
-}
-
 .min-w-24{
   min-width: 6rem;
 }
@@ -804,6 +814,10 @@ video {
 
 .max-w-\[450px\]{
   max-width: 450px;
+}
+
+.max-w-\[50\%\]{
+  max-width: 50%;
 }
 
 .max-w-\[50ch\]{
@@ -858,12 +872,12 @@ video {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
-.grid-cols-4{
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-}
-
 .grid-cols-3{
   grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.grid-cols-4{
+  grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
 .flex-row{
@@ -876,10 +890,6 @@ video {
 
 .flex-col{
   flex-direction: column;
-}
-
-.flex-wrap{
-  flex-wrap: wrap;
 }
 
 .place-content-center{
@@ -920,6 +930,10 @@ video {
 
 .gap-1{
   gap: 0.25rem;
+}
+
+.gap-10{
+  gap: 2.5rem;
 }
 
 .gap-12{
@@ -1246,11 +1260,6 @@ video {
   color: rgb(14 12 37 / var(--tw-text-opacity));
 }
 
-.text-neutral-200{
-  --tw-text-opacity: 1;
-  color: rgb(229 229 229 / var(--tw-text-opacity));
-}
-
 .outline{
   outline-style: solid;
 }
@@ -1523,6 +1532,102 @@ dialog::backdrop {
   }
 }
 
+/**
+ * input
+ */
+
+.input-group {
+  position: relative;
+}
+
+.input{
+  border-width: 2px;
+  --tw-border-opacity: 1;
+  border-color: rgb(14 12 37 / var(--tw-border-opacity));
+}
+
+.input:is(.dark *){
+  --tw-border-opacity: 1;
+  border-color: rgb(242 241 255 / var(--tw-border-opacity));
+}
+
+.input {
+  border-radius: 1rem;
+  background: none;
+  padding: 1rem;
+  font-size: 1rem;
+  transition: border 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  width: 100%;
+}
+
+.user-label{
+  --tw-text-opacity: 1;
+  color: rgb(14 12 37 / var(--tw-text-opacity));
+}
+
+.user-label:is(.dark *){
+  --tw-text-opacity: 1;
+  color: rgb(242 241 255 / var(--tw-text-opacity));
+}
+
+.user-label {
+  position: absolute;
+  left: 15px;
+  pointer-events: none;
+  transform: translateY(1rem);
+  transition: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.input:focus,
+input.slide,
+textarea.slide{
+  border-width: 2px;
+  --tw-border-opacity: 1;
+  border-color: rgb(14 12 37 / var(--tw-border-opacity));
+}
+
+.input:focus:is(.dark *),
+input.slide:is(.dark *),
+textarea.slide:is(.dark *){
+  --tw-border-opacity: 1;
+  border-color: rgb(242 241 255 / var(--tw-border-opacity));
+}
+
+.input:focus,
+input.slide,
+textarea.slide {
+  outline: none;
+}
+
+.input:focus ~ label,
+input.slide ~ label,
+textarea.slide ~ label{
+  --tw-bg-opacity: 1;
+  background-color: rgb(242 241 255 / var(--tw-bg-opacity));
+  --tw-text-opacity: 1;
+  color: rgb(14 12 37 / var(--tw-text-opacity));
+}
+
+.input:focus ~ label:is(.dark *),
+input.slide ~ label:is(.dark *),
+textarea.slide ~ label:is(.dark *){
+  --tw-bg-opacity: 1;
+  background-color: rgb(14 12 37 / var(--tw-bg-opacity));
+  --tw-text-opacity: 1;
+  color: rgb(242 241 255 / var(--tw-text-opacity));
+}
+
+.input:focus ~ label,
+input.slide ~ label,
+textarea.slide ~ label {
+  transform: translateY(-50%) scale(0.8);
+  padding: 0 0.2em;
+}
+
+textarea {
+  field-sizing: content;
+}
+
 .hover\:scale-105:hover{
   --tw-scale-x: 1.05;
   --tw-scale-y: 1.05;
@@ -1703,9 +1808,24 @@ dialog::backdrop {
   }
 }
 
-.\[\&\>article\]\:size-full>article{
+.\[\&\>\*\:not\(button\)\]\:w-\[75\%\]>*:not(button){
+  width: 75%;
+}
+
+.\[\&\>\*\]\:w-full>*{
   width: 100%;
-  height: 100%;
+}
+
+.\[\&\>\*\]\:w-\[50\%\]>*{
+  width: 50%;
+}
+
+.\[\&\>\*\]\:w-\[75\%\]>*{
+  width: 75%;
+}
+
+.\[\&\>\*\]\:max-w-\[50\%\]>*{
+  max-width: 50%;
 }
 
 .\[\&\>h2\]\:text-bogoss-700>h2{

@@ -1,8 +1,8 @@
 import { cn } from "@/lib/utils";
-import { HTMLAttributes } from "react";
+import { ButtonHTMLAttributes } from "react";
 
 type VariantType = "outline" | "solid";
-interface ButtonProps extends HTMLAttributes<HTMLButtonElement> {
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode;
   variant?: VariantType;
 }
@@ -23,7 +23,7 @@ const Button = ({ children, variant, onClick, className, ...props }: ButtonProps
       onClick={onClick}
       data-button="button"
       className={cn(
-        "rounded-md w-fit", // text-neutral-200
+        "rounded-md w-fit",
         "active:scale-95",
         "focus:outline-none",
         "transition-all",

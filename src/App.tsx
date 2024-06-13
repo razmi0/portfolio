@@ -2,6 +2,7 @@ import CardGrid from "@/components/Cards/CardGrid";
 import CardProject from "@/components/Cards/CardProject";
 import CardXp from "@/components/Cards/CardXp";
 import { useState } from "react";
+import Contact from "./components/Contact";
 import HeadingTransition from "./components/HeadingTransition";
 import Hero from "./components/Hero";
 import { ModeToggle } from "./components/ModeToggle";
@@ -137,7 +138,18 @@ const App = () => {
           </article>
         </section>
       </Flex>
-      <div className="h-screen">Contactez-moi</div>
+
+      {/* CONTACT */}
+      {/* CONTACT */}
+      {/* CONTACT */}
+      {/* CONTACT */}
+      {/* CONTACT */}
+
+      <HeadingTransition h2="Contactez-moi" small="me joindre" className="my-44" />
+
+      <Flex className="mb-44">
+        <Contact />
+      </Flex>
     </main>
   );
 };
@@ -146,8 +158,8 @@ const ButtonSection = ({ children }: { children: React.ReactNode }) => (
   <section className="flex mb-5 justify-start gap-12">{children}</section>
 );
 
-const Flex = ({ children }: { children: React.ReactNode }) => (
-  <div className="flex flex-col items-center gap-14 min-h-[50vh]">{children}</div>
+const Flex = ({ children, className }: { children: React.ReactNode; className?: string }) => (
+  <div className={cn("flex flex-col items-center gap-14 min-h-[50vh]", className)}>{children}</div>
 );
 
 export default App;
