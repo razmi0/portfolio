@@ -1,6 +1,10 @@
 import { useState } from "react";
 import { Button } from "./ui/button";
 
+const apiPath = import.meta.env.DEV
+  ? "http://localhost:3000/api/contact"
+  : "https://portfolio-api-mu-five.vercel.app/api/contact";
+
 type ContactFormType = {
   tel: string;
   email: string;
@@ -31,8 +35,6 @@ const Contact = () => {
     reachable: false,
   });
 
-  console.log(errors);
-
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const form = e.currentTarget;
@@ -45,9 +47,9 @@ const Contact = () => {
     }
 
     setErrors({
-      email: !isValidEmail(data.email) && "Email invalide ",
-      tel: !isValidTel(data.tel) && "Telephone invalide ",
-      msg: !hasLength(data.msg) && "Message invalide ",
+      email: !isValidEmail(data.email) && "Email invalide",
+      tel: !isValidTel(data.tel) && "Telephone invalide",
+      msg: !hasLength(data.msg) && "Message invalide",
       reachable: !userIsReachable(data.tel, data.email) && "Au moins un moyen de contact valide est requis",
     });
 
@@ -58,7 +60,7 @@ const Contact = () => {
         method: "POST",
         body: JSON.stringify({ email: data.email, tel: data.tel, msg: data.msg }),
       };
-      const res = await fetch("https://portfolio-api-mu-five.vercel.app/api/contact", fetchOptions);
+      const res = await fetch(apiPath, fetchOptions);
       const json = await res.json();
       console.log(json);
     } catch (error) {
