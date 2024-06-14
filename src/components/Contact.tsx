@@ -58,7 +58,9 @@ const Contact = () => {
         method: "POST",
         body: JSON.stringify({ email: data.email, tel: data.tel, msg: data.msg }),
       };
-      await fetch("http://localhost:3000/api/contact", fetchOptions);
+      const res = await fetch("http://localhost:3000/api/contact", fetchOptions);
+      const json = await res.json();
+      console.log(json);
     } catch (error) {
       console.error(error);
     }
@@ -77,9 +79,6 @@ const Contact = () => {
         <Textarea />
         <Button type="submit" className="w-fit">
           Envoyer
-        </Button>
-        <Button type="button" className="w-fit">
-          Receive
         </Button>
       </form>
     </section>
