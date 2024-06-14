@@ -163,32 +163,23 @@ dialog::backdrop {
 
 .input-group {
   position: relative;
+  width: 100%;
+  min-width: 205px;
+  max-width: 400px;
 }
 
 .input {
-  @apply border-bogoss-700 dark:border-bogoss-200 border-2;
-  border-radius: 1rem;
-  background: none;
-  padding: 1rem;
-  font-size: 1rem;
-  transition: border 150ms cubic-bezier(0.4, 0, 0.2, 1);
-  width: 100%;
+  @apply border-bogoss-700 dark:border-bogoss-200 border-2 rounded-2xl bg-transparent p-4 text-[1rem] transition-all w-full mb-3;
 }
 
 .user-label {
-  @apply text-bogoss-700 dark:text-bogoss-200;
-  position: absolute;
-  left: 15px;
-  pointer-events: none;
-  transform: translateY(1rem);
-  transition: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  @apply text-bogoss-700 dark:text-bogoss-200 transition-all translate-y-4 pointer-events-none left-[15px] absolute;
 }
 
 .input:focus,
 input.slide,
 textarea.slide {
-  @apply border-bogoss-700 dark:border-bogoss-200 border-2;
-  outline: none;
+  @apply border-bogoss-700 dark:border-bogoss-200 border-2 outline-none;
 }
 
 .input:focus ~ label,
@@ -201,4 +192,63 @@ textarea.slide ~ label {
 
 textarea {
   field-sizing: content;
+}
+
+/* LOADER  */
+.loader {
+  display: flex;
+  align-items: center;
+}
+
+.bar {
+  @apply bg-belgoss-500/50;
+  display: inline-block;
+  width: 3px;
+  height: 20px;
+  border-radius: 10px;
+  animation: scale-up4 1s linear infinite;
+}
+
+.bar:nth-child(2) {
+  height: 35px;
+  margin: 0 5px;
+  animation-delay: 0.25s;
+}
+
+.bar:nth-child(3) {
+  animation-delay: 0.5s;
+}
+
+@keyframes scale-up4 {
+  20% {
+    background-color: rgb(255 103 0);
+    transform: scaleY(1.5);
+  }
+
+  40% {
+    transform: scaleY(1);
+  }
+}
+
+/* SOME SLIDE ANIMATIONS */
+
+.slide-from-top {
+  transform: translateY(-300%);
+  opacity: 0;
+}
+
+.slide-from-bottom {
+  transform: translateY(300%);
+  opacity: 0;
+}
+
+.slide-from-active {
+  animation: slide-from-origin 0.3s cubic-bezier(0.47, 0.21, 0.41, 1.33) 0.1s forwards;
+}
+
+@keyframes slide-from-origin {
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
