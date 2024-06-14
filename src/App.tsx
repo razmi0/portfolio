@@ -32,8 +32,8 @@ const App = () => {
   const { filters, handleFilterChange, values } = useFilters();
 
   return (
-    <main className="p-4 container min-w-full h-full flex flex-col" style={{ viewTransitionName: "none" }}>
-      <header className="flex items-center justify-between flex-row-reverse">
+    <main className="relative p-4 container min-w-full h-full flex flex-col" style={{ viewTransitionName: "none" }}>
+      <header className="flex items-center justify-between flex-row-reverse absolute top-0 left-0 w-full mt-5">
         <ModeToggle />
       </header>
       <Hero />

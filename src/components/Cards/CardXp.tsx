@@ -59,7 +59,7 @@ const CardXp = ({
 
   return (
     <div className={`relative ${className}`}>
-      <CardWrapper is={is} addDEUGPx={content.title.includes("DEUG")}>
+      <CardWrapper is={is} addDEUGPx={content.title.includes("DEUG")} className={"aspect-square w-[200px]"}>
         {isExperience ? <Pro /> : <Formation />}
       </CardWrapper>
       <figure className="absolute -z-10 size-full inset-0 rounded-[16px] overflow-hidden">
