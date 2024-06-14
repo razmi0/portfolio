@@ -2,19 +2,19 @@ import { ChefHat, PocketKnife, Rocket } from "lucide-react";
 import { ReactNode } from "react";
 
 const ListItem = ({ children }: { children: ReactNode }) => {
-  return <li className="bg-gradient-to-t from-bogoss-500 to-bogoss-400">{children}</li>;
+  return <li className="bg-gradient-to-t from-bogoss-500 to-bogoss-400 max-w-52">{children}</li>;
 };
 
 const Presentation = () => {
   return (
-    <section className="w-full p-10 grid grid-cols-2 gap-12 items-center">
+    <section className="w-full text-center xl:text-left flex flex-col xl:flex-row gap-12 items-center justify-center">
       <img
         src="/pp_large.png"
         alt="profile picture"
-        className="rounded-full hover:scale-95 transition-all brightness-90 contrast-125"
+        className="rounded-full hover:scale-95 transition-all brightness-90 contrast-125 aspect-square h-[300px] sm:h-[500px] mx-auto object-cover my-10"
       />
       <div className="space-y-7">
-        <ul className="flex w-full justify-between gap-5 [&>li]:bg-bogoss-400 [&>li]:text-bogoss-200 [&>li]:p-5 [&>li]:grow [&>li]:rounded-lg [&>li]:grid [&>li]:place-content-center [&_p]:font-semibold">
+        <ul className="flex flex-wrap w-full justify-evenly gap-5 [&>li]:bg-bogoss-400 [&>li]:text-bogoss-200 [&>li]:p-5 [&>li]:grow [&>li]:rounded-lg [&>li]:grid [&>li]:place-content-center [&_p]:font-semibold">
           <ListItem>
             <div className="grid place-content-center">
               <Rocket />

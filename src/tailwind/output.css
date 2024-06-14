@@ -594,6 +594,10 @@ video {
   inset: 0px;
 }
 
+.-right-10{
+  right: -2.5rem;
+}
+
 .bottom-0{
   bottom: 0px;
 }
@@ -610,12 +614,20 @@ video {
   top: 0px;
 }
 
-.-right-5{
-  right: -1.25rem;
+.-right-14{
+  right: -3.5rem;
 }
 
-.-right-10{
-  right: -2.5rem;
+.-left-14{
+  left: -3.5rem;
+}
+
+.-left-10{
+  left: -2.5rem;
+}
+
+.-left-8{
+  left: -2rem;
 }
 
 .-z-10{
@@ -665,6 +677,11 @@ video {
   margin-bottom: 1.25rem;
 }
 
+.mx-auto{
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .mb-10{
   margin-bottom: 2.5rem;
 }
@@ -691,6 +708,10 @@ video {
 
 .mt-5{
   margin-top: 1.25rem;
+}
+
+.mb-20{
+  margin-bottom: 5rem;
 }
 
 .flex{
@@ -742,8 +763,8 @@ video {
   height: 580px;
 }
 
-.h-\[90vh\]{
-  height: 90vh;
+.h-\[95vh\]{
+  height: 95vh;
 }
 
 .h-fit{
@@ -755,8 +776,20 @@ video {
   height: 100%;
 }
 
-.h-\[95vh\]{
-  height: 95vh;
+.h-\[500px\]{
+  height: 500px;
+}
+
+.h-\[350px\]{
+  height: 350px;
+}
+
+.h-\[200px\]{
+  height: 200px;
+}
+
+.h-\[300px\]{
+  height: 300px;
 }
 
 .max-h-80{
@@ -840,6 +873,10 @@ video {
   max-width: 75ch;
 }
 
+.max-w-52{
+  max-width: 13rem;
+}
+
 .flex-1{
   flex: 1 1 0%;
 }
@@ -892,6 +929,10 @@ video {
   grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
+.grid-rows-2{
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+}
+
 .flex-row{
   flex-direction: row;
 }
@@ -902,6 +943,10 @@ video {
 
 .flex-col{
   flex-direction: column;
+}
+
+.flex-wrap{
+  flex-wrap: wrap;
 }
 
 .place-content-center{
@@ -1847,8 +1892,24 @@ textarea {
     right: 0px;
   }
 
+  .sm\:left-0{
+    left: 0px;
+  }
+
   .sm\:h-\[300px\]{
     height: 300px;
+  }
+
+  .sm\:h-\[500px\]{
+    height: 500px;
+  }
+
+  .sm\:grid-cols-2{
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .sm\:p-10{
+    padding: 2.5rem;
   }
 }
 
@@ -1856,11 +1917,27 @@ textarea {
   .md\:grid-cols-3{
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
+
+  .md\:grid-cols-2{
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .md\:flex-row{
+    flex-direction: row;
+  }
 }
 
 @media (min-width: 1280px){
   .xl\:grid-cols-4{
     grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .xl\:flex-row{
+    flex-direction: row;
+  }
+
+  .xl\:text-left{
+    text-align: left;
   }
 }
 

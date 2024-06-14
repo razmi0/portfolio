@@ -32,12 +32,12 @@ const App = () => {
   const { filters, handleFilterChange, values } = useFilters();
 
   return (
-    <main className="relative p-4 container min-w-full h-full flex flex-col" style={{ viewTransitionName: "none" }}>
+    <main className="relative min-w-full h-full flex flex-col" style={{ viewTransitionName: "none" }}>
       <header className="flex items-center justify-between flex-row-reverse absolute top-0 left-0 w-full mt-5">
         <ModeToggle />
       </header>
       <Hero />
-      <HeadingTransition h2="A propos de moi" small="présentation" />
+      <HeadingTransition h2="A propos de moi" small="présentation" className="mb-20" />
       <Presentation />
       {/* SKILLS */}
       {/* SKILLS */}

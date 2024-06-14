@@ -19,16 +19,24 @@ const Hero = () => {
         </div>
       </div>
       <div className="relative w-full grid place-content-center">
-        <div className="absolute left-0 bottom-0 space-y-3 text-bogoss-400">
-          <LinkedinIcon />
-          <GithubIcon />
+        <div className="absolute -left-8 sm:left-0 bottom-0 space-y-3 text-bogoss-400">
+          <a
+            href="https://www.linkedin.com/in/dev-web-cuesta-thomas/"
+            aria-label="link to Thomas linkedin to get in touch with him">
+            <LinkedinIcon />
+          </a>
+          <a
+            href="https://github.com/razmi0"
+            aria-label="link to Thomas github to discover his programming skills and projects">
+            <GithubIcon />
+          </a>
         </div>
         <img
           src="/pp_large.png"
-          className="h-[250px] sm:h-[300px] brightness-95 contrast-125"
+          className="h-[250px] sm:h-[300px] brightness-95 contrast-125 aspect-square object-cover"
           alt="hero picture of Thomas portfolio looking at the right side and smiling"
         />
-        <VerticalText text="Présentation" className="-right-10 sm:right-0" />
+        <VerticalText text="Présentation" className="-right-14 sm:right-0" />
       </div>
     </div>
   );
