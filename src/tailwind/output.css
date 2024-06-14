@@ -932,10 +932,6 @@ video {
   gap: 0.25rem;
 }
 
-.gap-10{
-  gap: 2.5rem;
-}
-
 .gap-12{
   gap: 3rem;
 }
@@ -1550,11 +1546,13 @@ dialog::backdrop {
  * input
  */
 
-.input-group {
+.input-group{
   position: relative;
+  margin-bottom: 0.75rem;
   width: 100%;
   min-width: 205px;
   max-width: 400px;
+  min-height: 120px;
 }
 
 .input{

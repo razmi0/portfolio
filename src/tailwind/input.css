@@ -162,10 +162,10 @@ dialog::backdrop {
  */
 
 .input-group {
-  position: relative;
-  width: 100%;
+  @apply relative mb-3 w-full;
   min-width: 205px;
   max-width: 400px;
+  min-height: 120px;
 }
 
 .input {

@@ -145,8 +145,8 @@ const slidePlaceholder = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
 
 const Form = ({ children, onSubmit }: { children: ReactNode; onSubmit: (e: FormEvent<HTMLFormElement>) => void }) => {
   return (
-    <form onSubmit={onSubmit} className="flex flex-col items-center justify-center gap-10 my-5 w-full">
-      <h3 className="!text-belgoss-500 text-center">Pour en savoir plus ou me proposer une mission ?</h3>
+    <form onSubmit={onSubmit} className="flex flex-col items-center justify-center my-5 w-full">
+      <h3 className="!text-belgoss-500 text-center text-lg mb-10">Pour en savoir plus ou me proposer une mission ?</h3>
       {children}
     </form>
   );
@@ -200,7 +200,10 @@ const Textarea = ({ children, onChange, className }: InputProps) => {
 
 const TextError = ({ children }: { children: ReactNode }) => {
   return (
-    <p className="text-red-500 text-sm font-semibold flex items-center gap-3" role="alert" aria-live="assertive">
+    <p
+      className="text-red-500 text-sm font-semibold flex items-center gap-3 slide-from-bottom slide-from-active"
+      role="alert"
+      aria-live="assertive">
       <TriangleAlert />
       {children}
     </p>
