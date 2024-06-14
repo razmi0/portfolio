@@ -16,9 +16,20 @@ const regexp = {
 const hasLength = (str: string) => str.length > 0;
 const isValidEmail = (email: string) => hasLength(email) && regexp.email.test(email);
 const isValidTel = (tel: string) => hasLength(tel) && regexp.tel.test(tel);
+const userIsReachable = (tel: string, email: string) => isValidEmail(email) || isValidTel(tel);
 
 const Contact = () => {
-  const [errors, setErrors] = useState<string[]>([]);
+  const [errors, setErrors] = useState<{
+    email: string | boolean;
+    tel: string | boolean;
+    msg: string | boolean;
+    reachable: string | boolean;
+  }>({
+    email: false,
+    tel: false,
+    msg: false,
+    reachable: false,
+  });
 
   console.log(errors);
 
@@ -27,31 +38,27 @@ const Contact = () => {
     const form = e.currentTarget;
     const formData = new FormData(form);
     const data = Object.fromEntries(formData.entries()) as ContactFormType;
+
     if (data.hp) {
       window.location.href = "https://www.google.com";
-      setErrors((prev) => [...prev, "Invalid HP"]);
       return;
     }
 
-    const errors = [
-      !isValidEmail(data.email) && "Invalid email",
-      !isValidTel(data.tel) && "Invalid tel",
-      !hasLength(data.msg) && "Invalid message",
-    ];
+    setErrors({
+      email: !isValidEmail(data.email) && "Email invalide ",
+      tel: !isValidTel(data.tel) && "Telephone invalide ",
+      msg: !hasLength(data.msg) && "Message invalide ",
+      reachable: !userIsReachable(data.tel, data.email) && "Au moins un moyen de contact valide est requis",
+    });
 
-    if (errors.some((e) => e)) {
-      setErrors(errors.filter((e) => e) as string[]);
-      return;
-    }
+    if (Object.values(errors).some((e) => e)) return;
 
     try {
-      const msg = { ...data };
-      const response = await fetch("http://localhost:3000/api/contact", {
+      const fetchOptions = {
         method: "POST",
-        body: JSON.stringify({ msg }),
-      });
-
-      console.log(await response.json());
+        body: JSON.stringify({ email: data.email, tel: data.tel, msg: data.msg }),
+      };
+      await fetch("http://localhost:3000/api/contact", fetchOptions);
     } catch (error) {
       console.error(error);
     }
