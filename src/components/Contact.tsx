@@ -58,7 +58,7 @@ const Contact = () => {
         method: "POST",
         body: JSON.stringify({ email: data.email, tel: data.tel, msg: data.msg }),
       };
-      const res = await fetch("http://localhost:3000/api/contact", fetchOptions);
+      const res = await fetch("https://portfolio-api-mu-five.vercel.app/api/contact", fetchOptions);
       const json = await res.json();
       console.log(json);
     } catch (error) {
