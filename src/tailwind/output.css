@@ -1843,6 +1843,11 @@ textarea {
   color: rgb(242 241 255 / var(--tw-text-opacity)) !important;
 }
 
+.dark\:text-belgoss-500:is(.dark *){
+  --tw-text-opacity: 1;
+  color: rgb(255 103 0 / var(--tw-text-opacity));
+}
+
 .dark\:text-bogoss-200:is(.dark *){
   --tw-text-opacity: 1;
   color: rgb(242 241 255 / var(--tw-text-opacity));
@@ -1851,11 +1856,6 @@ textarea {
 .dark\:text-bogoss-700:is(.dark *){
   --tw-text-opacity: 1;
   color: rgb(14 12 37 / var(--tw-text-opacity));
-}
-
-.dark\:text-belgoss-500:is(.dark *){
-  --tw-text-opacity: 1;
-  color: rgb(255 103 0 / var(--tw-text-opacity));
 }
 
 .dark\:ring-belgoss-500:is(.dark *){
@@ -1885,18 +1885,6 @@ textarea {
 .dark\:focus\:ring-belgoss-500:focus:is(.dark *){
   --tw-ring-opacity: 1;
   --tw-ring-color: rgb(255 103 0 / var(--tw-ring-opacity));
-}
-
-@media (hover: hover){
-  .betterhover\:hover\:text-belgoss-500:hover{
-    --tw-text-opacity: 1;
-    color: rgb(255 103 0 / var(--tw-text-opacity));
-  }
-
-  .betterhover\:hover\:ring-belgoss-500:hover{
-    --tw-ring-opacity: 1;
-    --tw-ring-color: rgb(255 103 0 / var(--tw-ring-opacity));
-  }
 }
 
 @media (min-width: 475px){
@@ -1956,16 +1944,8 @@ textarea {
     align-items: flex-start;
   }
 
-  .md\:items-center{
-    align-items: center;
-  }
-
   .md\:justify-normal{
     justify-content: normal;
-  }
-
-  .md\:justify-center{
-    justify-content: center;
   }
 
   .md\:self-baseline{

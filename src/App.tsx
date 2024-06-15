@@ -61,6 +61,7 @@ const App = () => {
       <Flex id={titles.xp.selector}>
         <ButtonSection>
           {values.xp.map((value) => {
+            const formatedValue = value.charAt(0).toUpperCase() + value.slice(1);
             return (
               <Button
                 className={cn(
@@ -72,7 +73,7 @@ const App = () => {
                 variant={"outline"}
                 key={value}
                 onClick={() => handleFilterChange("xp", value)}>
-                <span className="text-xl">{value}</span>
+                <span className="text-xl">{formatedValue}</span>
               </Button>
             );
           })}

@@ -101,7 +101,7 @@
     {
       "id": 1,
       "type": "pro",
-      "title": "Developpeur front-end",
+      "title": "Développeur front-end",
       "company": "Freelance",
       "lieu": "Toulouse",
       "date": ["2024"],
@@ -113,7 +113,7 @@
     {
       "id": 2,
       "type": "pro",
-      "title": "Developpeur front-end",
+      "title": "Développeur front-end",
       "company": "SlashBin",
       "lieu": "Toulouse",
       "date": ["2023"],
@@ -133,7 +133,7 @@
     {
       "id": 3,
       "type": "pro",
-      "title": "Developpeur front-end",
+      "title": "Développeur front-end",
       "company": "SlashBin",
       "lieu": "Toulouse",
       "date": ["2023"],
@@ -151,7 +151,7 @@
     {
       "id": 4,
       "type": "formation",
-      "title": "Bachelor developpeur web",
+      "title": "Bachelor Développeur web",
       "lieu": "My Digital School",
       "duration": "1 an",
       "level": "bac+3",
@@ -162,7 +162,7 @@
     {
       "id": 5,
       "type": "formation",
-      "title": "Titre professionnel developpeur web",
+      "title": "Titre professionnel Développeur web",
       "lieu": "WebForce3",
       "duration": "3 mois",
       "level": "bac+2",
