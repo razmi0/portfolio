@@ -42,10 +42,10 @@ const App = () => {
       {/* SKILLS */}
       {/* SKILLS */}
       {/* SKILLS */}
-      <HeadingTransition h2="Mes compétences" small="skills" className="my-20">
-        <p className="w-full text-center text-bogoss-200">
+      <HeadingTransition h2="Mes compétences" small="skills" className="my-20 [&_h2]:text-4xl sm:[&_h2]:text-5xl">
+        {/* <p className="w-full text-center text-bogoss-200">
           Je m'accomode de toutes les technologies, voici les technologies qui me sont les plus familières
-        </p>
+        </p> */}
       </HeadingTransition>
       <Skills.Root id={titles.skills.selector}>
         <Skills.TechGrid setter={setSkillsHovered} skills={skills.data} />
@@ -58,7 +58,6 @@ const App = () => {
       {/* XP FORMATION */}
 
       <HeadingTransition h2="Mes expériences" small="mon parcours" className="my-20" />
-
       <Flex id={titles.xp.selector}>
         <ButtonSection>
           {values.xp.map((value) => {

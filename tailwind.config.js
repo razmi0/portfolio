@@ -1,4 +1,14 @@
 /** @type {import('tailwindcss').Config} */
+import { screens } from "tailwindcss/defaultTheme.js";
+
+// '2xs': '375px' => (min-width: 375px)
+// 'xs': '475px' => (min-width: 475px)
+// 'sm': '640px' => (min-width: 640px)
+// 'md': '768px' => (min-width: 768px)
+// 'lg': '1024px' => (min-width: 1024px)
+// 'xl': '1280px' => (min-width: 1280px)
+// '2xl': '1536px' => (min-width: 1536px)
+
 module.exports = {
   darkMode: ["class"],
   content: ["./pages/**/*.{ts,tsx}", "./components/**/*.{ts,tsx}", "./app/**/*.{ts,tsx}", "./src/**/*.{ts,tsx}"],
@@ -10,6 +20,11 @@ module.exports = {
       screens: {
         "2xl": "1400px",
       },
+    },
+    screens: {
+      "2xs": "375px",
+      xs: "475px",
+      ...screens,
     },
     extend: {
       colors: {

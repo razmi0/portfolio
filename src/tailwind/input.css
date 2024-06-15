@@ -33,7 +33,7 @@
 }
 
 body {
-  @apply dark:text-white text-black container dark:bg-bogoss-700 bg-bogoss-200 !max-w-none;
+  @apply dark:text-white text-black container dark:bg-bogoss-700 bg-bogoss-200 !max-w-none px-3 sm:px-12;
 }
 
 html {
