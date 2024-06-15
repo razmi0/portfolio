@@ -1,10 +1,14 @@
 import { cn } from "@/lib/utils";
 import type { SkillType } from "@/types/types";
-import { type Dispatch, type ReactNode, type SetStateAction } from "react";
+import type { Dispatch, HTMLAttributes, ReactNode, SetStateAction } from "react";
 import Icon from "../ui/icons/Icon";
 
-const Root = ({ children }: { children: ReactNode }) => {
-  return <section className="grid grid-cols-2 place-items-center min-h-[50vh]">{children}</section>;
+const Root = ({ children, ...rest }: { children: ReactNode } & HTMLAttributes<HTMLDivElement>) => {
+  return (
+    <section {...rest} className="grid grid-cols-2 place-items-center min-h-[50vh]">
+      {children}
+    </section>
+  );
 };
 
 const TechArticle = ({ skills, skillHovered }: { skills: SkillType[]; skillHovered: boolean[] }) => {

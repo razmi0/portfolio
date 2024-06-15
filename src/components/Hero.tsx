@@ -1,15 +1,16 @@
 import { GithubIcon, LinkedinIcon } from "lucide-react";
+import type { HTMLAttributes } from "react";
 import VerticalText from "./VerticalText";
 import { Button } from "./ui/button";
 
-const Hero = () => {
+const Hero = ({ ...rest }: HTMLAttributes<HTMLDivElement>) => {
   return (
-    <div className="flex flex-col items-center justify-evenly h-[95vh] w-full">
+    <div {...rest} className="flex flex-col items-center justify-evenly h-[95vh] w-full">
       <div className="text-center [&>h2]:text-bogoss-700 [&>h2]:dark:text-bogoss-200  ">
         <h2 className="text-lg ">Hello there, </h2>
         <h1 className="text-3xl !text-belgoss-500">I'm Thomas</h1>
         <h2 className="text-lg mb-4">I'm web developer</h2>
-        <div className="flex items-center justify-start gap-4">
+        <div className="flex flex-wrap items-center justify-center gap-4">
           <Button variant="solid" className="whitespace-nowrap">
             Telecharger mon CV
           </Button>

@@ -1,13 +1,15 @@
 import { ChefHat, PocketKnife, Rocket } from "lucide-react";
-import { ReactNode } from "react";
+import type { HTMLAttributes, ReactNode } from "react";
 
 const ListItem = ({ children }: { children: ReactNode }) => {
   return <li className="bg-gradient-to-t from-bogoss-500 to-bogoss-400 max-w-52">{children}</li>;
 };
 
-const Presentation = () => {
+const Presentation = ({ ...rest }: HTMLAttributes<HTMLDivElement>) => {
   return (
-    <section className="w-full text-center xl:text-left flex flex-col xl:flex-row gap-12 items-center justify-center">
+    <section
+      {...rest}
+      className="w-full text-center xl:text-left flex flex-col xl:flex-row gap-12 items-center justify-center">
       <img
         src="/pp_large.png"
         alt="profile picture"

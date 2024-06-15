@@ -38,3 +38,14 @@ export interface FormationType extends Experience {
   level: string;
   status: string;
 }
+
+export type SetupObserverProps = {
+  threshold?: number;
+  onIntersect?: () => void;
+  onDisappear?: () => void;
+};
+
+export type HandleIntersectionOptions = {
+  onIntersect: () => void;
+  onDisappear: () => void;
+};

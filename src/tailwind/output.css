@@ -556,20 +556,6 @@ video {
   --tw-contain-style:  ;
 }
 
-.container{
-  width: 100%;
-  margin-right: auto;
-  margin-left: auto;
-  padding-right: 2rem;
-  padding-left: 2rem;
-}
-
-@media (min-width: 1400px){
-  .container{
-    max-width: 1400px;
-  }
-}
-
 .sr-only{
   position: absolute;
   width: 1px;
@@ -594,8 +580,12 @@ video {
   inset: 0px;
 }
 
-.-right-10{
-  right: -2.5rem;
+.-left-8{
+  left: -2rem;
+}
+
+.-right-14{
+  right: -3.5rem;
 }
 
 .bottom-0{
@@ -612,22 +602,6 @@ video {
 
 .top-0{
   top: 0px;
-}
-
-.-right-14{
-  right: -3.5rem;
-}
-
-.-left-14{
-  left: -3.5rem;
-}
-
-.-left-10{
-  left: -2.5rem;
-}
-
-.-left-8{
-  left: -2rem;
 }
 
 .-z-10{
@@ -650,6 +624,11 @@ video {
 .mx-6{
   margin-left: 1.5rem;
   margin-right: 1.5rem;
+}
+
+.mx-auto{
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .my-0{
@@ -677,13 +656,12 @@ video {
   margin-bottom: 1.25rem;
 }
 
-.mx-auto{
-  margin-left: auto;
-  margin-right: auto;
-}
-
 .mb-10{
   margin-bottom: 2.5rem;
+}
+
+.mb-20{
+  margin-bottom: 5rem;
 }
 
 .mb-4{
@@ -708,10 +686,6 @@ video {
 
 .mt-5{
   margin-top: 1.25rem;
-}
-
-.mb-20{
-  margin-bottom: 5rem;
 }
 
 .flex{
@@ -759,6 +733,10 @@ video {
   height: 250px;
 }
 
+.h-\[300px\]{
+  height: 300px;
+}
+
 .h-\[580px\]{
   height: 580px;
 }
@@ -774,22 +752,6 @@ video {
 
 .h-full{
   height: 100%;
-}
-
-.h-\[500px\]{
-  height: 500px;
-}
-
-.h-\[350px\]{
-  height: 350px;
-}
-
-.h-\[200px\]{
-  height: 200px;
-}
-
-.h-\[300px\]{
-  height: 300px;
 }
 
 .max-h-80{
@@ -861,6 +823,10 @@ video {
   min-width: 100%;
 }
 
+.max-w-52{
+  max-width: 13rem;
+}
+
 .max-w-\[450px\]{
   max-width: 450px;
 }
@@ -871,10 +837,6 @@ video {
 
 .max-w-\[75ch\]{
   max-width: 75ch;
-}
-
-.max-w-52{
-  max-width: 13rem;
 }
 
 .flex-1{
@@ -927,10 +889,6 @@ video {
 
 .grid-cols-4{
   grid-template-columns: repeat(4, minmax(0, 1fr));
-}
-
-.grid-rows-2{
-  grid-template-rows: repeat(2, minmax(0, 1fr));
 }
 
 .flex-row{
@@ -1166,10 +1124,6 @@ video {
 
 .p-3{
   padding: 0.75rem;
-}
-
-.p-4{
-  padding: 1rem;
 }
 
 .p-5{
@@ -1888,12 +1842,12 @@ textarea {
 }
 
 @media (min-width: 640px){
-  .sm\:right-0{
-    right: 0px;
-  }
-
   .sm\:left-0{
     left: 0px;
+  }
+
+  .sm\:right-0{
+    right: 0px;
   }
 
   .sm\:h-\[300px\]{
@@ -1903,27 +1857,11 @@ textarea {
   .sm\:h-\[500px\]{
     height: 500px;
   }
-
-  .sm\:grid-cols-2{
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .sm\:p-10{
-    padding: 2.5rem;
-  }
 }
 
 @media (min-width: 768px){
   .md\:grid-cols-3{
     grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-
-  .md\:grid-cols-2{
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .md\:flex-row{
-    flex-direction: row;
   }
 }
 
