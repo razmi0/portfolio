@@ -1,7 +1,7 @@
-import CardGrid from "@/components/Cards/CardGrid";
-import CardProject from "@/components/Cards/CardProject";
-import CardXp from "@/components/Cards/CardXp";
+import Project from "@/components/Cards/Project";
+import Experience from "@/components/Cards/Experience";
 import { useState, type HTMLAttributes } from "react";
+import Carousel from "./components/Carousel";
 import Contact from "./components/Contact";
 import HeadingTransition from "./components/HeadingTransition";
 import Hero from "./components/Hero";
@@ -9,11 +9,11 @@ import { ModeToggle } from "./components/ModeToggle";
 import Presentation from "./components/Presentation";
 import Skills from "./components/Skills/Skills";
 import { formation, projects, skills, xp } from "./components/Skills/data.json";
-import { Button } from "./components/ui/button";
+import { useTheme } from "./components/theme-provider";
+import { NavButton } from "./components/ui/button";
 import useFilters from "./hooks/useFilter";
 import useTitle from "./hooks/useTitle";
-import { cn } from "./lib/utils";
-
+import { cn, uppercase } from "./lib/utils";
 const initStates = {
   skills: Array(skills.data.length)
     .fill(false)
@@ -25,9 +25,9 @@ const initStates = {
 
 const App = () => {
   const [skillsHovered, setSkillsHovered] = useState<boolean[]>(initStates.skills);
-  const [projectsSelected, setProjectSelected] = useState<boolean[]>(initStates.projects);
   const { filters, handleFilterChange, values } = useFilters();
   const { titles } = useTitle();
+  const { theme } = useTheme();
 
   return (
     <main className="relative min-w-full h-full flex flex-col" style={{ viewTransitionName: "none" }}>
@@ -42,54 +42,47 @@ const App = () => {
       {/* SKILLS */}
       {/* SKILLS */}
       {/* SKILLS */}
-      <HeadingTransition h2="Mes compétences" small="skills" className="my-20 [&_h2]:text-4xl sm:[&_h2]:text-5xl">
-        {/* <p className="w-full text-center text-bogoss-200">
-          Je m'accomode de toutes les technologies, voici les technologies qui me sont les plus familières
-        </p> */}
-      </HeadingTransition>
+      <HeadingTransition
+        h2="Mes compétences"
+        small="skills"
+        className="my-20 [&_h2]:text-4xl sm:[&_h2]:text-5xl"></HeadingTransition>
       <Skills.Root id={titles.skills.selector}>
-        <Skills.TechGrid setter={setSkillsHovered} skills={skills.data} />
-        <Skills.TechArticle skills={skills.data} skillHovered={skillsHovered} />
+        <Skills.Grid setter={setSkillsHovered} skills={skills.data} />
+        <Skills.Article skills={skills.data} skillHovered={skillsHovered} />
       </Skills.Root>
 
-      {/* XP FORMATION */}
-      {/* XP FORMATION */}
-      {/* XP FORMATION */}
-      {/* XP FORMATION */}
+      {/* Experience */}
+      {/* Experience */}
+      {/* Experience */}
+      {/* Experience */}
 
       <HeadingTransition h2="Mes expériences" small="mon parcours" className="my-20" />
       <Flex id={titles.xp.selector}>
         <ButtonSection>
           {values.xp.map((value) => {
-            const formatedValue = value.charAt(0).toUpperCase() + value.slice(1);
+            const handler = () => handleFilterChange("xp", value);
             return (
-              <Button
-                className={cn(
-                  "whitespace-nowrap",
-                  filters.xp === value
-                    ? "text-belgoss-500 ring-belgoss-500 hover:text-belgoss-500 hover:ring-belgoss-500 dark:text-belgoss-500 dark:ring-belgoss-500 focus:ring-belgoss-500 focus:text-belgoss-500 dark:focus:ring-belgoss-500 dark:focus:text-belgoss-500"
-                    : ""
-                )}
-                variant={"outline"}
-                key={value}
-                onClick={() => handleFilterChange("xp", value)}>
-                <span className="text-xl">{formatedValue}</span>
-              </Button>
+              <NavButton match={filters.xp === value} key={value} onClick={handler}>
+                {uppercase(value)}
+              </NavButton>
             );
           })}
         </ButtonSection>
-        <CardGrid>
+        <Experience.Root>
           {[...xp, ...formation].map((content, i) => {
+            const is = `${content.type === "pro" ? "pro" : "formation"}-${content.id}` as const;
+            const folder = theme === "dark" ? `dark/` : "";
             return (
-              <CardXp
-                index={i}
+              <Experience.Card
                 key={content.id}
-                content={content}
                 className={filters.xp === "tous" || content.type.includes(filters.xp) ? "" : "hidden"}
-              />
+                src={`cards-bg/${folder}${i + 1}.png`}
+                is={is}>
+                <Experience.Content content={content} />
+              </Experience.Card>
             );
           })}
-        </CardGrid>
+        </Experience.Root>
       </Flex>
 
       {/* PROJECT */}
@@ -101,8 +94,8 @@ const App = () => {
       <HeadingTransition h2="Mes projets" small="portfolio" className="my-20" />
 
       <Flex id={titles.projects.selector}>
-        <ButtonSection>
-          {values.projects.map((value) => {
+        <ButtonSection className={"flex-wrap gap-5 sm:gap-12"}>
+          {/* {values.projects.map((value) => {
             return (
               <Button
                 key={value}
@@ -115,31 +108,27 @@ const App = () => {
                 <span className="text-xl">{value}</span>
               </Button>
             );
+          })} */}
+          {values.projects.map((value) => {
+            const handler = () => handleFilterChange("projects", value);
+            return (
+              <NavButton match={filters.projects === value} key={value} onClick={handler}>
+                {uppercase(value)}
+              </NavButton>
+            );
           })}
         </ButtonSection>
-        <section className="flex gap-2 mt-10 w-full h-[580px]">
-          <article className="w-7/12">
-            <CardProject.Grid>
-              {projects.map((content, i) => {
-                const hidden = filters.projects === "tous" || content.type.includes(filters.projects) ? "" : "hidden";
-                return (
-                  <CardProject.Card
-                    key={content.id}
-                    content={content}
-                    index={i}
-                    selected={projectsSelected[i]}
-                    setSelected={setProjectSelected}
-                    className={hidden + " p-0"}
-                  />
-                );
-              })}
-            </CardProject.Grid>
-          </article>
-          <article>
+        <section className="flex place-content-center gap-2 mt-10 w-full">
+          <Project.Grid>
             {projects.map((content, i) => {
-              return <CardProject.Carousel content={content} key={i} selected={projectsSelected[i]} />;
+              const hidden = filters.projects === "tous" || content.type.includes(filters.projects) ? "" : "hidden";
+              return (
+                <Project.Card key={content.id} content={content} className={hidden + " p-0"}>
+                  <Carousel content={content} key={i} />
+                </Project.Card>
+              );
             })}
-          </article>
+          </Project.Grid>
         </section>
       </Flex>
 
@@ -158,10 +147,6 @@ const App = () => {
   );
 };
 
-const ButtonSection = ({ children }: { children: React.ReactNode }) => (
-  <section className="flex mb-5 justify-start gap-12">{children}</section>
-);
-
 const Flex = ({
   children,
   className,
@@ -172,4 +157,7 @@ const Flex = ({
   </div>
 );
 
+const ButtonSection = ({ children, className }: { children: React.ReactNode; className?: string }) => (
+  <section className={cn(`flex mb-5 justify-start gap-12`, className)}>{children}</section>
+);
 export default App;

@@ -2,7 +2,7 @@ import { cn } from "@/lib/utils";
 import { ButtonHTMLAttributes } from "react";
 
 type VariantType = "outline" | "solid";
-interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode;
   variant?: VariantType;
 }
@@ -35,4 +35,22 @@ const Button = ({ children, variant, onClick, className, ...props }: ButtonProps
   );
 };
 
-export { Button };
+interface NavButtonProps extends ButtonProps {
+  match: boolean;
+}
+
+const matchingStyles =
+  "text-belgoss-500 ring-belgoss-500 hover:text-belgoss-500 hover:ring-belgoss-500 dark:text-belgoss-500 dark:ring-belgoss-500 focus:ring-belgoss-500 focus:text-belgoss-500 dark:focus:ring-belgoss-500 dark:focus:text-belgoss-500";
+const NavButton = ({ match, onClick, children, ...props }: NavButtonProps) => {
+  return (
+    <Button
+      {...props}
+      className={cn("whitespace-nowrap", match ? matchingStyles : "")}
+      variant={"outline"}
+      onClick={onClick}>
+      <span className="text-xl">{children}</span>
+    </Button>
+  );
+};
+
+export { Button, NavButton, type NavButtonProps };

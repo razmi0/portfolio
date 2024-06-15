@@ -16,7 +16,7 @@ const Dialog = ({ children, className }: { children: React.ReactNode; className?
       <dialog
         ref={dialogRef}
         className={cn(
-          "min-h-64 max-h-80 min-w-96 max-w-[450px] dark:backdrop:bg-bogoss-600/50 dark:bg-bogoss-700 dark:text-bogoss-200 rounded-md",
+          "min-h-64 min-w-96 dark:backdrop:bg-bogoss-600/50 dark:bg-bogoss-700 dark:text-bogoss-200 rounded-md",
           className
         )}>
         <div className="relative size-full flex flex-col p-3">

@@ -2,6 +2,7 @@ import { cn } from "@/lib/utils";
 import type { SkillType } from "@/types/types";
 import { type Dispatch, type HTMLAttributes, type ReactNode, type SetStateAction } from "react";
 import Icon from "../ui/icons/Icon";
+
 const Root = ({ children, ...rest }: { children: ReactNode } & HTMLAttributes<HTMLDivElement>) => {
   return (
     <section
@@ -66,8 +67,8 @@ const TechGrid = ({ setter, skills }: { setter: Dispatch<SetStateAction<boolean[
 
 const Skills = {
   Root: Root,
-  TechArticle: TechArticle,
-  TechGrid: TechGrid,
+  Article: TechArticle,
+  Grid: TechGrid,
 };
 
 export default Skills;
