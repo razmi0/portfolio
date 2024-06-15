@@ -5,7 +5,9 @@ import Icon from "../ui/icons/Icon";
 
 const Root = ({ children, ...rest }: { children: ReactNode } & HTMLAttributes<HTMLDivElement>) => {
   return (
-    <section {...rest} className="grid md:grid-cols-2 md:h-[75vh] md:place-content-center gap-20 mt-20">
+    <section
+      {...rest}
+      className="grid md:grid-cols-2 md:h-[50vh] justify-center items-center md:justify-normal md:items-start gap-20 mt-20">
       {children}
     </section>
   );
@@ -19,13 +21,16 @@ const TechArticle = ({ skills, skillHovered }: { skills: SkillType[]; skillHover
           <div
             key={skill.id}
             className={cn(
-              "flex items-center justify-center",
+              "flex items-center justify-center w-full",
               skillHovered[i] ? "animation-start-skill-card" : "hidden"
             )}>
-            <div className={cn("space-y-4 [&>h3]:text-belgoss-500 text-center sm:text-left")}>
+            <div
+              className={cn(
+                "space-y-4 [&>h3]:text-belgoss-500 text-center sm:text-left ms:items-center sm:justify-center"
+              )}>
               <h3 className="text-3xl">
                 {skill.title}
-                <small className="ml-2 text-sm text-bogoss-200">{skill.level}</small>
+                <small className="ml-2 text-sm text-bogoss-700 dark:text-bogoss-200">{skill.level}</small>
               </h3>
               <p className="max-w-[50ch] text-balance text-bogoss-700 dark:text-bogoss-200">{skill.description}</p>
             </div>
@@ -38,19 +43,17 @@ const TechArticle = ({ skills, skillHovered }: { skills: SkillType[]; skillHover
 
 const TechGrid = ({ setter, skills }: { setter: Dispatch<SetStateAction<boolean[]>>; skills: SkillType[] }) => {
   return (
-    <div className="w-full self-end md:self-baseline max-w-[650px]">
-      <div className="text-2xl text-center grid grid-cols-3 xs:grid-cols-4 place-items-center gap-3 xs:gap-7">
-        {skills.map((skill, i) => {
-          return (
-            <button
-              onClick={() => setter((prev: boolean[]) => prev.map((_, j) => j === i))}
-              key={skill.id}
-              className="inline-flex items-center text-2xl text-center text-bogoss-400 element transition-all">
-              <Icon name={skill.title.toLowerCase()} className="w-12 h-12 sm:w-14 sm:h-14" />
-            </button>
-          );
-        })}
-      </div>
+    <div className="text-2xl text-center grid grid-cols-3 xs:grid-cols-4 place-items-center gap-3 xs:gap-7">
+      {skills.map((skill, i) => {
+        return (
+          <button
+            onClick={() => setter((prev: boolean[]) => prev.map((_, j) => j === i))}
+            key={skill.id}
+            className="inline-flex items-center text-2xl text-center text-bogoss-400 element transition-all">
+            <Icon name={skill.title.toLowerCase()} className="w-12 h-12 sm:w-14 sm:h-14" />
+          </button>
+        );
+      })}
     </div>
   );
 };

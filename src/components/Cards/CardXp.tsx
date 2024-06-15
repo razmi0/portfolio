@@ -59,10 +59,13 @@ const CardXp = ({
 
   return (
     <div className={`relative ${className}`}>
-      <CardWrapper is={is} addDEUGPx={content.title.includes("DEUG")} className={"aspect-square w-[200px]"}>
+      <CardWrapper
+        is={is}
+        addDEUGPx={content.title.includes("DEUG")}
+        className={"aspect-square w-[175px] overflow-hidden"}>
         {isExperience ? <Pro /> : <Formation />}
       </CardWrapper>
-      <figure className="absolute -z-10 size-full inset-0 rounded-[16px] overflow-hidden">
+      <figure className="absolute -z-10 size-[99%] inset-0 rounded-[16px] overflow-hidden">
         <img src={`cards-bg/${folder}${index + 1}.png`} className="anim-xp-img" />
       </figure>
     </div>

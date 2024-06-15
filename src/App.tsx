@@ -63,7 +63,12 @@ const App = () => {
           {values.xp.map((value) => {
             return (
               <Button
-                className={cn("whitespace-nowrap", filters.xp === value ? "text-belgoss-500 ring-belgoss-500" : "")}
+                className={cn(
+                  "whitespace-nowrap",
+                  filters.xp === value
+                    ? "text-belgoss-500 ring-belgoss-500 hover:text-belgoss-500 hover:ring-belgoss-500 dark:text-belgoss-500 dark:ring-belgoss-500 focus:ring-belgoss-500 focus:text-belgoss-500 dark:focus:ring-belgoss-500 dark:focus:text-belgoss-500"
+                    : ""
+                )}
                 variant={"outline"}
                 key={value}
                 onClick={() => handleFilterChange("xp", value)}>
