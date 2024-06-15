@@ -16,6 +16,14 @@ const Show = ({ when, fallback = <></>, children }: { when: unknown; fallback?: 
   return when ? children : fallback;
 };
 
+const Text = ({ value, className }: { value: unknown & ReactNode; className?: string }) => {
+  return (
+    <Show when={value}>
+      <p className={className || ""}>{value}</p>
+    </Show>
+  );
+};
+
 interface ContentProps {
   content: ProType | FormationType;
 }
@@ -25,44 +33,22 @@ const Content = ({ content }: ContentProps) => {
 
   return (
     <>
-      <Show when={data.title}>
-        <h4 className="text-left w-full !text-bogoss-350 dark:!text-bogoss-200">{data.title}</h4>
-      </Show>
-
-      {/* <Show when={data.subtitle}>
-        <p className="text-sm font-semibold">{data.date}</p>
-      </Show> */}
-      <Show when={data.date && Array.isArray(data.date)}>
-        <div className="inline-flex text-sm font-semibold">{data.date.join(" - ")}</div>{" "}
+      <h4 className="text-left w-full !text-bogoss-350 dark:!text-bogoss-200">{data.title}</h4>
+      <Show when={Array.isArray(data.date)}>
+        <Text className="inline-flex text-sm font-semibold" value={data.date.join(" - ")} />
       </Show>
       <Dialog className="[&_p]:text-sm">
         <Show when={data.subtitle}>
           <h4 className="text-left w-full">{data.subtitle}</h4>
         </Show>
-        <Show when={data.date}>
-          <p>{data.date}</p>
-        </Show>
-        <Show when={data.duration}>
-          <p>{data.duration}</p>
-        </Show>
-        <Show when={data.level}>
-          <p>{data.level}</p>
-        </Show>
-        <Show when={data.company}>
-          <p>{data.company}</p>
-        </Show>
-        <Show when={data.lieu}>
-          <p>{data.lieu}</p>
-        </Show>
-        <Show when={data.status}>
-          <p>{data.status}</p>
-        </Show>
-        <Show when={data.program}>
-          <p>{data.program}</p>
-        </Show>
-        <Show when={data.description}>
-          <p>{data.description}</p>
-        </Show>
+        <Text value={data.date} />
+        <Text value={data.duration} />
+        <Text value={data.level} />
+        <Text value={data.company} />
+        <Text value={data.lieu} />
+        <Text value={data.status} />
+        <Text value={data.program} />
+        <Text value={data.description} />
       </Dialog>
     </>
   );
@@ -81,7 +67,6 @@ const CardXp = ({ className, children, src, is }: CardXpProps) => {
     <div className={`relative ${className}`}>
       <CardWrapper is={is} className={"aspect-square w-[175px] overflow-hidden"}>
         {children}
-        {/* <Figure src={src} /> */}
       </CardWrapper>
       <Figure src={src} />
     </div>
