@@ -35,25 +35,7 @@ const App = () => {
         <ModeToggle />
       </header>
       <Hero id={titles.hero.selector} />
-      {/*  */}
-      {/*  */}
-      {/*  */}
-      {/*  */}
-      {/*  */}
-      {/*  */}
-      {/*  */}
-      {/*  */}
-      {/*  */}
 
-      {/*  */}
-      {/*  */}
-      {/*  */}
-      {/*  */}
-      {/*  */}
-      {/*  */}
-      {/*  */}
-      {/*  */}
-      {/*  */}
       <HeadingTransition h2="A propos de moi" small="présentation" className="mb-20" />
       <Presentation id={titles.presentation.selector} />
       {/* SKILLS */}
