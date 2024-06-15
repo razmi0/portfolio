@@ -1,8 +1,7 @@
 import { cn } from "@/lib/utils";
 import type { SkillType } from "@/types/types";
-import type { Dispatch, HTMLAttributes, ReactNode, SetStateAction } from "react";
+import { type Dispatch, type HTMLAttributes, type ReactNode, type SetStateAction } from "react";
 import Icon from "../ui/icons/Icon";
-
 const Root = ({ children, ...rest }: { children: ReactNode } & HTMLAttributes<HTMLDivElement>) => {
   return (
     <section
@@ -15,7 +14,7 @@ const Root = ({ children, ...rest }: { children: ReactNode } & HTMLAttributes<HT
 
 const TechArticle = ({ skills, skillHovered }: { skills: SkillType[]; skillHovered: boolean[] }) => {
   return (
-    <div className="min-w-[300px] w-fit self-center md:self-baseline">
+    <div className="min-w-[300px] w-full self-center md:self-baseline">
       {skills.map((skill, i) => {
         return (
           <div
@@ -32,7 +31,9 @@ const TechArticle = ({ skills, skillHovered }: { skills: SkillType[]; skillHover
                 {skill.title}
                 <small className="ml-2 text-sm text-bogoss-700 dark:text-bogoss-200">{skill.level}</small>
               </h3>
-              <p className="max-w-[50ch] text-balance text-bogoss-700 dark:text-bogoss-200">{skill.description}</p>
+              <p className="max-w-[50ch] w-full text-balance text-bogoss-700 dark:text-bogoss-200">
+                {skill.description}
+              </p>
             </div>
           </div>
         );
@@ -42,14 +43,19 @@ const TechArticle = ({ skills, skillHovered }: { skills: SkillType[]; skillHover
 };
 
 const TechGrid = ({ setter, skills }: { setter: Dispatch<SetStateAction<boolean[]>>; skills: SkillType[] }) => {
+  const handleClick = (index: number) => {
+    setter((prev: boolean[]) => prev.map((_, j) => j === index));
+  };
+
   return (
     <div className="text-2xl text-center grid grid-cols-3 xs:grid-cols-4 place-items-center gap-3 xs:gap-7">
       {skills.map((skill, i) => {
+        const handler = () => handleClick(i);
         return (
           <button
-            onClick={() => setter((prev: boolean[]) => prev.map((_, j) => j === i))}
+            onClick={handler}
             key={skill.id}
-            className="inline-flex items-center text-2xl text-center text-bogoss-400 element transition-all">
+            className={cn(`inline-flex items-center text-2xl text-center text-bogoss-400 element transition-all`)}>
             <Icon name={skill.title.toLowerCase()} className="w-12 h-12 sm:w-14 sm:h-14" />
           </button>
         );

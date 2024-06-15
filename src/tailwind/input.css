@@ -101,11 +101,17 @@ dialog::backdrop {
   transform: scale(1.5);
 }
 
-.element:has(~ .element:hover) {
+.scale-me {
+  transform: scale(1.5);
+}
+
+.element:has(~ .element:hover),
+.element:has(~ .scale-me:hover) {
   transform: scale(0.75);
 }
 
-.element:hover ~ .element {
+.element:hover ~ .element,
+.scale-me:hover ~ .scale-me {
   transform: scale(0.75);
 }
 
