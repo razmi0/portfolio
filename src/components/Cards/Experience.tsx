@@ -3,18 +3,8 @@ import type { FormationType, ProType } from "@/types/types";
 import type { HTMLAttributes, ReactNode } from "react";
 import Dialog from "../Dialog";
 // import { Button, type ButtonProps } from "../ui/button";
+import Show from "../ui/show";
 import CardWrapper from "./CardWrapper";
-
-type CardXpProps = {
-  className?: string;
-  children: ReactNode;
-  is: `pro-${number}` | `formation-${number}`;
-  src: string;
-} & HTMLAttributes<HTMLDivElement>;
-
-const Show = ({ when, fallback = <></>, children }: { when: unknown; fallback?: ReactNode; children: ReactNode }) => {
-  return when ? children : fallback;
-};
 
 const Text = ({ value, className }: { value: unknown & ReactNode; className?: string }) => {
   return (
@@ -33,22 +23,28 @@ const Content = ({ content }: ContentProps) => {
 
   return (
     <>
-      <h4 className="text-left w-full !text-bogoss-350 dark:!text-bogoss-200">{data.title}</h4>
+      <h3 className="text-center w-full !text-bogoss-350 dark:!text-bogoss-200">{data.title}</h3>
       <Show when={Array.isArray(data.date)}>
-        <Text className="inline-flex text-sm font-semibold" value={data.date.join(" - ")} />
+        <Text className="text-sm text-center font-semibold w-full" value={data.date.join(" - ")} />
       </Show>
       <Dialog className="[&_p]:text-sm">
-        <Show when={data.subtitle}>
-          <h4 className="text-left w-full">{data.subtitle}</h4>
-        </Show>
-        <Text value={data.date} />
-        <Text value={data.duration} />
-        <Text value={data.level} />
-        <Text value={data.company} />
-        <Text value={data.lieu} />
-        <Text value={data.status} />
-        <Text value={data.program} />
-        <Text value={data.description} />
+        <section className="size-full px-3 flex flex-col place-content-center text-center">
+          <h4 className="w-full !text-bogoss-350 dark:!text-bogoss-200">{data.title}</h4>
+          <Show when={Array.isArray(data.date)}>
+            <Text className="inline-flex text-sm font-semibold" value={data.date.join(" - ")} />
+          </Show>
+          <Show when={data.subtitle}>
+            <h5 className="w-full">{data.subtitle}</h5>
+          </Show>
+          <Text value={data.date} />
+          <Text value={data.duration} />
+          <Text value={data.level} />
+          <Text value={data.company} />
+          <Text value={data.lieu} />
+          <Text value={data.status} />
+          <Text value={data.program} />
+          <Text value={data.description} />
+        </section>
       </Dialog>
     </>
   );
@@ -61,6 +57,13 @@ const Figure = ({ src, ...props }: { src: string } & HTMLAttributes<HTMLImageEle
     </figure>
   );
 };
+
+type CardXpProps = {
+  className?: string;
+  children: ReactNode;
+  is: `pro-${number}` | `formation-${number}`;
+  src: string;
+} & HTMLAttributes<HTMLDivElement>;
 
 const CardXp = ({ className, children, src, is }: CardXpProps) => {
   return (

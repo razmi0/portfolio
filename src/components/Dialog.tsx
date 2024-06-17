@@ -1,8 +1,17 @@
 import { cn } from "@/lib/utils";
 import { ArrowBigRight, SquareX } from "lucide-react";
 import { useRef } from "react";
+import Show from "./ui/show";
 
-const Dialog = ({ children, className }: { children: React.ReactNode; className?: string }) => {
+const Dialog = ({
+  children,
+  className,
+  close,
+}: {
+  children: React.ReactNode;
+  className?: string;
+  close?: React.ReactNode;
+}) => {
   const dialogRef = useRef<HTMLDialogElement>(null);
   return (
     <>
@@ -20,8 +29,12 @@ const Dialog = ({ children, className }: { children: React.ReactNode; className?
           className
         )}>
         <div className="relative size-full flex flex-col p-3">
-          {children}
-          <Close close={() => dialogRef.current?.close()} />
+          <>
+            {children}
+            <Show when={!close} fallback={close}>
+              <Close close={() => dialogRef.current?.close()} />
+            </Show>
+          </>
         </div>
       </dialog>
     </>

@@ -3,6 +3,7 @@ import { Check, TriangleAlert } from "lucide-react";
 import { ChangeEvent, FormEvent, ReactNode, useState } from "react";
 import { Button } from "./ui/button";
 import Loader from "./ui/loader";
+import Show from "./ui/show";
 
 const apiPath = import.meta.env.DEV
   ? "http://localhost:3000/api/contact"
@@ -101,20 +102,30 @@ const Contact = () => {
   };
 
   return (
-    <section className="w-full grid grid-cols-2">
+    <section className="w-full grid">
       <article>{/* <HyperActions /> */}</article>
       <Form onSubmit={handleSubmit}>
         <HoneyPot />
         <Telephone onChange={handleOnChange}>
-          {formStatus === "error" && errors.tel && <TextError>{errors.tel}</TextError>}
-          {formStatus === "error" && errors.reachable && errors.tel && <TextError>{errors.reachable}</TextError>}
+          <Show when={formStatus === "error" && errors.tel}>
+            <TextError>{errors.tel}</TextError>
+          </Show>
+          <Show when={formStatus === "error" && errors.reachable && errors.tel}>
+            <TextError>{errors.reachable}</TextError>
+          </Show>
         </Telephone>
         <Email onChange={handleOnChange}>
-          {formStatus === "error" && errors.email && <TextError>{errors.email}</TextError>}
-          {formStatus === "error" && errors.reachable && errors.email && <TextError>{errors.reachable}</TextError>}
+          <Show when={formStatus === "error" && errors.email}>
+            <TextError>{errors.email}</TextError>
+          </Show>
+          <Show when={formStatus === "error" && errors.reachable && errors.email}>
+            <TextError>{errors.reachable}</TextError>
+          </Show>
         </Email>
         <Textarea onChange={handleOnChange}>
-          {formStatus === "error" && errors.msg && <TextError>{errors.msg}</TextError>}
+          <Show when={formStatus === "error" && errors.msg}>
+            <TextError>{errors.msg}</TextError>
+          </Show>
         </Textarea>
         <div className="flex justify-end items-center input-group gap-5">
           {formStatus === "success" && (

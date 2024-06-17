@@ -1,5 +1,5 @@
-import Project from "@/components/Cards/Project";
 import Experience from "@/components/Cards/Experience";
+import Project from "@/components/Cards/Project";
 import { useState, type HTMLAttributes } from "react";
 import Carousel from "./components/Carousel";
 import Contact from "./components/Contact";
@@ -56,9 +56,9 @@ const App = () => {
       {/* Experience */}
       {/* Experience */}
 
-      <HeadingTransition h2="Mes expériences" small="mon parcours" className="my-20" />
+      <HeadingTransition h2="Mes expériences" small="mon parcours" className="my-20 mt-48" />
       <Flex id={titles.xp.selector}>
-        <ButtonSection>
+        <NavSection>
           {values.xp.map((value) => {
             const handler = () => handleFilterChange("xp", value);
             return (
@@ -67,7 +67,7 @@ const App = () => {
               </NavButton>
             );
           })}
-        </ButtonSection>
+        </NavSection>
         <Experience.Root>
           {[...xp, ...formation].map((content, i) => {
             const is = `${content.type === "pro" ? "pro" : "formation"}-${content.id}` as const;
@@ -94,21 +94,7 @@ const App = () => {
       <HeadingTransition h2="Mes projets" small="portfolio" className="my-20" />
 
       <Flex id={titles.projects.selector}>
-        <ButtonSection className={"flex-wrap gap-5 sm:gap-12"}>
-          {/* {values.projects.map((value) => {
-            return (
-              <Button
-                key={value}
-                className={cn(
-                  "whitespace-nowrap ",
-                  filters.projects === value ? "text-belgoss-500 ring-belgoss-500" : ""
-                )}
-                variant={"outline"}
-                onClick={() => handleFilterChange("projects", value)}>
-                <span className="text-xl">{value}</span>
-              </Button>
-            );
-          })} */}
+        <NavSection className={"flex-wrap gap-5 sm:gap-12"}>
           {values.projects.map((value) => {
             const handler = () => handleFilterChange("projects", value);
             return (
@@ -117,7 +103,7 @@ const App = () => {
               </NavButton>
             );
           })}
-        </ButtonSection>
+        </NavSection>
         <section className="flex place-content-center gap-2 mt-10 w-full">
           <Project.Grid>
             {projects.map((content, i) => {
@@ -143,6 +129,10 @@ const App = () => {
       <Flex className="mb-44" id={titles.contact.selector}>
         <Contact />
       </Flex>
+
+      <Flex>
+        <div className="h-screen"></div>
+      </Flex>
     </main>
   );
 };
@@ -157,7 +147,7 @@ const Flex = ({
   </div>
 );
 
-const ButtonSection = ({ children, className }: { children: React.ReactNode; className?: string }) => (
+const NavSection = ({ children, className }: { children: React.ReactNode; className?: string }) => (
   <section className={cn(`flex mb-5 justify-start gap-12`, className)}>{children}</section>
 );
 export default App;

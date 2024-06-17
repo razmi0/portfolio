@@ -17,10 +17,7 @@ const Carousel = ({ content }: { content: ProjectType }) => {
     setActiveImage(newActiveImage);
   };
   return (
-    <div className={"flex items-center justify-center gap-5 w-full"} key={content.id}>
-      <button onClick={handlePrevImage}>
-        <ChevronLeft className="hover:text-belgoss-500" />
-      </button>
+    <div className={"flex flex-col items-center justify-center gap-5 w-full"} key={content.id}>
       <figure className="relative z-0 flex flex-col gap-3 justify-between [&>h3]:text-belgoss-500">
         <h3 className="text-center text-2xl">{content.title}</h3>
         {"src" in content &&
@@ -33,9 +30,15 @@ const Carousel = ({ content }: { content: ProjectType }) => {
             );
           })}
       </figure>
-      <button onClick={handleNextImage}>
-        <ChevronRight className="hover:text-belgoss-500" />
-      </button>
+
+      <div>
+        <button onClick={handlePrevImage}>
+          <ChevronLeft size={38} className="hover:text-belgoss-500" />
+        </button>
+        <button onClick={handleNextImage}>
+          <ChevronRight size={38} className="hover:text-belgoss-500" />
+        </button>
+      </div>
     </div>
   );
 };

@@ -15,8 +15,8 @@ const Presentation = ({ ...rest }: HTMLAttributes<HTMLDivElement>) => {
         alt="profile picture"
         className="rounded-full hover:scale-95 transition-all brightness-90 contrast-125 aspect-square h-[300px] sm:h-[500px] mx-auto object-cover my-10"
       />
-      <div className="space-y-7">
-        <ul className="flex flex-wrap w-full justify-evenly xl:justify-start gap-5 [&>li]:bg-bogoss-400 [&>li]:text-bogoss-200 [&>li]:p-5 [&>li]:grow [&>li]:rounded-lg [&>li]:grid [&>li]:place-content-center [&_p]:font-semibold">
+      <div className="space-y-7 w-fit">
+        <ul className="flex flex-wrap max-w-[670px] justify-evenly xl:justify-start gap-5 [&>li]:bg-bogoss-400 [&>li]:text-bogoss-200 [&>li]:p-5 [&>li]:grow [&>li]:rounded-lg [&>li]:grid [&>li]:place-content-center [&_p]:font-semibold">
           <ListItem>
             <div className="grid place-content-center">
               <Rocket />
