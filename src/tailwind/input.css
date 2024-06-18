@@ -89,12 +89,26 @@ dialog[open] {
     transform: scale(0.8);
     filter: blur(20px);
   }
+
+  *[data-type] {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+
+  *[data-type] ~ figure {
+    transform: scale(0.5);
+    opacity: 0;
+  }
 }
 
 dialog::backdrop {
   backdrop-filter: blur(2px);
   background-color: rgba(0, 0, 0, 0.5);
 }
+
+/*  */
+
+/* skill card */
 
 .element:hover {
   cursor: pointer;

@@ -1,5 +1,6 @@
 import { cn } from "@/lib/utils";
 import type { FormationType, ProType } from "@/types/types";
+import { Check } from "lucide-react";
 import { type HTMLAttributes, type ReactNode } from "react";
 import Dialog from "../Dialog";
 import Tag, { type ValidTags } from "../Tag";
@@ -17,8 +18,17 @@ const Text = ({ value, className, as }: { value: unknown & ReactNode; as?: Valid
 };
 
 const ProgramItem = ({ children }: { children?: ReactNode }) => {
-  return <li className="">{children}</li>;
+  return (
+    <li>
+      <Check className="w-5 h-5 inline-flex mr-2 text-belgoss-500" />
+      {children}
+    </li>
+  );
 };
+
+const Label = ({ children }: { children: ReactNode }) => (
+  <div className="font-semibold text-belgoss-500">{children}</div>
+);
 
 interface ContentProps {
   content: ProType | FormationType;
@@ -36,7 +46,7 @@ const Content = ({ content }: ContentProps) => {
       <Show when={Array.isArray(data.date)}>
         <Text className="text-sm text-center font-semibold w-full" value={data.date.join(" - ")} />
       </Show>
-      <Dialog className="[&_p]:text-sm h-fit min-h-min">
+      <Dialog className="[&_p]:text-sm h-fit min-h-min [&>div]:py-5">
         <section className="size-full px-3 flex flex-col justify-between text-left h-full">
           <div>
             <h4 className="w-full !text-bogoss-350 dark:!text-bogoss-200">{data.title} : </h4>
@@ -51,7 +61,7 @@ const Content = ({ content }: ContentProps) => {
             <Text
               value={
                 <div className="inline-flex">
-                  <div className="font-semibold text-belgoss-500">Durée</div> : {data.duration}
+                  <Label>Durée</Label> : {data.duration}
                 </div>
               }
             />
@@ -60,7 +70,7 @@ const Content = ({ content }: ContentProps) => {
               <Text
                 value={
                   <div className="inline-flex">
-                    <div className="font-semibold text-belgoss-500">Niveau</div> : {data.level}
+                    <Label>Niveau</Label> : {data.level}
                   </div>
                 }
               />
@@ -70,7 +80,7 @@ const Content = ({ content }: ContentProps) => {
               <Text
                 value={
                   <div className="inline-flex">
-                    <div className="font-semibold text-belgoss-500">Entreprise</div> : {data.company}
+                    <Label>Entreprise</Label> : {data.company}
                   </div>
                 }
               />
@@ -80,7 +90,7 @@ const Content = ({ content }: ContentProps) => {
               <Text
                 value={
                   <div className="inline-flex">
-                    <div className="font-semibold text-belgoss-500">Lieu</div> : {data.lieu}
+                    <Label>Lieu</Label> : {data.lieu}
                   </div>
                 }
               />
@@ -90,7 +100,7 @@ const Content = ({ content }: ContentProps) => {
               <Text
                 value={
                   <div className="inline-flex">
-                    <div className="font-semibold text-belgoss-500">Statut</div> : {data.status}
+                    <Label>Statut</Label> : {data.status}
                   </div>
                 }
               />
@@ -123,7 +133,7 @@ type CardXpProps = {
 
 const CardXp = ({ className, children, src, is }: CardXpProps) => {
   return (
-    <div className={`relative ${className}`}>
+    <div className={cn(`relative`, className)}>
       <CardWrapper is={is} className={"aspect-square w-[175px] overflow-hidden"}>
         {children}
       </CardWrapper>
