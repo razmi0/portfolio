@@ -9,7 +9,7 @@ import CardWrapper from "./CardWrapper";
 const CardGrid = ({ children, className }: { children: ReactNode; className?: string }) => {
   return (
     <>
-      <div className={cn("relative grid grid-cols-1 2xs:grid-cols-2 sm:grid-cols-3 gap-5", className)}>{children}</div>
+      <div className={cn("relative grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5", className)}>{children}</div>
     </>
   );
 };
