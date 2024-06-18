@@ -7,6 +7,7 @@ import HeadingTransition from "./components/HeadingTransition";
 import Hero from "./components/Hero";
 import { ModeToggle } from "./components/ModeToggle";
 import Presentation from "./components/Presentation";
+import { RisingStars } from "./components/RisingStars/RisingStars";
 import Skills from "./components/Skills/Skills";
 import { formation, projects, skills, xp } from "./components/Skills/data.json";
 import { useTheme } from "./components/theme-provider";
@@ -34,6 +35,7 @@ const App = () => {
       <header className="flex items-center justify-between flex-row-reverse absolute top-0 left-0 w-full mt-5">
         <ModeToggle />
       </header>
+      <RisingStars />
       <Hero id={titles.hero.selector} />
 
       <HeadingTransition h2="A propos de moi" small="présentation" className="mb-20" />
@@ -50,6 +52,7 @@ const App = () => {
         <Skills.Grid setter={setSkillsHovered} skills={skills.data} />
         <Skills.Article skills={skills.data} skillHovered={skillsHovered} />
       </Skills.Root>
+      <RisingStars />
 
       {/* Experience */}
       {/* Experience */}
@@ -84,6 +87,7 @@ const App = () => {
           })}
         </Experience.Root>
       </Flex>
+      <RisingStars />
 
       {/* PROJECT */}
       {/* PROJECT */}
@@ -117,6 +121,7 @@ const App = () => {
           </Project.Grid>
         </section>
       </Flex>
+      <RisingStars />
 
       {/* CONTACT */}
       {/* CONTACT */}
@@ -129,6 +134,7 @@ const App = () => {
       <Flex className="mb-44" id={titles.contact.selector}>
         <Contact />
       </Flex>
+      <RisingStars />
     </main>
   );
 };

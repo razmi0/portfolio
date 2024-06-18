@@ -568,6 +568,10 @@ video {
   border-width: 0;
 }
 
+.pointer-events-auto{
+  pointer-events: auto;
+}
+
 .absolute{
   position: absolute;
 }
@@ -1340,6 +1344,10 @@ video {
 
 .opacity-75{
   opacity: 0.75;
+}
+
+.opacity-100{
+  opacity: 1;
 }
 
 .outline{
