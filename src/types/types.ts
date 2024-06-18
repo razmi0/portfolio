@@ -16,6 +16,7 @@ export type ProjectType = {
   type: string[];
   href: string;
   src?: string[];
+  description: string;
 };
 
 interface Experience {

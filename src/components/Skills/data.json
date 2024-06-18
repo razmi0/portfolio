@@ -200,14 +200,16 @@
       "complexity": "medium",
       "type": ["web"],
       "href": "",
-      "src": ["/alad/alad-1.jpg", "/alad/alad-2.jpg", "/alad/alad-3.jpg", "/alad/alad-4.jpg", "/alad/alad-5.jpg"]
+      "src": ["/alad/alad-1.jpg", "/alad/alad-2.jpg", "/alad/alad-3.jpg", "/alad/alad-4.jpg", "/alad/alad-5.jpg"],
+      "description": ""
     },
     {
       "id": 2,
       "title": "PokeStable",
       "type": ["web"],
       "href": "https://pokestable.netlify.app/",
-      "src": ["/pokstable/pk-1.jpg", "/pokstable/pk-2.jpg"]
+      "src": ["/pokstable/pk-1.jpg", "/pokstable/pk-2.jpg"],
+      "description": ""
     },
     {
       "id": 3,
@@ -221,7 +223,8 @@
         "/mathilda-recipe/mathilda-liste-courses.jpg",
         "/mathilda-recipe/mathilda-recipe-modal-open.jpg",
         "/mathilda-recipe/mathilda-global.png"
-      ]
+      ],
+      "description": ""
     },
     {
       "id": 4,
@@ -239,56 +242,64 @@
         "/GOL/GOL-8.jpg",
         "/GOL/GOL-9.jpg",
         "/GOL/GOL-10.jpg"
-      ]
+      ],
+      "description": ""
     },
     {
       "id": 5,
       "title": "Data visualisation Spotify",
       "type": ["documentation"],
       "href": "https://www.easyzoom.com/albumaccess/0a2128cef68f4c89ac2ebd20ac535782",
-      "src": ["/graphs/graph-1.jpg", "/graphs/graph-2.jpg", "/graphs/graph-3.jpg", "/graphs/graph-4.jpg"]
+      "src": ["/graphs/graph-1.jpg", "/graphs/graph-2.jpg", "/graphs/graph-3.jpg", "/graphs/graph-4.jpg"],
+      "description": ""
     },
     {
       "id": 6,
       "title": "Translation Fun",
       "type": ["web"],
       "href": "https://translation-fun.netlify.app/",
-      "src": ["/translations/tr-1.jpg", "/translations/tr-2.jpg", "/translations/tr-3.jpg"]
+      "src": ["/translations/tr-1.jpg", "/translations/tr-2.jpg", "/translations/tr-3.jpg"],
+      "description": ""
     },
     {
       "id": 7,
       "title": "Smallworld helper",
       "type": ["web"],
       "href": "https://smallworldhelper.netlify.app/",
-      "src": ["/SM-helper/SM-1.jpg", "/SM-helper/SM-2.jpg", "/SM-helper/SM-3.jpg", "/SM-helper/SM-4.jpg"]
+      "src": ["/SM-helper/SM-1.jpg", "/SM-helper/SM-2.jpg", "/SM-helper/SM-3.jpg", "/SM-helper/SM-4.jpg"],
+      "description": ""
     },
     {
       "id": 8,
       "title": "RazCli",
       "type": ["outil"],
       "href": "https://github.com/razmi0/raz-cli-tools",
-      "src": ["/raz-cli/rc-1.jpg", "/raz-cli/rc-2.jpg"]
+      "src": ["/raz-cli/rc-1.jpg", "/raz-cli/rc-2.jpg"],
+      "description": ""
     },
     {
       "id": 9,
       "title": "Accessibility guidelines",
       "type": ["documentation"],
       "href": "https://accessibility-guidelines-cuesta-thoma.netlify.app/",
-      "src": ["/acc-guide/ag-1.jpg", "/acc-guide/ag-2.jpg", "/acc-guide/ag-3.jpg"]
+      "src": ["/acc-guide/ag-1.jpg", "/acc-guide/ag-2.jpg", "/acc-guide/ag-3.jpg"],
+      "description": ""
     },
     {
       "id": 10,
       "title": "Dossier de reflexion MDS",
       "type": ["documentation"],
       "href": "https://dossier-reflexion-mds-cuesta-thomas.netlify.app/",
-      "src": ["/doss-reflexion/dr-1.jpg", "/doss-reflexion/dr-2.jpg", "/doss-reflexion/dr-3.jpg"]
+      "src": ["/doss-reflexion/dr-1.jpg", "/doss-reflexion/dr-2.jpg", "/doss-reflexion/dr-3.jpg"],
+      "description": ""
     },
     {
       "id": 11,
       "title": "My Github profile",
       "type": ["documentation"],
       "href": "https://github.com/razmi0",
-      "src": ["/github/g-1.jpg", "/github/g-2.jpg", "/github/g-3.jpg"]
+      "src": ["/github/g-1.jpg", "/github/g-2.jpg", "/github/g-3.jpg"],
+      "description": ""
     }
   ]
 }
