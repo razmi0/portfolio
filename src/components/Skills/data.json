@@ -250,7 +250,7 @@
     },
     {
       "id": 6,
-      "title": "Tranlation Fun",
+      "title": "Translation Fun",
       "type": ["web"],
       "href": "https://translation-fun.netlify.app/",
       "src": ["/translations/tr-1.jpg", "/translations/tr-2.jpg", "/translations/tr-3.jpg"]
