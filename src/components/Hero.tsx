@@ -11,9 +11,11 @@ const Hero = ({ ...rest }: HTMLAttributes<HTMLDivElement>) => {
         <h1 className="text-3xl !text-belgoss-500">I'm Thomas</h1>
         <h2 className="text-lg mb-4">I'm web developer</h2>
         <div className="flex flex-wrap items-center justify-center gap-4">
-          <Button variant="solid" className="whitespace-nowrap">
-            Telecharger mon CV
-          </Button>
+          <a href="" download={"cv_thomas_cuesta"}>
+            <Button variant="solid" className="whitespace-nowrap">
+              Telecharger mon CV
+            </Button>
+          </a>
           <a href="#presentation">
             <Button variant="outline" className="whitespace-nowrap">
               En savoir plus

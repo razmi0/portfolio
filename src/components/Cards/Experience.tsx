@@ -27,7 +27,7 @@ const ProgramItem = ({ children }: { children?: ReactNode }) => {
 };
 
 const Label = ({ children }: { children: ReactNode }) => (
-  <div className="font-semibold text-belgoss-500">{children}</div>
+  <div className="font-semibold text-bogoss-700 dark:text-bogoss-200">{children}</div>
 );
 
 interface ContentProps {

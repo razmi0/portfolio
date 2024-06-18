@@ -45,7 +45,7 @@ const App = () => {
       <HeadingTransition
         h2="Mes compétences"
         small="skills"
-        className="my-20 [&_h2]:text-4xl sm:[&_h2]:text-5xl"></HeadingTransition>
+        className="my-20 mt-44 [&_h2]:text-4xl sm:[&_h2]:text-5xl"></HeadingTransition>
       <Skills.Root id={titles.skills.selector}>
         <Skills.Grid setter={setSkillsHovered} skills={skills.data} />
         <Skills.Article skills={skills.data} skillHovered={skillsHovered} />
@@ -56,7 +56,7 @@ const App = () => {
       {/* Experience */}
       {/* Experience */}
 
-      <HeadingTransition h2="Mes expériences" small="mon parcours" className="my-20 mt-48" />
+      <HeadingTransition h2="Mes expériences" small="mon parcours" className="my-20" />
       <Flex id={titles.xp.selector}>
         <NavSection>
           {values.xp.map((value) => {
@@ -91,7 +91,7 @@ const App = () => {
       {/* PROJECT */}
       {/* PROJECT */}
 
-      <HeadingTransition h2="Mes projets" small="portfolio" className="my-20" />
+      <HeadingTransition h2="Mes projets" small="portfolio" className="mb-20 mt-44" />
 
       <Flex id={titles.projects.selector}>
         <NavSection>
