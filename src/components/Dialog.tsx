@@ -1,27 +1,44 @@
 import { cn } from "@/lib/utils";
 import { ArrowBigRight, SquareX } from "lucide-react";
-import { useRef } from "react";
+import { useEffect, useRef, type ReactNode } from "react";
 import Show from "./ui/show";
 
 const Dialog = ({
   children,
   className,
   close,
+  externalTrigger = false,
+  open = false,
+  onClose,
 }: {
-  children: React.ReactNode;
+  children: ReactNode;
   className?: string;
-  close?: React.ReactNode;
+  close?: ReactNode;
+  externalTrigger?: ReactNode;
+  open?: boolean;
+  onClose?: () => void;
 }) => {
   const dialogRef = useRef<HTMLDialogElement>(null);
+
+  const handlers = {
+    open: () => (dialogRef.current as HTMLDialogElement).showModal(),
+    close: () => (dialogRef.current as HTMLDialogElement).close(),
+  };
+
+  useEffect(() => {
+    if (externalTrigger) {
+      open ? handlers.open() : handlers.close();
+    }
+  }, [open]);
+
   return (
     <>
-      <button
-        type="button"
-        onClick={() => dialogRef.current?.showModal()}
-        className="flex items-center justify-center gap-1 text-sm group">
-        <p className="text-center w-full text-[15px] font-medium">Voir plus</p>
-        <ArrowBigRight size={24} className="group-hover:translate-x-2 transition-transform translate-y-[2px]" />
-      </button>
+      {!externalTrigger && (
+        <button type="button" onClick={handlers.open} className="flex items-center justify-center gap-1 text-sm group">
+          <p className="text-center w-full text-[15px] font-medium">Voir plus</p>
+          <ArrowBigRight size={24} className="group-hover:translate-x-2 transition-transform translate-y-[2px]" />
+        </button>
+      )}
       <dialog
         ref={dialogRef}
         className={cn(
@@ -32,7 +49,12 @@ const Dialog = ({
           <>
             {children}
             <Show when={!close} fallback={close}>
-              <Close close={() => dialogRef.current?.close()} />
+              <Close
+                close={() => {
+                  handlers.close();
+                  onClose && onClose();
+                }}
+              />
             </Show>
           </>
         </div>

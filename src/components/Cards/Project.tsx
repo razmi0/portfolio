@@ -1,7 +1,7 @@
 import useImageGrid from "@/hooks/useImageGrid";
 import { cn } from "@/lib/utils";
 import type { ProjectType } from "@/types/types";
-import type { ReactNode } from "react";
+import { useState, type ReactNode } from "react";
 import Dialog from "../Dialog";
 import CardWrapper from "./CardWrapper";
 
@@ -20,17 +20,28 @@ type CardProjectProps = {
 };
 
 const Card = ({ content, className, children }: CardProjectProps) => {
+  const [dialogOpen, setDialogOpen] = useState(false);
+
+  const openDialog = () => setDialogOpen(true);
+  const closeDialog = () => setDialogOpen(false);
+
   const { title, href, id } = content;
   return (
     <>
-      <CardWrapper className={cn(className, "p-2 max-h-[450px] h-fit aspect-auto")} is={`project-${id}`} glassy={false}>
-        {content.src && <ImageGrid srcs={content.src} projectName={title} />}
+      <CardWrapper className={cn(className, "p-3 max-h-[450px] h-fit aspect-auto")} is={`project-${id}`} glassy={false}>
+        {content.src && (
+          <button onClick={openDialog}>
+            <ImageGrid srcs={content.src} projectName={title} />
+          </button>
+        )}
         <div className="transition-all flex flex-col items-center justify-around h-full">
           <h4 className="text-center w-full">{title}</h4>
           <a href={href} className="text-sm w-full text-center hover:underline dark:text-bogoss-200 text-bogoss-700">
             Voir le projet en ligne
           </a>
-          <Dialog className="select-none">{children}</Dialog>
+          <Dialog externalTrigger open={dialogOpen} onClose={closeDialog} className="select-none">
+            {children}
+          </Dialog>
         </div>
       </CardWrapper>
     </>
