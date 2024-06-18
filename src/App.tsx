@@ -94,7 +94,7 @@ const App = () => {
       <HeadingTransition h2="Mes projets" small="portfolio" className="my-20" />
 
       <Flex id={titles.projects.selector}>
-        <NavSection className={"flex-wrap gap-5 sm:gap-12"}>
+        <NavSection>
           {values.projects.map((value) => {
             const handler = () => handleFilterChange("projects", value);
             return (
@@ -148,6 +148,7 @@ const Flex = ({
 );
 
 const NavSection = ({ children, className }: { children: React.ReactNode; className?: string }) => (
-  <section className={cn(`flex mb-5 justify-start gap-12`, className)}>{children}</section>
+  <section className={cn(`flex mb-5 justify-start flex-wrap gap-5 sm:gap-12`, className)}>{children}</section>
 );
+
 export default App;
