@@ -24,8 +24,12 @@ const Carousel = ({ content }: { content: ProjectType }) => {
           (content.src as string[]).map((path, i) => {
             const hidden = i === activeImage ? "" : "hidden";
             return (
-              <div className={`grid place-content-center -z-10 ${hidden}`} key={path}>
+              <div className={`relative grid place-content-center -z-10 ${hidden}`} key={path}>
                 <img src={path} alt={content.title} key={path} className="object-cover place-self-center" />
+                <div className="absolute bottom-0 right-0 translate-y-full text-sm inline-flex items-center gap-2">
+                  <p className="font-semibold">{activeImage}</p>
+                  <p>/ {imgSize}</p>
+                </div>
               </div>
             );
           })}
