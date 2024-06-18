@@ -10,9 +10,11 @@ type HeadingTransitionProps = {
 
 const HeadingTransition = ({ h2, small, className, h2Class, children, ...rest }: HeadingTransitionProps) => {
   return (
-    <div {...rest} className={cn("h-[10vh] w-full text-center my-0 space-y-2", className)}>
+    <div
+      {...rest}
+      className={cn("h-[10vh] w-full text-center my-0 space-y-2 [&_h2]:text-4xl sm:[&_h2]:text-5xl", className)}>
       <small className="font-bold text-[15px] text-belgoss-500">{small}</small>
-      <h2 className={cn("text-5xl uppercase", h2Class)}>{h2}</h2>
+      <h2 className={cn("uppercase", h2Class)}>{h2}</h2>
       {children}
     </div>
   );
