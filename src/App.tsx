@@ -124,14 +124,10 @@ const App = () => {
       {/* CONTACT */}
       {/* CONTACT */}
 
-      <HeadingTransition h2="Contactez-moi" small="me joindre" className="my-44" />
+      <HeadingTransition h2="Contactez-moi" small="me joindre" className="my-44 h-[5vh]" />
 
       <Flex className="mb-44" id={titles.contact.selector}>
         <Contact />
-      </Flex>
-
-      <Flex>
-        <div className="h-screen"></div>
       </Flex>
     </main>
   );

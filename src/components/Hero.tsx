@@ -14,9 +14,11 @@ const Hero = ({ ...rest }: HTMLAttributes<HTMLDivElement>) => {
           <Button variant="solid" className="whitespace-nowrap">
             Telecharger mon CV
           </Button>
-          <Button variant="outline" className="whitespace-nowrap">
-            En savoir plus
-          </Button>
+          <a href="#presentation">
+            <Button variant="outline" className="whitespace-nowrap">
+              En savoir plus
+            </Button>
+          </a>
         </div>
       </div>
       <div className="relative w-full grid place-content-center">

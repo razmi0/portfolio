@@ -638,14 +638,14 @@ video {
   margin-bottom: 0.75rem;
 }
 
-.my-44{
-  margin-top: 11rem;
-  margin-bottom: 11rem;
-}
-
 .my-5{
   margin-top: 1.25rem;
   margin-bottom: 1.25rem;
+}
+
+.my-44{
+  margin-top: 11rem;
+  margin-bottom: 11rem;
 }
 
 .mb-10{
@@ -758,6 +758,10 @@ video {
   height: 300px;
 }
 
+.h-\[5vh\]{
+  height: 5vh;
+}
+
 .h-\[95vh\]{
   height: 95vh;
 }
@@ -769,10 +773,6 @@ video {
 
 .h-full{
   height: 100%;
-}
-
-.h-screen{
-  height: 100vh;
 }
 
 .max-h-\[150px\]{
