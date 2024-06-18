@@ -943,6 +943,10 @@ video {
   place-items: center;
 }
 
+.items-start{
+  align-items: flex-start;
+}
+
 .items-center{
   align-items: center;
 }
@@ -1201,6 +1205,11 @@ video {
   padding-bottom: 16px;
 }
 
+.py-2{
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
 .pb-4{
   padding-bottom: 1rem;
 }
@@ -1316,6 +1325,11 @@ video {
   color: rgb(239 68 68 / var(--tw-text-opacity));
 }
 
+.text-bogoss-350{
+  --tw-text-opacity: 1;
+  color: rgb(43 43 130 / var(--tw-text-opacity));
+}
+
 .opacity-75{
   opacity: 0.75;
 }
@@ -1367,6 +1381,12 @@ video {
 
 .transition-transform{
   transition-property: transform;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+.transition-colors{
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
 }
@@ -1983,6 +2003,12 @@ textarea {
   text-decoration-line: underline;
 }
 
+.hover\:ring-1:hover{
+  --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
+  --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color);
+  box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
+}
+
 .hover\:ring-belgoss-500:hover{
   --tw-ring-opacity: 1;
   --tw-ring-color: rgb(255 103 0 / var(--tw-ring-opacity));
@@ -2078,6 +2104,11 @@ textarea {
 .dark\:text-bogoss-700:is(.dark *){
   --tw-text-opacity: 1;
   color: rgb(14 12 37 / var(--tw-text-opacity));
+}
+
+.dark\:text-bogoss-300:is(.dark *){
+  --tw-text-opacity: 1;
+  color: rgb(118 112 230 / var(--tw-text-opacity));
 }
 
 .dark\:ring-belgoss-500:is(.dark *){
@@ -2207,6 +2238,11 @@ textarea {
   }
 }
 
+.hover\:\[\&\>\*\]\:text-belgoss-500>*:hover{
+  --tw-text-opacity: 1;
+  color: rgb(255 103 0 / var(--tw-text-opacity));
+}
+
 .\[\&\>h2\]\:text-bogoss-700>h2{
   --tw-text-opacity: 1;
   color: rgb(14 12 37 / var(--tw-text-opacity));
@@ -2229,6 +2265,11 @@ textarea {
 .\[\&\>h4\]\:text-bogoss-200>h4{
   --tw-text-opacity: 1;
   color: rgb(242 241 255 / var(--tw-text-opacity));
+}
+
+.\[\&\>h4\]\:text-belgoss-500>h4{
+  --tw-text-opacity: 1;
+  color: rgb(255 103 0 / var(--tw-text-opacity));
 }
 
 .\[\&\>li\]\:grid>li{

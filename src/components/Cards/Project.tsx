@@ -1,6 +1,7 @@
 import useImageGrid from "@/hooks/useImageGrid";
 import { cn } from "@/lib/utils";
 import type { ProjectType } from "@/types/types";
+import { ImagePlay } from "lucide-react";
 import { useState, type ReactNode } from "react";
 import Dialog from "../Dialog";
 import CardWrapper from "./CardWrapper";
@@ -34,15 +35,22 @@ const Card = ({ content, className, children }: CardProjectProps) => {
             <ImageGrid srcs={content.src} projectName={title} />
           </button>
         )}
-        <div className="transition-all flex flex-col items-center justify-around h-full">
-          <h4 className="text-center w-full">{title}</h4>
-          <a href={href} className="text-sm w-full text-center hover:underline dark:text-bogoss-200 text-bogoss-700">
-            Voir le projet en ligne
-          </a>
-          <Dialog externalTrigger open={dialogOpen} onClose={closeDialog} className="select-none">
-            {children}
-          </Dialog>
-        </div>
+        <section className="flex justify-between items-center size-full">
+          <div className="flex flex-col items-start text-left py-2 [&>h4]:text-belgoss-500 ">
+            <h4 className="w-full text-lg">{title}</h4>
+            <a href={href} className="text-sm w-full hover:underline dark:text-bogoss-200 text-bogoss-700">
+              Voir le projet en ligne
+            </a>
+            <Dialog externalTrigger open={dialogOpen} onClose={closeDialog} className="select-none">
+              {children}
+            </Dialog>
+          </div>
+          {content.src && (
+            <button onClick={openDialog} className="hover:[&>*]:text-belgoss-500">
+              <ImagePlay size={36} className="dark:text-bogoss-200 text-bogoss-700 transition-colors" />
+            </button>
+          )}
+        </section>
       </CardWrapper>
     </>
   );
