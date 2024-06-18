@@ -1,3 +1,4 @@
+import useImageGrid from "@/hooks/useImageGrid";
 import { cn } from "@/lib/utils";
 import type { ProjectType } from "@/types/types";
 import type { ReactNode } from "react";
@@ -7,23 +8,23 @@ import CardWrapper from "./CardWrapper";
 const CardGrid = ({ children, className }: { children: ReactNode; className?: string }) => {
   return (
     <>
-      <div className={cn("relative grid grid-cols-3 gap-5", className)}>{children}</div>
+      <div className={cn("relative grid grid-cols-1 2xs:grid-cols-2 sm:grid-cols-3 gap-5", className)}>{children}</div>
     </>
   );
 };
 
-type ProjectProps = {
+type CardProjectProps = {
   content: ProjectType;
   className?: string;
   children: ReactNode;
 };
 
-const Card = ({ content, className, children }: ProjectProps) => {
+const Card = ({ content, className, children }: CardProjectProps) => {
   const { title, href, id } = content;
-
   return (
     <>
-      <CardWrapper className={className + " p-2 w-[160px] h-[140px] hover:scale-105"} is={`project-${id}`}>
+      <CardWrapper className={cn(className, "p-2 max-h-[450px] h-fit aspect-auto")} is={`project-${id}`} glassy={false}>
+        {content.src && <ImageGrid srcs={content.src} projectName={title} />}
         <div className="transition-all flex flex-col items-center justify-around h-full">
           <h4 className="text-center w-full">{title}</h4>
           <a href={href} className="text-sm w-full text-center hover:underline dark:text-bogoss-200 text-bogoss-700">
@@ -33,6 +34,31 @@ const Card = ({ content, className, children }: ProjectProps) => {
         </div>
       </CardWrapper>
     </>
+  );
+};
+
+type ImageGridProps = {
+  srcs: string[];
+  alts?: string[];
+  projectName: string;
+};
+
+const ImageGrid = ({ srcs, alts, projectName }: ImageGridProps) => {
+  const { images, layout } = useImageGrid(srcs.length, srcs);
+  return (
+    <article className={cn("grid grid-cols-2 grid-rows-2 max-w-[300px] h-[300px] rounded-xl overflow-hidden", layout)}>
+      {images.map((src, i) => {
+        return (
+          <figure className={"anim-project-card"} key={src}>
+            <img
+              src={src}
+              alt={alts?.[i] || "screenshot of an highlighted piece of this project named " + projectName.toLowerCase()}
+              className={cn("object-cover size-full object-center")}
+            />
+          </figure>
+        );
+      })}
+    </article>
   );
 };
 
