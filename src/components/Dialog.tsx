@@ -20,21 +20,19 @@ const Dialog = ({
 }) => {
   const dialogRef = useRef<HTMLDialogElement>(null);
 
-  const handlers = {
-    open: () => (dialogRef.current as HTMLDialogElement).showModal(),
-    close: () => (dialogRef.current as HTMLDialogElement).close(),
-  };
+  const openModal = () => (dialogRef.current as HTMLDialogElement).showModal();
+  const closeModal = () => (dialogRef.current as HTMLDialogElement).close();
 
   useEffect(() => {
     if (externalTrigger) {
-      open ? handlers.open() : handlers.close();
+      open ? openModal() : closeModal();
     }
   }, [open]);
 
   return (
     <>
       {!externalTrigger && (
-        <button type="button" onClick={handlers.open} className="flex items-center justify-center gap-1 text-sm group">
+        <button type="button" onClick={openModal} className="flex items-center justify-center gap-1 text-sm group">
           <p className="text-center w-full text-[15px] font-medium">Voir plus</p>
           <ArrowBigRight size={24} className="group-hover:translate-x-2 transition-transform translate-y-[2px]" />
         </button>
@@ -51,7 +49,7 @@ const Dialog = ({
             <Show when={!close} fallback={close}>
               <Close
                 close={() => {
-                  handlers.close();
+                  closeModal();
                   onClose && onClose();
                 }}
               />

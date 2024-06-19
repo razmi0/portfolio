@@ -1,21 +1,22 @@
 import { ProjectType } from "@/types/types";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 
 const Carousel = ({ content }: { content: ProjectType }) => {
   const [activeImage, setActiveImage] = useState<number>(0);
 
   const imgSize = content.src?.length || 0;
 
-  const handleNextImage = () => {
+  const handleNextImage = useCallback(() => {
     const newActiveImage = (activeImage + 1) % imgSize;
     setActiveImage(newActiveImage);
-  };
+  }, [activeImage, imgSize]);
 
-  const handlePrevImage = () => {
+  const handlePrevImage = useCallback(() => {
     const newActiveImage = (activeImage - 1 + imgSize) % imgSize;
     setActiveImage(newActiveImage);
-  };
+  }, [activeImage, imgSize]);
+
   return (
     <div className={"flex flex-col items-center justify-center gap-5 w-full"} key={content.id}>
       <figure className="relative z-0 flex flex-col gap-3 justify-between [&>h3]:text-belgoss-500">
@@ -35,14 +36,20 @@ const Carousel = ({ content }: { content: ProjectType }) => {
           })}
       </figure>
 
-      <div>
-        <button onClick={handlePrevImage}>
-          <ChevronLeft size={38} className="hover:text-belgoss-500" />
-        </button>
-        <button onClick={handleNextImage}>
-          <ChevronRight size={38} className="hover:text-belgoss-500" />
-        </button>
-      </div>
+      <ButtonsCarousel prev={handlePrevImage} next={handleNextImage} />
+    </div>
+  );
+};
+
+const ButtonsCarousel = ({ prev, next }: { prev: () => void; next: () => void }) => {
+  return (
+    <div>
+      <button onClick={prev}>
+        <ChevronLeft size={38} className="hover:text-belgoss-500" />
+      </button>
+      <button onClick={next}>
+        <ChevronRight size={38} className="hover:text-belgoss-500" />
+      </button>
     </div>
   );
 };

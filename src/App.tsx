@@ -9,12 +9,13 @@ import { ModeToggle } from "./components/ModeToggle";
 import Presentation from "./components/Presentation";
 import { RisingStars } from "./components/RisingStars/RisingStars";
 import Skills from "./components/Skills/Skills";
-import { formation, projects, skills, xp } from "./components/Skills/data.json";
 import { useTheme } from "./components/theme-provider";
 import { NavButton } from "./components/ui/button";
+import { formation, projects, skills, xp } from "./data.json";
 import useFilters from "./hooks/useFilter";
 import useTitle from "./hooks/useTitle";
 import { cn, uppercase } from "./lib/utils";
+
 const initStates = {
   skills: Array(skills.data.length)
     .fill(false)
