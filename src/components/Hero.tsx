@@ -2,7 +2,6 @@ import { GithubIcon, LinkedinIcon } from "lucide-react";
 import type { HTMLAttributes } from "react";
 import VerticalText from "./VerticalText";
 import { Button } from "./ui/button";
-import Image from "./Image";
 
 const Hero = ({ ...rest }: HTMLAttributes<HTMLDivElement>) => {
   return (
@@ -37,10 +36,11 @@ const Hero = ({ ...rest }: HTMLAttributes<HTMLDivElement>) => {
             <GithubIcon />
           </a>
         </div>
-        <Image
+        <img
           src="/pp_large.webp"
           className="h-[250px] sm:h-[300px] brightness-95 contrast-125 aspect-square object-cover"
           alt="hero picture of Thomas portfolio looking at the right side and smiling"
+          loading="eager"
         />
         <VerticalText text="Présentation" className="hidden sm:block" />
       </div>
