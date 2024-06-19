@@ -3,6 +3,7 @@ import type { FormationType, ProType } from "@/types/types";
 import { Check } from "lucide-react";
 import { type HTMLAttributes, type ReactNode } from "react";
 import Dialog from "../Dialog";
+import Image from "../Image";
 import Tag, { type ValidTags } from "../Tag";
 import Show from "../ui/show";
 import CardWrapper from "./CardWrapper";
@@ -116,10 +117,10 @@ const Content = ({ content }: ContentProps) => {
   );
 };
 
-const Figure = ({ src, ...props }: { src: string } & HTMLAttributes<HTMLImageElement>) => {
+const Figure = ({ src }: { src: string }) => {
   return (
     <figure className="absolute -z-10 inset-0 rounded-[16px] size-[99%] overflow-hidden opacity-75">
-      <img {...props} src={src} className="anim-xp-img" />
+      <Image src={src} className="anim-xp-img" role="presentation" alt="card background" />
     </figure>
   );
 };

@@ -1,5 +1,6 @@
 import { ChefHat, PocketKnife, Rocket } from "lucide-react";
 import type { HTMLAttributes, ReactNode } from "react";
+import Image from "./Image";
 
 const ListItem = ({ children }: { children: ReactNode }) => {
   return <li className="bg-gradient-to-t from-bogoss-500 to-bogoss-400 max-w-52">{children}</li>;
@@ -10,7 +11,7 @@ const Presentation = ({ ...rest }: HTMLAttributes<HTMLDivElement>) => {
     <section
       {...rest}
       className="w-full text-center xl:text-left flex flex-col xl:flex-row gap-12 items-center justify-center">
-      <img
+      <Image
         src="/pp_large.webp"
         alt="profile picture"
         className="rounded-full hover:scale-95 transition-all brightness-90 contrast-125 aspect-square h-[300px] sm:h-[500px] mx-auto object-cover my-10"

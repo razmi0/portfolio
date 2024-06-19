@@ -5,6 +5,7 @@ import { ImagePlay } from "lucide-react";
 import { useState, type ReactNode } from "react";
 import Dialog from "../Dialog";
 import CardWrapper from "./CardWrapper";
+import Image from "../Image";
 
 const CardGrid = ({ children, className }: { children: ReactNode; className?: string }) => {
   return (
@@ -69,7 +70,7 @@ const ImageGrid = ({ srcs, alts, projectName }: ImageGridProps) => {
       {images.map((src, i) => {
         return (
           <figure className={"anim-project-card"} key={src}>
-            <img
+            <Image
               src={src}
               alt={alts?.[i] || "screenshot of an highlighted piece of this project named " + projectName.toLowerCase()}
               className={cn("object-cover size-full object-center")}
