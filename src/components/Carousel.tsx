@@ -1,6 +1,6 @@
 import { ProjectType } from "@/types/types";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { useCallback, useState } from "react";
+import { Suspense, useCallback, useState } from "react";
 import Image from "./Image";
 
 const Carousel = ({ content }: { content: ProjectType }) => {
@@ -27,9 +27,11 @@ const Carousel = ({ content }: { content: ProjectType }) => {
             const hidden = i === activeImage ? "" : "hidden";
             return (
               <div className={`relative grid place-content-center -z-10 ${hidden}`} key={path}>
-                <Image src={path} alt={content.title} key={path} className="object-cover place-self-center" />
+                <Suspense fallback={<div>Loading...</div>}>
+                  <Image src={path} alt={content.title} key={path} className="object-cover place-self-center" />
+                </Suspense>
                 <div className="absolute bottom-0 right-0 translate-y-full text-sm inline-flex items-center gap-2">
-                  <p className="font-semibold">{activeImage}</p>
+                  <p className="font-semibold">{activeImage + 1}</p>
                   <p>/ {imgSize}</p>
                 </div>
               </div>
