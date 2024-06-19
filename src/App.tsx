@@ -80,7 +80,7 @@ const App = () => {
               <Experience.Card
                 key={content.id}
                 className={filters.xp === "tous" || content.type.includes(filters.xp) ? "" : "hidden"}
-                src={`cards-bg/${folder}${i + 1}.png`}
+                src={`cards-bg/${folder}${i + 1}.webp`}
                 is={is}>
                 <Experience.Content content={content} />
               </Experience.Card>

@@ -11,7 +11,7 @@ const Presentation = ({ ...rest }: HTMLAttributes<HTMLDivElement>) => {
       {...rest}
       className="w-full text-center xl:text-left flex flex-col xl:flex-row gap-12 items-center justify-center">
       <img
-        src="/pp_large.png"
+        src="/pp_large.webp"
         alt="profile picture"
         className="rounded-full hover:scale-95 transition-all brightness-90 contrast-125 aspect-square h-[300px] sm:h-[500px] mx-auto object-cover my-10"
       />

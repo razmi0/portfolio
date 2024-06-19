@@ -37,7 +37,7 @@ const Hero = ({ ...rest }: HTMLAttributes<HTMLDivElement>) => {
           </a>
         </div>
         <img
-          src="/pp_large.png"
+          src="/pp_large.webp"
           className="h-[250px] sm:h-[300px] brightness-95 contrast-125 aspect-square object-cover"
           alt="hero picture of Thomas portfolio looking at the right side and smiling"
         />
