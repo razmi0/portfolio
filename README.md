@@ -11,22 +11,3 @@ Je suis à la recherche d'une alternance pour la rentrée 2024, avec l'enthousia
 MES PROJETS
 
 Je suis attentif à l'accessibilité, c'est pourquoi j'ai mis en place une charte dédiée afin d'adopter une approche plus méthodique et professionnelle dans mon travail.
-
-# TODO
-
-- [x] voir le projet
-- [x] vignette et adjectif "a propos de moi" 10 min
-- [x] section contact 2h
-- [ ] autre photo de moi
-- [x] fix hover reveal project carousel 10 min
-- [ ] check general de tous les details 30 min
-
-<hr />
-
-- [ ] template mail
-- [ ] collection mail
-- [ ] envoie mails
-
-<hr />
-
-- [ ] ajouter description des projets 2h
