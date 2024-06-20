@@ -1,103 +1,27 @@
+import useForm from "@/hooks/useForm";
 import { cn } from "@/lib/utils";
 import { Check, TriangleAlert } from "lucide-react";
-import { ChangeEvent, FormEvent, ReactNode, useState } from "react";
+import { ChangeEvent, FormEvent, ReactNode } from "react";
 import { Button } from "./ui/button";
 import Loader from "./ui/loader";
 import Show from "./ui/show";
 
-const apiPath = import.meta.env.DEV
-  ? "http://localhost:3000/api/contact"
-  : "https://portfolio-api-mu-five.vercel.app/api/contact";
-
-type ContactFormType = {
-  tel: string;
-  email: string;
-  msg: string;
-  hp?: string;
+const slidePlaceholder = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  e.currentTarget.value.length > 0 ? e.currentTarget.classList.add("slide") : e.currentTarget.classList.remove("slide");
 };
-
-const regexp = {
-  email: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-  tel: /^\d{10}$/,
-};
-
-const hasLength = (str: string) => str.length > 0;
-const isValidEmail = (email: string) => hasLength(email) && regexp.email.test(email);
-const isValidTel = (tel: string) => hasLength(tel) && regexp.tel.test(tel);
-const userIsReachable = (tel: string, email: string) => {
-  if (isValidEmail(email) || isValidTel(tel)) return true;
-};
-
-type ErrorsType = {
-  email: boolean | string;
-  tel: boolean | string;
-  msg: boolean | string;
-  reachable: boolean | string;
-};
-
-const errorsInit = {
-  email: false,
-  tel: false,
-  msg: false,
-  reachable: false,
-};
-
-type FormStatusType = "idle" | "loading" | "success" | "error";
 
 const Contact = () => {
-  const [errors, setErrors] = useState<ErrorsType>(errorsInit);
-  const [formStatus, setFormStatus] = useState<FormStatusType>("idle");
+  const { validate, send, reset, errors, formStatus } = useForm();
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setFormStatus("loading");
-    const form = e.currentTarget;
-    const formData = new FormData(form);
-    const data = Object.fromEntries(formData.entries()) as ContactFormType;
-
-    if (data.hp) {
-      window.location.href = "https://www.google.com";
-      return;
-    }
-
-    const reachability = userIsReachable(data.tel, data.email);
-    console.log("reachability", reachability);
-
-    const newErrors = {
-      email: !isValidEmail(data.email) && "Email invalide",
-      tel: !isValidTel(data.tel) && "Telephone invalide",
-      msg: !hasLength(data.msg) && "Message requis",
-      reachable: !reachability && "Au moins un moyen de contact valide est requis",
-    };
-
-    setErrors(newErrors);
-
-    if (Object.values(newErrors).some((err) => typeof err === "string")) {
-      setFormStatus("error");
-      return;
-    }
-
-    try {
-      console.log("sending");
-      const fetchOptions = {
-        method: "POST",
-        body: JSON.stringify({ email: data.email, tel: data.tel, msg: data.msg }),
-      };
-      const res = await fetch(apiPath, fetchOptions);
-      const { success } = (await res.json()) as { success: boolean; authorized: boolean };
-      success && setFormStatus("success");
-    } catch (error) {
-      console.error(error);
-      setFormStatus("error");
-      return;
-    }
+    const { hasError, data } = validate(new FormData(e.currentTarget));
+    if (hasError) return;
+    await send(data);
   };
 
   const handleOnChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    if (formStatus !== "idle") {
-      setErrors({ ...errors, [e.target.name]: false });
-      setFormStatus("idle");
-    }
+    reset(e.target.name as "tel" | "email" | "msg");
     slidePlaceholder(e);
   };
 
@@ -149,10 +73,6 @@ const Contact = () => {
 };
 
 export default Contact;
-
-const slidePlaceholder = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-  e.currentTarget.value.length > 0 ? e.currentTarget.classList.add("slide") : e.currentTarget.classList.remove("slide");
-};
 
 const Form = ({ children, onSubmit }: { children: ReactNode; onSubmit: (e: FormEvent<HTMLFormElement>) => void }) => {
   return (
