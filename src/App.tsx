@@ -26,10 +26,13 @@ const initStates = {
 };
 
 const App = () => {
+  console.time("App");
   const [skillsHovered, setSkillsHovered] = useState<boolean[]>(initStates.skills);
   const { filters, handleFilterChange, values } = useFilters();
   const { titles } = useTitle();
   const { theme } = useTheme();
+
+  console.timeEnd("App");
 
   return (
     <main className="relative min-w-full h-full flex flex-col" style={{ viewTransitionName: "none" }}>
@@ -39,8 +42,13 @@ const App = () => {
       <RisingStars />
       <Hero id={titles.hero.selector} />
 
-      <HeadingTransition h2="A propos de moi" small="présentation" className="mb-20" />
-      <Presentation id={titles.presentation.selector} />
+      <HeadingTransition
+        h2="A propos de moi"
+        small="présentation"
+        className="mb-20"
+        id={titles.presentation.selector}
+      />
+      <Presentation />
       {/* SKILLS */}
       {/* SKILLS */}
       {/* SKILLS */}
@@ -48,8 +56,9 @@ const App = () => {
       <HeadingTransition
         h2="Mes compétences"
         small="skills"
-        className="my-20 mt-44 [&_h2]:text-4xl sm:[&_h2]:text-5xl"></HeadingTransition>
-      <Skills.Root id={titles.skills.selector}>
+        className="my-20 mt-44 [&_h2]:text-4xl sm:[&_h2]:text-5xl"
+        id={titles.skills.selector}></HeadingTransition>
+      <Skills.Root>
         <Skills.Grid setter={setSkillsHovered} skills={skills.data} />
         <Skills.Article skills={skills.data} skillHovered={skillsHovered} />
       </Skills.Root>
@@ -60,8 +69,8 @@ const App = () => {
       {/* Experience */}
       {/* Experience */}
 
-      <HeadingTransition h2="Mes expériences" small="mon parcours" className="my-20" />
-      <Flex id={titles.xp.selector}>
+      <HeadingTransition h2="Mes expériences" small="mon parcours" className="my-20" id={titles.xp.selector} />
+      <Flex>
         <NavSection>
           {values.xp.map((value) => {
             const handler = () => handleFilterChange("xp", value);
@@ -96,9 +105,9 @@ const App = () => {
       {/* PROJECT */}
       {/* PROJECT */}
 
-      <HeadingTransition h2="Mes projets" small="portfolio" className="mb-20 mt-44" />
+      <HeadingTransition h2="Mes projets" small="portfolio" className="mb-20 mt-44" id={titles.projects.selector} />
 
-      <Flex id={titles.projects.selector}>
+      <Flex>
         <NavSection>
           {values.projects.map((value) => {
             const handler = () => handleFilterChange("projects", value);
@@ -130,9 +139,9 @@ const App = () => {
       {/* CONTACT */}
       {/* CONTACT */}
 
-      <HeadingTransition h2="Contactez-moi" small="me joindre" className="my-44 h-[5vh]" />
+      <HeadingTransition h2="Contactez-moi" small="me joindre" className="my-44 h-[5vh]" id={titles.contact.selector} />
 
-      <Flex className="mb-44" id={titles.contact.selector}>
+      <Flex className="mb-44">
         <Contact />
       </Flex>
       <RisingStars />

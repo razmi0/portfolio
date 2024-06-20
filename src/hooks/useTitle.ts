@@ -20,7 +20,7 @@ const handleIntersection = (entries: IntersectionObserverEntry[], options: Handl
 const voidCb = () => {};
 const setupIntersectionObserver = (
   element: HTMLElement,
-  { threshold = 1, onIntersect = voidCb, onDisappear = voidCb }: SetupObserverProps
+  { threshold = 0.9, onIntersect = voidCb, onDisappear = voidCb }: SetupObserverProps
 ) => {
   const options = { onIntersect, onDisappear };
   const observer = new IntersectionObserver((entry) => handleIntersection(entry, options), {
@@ -34,6 +34,7 @@ const docTitle = document.querySelector("#title") as HTMLElement;
 
 const useTitle = () => {
   useEffect(() => {
+    console.time("useTitle effect");
     Object.values(titles).forEach((title) => {
       const element = document.querySelector(`#${title.selector}`) as HTMLElement;
       const options = {
@@ -44,6 +45,7 @@ const useTitle = () => {
       };
       setupIntersectionObserver(element, options);
     });
+    console.timeEnd("useTitle effect");
   }, []);
 
   return { titles };
