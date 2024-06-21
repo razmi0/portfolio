@@ -15,6 +15,7 @@ import { formation, projects, skills, xp } from "./data.json";
 import useFilters from "./hooks/useFilter";
 import useTitle from "./hooks/useTitle";
 import { cn, uppercase } from "./lib/utils";
+import useAgent from "./hooks/useAgent";
 
 const initStates = {
   skills: Array(skills.data.length)
@@ -26,13 +27,11 @@ const initStates = {
 };
 
 const App = () => {
-  console.time("App");
   const [skillsHovered, setSkillsHovered] = useState<boolean[]>(initStates.skills);
   const { filters, handleFilterChange, values } = useFilters();
   const { titles } = useTitle();
   const { theme } = useTheme();
-
-  console.timeEnd("App");
+  useAgent();
 
   return (
     <main className="relative min-w-full h-full flex flex-col" style={{ viewTransitionName: "none" }}>

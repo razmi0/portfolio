@@ -34,7 +34,6 @@ const docTitle = document.querySelector("#title") as HTMLElement;
 
 const useTitle = () => {
   useEffect(() => {
-    console.time("useTitle effect");
     Object.values(titles).forEach((title) => {
       const element = document.querySelector(`#${title.selector}`) as HTMLElement;
       const options = {
@@ -45,7 +44,6 @@ const useTitle = () => {
       };
       setupIntersectionObserver(element, options);
     });
-    console.timeEnd("useTitle effect");
   }, []);
 
   return { titles };

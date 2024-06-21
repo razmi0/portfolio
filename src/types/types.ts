@@ -50,3 +50,11 @@ export type HandleIntersectionOptions = {
   onIntersect: () => void;
   onDisappear: () => void;
 };
+
+export type UserAgentInfo = {
+  userAgent: string;
+  platform: string;
+  hardware: string;
+  locale: string;
+  connection: string;
+};
