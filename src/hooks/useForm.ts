@@ -88,6 +88,7 @@ const useForm = () => {
       const fetchOptions = {
         method: "POST",
         body: JSON.stringify({ email: data.email, tel: data.tel, msg: data.msg }),
+        signal: AbortSignal.timeout(7000),
       };
       const res = await simpleFetch<MinimalResponse>(apiPath, fetchOptions);
       res.success ? setFormStatus("success") : setFormStatus("error");

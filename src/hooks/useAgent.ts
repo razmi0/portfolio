@@ -18,6 +18,7 @@ const sendAgentData = async (data: UserAgentInfo) => {
   const fetchOptions = {
     method: "POST",
     body: JSON.stringify(data),
+    signal: AbortSignal.timeout(5000),
   };
   await simpleFetch<MinimalResponse>(apiPath, fetchOptions);
 };
