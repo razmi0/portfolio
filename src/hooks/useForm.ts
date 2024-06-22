@@ -1,3 +1,5 @@
+import { simpleFetch } from "@/lib/utils";
+import { MinimalResponse } from "@/types/types";
 import { useState } from "react";
 
 const apiPath = import.meta.env.DEV
@@ -87,9 +89,8 @@ const useForm = () => {
         method: "POST",
         body: JSON.stringify({ email: data.email, tel: data.tel, msg: data.msg }),
       };
-      const res = await fetch(apiPath, fetchOptions);
-      const { success } = (await res.json()) as { success: boolean; authorized: boolean };
-      success && setFormStatus("success");
+      const res = await simpleFetch<MinimalResponse>(apiPath, fetchOptions);
+      res.success ? setFormStatus("success") : setFormStatus("error");
     } catch (error) {
       console.error(error);
       setFormStatus("error");

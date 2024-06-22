@@ -58,3 +58,8 @@ export type UserAgentInfo = {
   locale: string;
   connection: string;
 };
+
+export type MinimalResponse = {
+  authorized: boolean;
+  success: boolean;
+};

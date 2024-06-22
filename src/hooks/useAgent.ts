@@ -1,4 +1,5 @@
-import { UserAgentInfo } from "@/types/types";
+import { simpleFetch } from "@/lib/utils";
+import { MinimalResponse, UserAgentInfo } from "@/types/types";
 import { useEffect, useState } from "react";
 
 const apiPath = import.meta.env.DEV
@@ -14,18 +15,11 @@ const userAgentInit: UserAgentInfo = {
 };
 
 const sendAgentData = async (data: UserAgentInfo) => {
-  try {
-    const fetchOptions = {
-      method: "POST",
-      body: JSON.stringify(data),
-    };
-    const res = await fetch(apiPath, fetchOptions);
-    if (res.ok) {
-      console.log("agentdata sent successfully");
-    }
-  } catch (err) {
-    console.error("agent error while sending data", err);
-  }
+  const fetchOptions = {
+    method: "POST",
+    body: JSON.stringify(data),
+  };
+  await simpleFetch<MinimalResponse>(apiPath, fetchOptions);
 };
 
 const isValuableAgentData = (data: UserAgentInfo) => {
