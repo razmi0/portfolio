@@ -20,3 +20,5 @@ export async function simpleFetch<ResponseType = any>(url: RequestInfo, options:
   if (!result.ok) throw new HTTPError(result);
   return (await result.json()) as ResponseType;
 }
+
+export const b64EncodeUnicode = (str: string) => btoa(encodeURIComponent(str));
