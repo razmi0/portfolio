@@ -118,8 +118,8 @@ const Login = () => {
                 // allowHeaders: ["Access-Control-Allow-Origin", "Authorization", "Access-Control-Allow-Credentials"],
                 headers: {
                   Authorization: `Bearer ${token}`,
-                  "Access-Control-Allow-Origin": "http://localhost:5173",
-                  "Access-Control-Allow-Credentials": "true",
+                  // "Access-Control-Allow-Origin": "http://localhost:5173",
+                  // "Access-Control-Allow-Credentials": "true",
                 },
               });
               console.log(res);
