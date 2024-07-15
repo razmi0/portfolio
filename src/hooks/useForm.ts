@@ -35,7 +35,7 @@ const errorsInit = {
   reachable: false,
 };
 
-type FormStatusType = "idle" | "loading" | "success" | "error";
+export type FormStatusType = "idle" | "loading" | "success" | "error";
 
 const useForm = () => {
   const [errors, setErrors] = useState<ErrorsType>(errorsInit);
