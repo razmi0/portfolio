@@ -26,9 +26,11 @@ const routerReducer = (state: RouterState, action: RouterAction) => {
 
 const routes = ["index", "login", "admin"] as readonly Routes[];
 const useRouter = () => {
+  // implement history url state manipulation and listenrs
   const [state, dispatch] = useReducer(routerReducer, { current: "index", previous: null });
 
   const setRoute = useCallback((route: Routes) => {
+    // history.pushState(null, "", `/${route}`);
     dispatch({ type: "SET_ROUTE", payload: route });
   }, []);
 
