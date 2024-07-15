@@ -36,6 +36,7 @@ const useTitle = () => {
   useEffect(() => {
     Object.values(titles).forEach((title) => {
       const element = document.querySelector(`#${title.selector}`) as HTMLElement;
+      if (!element) return;
       const options = {
         onIntersect: () => {
           docTitle.textContent = `ThomasDev -/- ${title.title}`;
