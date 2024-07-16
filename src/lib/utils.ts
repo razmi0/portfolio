@@ -1,3 +1,4 @@
+import { SimpleFetchError } from "@/types";
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 
@@ -10,14 +11,39 @@ export function uppercase(str: string) {
 }
 
 class HTTPError extends Error {
-  constructor(public response: Response) {
+  public response: Response;
+  constructor(response: Response) {
     super(`HTTP Error: ${response.status} ${response.statusText}`);
+    this.response = response;
   }
-}
 
-export async function simpleFetch<ResponseType = any>(url: RequestInfo, options: RequestInit = {}) {
+  getResponse = () => {
+    return this.response;
+  };
+
+  format = () => {
+    if (this.response.status === 401) {
+      return "Unauthorized";
+    } else if (this.response.status === 403) {
+      return "Forbidden";
+    }
+    return "An error occurred";
+  };
+}
+// export type SimpleFetchError = {
+//   error: true;
+//   message: string;
+// };
+export async function simpleFetch<ResponseType = any>(
+  url: RequestInfo,
+  options: RequestInit = {}
+): Promise<ResponseType | SimpleFetchError> {
   const result = await fetch(url, options);
-  if (!result.ok) throw new HTTPError(result);
+  if (!result.ok) {
+    const error = new HTTPError(result);
+    console.error("simpleFetch : ", new HTTPError(result));
+    return { error: true, message: error.format() };
+  }
   return (await result.json()) as ResponseType;
 }
 

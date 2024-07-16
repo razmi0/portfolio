@@ -35,7 +35,7 @@ const sendLoginData = async (data: LoginFormType) => {
 };
 
 const Login = () => {
-  const { isAuthenticated, signIn, signOut, authOptions } = useAuth();
+  const { /** isAuthenticated , **/ signIn, signOut, authOptions } = useAuth();
   const [errors, setErrors] = useState<ErrorLoginFormType>(errorinit);
   const [formStatus, setFormStatus] = useState<FormStatusType>("idle");
 
@@ -76,8 +76,12 @@ const Login = () => {
     setFormStatus("loading");
     const { hasError, data } = validate(new FormData(e.currentTarget));
     if (hasError) return;
-    setFormStatus("success");
-    signIn(() => sendLoginData(data));
+    const response = await signIn(() => sendLoginData(data));
+    if (typeof response === "boolean") {
+      response ? setFormStatus("success") : setFormStatus("error");
+    }
+    console.error(response);
+    setFormStatus("error");
   };
 
   const handleChange: FormEventHandler<HTMLInputElement> = (e) => {

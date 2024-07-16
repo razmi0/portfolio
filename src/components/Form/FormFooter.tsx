@@ -10,12 +10,27 @@ type FormFooterType = {
 };
 
 const FormFooter = ({ formStatus, successText, failText }: FormFooterType) => {
+  const colorAndText = () => {
+    switch (formStatus) {
+      case "success":
+        return { color: "green", text: successText };
+      case "error":
+        return { color: "red", text: failText };
+      case "loading":
+        return { color: "orange", text: "Envoi en cours.." };
+      default:
+        return { color: "", text: "" };
+    }
+  };
+
   const Status = () => {
-    const color = formStatus === "success" ? "green" : "red";
-    const text = formStatus === "success" ? successText : failText;
+    const { color, text } = colorAndText();
+
     return (
       <Show when={formStatus}>
-        <p className={`${color} gap-3 inline-flex justify-center slide-from-bottom slide-from-active`}>
+        <p
+          className={`${color} gap-3 inline-flex justify-center slide-from-bottom slide-from-active`}
+          style={{ color }}>
           <Check />
           {text}
         </p>

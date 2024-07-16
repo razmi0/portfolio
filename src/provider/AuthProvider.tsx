@@ -11,24 +11,22 @@ export const initAuthOptions = {
 };
 
 export const initContext = {
-  signIn: async () => {},
+  signIn: async () => false,
   signOut: () => {},
   isAuthenticated: false,
-  authOptions: initAuthOptions as AuthOptions & Partial<RequestInit>,
+  authOptions: initAuthOptions as AuthOptions,
   user: "",
   exp: 0,
 } as AuthData;
 
-const AuthContext = createContext<AuthData>(initContext);
+export const AuthContext = createContext<AuthData>(initContext);
 
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [authState, setAuthState] = useState<AuthData>(initContext);
 
   const setHeaders = useCallback(
-    (token: string): AuthOptions & Partial<RequestInit> => ({
-      // credentials: "include",
-      // method: "GET",
-      ...(initAuthOptions as AuthOptions & Partial<RequestInit>),
+    (token: string): AuthOptions => ({
+      ...(initAuthOptions as AuthOptions),
       headers: {
         Authorization: `Bearer ${token}`,
         "Access-Control-Allow-Credentials": true,
@@ -39,18 +37,25 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
   const signIn = useCallback(async (cb: SignInType) => {
     const response = await cb();
+
+    if ("error" in response) {
+      return response;
+    }
+
     console.log(response);
-    if (response.success) {
+    if (response.success && response.authorized && response.payload && response.token) {
       const newState = {
         ...authState,
         isAuthenticated: response.authorized,
-        user: response.payload.user,
-        exp: response.payload.exp,
+        user: response.payload.user as string,
+        exp: response.payload.exp as number,
         authOptions: setHeaders(response.token),
       };
       setAuthState(newState);
       localStorage.setItem("auth", JSON.stringify(newState));
+      return true;
     }
+    return false;
   }, []);
 
   const signOut = useCallback(() => {
