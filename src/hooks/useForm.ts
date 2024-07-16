@@ -1,10 +1,8 @@
 import { simpleFetch } from "@/lib/utils";
+import { apiPaths } from "@/services";
 import { MinimalResponse } from "@/types/types";
 import { useState } from "react";
 
-const apiPath = import.meta.env.DEV
-  ? "http://localhost:3000/api/contact"
-  : "https://portfolio-api-mu-five.vercel.app/api/contact";
 type ContactFormType = {
   tel: string;
   email: string;
@@ -90,7 +88,7 @@ const useForm = () => {
         body: JSON.stringify({ email: data.email, tel: data.tel, msg: data.msg }),
         signal: AbortSignal.timeout(7000),
       };
-      const res = await simpleFetch<MinimalResponse>(apiPath, fetchOptions);
+      const res = await simpleFetch<MinimalResponse>(apiPaths.contact, fetchOptions);
       res.success ? setFormStatus("success") : setFormStatus("error");
     } catch (error) {
       console.error(error);

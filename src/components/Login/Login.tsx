@@ -1,5 +1,6 @@
 import type { FormStatusType } from "@/hooks/useForm";
 import { b64EncodeUnicode, simpleFetch } from "@/lib/utils";
+import { apiPaths } from "@/services";
 import { MinimalResponse } from "@/types/types";
 import type { FormEvent, FormEventHandler } from "react";
 import { useState } from "react";
@@ -9,13 +10,6 @@ import InputField from "../Form/InputField";
 import TextError from "../Form/TextError";
 import Show from "../ui/show";
 
-const loginApiPath = import.meta.env.DEV
-  ? "http://localhost:3000/api/login"
-  : "https://portfolio-api-mu-five.vercel.app/api/login";
-
-const authPingApiPath = import.meta.env.DEV
-  ? "http://localhost:3000/api/auth"
-  : "https://portfolio-api-mu-five.vercel.app/api/auth";
 type LoginFormType = {
   username: string;
   password: string;
@@ -42,7 +36,7 @@ const sendLoginData = async (data: LoginFormType) => {
     body: JSON.stringify({ ...data, password: b64EncodeUnicode(data.password) }),
   };
   type ResponseLoginType = MinimalResponse & { payload: { user: string; exp: number }; token: string };
-  const response = await simpleFetch<ResponseLoginType>(loginApiPath, option);
+  const response = await simpleFetch<ResponseLoginType>(apiPaths.login, option);
   return response;
 };
 
@@ -110,7 +104,7 @@ const Login = () => {
         // "Access-Control-Allow-Credentials": "true",
       },
     };
-    const res = await simpleFetch(authPingApiPath, options);
+    const res = await simpleFetch(apiPaths.auth, options);
     console.log(res);
   };
 

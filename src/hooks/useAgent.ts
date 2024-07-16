@@ -1,10 +1,7 @@
 import { simpleFetch } from "@/lib/utils";
+import { apiPaths } from "@/services";
 import { MinimalResponse, UserAgentInfo } from "@/types/types";
 import { useEffect, useState } from "react";
-
-const apiPath = import.meta.env.DEV
-  ? "http://localhost:3000/api/agent"
-  : "https://portfolio-api-mu-five.vercel.app/api/agent";
 
 const userAgentInit: UserAgentInfo = {
   userAgent: "",
@@ -20,7 +17,7 @@ const sendAgentData = async (data: UserAgentInfo) => {
     body: JSON.stringify(data),
     signal: AbortSignal.timeout(5000),
   };
-  await simpleFetch<MinimalResponse>(apiPath, fetchOptions);
+  await simpleFetch<MinimalResponse>(apiPaths.agent, fetchOptions);
 };
 
 const isValuableAgentData = (data: UserAgentInfo) => {
