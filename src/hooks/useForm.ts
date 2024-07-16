@@ -88,8 +88,14 @@ const useForm = () => {
         body: JSON.stringify({ email: data.email, tel: data.tel, msg: data.msg }),
         signal: AbortSignal.timeout(7000),
       };
-      const res = await simpleFetch<MinimalResponse>(apiPaths.contact, fetchOptions);
-      res.success ? setFormStatus("success") : setFormStatus("error");
+      const response = await simpleFetch<MinimalResponse>(apiPaths.contact, fetchOptions);
+      if (typeof response === "boolean") {
+        response ? setFormStatus("success") : setFormStatus("error");
+      } else if ("success" in response) {
+        response.success ? setFormStatus("success") : setFormStatus("error");
+      } // BOUUUUUUUUUUUU
+      setFormStatus("error");
+      console.error(response);
     } catch (error) {
       console.error(error);
       setFormStatus("error");
