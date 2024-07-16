@@ -32,7 +32,7 @@ const slidePlaceholder = (e: FormEvent<HTMLInputElement>) => {
 
 const sendLoginData = async (data: LoginFormType) => {
   const option = {
-    method: "POST",
+    method: "GET",
     body: JSON.stringify({ ...data, password: b64EncodeUnicode(data.password) }),
   };
   type ResponseLoginType = MinimalResponse & { payload: { user: string; exp: number }; token: string };
@@ -97,6 +97,7 @@ const Login = () => {
     console.log("pinging server with auth");
     // allowHeaders: ["Access-Control-Allow-Origin", "Authorization", "Access-Control-Allow-Credentials"],
     const options = {
+      method: "GET",
       credentials: "include" as RequestCredentials,
       headers: {
         Authorization: `Bearer ${token}`,
