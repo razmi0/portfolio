@@ -26,11 +26,14 @@ const slidePlaceholder = (e: FormEvent<HTMLInputElement>) => {
 };
 
 const sendLoginData = async (data: LoginFormType) => {
+  console.log("sending login data");
   const option = {
     method: "POST",
     body: JSON.stringify({ ...data, password: b64EncodeUnicode(data.password) }),
   };
   const response = await simpleFetch<ResponseLoginType>(apiPaths.login, option);
+  console.log("response from sendLoginData", response);
+
   return response;
 };
 
