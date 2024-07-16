@@ -97,6 +97,7 @@ const Login = () => {
   };
 
   const pingServerWithAuth = async () => {
+    console.log("pinging server with auth");
     const res = await simpleFetch("http://localhost:3000/api/auth", {
       credentials: "include",
       // allowHeaders: ["Access-Control-Allow-Origin", "Authorization", "Access-Control-Allow-Credentials"],
