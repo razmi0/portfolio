@@ -1,20 +1,15 @@
 import type { FormStatusType } from "@/hooks/useForm";
 import { b64EncodeUnicode, simpleFetch } from "@/lib/utils";
 import { apiPaths } from "@/services";
-import { MinimalResponse } from "@/types/types";
+import { LoginFormType, ResponseLoginType } from "@/types";
 import type { FormEvent, FormEventHandler } from "react";
 import { useState } from "react";
+import { useAuth } from "../../hooks/useAuth";
 import Form from "../Form/Form";
 import FormFooter from "../Form/FormFooter";
 import InputField from "../Form/InputField";
 import TextError from "../Form/TextError";
 import Show from "../ui/show";
-
-type LoginFormType = {
-  username: string;
-  password: string;
-  hp?: string;
-};
 
 type ErrorLoginFormType = {
   username: string | false;
@@ -35,13 +30,12 @@ const sendLoginData = async (data: LoginFormType) => {
     method: "POST",
     body: JSON.stringify({ ...data, password: b64EncodeUnicode(data.password) }),
   };
-  type ResponseLoginType = MinimalResponse & { payload: { user: string; exp: number }; token: string };
   const response = await simpleFetch<ResponseLoginType>(apiPaths.login, option);
   return response;
 };
 
 const Login = () => {
-  const [token, setToken] = useState<string>("");
+  const { isAuthenticated, signIn, signOut, authOptions } = useAuth();
   const [errors, setErrors] = useState<ErrorLoginFormType>(errorinit);
   const [formStatus, setFormStatus] = useState<FormStatusType>("idle");
 
@@ -83,9 +77,7 @@ const Login = () => {
     const { hasError, data } = validate(new FormData(e.currentTarget));
     if (hasError) return;
     setFormStatus("success");
-    const response = await sendLoginData(data);
-    setToken(response.token);
-    console.log(response);
+    signIn(() => sendLoginData(data));
   };
 
   const handleChange: FormEventHandler<HTMLInputElement> = (e) => {
@@ -95,16 +87,7 @@ const Login = () => {
 
   const pingServerWithAuth = async () => {
     console.log("pinging server with auth");
-    // allowHeaders: ["Access-Control-Allow-Origin", "Authorization", "Access-Control-Allow-Credentials"],
-    const options = {
-      method: "GET",
-      credentials: "include" as RequestCredentials,
-      headers: {
-        Authorization: `Bearer ${token}`,
-        "Access-Control-Allow-Credentials": "true",
-      },
-    };
-    const res = await simpleFetch(apiPaths.auth, options);
+    const res = await simpleFetch(apiPaths.auth, authOptions);
     console.log(res);
   };
 
@@ -123,10 +106,11 @@ const Login = () => {
               <TextError>{errors.password}</TextError>
             </Show>
           </InputField>
-          <FormFooter formStatus={formStatus} successText="Message envoyé !" />
+          <FormFooter formStatus={formStatus} successText="Success" failText="Never" />
           <button type="button" onClick={pingServerWithAuth}>
             .
           </button>
+          <button onClick={signOut}>Sign out</button>
         </Form>
       </div>
     </section>
