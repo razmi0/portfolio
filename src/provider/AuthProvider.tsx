@@ -37,9 +37,9 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
   const signIn = useCallback(async (cb: SignInType) => {
     const response = await cb();
-
     console.log(response);
     if (response.success) {
+      console.log("response from signIn", response);
       const newState = {
         ...authState,
         isAuthenticated: response.authorized,
@@ -48,6 +48,8 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         authOptions: setHeaders(response.token),
       };
       setAuthState(newState);
+      console.log("newState", newState);
+      console.log("storage from signIn");
       localStorage.setItem("auth", JSON.stringify(newState));
       return true;
     }
@@ -55,6 +57,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   }, []);
 
   const signOut = useCallback(() => {
+    console.log("signing out");
     setAuthState(initContext);
     localStorage.removeItem("auth");
   }, []);
