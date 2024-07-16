@@ -32,7 +32,7 @@ const slidePlaceholder = (e: FormEvent<HTMLInputElement>) => {
 
 const sendLoginData = async (data: LoginFormType) => {
   const option = {
-    method: "GET",
+    method: "POST",
     body: JSON.stringify({ ...data, password: b64EncodeUnicode(data.password) }),
   };
   type ResponseLoginType = MinimalResponse & { payload: { user: string; exp: number }; token: string };
