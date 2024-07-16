@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils";
-import type { FormationType, ProType } from "@/types/types";
+import type { FormationType, ProType } from "@/types";
 import { Check } from "lucide-react";
 import { type HTMLAttributes, type ReactNode } from "react";
 import Dialog from "../Dialog";

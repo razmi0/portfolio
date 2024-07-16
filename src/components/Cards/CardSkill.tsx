@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils";
-import type { SkillType } from "@/types/types";
+import type { SkillType } from "@/types";
 import Icon from "../ui/icons/Icon";
 
 const CardSkill = ({

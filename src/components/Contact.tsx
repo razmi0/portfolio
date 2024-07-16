@@ -47,7 +47,7 @@ const Contact = () => {
             <TextError>{errors.msg}</TextError>
           </Show>
         </Textarea>
-        <FormFooter formStatus={formStatus} successText="Message envoyé !" />
+        <FormFooter formStatus={formStatus} successText="Message envoyé !" failText="😔 I can't contact my server" />
       </Form>
     </section>
   );

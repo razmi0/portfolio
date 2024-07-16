@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils";
-import type { SkillType } from "@/types/types";
+import type { SkillType } from "@/types";
 import { type Dispatch, type HTMLAttributes, type ReactNode, type SetStateAction } from "react";
 import Icon from "../ui/icons/Icon";
 

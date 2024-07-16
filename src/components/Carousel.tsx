@@ -1,4 +1,4 @@
-import { ProjectType } from "@/types/types";
+import { ProjectType } from "@/types";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useCallback, useState } from "react";
 import Image from "./Image";

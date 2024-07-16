@@ -1,4 +1,4 @@
-import type { HandleIntersectionOptions, SetupObserverProps } from "@/types/types";
+import type { HandleIntersectionOptions, SetupObserverProps } from "@/types";
 import { useEffect } from "react";
 
 const titles = {

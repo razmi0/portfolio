@@ -1,11 +1,11 @@
 import useImageGrid from "@/hooks/useImageGrid";
 import { cn } from "@/lib/utils";
-import type { ProjectType } from "@/types/types";
+import type { ProjectType } from "@/types";
 import { ImagePlay } from "lucide-react";
 import { useState, type ReactNode } from "react";
 import Dialog from "../Dialog";
-import CardWrapper from "./CardWrapper";
 import Image from "../Image";
+import CardWrapper from "./CardWrapper";
 
 const CardGrid = ({ children, className }: { children: ReactNode; className?: string }) => {
   return (

@@ -1,4 +1,4 @@
-import type { ProjectFilter, SkillFilter, XpFilter } from "@/types/types";
+import type { ProjectFilter, SkillFilter, XpFilter } from "@/types";
 import { useState } from "react";
 
 type Filters = {
