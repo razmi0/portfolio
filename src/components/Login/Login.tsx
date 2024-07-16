@@ -112,8 +112,6 @@ const Login = () => {
     };
     const res = await simpleFetch(authPingApiPath, options);
     console.log(res);
-    const data = await res.json();
-    console.log(data);
   };
 
   return (
