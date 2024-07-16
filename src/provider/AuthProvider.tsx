@@ -36,16 +36,17 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   );
 
   const signIn = useCallback(async (cb: SignInType) => {
-    const response = await cb();
-    console.log(response);
-    if (response.success) {
-      console.log("response from signIn", response);
+    const { payload, res, token } = await cb();
+    console.log("response from : ", { payload, res, token });
+
+    if (res.success) {
+      console.log("response from signIn is ok", { payload, res, token });
       const newState = {
         ...authState,
-        isAuthenticated: response.authorized,
-        user: response.payload.user,
-        exp: response.payload.exp,
-        authOptions: setHeaders(response.token),
+        isAuthenticated: res.authorized,
+        user: payload.user,
+        exp: payload.exp,
+        authOptions: setHeaders(token),
       };
       setAuthState(newState);
       console.log("newState", newState);
@@ -53,6 +54,8 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       localStorage.setItem("auth", JSON.stringify(newState));
       return true;
     }
+    console.log("response from signIn is not ok", { payload, res, token });
+
     return false;
   }, []);
 

@@ -70,7 +70,19 @@ export type MinimalResponse = {
   success: boolean;
 };
 
-export type ResponseLoginType = MinimalResponse & { payload: { user: string; exp: number }; token: string };
+export type ResponseLoginType = {
+  res: {
+    success: boolean;
+    authorized: boolean;
+  };
+  payload: {
+    user: string;
+    exp: number;
+  };
+  token: string;
+};
+
+// export type ResponseLoginType = MinimalResponse & { payload: { user: string; exp: number }; token: string };
 
 export type LoginFormType = {
   username: string;
