@@ -100,8 +100,8 @@ const Login = () => {
       credentials: "include" as RequestCredentials,
       headers: {
         Authorization: `Bearer ${token}`,
-        // "Access-Control-Allow-Origin": "http://localhost:5173",
-        // "Access-Control-Allow-Credentials": "true",
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Credentials": "true",
       },
     };
     const res = await simpleFetch(apiPaths.auth, options);
