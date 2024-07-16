@@ -27,10 +27,12 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const setHeaders = useCallback(
     (token: string): AuthOptions => ({
       ...(initAuthOptions as AuthOptions),
+
       headers: {
         Authorization: `Bearer ${token}`,
         "Access-Control-Allow-Credentials": true,
       } as any, // BOUUUUUUU
+      signal: AbortSignal.timeout(7000),
     }),
     []
   );
