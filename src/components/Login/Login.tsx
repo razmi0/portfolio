@@ -115,7 +115,9 @@ const Login = () => {
           <button type="button" onClick={pingServerWithAuth}>
             .
           </button>
-          <button onClick={signOut}>Sign out</button>
+          <button type="button" onClick={signOut}>
+            Sign out
+          </button>
         </Form>
       </div>
     </section>
