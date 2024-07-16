@@ -100,7 +100,6 @@ const Login = () => {
       credentials: "include" as RequestCredentials,
       headers: {
         Authorization: `Bearer ${token}`,
-        "Access-Control-Allow-Origin": apiPaths.base,
         "Access-Control-Allow-Credentials": "true",
       },
     };
