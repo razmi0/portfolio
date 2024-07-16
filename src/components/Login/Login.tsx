@@ -9,10 +9,13 @@ import InputField from "../Form/InputField";
 import TextError from "../Form/TextError";
 import Show from "../ui/show";
 
-const apiPath = import.meta.env.DEV
+const loginApiPath = import.meta.env.DEV
   ? "http://localhost:3000/api/login"
   : "https://portfolio-api-mu-five.vercel.app/api/login";
 
+const authPingApiPath = import.meta.env.DEV
+  ? "http://localhost:3000/api/auth"
+  : "https://portfolio-api-mu-five.vercel.app/api/auth";
 type LoginFormType = {
   username: string;
   password: string;
@@ -39,7 +42,7 @@ const sendLoginData = async (data: LoginFormType) => {
     body: JSON.stringify({ ...data, password: b64EncodeUnicode(data.password) }),
   };
   type ResponseLoginType = MinimalResponse & { payload: { user: string; exp: number }; token: string };
-  const response = await simpleFetch<ResponseLoginType>(apiPath, option);
+  const response = await simpleFetch<ResponseLoginType>(loginApiPath, option);
   return response;
 };
 
@@ -98,15 +101,16 @@ const Login = () => {
 
   const pingServerWithAuth = async () => {
     console.log("pinging server with auth");
-    const res = await simpleFetch("http://localhost:3000/api/auth", {
-      credentials: "include",
-      // allowHeaders: ["Access-Control-Allow-Origin", "Authorization", "Access-Control-Allow-Credentials"],
+    // allowHeaders: ["Access-Control-Allow-Origin", "Authorization", "Access-Control-Allow-Credentials"],
+    const options = {
+      credentials: "include" as RequestCredentials,
       headers: {
         Authorization: `Bearer ${token}`,
         // "Access-Control-Allow-Origin": "http://localhost:5173",
         // "Access-Control-Allow-Credentials": "true",
       },
-    });
+    };
+    const res = await simpleFetch(authPingApiPath, options);
     console.log(res);
     const data = await res.json();
     console.log(data);
