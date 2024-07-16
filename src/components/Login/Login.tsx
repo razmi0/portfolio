@@ -9,6 +9,10 @@ import InputField from "../Form/InputField";
 import TextError from "../Form/TextError";
 import Show from "../ui/show";
 
+const apiPath = import.meta.env.DEV
+  ? "http://localhost:3000/api/login"
+  : "https://portfolio-api-mu-five.vercel.app/api/login";
+
 type LoginFormType = {
   username: string;
   password: string;
@@ -34,10 +38,8 @@ const sendLoginData = async (data: LoginFormType) => {
     method: "POST",
     body: JSON.stringify({ ...data, password: b64EncodeUnicode(data.password) }),
   };
-  const response = await simpleFetch<MinimalResponse & { payload: { user: string; exp: number }; token: string }>(
-    "http://localhost:3000/api/login",
-    option
-  );
+  type ResponseLoginType = MinimalResponse & { payload: { user: string; exp: number }; token: string };
+  const response = await simpleFetch<ResponseLoginType>(apiPath, option);
   return response;
 };
 
@@ -94,6 +96,21 @@ const Login = () => {
     slidePlaceholder(e);
   };
 
+  const pingServerWithAuth = async () => {
+    const res = await simpleFetch("http://localhost:3000/api/auth", {
+      credentials: "include",
+      // allowHeaders: ["Access-Control-Allow-Origin", "Authorization", "Access-Control-Allow-Credentials"],
+      headers: {
+        Authorization: `Bearer ${token}`,
+        // "Access-Control-Allow-Origin": "http://localhost:5173",
+        // "Access-Control-Allow-Credentials": "true",
+      },
+    });
+    console.log(res);
+    const data = await res.json();
+    console.log(data);
+  };
+
   return (
     <section className="flex items-center justify-center flex-col gap-5 mt-20 grow h-full">
       <h1 className="text-4xl font-bold">Login</h1>
@@ -110,22 +127,7 @@ const Login = () => {
             </Show>
           </InputField>
           <FormFooter formStatus={formStatus} successText="Message envoyé !" />
-          <button
-            type="button"
-            onClick={async () => {
-              const res = await fetch("http://localhost:3000/api/auth", {
-                credentials: "include",
-                // allowHeaders: ["Access-Control-Allow-Origin", "Authorization", "Access-Control-Allow-Credentials"],
-                headers: {
-                  Authorization: `Bearer ${token}`,
-                  // "Access-Control-Allow-Origin": "http://localhost:5173",
-                  // "Access-Control-Allow-Credentials": "true",
-                },
-              });
-              console.log(res);
-              const data = await res.json();
-              console.log(data);
-            }}>
+          <button type="button" onClick={pingServerWithAuth}>
             .
           </button>
         </Form>
