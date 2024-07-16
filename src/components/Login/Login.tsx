@@ -77,11 +77,7 @@ const Login = () => {
     const { hasError, data } = validate(new FormData(e.currentTarget));
     if (hasError) return;
     const response = await signIn(() => sendLoginData(data));
-    if (typeof response === "boolean") {
-      response ? setFormStatus("success") : setFormStatus("error");
-    }
-    console.error(response);
-    setFormStatus("error");
+    !response ? setFormStatus("error") : setFormStatus("success");
   };
 
   const handleChange: FormEventHandler<HTMLInputElement> = (e) => {
@@ -99,7 +95,12 @@ const Login = () => {
     <section className="flex items-center justify-center flex-col gap-5 mt-20 grow h-full">
       <h1 className="text-4xl font-bold">Login</h1>
       <div className={"flex flex-col items-center gap-14 min-h-[50vh] w-72"}>
-        <Form onSubmit={handleSubmit} withHoney>
+        <Form
+          onSubmit={async (e) => {
+            setFormStatus("loading");
+            await handleSubmit(e);
+          }}
+          withHoney>
           <InputField id="username" label="Nom d'utilisateur" name="username" onChange={handleChange}>
             <Show when={formStatus === "error" && errors.username}>
               <TextError>{errors.username}</TextError>

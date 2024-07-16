@@ -38,17 +38,13 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const signIn = useCallback(async (cb: SignInType) => {
     const response = await cb();
 
-    if ("error" in response) {
-      return response;
-    }
-
     console.log(response);
-    if (response.success && response.authorized && response.payload && response.token) {
+    if (response.success) {
       const newState = {
         ...authState,
         isAuthenticated: response.authorized,
-        user: response.payload.user as string,
-        exp: response.payload.exp as number,
+        user: response.payload.user,
+        exp: response.payload.exp,
         authOptions: setHeaders(response.token),
       };
       setAuthState(newState);

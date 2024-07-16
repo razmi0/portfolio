@@ -70,7 +70,7 @@ export type MinimalResponse = {
   success: boolean;
 };
 
-export type ResponseLoginType = MinimalResponse & Partial<{ payload: { user: string; exp: number }; token: string }>;
+export type ResponseLoginType = MinimalResponse & { payload: { user: string; exp: number }; token: string };
 
 export type LoginFormType = {
   username: string;
@@ -78,7 +78,7 @@ export type LoginFormType = {
   hp?: string;
 };
 
-export type SignInType = () => Promise<ResponseLoginType | SimpleFetchError>;
+export type SignInType = () => Promise<ResponseLoginType>;
 
 export type AuthOptions = {
   credentials: RequestCredentials;
@@ -91,7 +91,7 @@ export type AuthOptions = {
 
 export type AuthData = {
   isAuthenticated: boolean;
-  signIn: (cb: SignInType) => Promise<boolean | SimpleFetchError>;
+  signIn: (cb: SignInType) => Promise<boolean>;
   signOut: () => void;
   authOptions: AuthOptions;
 };
