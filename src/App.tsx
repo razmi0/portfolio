@@ -22,8 +22,6 @@ import useFilters from "./hooks/useFilter";
 import useRouter from "./hooks/useRouter";
 import useTitle from "./hooks/useTitle";
 import { cn, uppercase } from "./lib/utils";
-import { Routes } from "./types";
-
 const initStates = {
   skills: Array(skills.data.length)
     .fill(false)
@@ -57,7 +55,11 @@ const App = () => {
 
         <ModeToggle />
         <Spacer />
-        <PreviousButton previous={previous} onClick={() => changeRoute(previous as Routes)} />
+        <PreviousButton
+          previous={previous[previous.length - 1]}
+          //
+          onClick={() => changeRoute(previous[previous.length - 1])}
+        />
       </Header>
       <Show when={current === "login"}>
         <Login />
