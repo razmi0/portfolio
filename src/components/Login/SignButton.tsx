@@ -1,26 +1,13 @@
 import { LogIn, LogOut } from "lucide-react";
 import Tooltip from "../ui/tooltip";
 
-// const LogInButton = ({ onClick }: { onClick: () => void }) => (
-//   <Tooltip tooltip={<>Sign in</>} className="-translate-x-[20%]">
-//     <button type="button" onClick={onClick}>
-//       <LogIn className={"h-7 w-7"} />
-//     </button>
-//   </Tooltip>
-// );
-
-// const LogOutButton = ({ onClick }: { onClick: () => void }) => (
-//   <Tooltip tooltip={<>Sign out</>} className="-translate-x-[20%]">
-//     <button type="button" onClick={onClick}>
-//       <LogOut className={"h-7 w-7"} />
-//     </button>
-//   </Tooltip>
-// );
-
 const SignButton = ({ onClick, login }: { onClick: () => void; login: boolean }) => (
   <Tooltip tooltip={login ? <>Sign out</> : <>Sign in</>} className="-translate-x-[20%]">
-    <button type="button" onClick={onClick} className="[&>*]:size-7">
-      {login ? <LogOut /> : <LogIn />}
+    <button type="button" onClick={onClick}>
+      {login ? <LogOut className="size-7" /> : <LogIn className="size-7" />}
+      <svg className="absolute -right-2 -translate-y-3 size-[20px]">
+        <circle cx="12" cy="12" r="5" fill={!login ? "red" : "green"} />
+      </svg>
     </button>
   </Tooltip>
 );
