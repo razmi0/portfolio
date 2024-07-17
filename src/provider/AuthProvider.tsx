@@ -34,7 +34,6 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         Authorization: `Bearer ${token}`,
         "Access-Control-Allow-Credentials": "true",
       } as AuthOptions["headers"], // BOUUUUUUU
-      signal: AbortSignal.timeout(7000),
     }),
     []
   );

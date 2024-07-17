@@ -20,9 +20,18 @@ class HTTPError extends Error {
 // };
 export async function simpleFetch<ResponseType = any>(
   url: RequestInfo,
-  options: RequestInit = {}
+  options: RequestInit = {},
+  timeout?: number
 ): Promise<ResponseType> {
-  const result = await fetch(url, options);
+  const buildOptions = () => {
+    if (!timeout) return options;
+    const controller = new AbortController();
+    const id = setTimeout(() => controller.abort(), timeout);
+    controller.signal.addEventListener("abort", () => clearTimeout(id));
+    return { ...options, signal: controller.signal };
+  };
+
+  const result = await fetch(url, buildOptions());
   if (!result.ok) {
     throw new HTTPError(result);
   }

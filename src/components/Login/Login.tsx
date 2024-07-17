@@ -90,7 +90,7 @@ const Login = () => {
 
   const pingServerWithAuth = async () => {
     console.log("pinging server with auth");
-    const res = await simpleFetch(apiPaths.auth, authOptions);
+    const res = await simpleFetch(apiPaths.auth, authOptions, 7000);
     console.log(res);
   };
 
