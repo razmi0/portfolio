@@ -1,14 +1,15 @@
 import Experience from "@/components/Cards/Experience";
 import Project from "@/components/Cards/Project";
-import { ArrowLeft, LogIn, LogOut } from "lucide-react";
 import { useState, type HTMLAttributes, type ReactNode } from "react";
 import Carousel from "./components/Carousel";
 import Contact from "./components/Contact";
 import HeadingTransition from "./components/HeadingTransition";
 import Hero from "./components/Hero";
 import Login from "./components/Login/Login";
+import SignButton from "./components/Login/SignButton";
 import { ModeToggle } from "./components/ModeToggle";
 import Presentation from "./components/Presentation";
+import PreviousButton from "./components/PreviousButton";
 import { RisingStars } from "./components/RisingStars/RisingStars";
 import Skills from "./components/Skills/Skills";
 import { useTheme } from "./components/theme-provider";
@@ -35,7 +36,7 @@ const initStates = {
 const App = () => {
   const [skillsHovered, setSkillsHovered] = useState<boolean[]>(initStates.skills);
 
-  const { isAuthenticated, signOut } = useAuth();
+  const { isAuth, signOut } = useAuth();
 
   const { filters, handleFilterChange, values } = useFilters();
   const { titles } = useTitle();
@@ -44,36 +45,19 @@ const App = () => {
 
   const { changeRoute, current, previous } = useRouter();
 
-  const LogInButton = () => (
-    <button type="button" onClick={() => changeRoute("login")}>
-      <LogIn className={"h-7 w-7"} />
-    </button>
-  );
-
-  const LogOutButton = () => (
-    <button
-      type="button"
-      onClick={() => {
-        signOut();
-        changeRoute("index");
-      }}>
-      <LogOut className={"h-7 w-7"} />
-    </button>
-  );
+  const handleLogOut = () => {
+    signOut();
+    changeRoute("index");
+  };
 
   return (
     <main className="relative min-w-full min-h-screen flex flex-col" style={{ viewTransitionName: "none" }}>
       <Header>
-        <Show when={isAuthenticated} fallback={<LogInButton />}>
-          <LogOutButton />
-        </Show>
+        <SignButton onClick={!isAuth ? () => changeRoute("login") : handleLogOut} login={isAuth} />
+
         <ModeToggle />
-        <div className="grow"></div>
-        <Show when={previous}>
-          <button onClick={() => changeRoute(previous as Routes)}>
-            <ArrowLeft className="h-7 w-7" />
-          </button>
-        </Show>
+        <Spacer />
+        <PreviousButton previous={previous} onClick={() => changeRoute(previous as Routes)} />
       </Header>
       <Show when={current === "login"}>
         <Login />
@@ -194,6 +178,8 @@ const App = () => {
     </main>
   );
 };
+
+const Spacer = () => <div className="grow" />;
 
 const Header = ({ children }: { children: ReactNode }) => {
   return (
