@@ -12,11 +12,14 @@ export const useAuth = () => {
     console.log("useEffect from useAuth : ");
     const payload = localStorage.getItem("auth");
     console.log("payload from useAuth : ", payload);
+    const fetchData = async () => {
+      if (payload) {
+        const success = await context?.signIn(() => Promise.resolve(JSON.parse(payload)));
+        console.log("success from useAuth (at mount from LS) : ", success);
+      }
+    };
 
-    if (payload) {
-      const success = context?.signIn(() => Promise.resolve(JSON.parse(payload)));
-      console.log("success from useAuth (at mount from LS) : ", success);
-    }
+    fetchData();
   }, []);
 
   return context as AuthData & AuthContextType;
