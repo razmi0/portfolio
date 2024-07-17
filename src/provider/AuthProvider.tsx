@@ -11,7 +11,7 @@ export const initAuthOptions = {
 } as AuthOptions;
 
 export const initState = {
-  isAuthenticated: false,
+  isAuth: false,
   authOptions: initAuthOptions,
   user: "",
   exp: 0,
@@ -43,7 +43,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     if (res.success) {
       const newState = {
         ...authState,
-        isAuthenticated: res.authorized,
+        isAuth: res.authorized,
         user: payload.user,
         exp: payload.exp,
         authOptions: setHeaders(token),
