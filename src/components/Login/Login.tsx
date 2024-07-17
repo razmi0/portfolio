@@ -2,7 +2,7 @@ import type { FormStatusType } from "@/hooks/useForm";
 import useRouter from "@/hooks/useRouter";
 import { b64EncodeUnicode } from "@/lib/utils";
 import { apiPaths, simpleFetch } from "@/services";
-import type { LoginFormType, ResponseLoginType } from "@/types";
+import type { ErrorLoginFormType, LoginFormType, ResponseLoginType } from "@/types";
 import type { FormEvent, FormEventHandler } from "react";
 import { useState } from "react";
 import { useAuth } from "../../hooks/useAuth";
@@ -11,11 +11,7 @@ import FormFooter from "../Form/FormFooter";
 import InputField from "../Form/InputField";
 import TextError from "../Form/TextError";
 import Show from "../ui/show";
-
-type ErrorLoginFormType = {
-  username: string | false;
-  password: string | false;
-};
+import { validate } from "./validation";
 
 const errorinit: ErrorLoginFormType = {
   username: false,
@@ -36,35 +32,10 @@ const sendLoginData = async (data: LoginFormType) => {
 };
 
 const Login = () => {
-  const { /** isAuthenticated , **/ signIn, signOut /** authOptions */ } = useAuth();
+  const { /** isAuth , **/ signIn /** signOut  authOptions */ } = useAuth();
   const { changeRoute } = useRouter();
   const [errors, setErrors] = useState<ErrorLoginFormType>(errorinit);
   const [formStatus, setFormStatus] = useState<FormStatusType>("idle");
-
-  const validate = (formData: FormData) => {
-    const data = Object.fromEntries(formData.entries()) as LoginFormType;
-
-    if (data.hp) {
-      window.location.href = "https://www.google.com";
-      return { hasError: true, data };
-    }
-
-    const newErrors: ErrorLoginFormType = {
-      username: !data.username && "Nom d'utilisateur requis",
-      password: !data.password && "Mot de passe requis",
-    };
-
-    setErrors(newErrors);
-
-    if (!newErrors.username && !newErrors.password) {
-      setFormStatus("success");
-      return { hasError: false, data };
-    }
-
-    setFormStatus("error");
-
-    return { hasError: true, data };
-  };
 
   const reset = () => {
     if (formStatus !== "idle") {
@@ -75,7 +46,7 @@ const Login = () => {
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const { hasError, data } = validate(new FormData(e.currentTarget));
+    const { hasError, data } = validate(new FormData(e.currentTarget), setFormStatus, setErrors);
     if (hasError) return;
     const response = await signIn(() => sendLoginData(data));
     if (!response) {
@@ -112,9 +83,6 @@ const Login = () => {
             </Show>
           </InputField>
           <FormFooter formStatus={formStatus} successText="Success" failText="Never" />
-          <button type="button" onClick={signOut}>
-            Sign out
-          </button>
         </Form>
       </div>
     </section>
