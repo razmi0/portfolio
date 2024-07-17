@@ -9,33 +9,4 @@ export function uppercase(str: string) {
   return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
-class HTTPError extends Error {
-  constructor(response: Response) {
-    super(`HTTP Error: ${response.status} ${response.statusText}`);
-  }
-}
-// export type SimpleFetchError = {
-//   error: true;
-//   message: string;
-// };
-export async function simpleFetch<ResponseType = any>(
-  url: RequestInfo,
-  options: RequestInit = {},
-  timeout?: number
-): Promise<ResponseType> {
-  const buildOptions = () => {
-    if (!timeout) return options;
-    const controller = new AbortController();
-    const id = setTimeout(() => controller.abort(), timeout);
-    controller.signal.addEventListener("abort", () => clearTimeout(id));
-    return { ...options, signal: controller.signal };
-  };
-
-  const result = await fetch(url, buildOptions());
-  if (!result.ok) {
-    throw new HTTPError(result);
-  }
-  return (await result.json()) as ResponseType;
-}
-
 export const b64EncodeUnicode = (str: string) => btoa(encodeURIComponent(str));

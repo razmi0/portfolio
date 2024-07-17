@@ -9,20 +9,17 @@ export const useAuth = () => {
   }
 
   useEffect(() => {
-    console.log("useEffect from useAuth : ");
     const payload = localStorage.getItem("auth");
-    console.log("payload from useAuth : ", payload);
-    const fetchData = async () => {
+    const signInAtMount = async () => {
       if (payload) {
         const data = JSON.parse(payload);
-        console.log("data from useAuth (at mount from LS) : ", data);
-
         const success = await context?.signIn(() => Promise.resolve(data));
-        console.log("success from useAuth (at mount from LS) : ", success);
+        if (!success) {
+          localStorage.removeItem("auth");
+        }
       }
     };
-
-    fetchData();
+    signInAtMount();
   }, []);
 
   return context as AuthData & AuthContextType;

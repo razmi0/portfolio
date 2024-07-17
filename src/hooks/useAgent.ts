@@ -1,6 +1,5 @@
-import { simpleFetch } from "@/lib/utils";
-import { apiPaths } from "@/services";
-import { MinimalResponse, UserAgentInfo } from "@/types";
+import { apiPaths, simpleFetch } from "@/services";
+import type { MinimalResponse, UserAgentInfo } from "@/types";
 import { useEffect, useState } from "react";
 
 const userAgentInit: UserAgentInfo = {

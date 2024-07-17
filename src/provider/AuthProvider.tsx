@@ -40,10 +40,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
   const signIn = async (cb: SignInType) => {
     const { payload, res, token } = await cb();
-    console.log("payload from signIn : ", await cb());
-    console.log("response from signIn : ", { payload, res, token });
     if (res.success) {
-      console.log("response from signIn is ok", { payload, res, token });
       const newState = {
         ...authState,
         isAuthenticated: res.authorized,
@@ -52,18 +49,13 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         authOptions: setHeaders(token),
       };
       setAuthState(newState);
-      console.log("newState", newState);
-      console.log("storage from signIn");
       localStorage.setItem("auth", JSON.stringify({ payload, res, token }));
       return true;
     }
-    console.log("response from signIn is not ok", { payload, res, token });
-
     return false;
   };
 
   const signOut = useCallback(() => {
-    console.log("signing out");
     setAuthState(initState);
     localStorage.removeItem("auth");
   }, []);

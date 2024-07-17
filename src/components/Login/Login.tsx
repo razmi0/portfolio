@@ -1,7 +1,7 @@
 import type { FormStatusType } from "@/hooks/useForm";
-import { b64EncodeUnicode, simpleFetch } from "@/lib/utils";
-import { apiPaths } from "@/services";
-import { LoginFormType, ResponseLoginType } from "@/types";
+import { b64EncodeUnicode } from "@/lib/utils";
+import { apiPaths, simpleFetch } from "@/services";
+import type { LoginFormType, ResponseLoginType } from "@/types";
 import type { FormEvent, FormEventHandler } from "react";
 import { useState } from "react";
 import { useAuth } from "../../hooks/useAuth";
@@ -26,14 +26,11 @@ const slidePlaceholder = (e: FormEvent<HTMLInputElement>) => {
 };
 
 const sendLoginData = async (data: LoginFormType) => {
-  console.log("sending login data");
   const option = {
     method: "POST",
     body: JSON.stringify({ ...data, password: b64EncodeUnicode(data.password) }),
   };
-  const response = await simpleFetch<ResponseLoginType>(apiPaths.login, option);
-  console.log("response from sendLoginData", response);
-
+  const response = await simpleFetch<ResponseLoginType>(apiPaths.login, option, 7000);
   return response;
 };
 

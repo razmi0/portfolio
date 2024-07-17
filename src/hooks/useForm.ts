@@ -1,6 +1,5 @@
-import { simpleFetch } from "@/lib/utils";
-import { apiPaths } from "@/services";
-import { MinimalResponse } from "@/types";
+import { apiPaths, simpleFetch } from "@/services";
+import type { MinimalResponse } from "@/types";
 import { useState } from "react";
 
 type ContactFormType = {
