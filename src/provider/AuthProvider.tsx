@@ -55,7 +55,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       setAuthState(newState);
       console.log("newState", newState);
       console.log("storage from signIn");
-      localStorage.setItem("auth", JSON.stringify(newState));
+      localStorage.setItem("auth", JSON.stringify({ payload, res, token }));
       return true;
     }
     console.log("response from signIn is not ok", { payload, res, token });
