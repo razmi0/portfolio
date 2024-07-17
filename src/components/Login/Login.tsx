@@ -38,7 +38,7 @@ const sendLoginData = async (data: LoginFormType) => {
 };
 
 const Login = () => {
-  const { /** isAuthenticated , **/ signIn, signOut, authOptions } = useAuth();
+  const { /** isAuthenticated , **/ signIn, signOut /** authOptions */ } = useAuth();
   const [errors, setErrors] = useState<ErrorLoginFormType>(errorinit);
   const [formStatus, setFormStatus] = useState<FormStatusType>("idle");
 
@@ -88,12 +88,6 @@ const Login = () => {
     slidePlaceholder(e);
   };
 
-  const pingServerWithAuth = async () => {
-    console.log("pinging server with auth");
-    const res = await simpleFetch(apiPaths.auth, authOptions, 7000);
-    console.log(res);
-  };
-
   return (
     <section className="flex items-center justify-center flex-col gap-5 mt-20 grow h-full">
       <h1 className="text-4xl font-bold">Login</h1>
@@ -115,9 +109,7 @@ const Login = () => {
             </Show>
           </InputField>
           <FormFooter formStatus={formStatus} successText="Success" failText="Never" />
-          <button type="button" onClick={pingServerWithAuth}>
-            .
-          </button>
+
           <button type="button" onClick={signOut}>
             Sign out
           </button>
