@@ -117,3 +117,5 @@ export type SimpleFetchError = {
   error: true;
   message: string;
 };
+
+export type Routes = "index" | "login" | "admin";

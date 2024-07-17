@@ -1,6 +1,5 @@
+import type { Routes } from "@/types";
 import { useCallback, useEffect, useReducer } from "react";
-
-type Routes = "index" | "login" | "admin";
 
 type RouterState = {
   current: Routes;
@@ -15,10 +14,14 @@ type RouterAction = {
 const routerReducer = (state: RouterState, action: RouterAction) => {
   switch (action.type) {
     case "SET_ROUTE":
-      return {
-        current: action.payload,
-        previous: state.current,
-      };
+      if (action.payload !== state.current) {
+        history.replaceState(null, "", action.payload === "index" ? "/" : `/${action.payload}`);
+        return {
+          current: action.payload,
+          previous: state.current,
+        };
+      }
+      return state;
     default:
       return state;
   }
@@ -26,21 +29,26 @@ const routerReducer = (state: RouterState, action: RouterAction) => {
 
 const routes = ["index", "login", "admin"] as readonly Routes[];
 const useRouter = () => {
-  // implement history url state manipulation and listenrs
   const [state, dispatch] = useReducer(routerReducer, { current: "index", previous: null });
 
   const setRoute = useCallback((route: Routes) => {
-    // history.pushState(null, "", `/${route}`);
     dispatch({ type: "SET_ROUTE", payload: route });
   }, []);
 
   const isValidRoute = (route: string): route is Routes => routes.includes(route as Routes);
 
-  useEffect(() => console.log("Current route:", state.current), [state.current]);
+  const changeRoute = (route: Routes) => isValidRoute(route) && setRoute(route);
+
+  useEffect(() => console.log("Current route:", state), [state]);
+
+  useEffect(() => {
+    const currentPath = window.location.pathname.replace("/", "") as Routes;
+    currentPath !== state.current && changeRoute(currentPath);
+  }, []);
 
   return {
     ...state,
-    changeRoute: (route: Routes) => isValidRoute(route) && setRoute(route),
+    changeRoute,
   };
 };
 

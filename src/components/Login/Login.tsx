@@ -1,4 +1,5 @@
 import type { FormStatusType } from "@/hooks/useForm";
+import useRouter from "@/hooks/useRouter";
 import { b64EncodeUnicode } from "@/lib/utils";
 import { apiPaths, simpleFetch } from "@/services";
 import type { LoginFormType, ResponseLoginType } from "@/types";
@@ -36,6 +37,7 @@ const sendLoginData = async (data: LoginFormType) => {
 
 const Login = () => {
   const { /** isAuthenticated , **/ signIn, signOut /** authOptions */ } = useAuth();
+  const { changeRoute } = useRouter();
   const [errors, setErrors] = useState<ErrorLoginFormType>(errorinit);
   const [formStatus, setFormStatus] = useState<FormStatusType>("idle");
 
@@ -73,11 +75,15 @@ const Login = () => {
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setFormStatus("loading");
     const { hasError, data } = validate(new FormData(e.currentTarget));
     if (hasError) return;
     const response = await signIn(() => sendLoginData(data));
-    !response ? setFormStatus("error") : setFormStatus("success");
+    if (!response) {
+      setFormStatus("error");
+      return;
+    }
+    setFormStatus("success");
+    changeRoute("admin");
   };
 
   const handleChange: FormEventHandler<HTMLInputElement> = (e) => {
@@ -106,7 +112,6 @@ const Login = () => {
             </Show>
           </InputField>
           <FormFooter formStatus={formStatus} successText="Success" failText="Never" />
-
           <button type="button" onClick={signOut}>
             Sign out
           </button>

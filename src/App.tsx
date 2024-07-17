@@ -1,7 +1,7 @@
 import Experience from "@/components/Cards/Experience";
 import Project from "@/components/Cards/Project";
-import { IceCreamBowlIcon } from "lucide-react";
-import { useState, type HTMLAttributes } from "react";
+import { ArrowLeft, LogIn, LogOut } from "lucide-react";
+import { useState, type HTMLAttributes, type ReactNode } from "react";
 import Carousel from "./components/Carousel";
 import Contact from "./components/Contact";
 import HeadingTransition from "./components/HeadingTransition";
@@ -16,10 +16,12 @@ import { NavButton } from "./components/ui/button";
 import Show from "./components/ui/show";
 import { formation, projects, skills, xp } from "./data.json";
 import useAgent from "./hooks/useAgent";
+import { useAuth } from "./hooks/useAuth";
 import useFilters from "./hooks/useFilter";
 import useRouter from "./hooks/useRouter";
 import useTitle from "./hooks/useTitle";
 import { cn, uppercase } from "./lib/utils";
+import { Routes } from "./types";
 
 const initStates = {
   skills: Array(skills.data.length)
@@ -33,21 +35,46 @@ const initStates = {
 const App = () => {
   const [skillsHovered, setSkillsHovered] = useState<boolean[]>(initStates.skills);
 
+  const { isAuthenticated, signOut } = useAuth();
+
   const { filters, handleFilterChange, values } = useFilters();
   const { titles } = useTitle();
   const { theme } = useTheme();
   useAgent();
 
-  const { changeRoute, current } = useRouter();
+  const { changeRoute, current, previous } = useRouter();
+
+  const LogInButton = () => (
+    <button type="button" onClick={() => changeRoute("login")}>
+      <LogIn className={"h-7 w-7"} />
+    </button>
+  );
+
+  const LogOutButton = () => (
+    <button
+      type="button"
+      onClick={() => {
+        signOut();
+        changeRoute("index");
+      }}>
+      <LogOut className={"h-7 w-7"} />
+    </button>
+  );
 
   return (
     <main className="relative min-w-full min-h-screen flex flex-col" style={{ viewTransitionName: "none" }}>
-      <header className="flex items-center justify-start flex-row-reverse absolute top-0 left-0 w-full mt-5 gap-3">
-        <button type="button" onClick={current !== "login" ? () => changeRoute("login") : () => changeRoute("index")}>
-          <IceCreamBowlIcon className={"h-7 w-7"} />
-        </button>
+      <Header>
+        <Show when={isAuthenticated} fallback={<LogInButton />}>
+          <LogOutButton />
+        </Show>
         <ModeToggle />
-      </header>
+        <div className="grow"></div>
+        <Show when={previous}>
+          <button onClick={() => changeRoute(previous as Routes)}>
+            <ArrowLeft className="h-7 w-7" />
+          </button>
+        </Show>
+      </Header>
       <Show when={current === "login"}>
         <Login />
       </Show>
@@ -165,6 +192,14 @@ const App = () => {
         <RisingStars />
       </Show>
     </main>
+  );
+};
+
+const Header = ({ children }: { children: ReactNode }) => {
+  return (
+    <header className="flex items-center justify-start flex-row-reverse absolute top-0 left-0 w-full mt-5 gap-3">
+      {children}
+    </header>
   );
 };
 
