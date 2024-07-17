@@ -7,7 +7,7 @@ const PreviousButton = ({ previous, onClick }: { previous: Routes | null; onClic
   <Show when={previous}>
     <Tooltip tooltip={<>Previous page</>} className="-translate-x-[37%]">
       <button onClick={onClick}>
-        <ArrowLeft className="h-7 w-7" />
+        <ArrowLeft className="size-5" />
       </button>
     </Tooltip>
   </Show>

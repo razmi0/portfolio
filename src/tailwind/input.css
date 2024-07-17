@@ -451,8 +451,8 @@ textarea {
 
 body {
   --sb-track-color: #222a2d;
-  --sb-thumb-color: rgb(255 103 0);
-  --sb-size: 3px;
+  --sb-thumb-color: #ff6600de;
+  --sb-size: 5px;
 }
 
 body::-webkit-scrollbar {
