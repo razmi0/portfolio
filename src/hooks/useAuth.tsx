@@ -14,7 +14,8 @@ export const useAuth = () => {
     console.log("payload from useAuth : ", payload);
 
     if (payload) {
-      context?.signIn(() => Promise.resolve(JSON.parse(payload)));
+      const success = context?.signIn(() => Promise.resolve(JSON.parse(payload)));
+      console.log("success from useAuth (at mount from LS) : ", success);
     }
   }, []);
 
