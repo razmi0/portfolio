@@ -41,6 +41,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
   const signIn = async (cb: SignInType) => {
     const { payload, res, token } = await cb();
+    console.log("payload from signIn : ", await cb());
     console.log("response from signIn : ", { payload, res, token });
     if (res.success) {
       console.log("response from signIn is ok", { payload, res, token });
