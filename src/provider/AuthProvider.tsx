@@ -39,7 +39,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     []
   );
 
-  const signIn = useCallback(async (cb: SignInType) => {
+  const signIn = async (cb: SignInType) => {
     const { payload, res, token } = await cb();
     console.log("response from signIn : ", { payload, res, token });
     if (res.success) {
@@ -60,7 +60,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     console.log("response from signIn is not ok", { payload, res, token });
 
     return false;
-  }, []);
+  };
 
   const signOut = useCallback(() => {
     console.log("signing out");
