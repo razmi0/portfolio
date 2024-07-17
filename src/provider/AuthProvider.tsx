@@ -1,4 +1,4 @@
-import type { AuthData, AuthOptions, SignInType } from "@/types";
+import type { AuthContext as AuthContextType, AuthData, AuthOptions, SignInType } from "@/types";
 import { createContext, useCallback, useState } from "react";
 
 export const initAuthOptions = {
@@ -6,32 +6,34 @@ export const initAuthOptions = {
   method: "GET",
   headers: {
     Authorization: "",
-    "Access-Control-Allow-Credentials": true,
+    "Access-Control-Allow-Credentials": "true",
   },
-};
+} as AuthOptions;
 
-export const initContext = {
-  signIn: async () => false,
-  signOut: () => {},
+export const initState = {
   isAuthenticated: false,
-  authOptions: initAuthOptions as AuthOptions,
+  authOptions: initAuthOptions,
   user: "",
   exp: 0,
 } as AuthData;
 
-export const AuthContext = createContext<AuthData>(initContext);
+export const AuthContext = createContext<AuthData & AuthContextType>({
+  ...initState,
+  signIn: () => Promise.resolve(false),
+  signOut: () => {},
+});
 
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
-  const [authState, setAuthState] = useState<AuthData>(initContext);
+  const [authState, setAuthState] = useState<AuthData>(initState);
 
   const setHeaders = useCallback(
     (token: string): AuthOptions => ({
-      ...(initAuthOptions as AuthOptions),
+      ...initAuthOptions,
 
       headers: {
         Authorization: `Bearer ${token}`,
-        "Access-Control-Allow-Credentials": true,
-      } as any, // BOUUUUUUU
+        "Access-Control-Allow-Credentials": "true",
+      } as AuthOptions["headers"], // BOUUUUUUU
       signal: AbortSignal.timeout(7000),
     }),
     []
@@ -39,8 +41,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
   const signIn = useCallback(async (cb: SignInType) => {
     const { payload, res, token } = await cb();
-    console.log("response from : ", { payload, res, token });
-
+    console.log("response from signIn : ", { payload, res, token });
     if (res.success) {
       console.log("response from signIn is ok", { payload, res, token });
       const newState = {
@@ -63,7 +64,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
   const signOut = useCallback(() => {
     console.log("signing out");
-    setAuthState(initContext);
+    setAuthState(initState);
     localStorage.removeItem("auth");
   }, []);
 

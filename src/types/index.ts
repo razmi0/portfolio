@@ -97,16 +97,21 @@ export type AuthOptions = {
   method: RequestInit["method"];
   headers: {
     Authorization: string;
-    "Access-Control-Allow-Credentials": true;
+    "Access-Control-Allow-Credentials": "true";
   };
 } & Partial<RequestInit>;
 
 export type AuthData = {
   isAuthenticated: boolean;
-  signIn: (cb: SignInType) => Promise<boolean>;
-  signOut: () => void;
+  exp: number;
+  user: string;
   authOptions: AuthOptions;
 };
+
+export type AuthContext = {
+  signIn: (cb: SignInType) => Promise<boolean>;
+  signOut: () => void;
+} & AuthData;
 
 export type SimpleFetchError = {
   error: true;
