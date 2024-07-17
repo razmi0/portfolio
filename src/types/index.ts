@@ -4,6 +4,11 @@ export type Prettyfy<T> = {
   [K in keyof T]: T[K];
 };
 
+export type ErrorLoginFormType = {
+  username: string | false;
+  password: string | false;
+};
+
 export type SkillFilter = "tous" | "front-end" | "back-end";
 export type XpFilter = "tous" | "pro" | "formation";
 export type ProjectFilter = "tous" | "web" | "outil" | "documentation";
@@ -102,7 +107,7 @@ export type AuthOptions = {
 } & Partial<RequestInit>;
 
 export type AuthData = {
-  isAuthenticated: boolean;
+  isAuth: boolean;
   exp: number;
   user: string;
   authOptions: AuthOptions;
