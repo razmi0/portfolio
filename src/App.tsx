@@ -1,6 +1,7 @@
 import Experience from "@/components/Cards/Experience";
 import Project from "@/components/Cards/Project";
 import { useState, type HTMLAttributes, type ReactNode } from "react";
+import DashbordButton from "./components/Admin/DashbordButton";
 import Carousel from "./components/Carousel";
 import Contact from "./components/Contact";
 import HeadingTransition from "./components/HeadingTransition";
@@ -22,6 +23,7 @@ import useFilters from "./hooks/useFilter";
 import useRouter from "./hooks/useRouter";
 import useTitle from "./hooks/useTitle";
 import { cn, uppercase } from "./lib/utils";
+import Admin from "./components/Admin/Admin";
 const initStates = {
   skills: Array(skills.data.length)
     .fill(false)
@@ -48,12 +50,14 @@ const App = () => {
     changeRoute("index");
   };
 
+  console.log("current", current);
+
   return (
     <main className="relative min-w-full min-h-screen flex flex-col" style={{ viewTransitionName: "none" }}>
       <Header>
         <SignButton onClick={!isAuth ? () => changeRoute("login") : handleLogOut} login={isAuth} />
-
         <ModeToggle />
+        <DashbordButton isAuth={isAuth} onClick={() => changeRoute("admin")} />
         <Spacer />
         <PreviousButton
           previous={previous[previous.length - 1]}
@@ -63,6 +67,9 @@ const App = () => {
       </Header>
       <Show when={current === "login"}>
         <Login />
+      </Show>
+      <Show when={current === "admin"}>
+        <Admin />
       </Show>
       <RisingStars />
       <Show when={current === "index"}>
