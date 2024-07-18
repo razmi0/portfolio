@@ -5,7 +5,7 @@ import Show from "../ui/show";
 const DashbordButton = ({ isAuth, onClick }: { isAuth: boolean; onClick: () => void }) => {
   return (
     <Show when={isAuth}>
-      <Tooltip tooltip={<>Dashbord</>} className="-translate-x-[20%]">
+      <Tooltip tooltip={<>dashboard</>} className="-translate-x-[20%]">
         <button type="button" onClick={onClick}>
           <AreaChart className="size-7" />
         </button>
