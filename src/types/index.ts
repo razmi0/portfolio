@@ -124,3 +124,32 @@ export type SimpleFetchError = {
 };
 
 export type Routes = "index" | "login" | "admin";
+
+export type PostType = {
+  ID: string;
+  tel: string;
+  email: string;
+  message: string;
+};
+
+export type AgentType = {
+  ID: string;
+  userAgent: string;
+  platform: string;
+  hardware: string;
+  locale: string;
+  connection: string;
+  population: string;
+};
+
+export type UserType = {
+  username: string;
+  exp?: number;
+};
+
+type ErrorField = "contact" | "login";
+export type ValidationErrorType = {
+  id: string;
+  errors: string[];
+  field: ErrorField;
+};
