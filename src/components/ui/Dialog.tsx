@@ -1,7 +1,7 @@
 import { cn } from "@/lib/utils";
 import { ArrowBigRight, SquareX } from "lucide-react";
 import { useEffect, useRef, type ReactNode } from "react";
-import Show from "./ui/show";
+import Show from "./show";
 
 const Dialog = ({
   children,

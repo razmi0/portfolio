@@ -1,9 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.tsx";
-import { RouterProvider } from "./components/Router/RoutesProvider.tsx";
-import { ThemeProvider } from "./components/theme-provider.tsx";
-import { AuthProvider } from "./provider/AuthProvider.tsx";
+import { AuthProvider } from "./provider/auth-provider.tsx";
+import { RouterProvider } from "./provider/routes-provider.tsx";
+import { ThemeProvider } from "./provider/theme-provider.tsx";
 import "./tailwind/output.css";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(

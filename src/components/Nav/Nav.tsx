@@ -1,11 +1,11 @@
 import { useAuth } from "@/hooks/useAuth";
-import DashbordButton from "./Admin/DashbordButton";
-import SignButton from "./Login/SignButton";
+import DashbordButton from "../Admin/DashbordButton";
+import SignButton from "../Login/SignButton";
 import { ModeToggle } from "./ModeToggle";
 import PreviousButton from "./PreviousButton";
 
 import type { ReactNode } from "react";
-import { useRouter } from "./Router/RoutesProvider";
+import { useRouter } from "../../provider/routes-provider";
 
 const Nav = () => {
   const { isAuth, signOut } = useAuth();

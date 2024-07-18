@@ -1,7 +1,7 @@
 import { GithubIcon, LinkedinIcon } from "lucide-react";
 import type { HTMLAttributes } from "react";
-import VerticalText from "./VerticalText";
-import { Button } from "./ui/button";
+import VerticalText from "../ui/VerticalText";
+import { Button } from "../ui/button";
 
 const Hero = ({ ...rest }: HTMLAttributes<HTMLDivElement>) => {
   return (

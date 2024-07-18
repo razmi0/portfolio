@@ -691,6 +691,10 @@ video {
   margin-top: 2.5rem;
 }
 
+.mt-12{
+  margin-top: 3rem;
+}
+
 .mt-20{
   margin-top: 5rem;
 }
@@ -701,10 +705,6 @@ video {
 
 .mt-5{
   margin-top: 1.25rem;
-}
-
-.mt-12{
-  margin-top: 3rem;
 }
 
 .flex{
@@ -736,6 +736,11 @@ video {
   height: 1.25rem;
 }
 
+.size-6{
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
 .size-7{
   width: 1.75rem;
   height: 1.75rem;
@@ -761,11 +766,6 @@ video {
 .size-full{
   width: 100%;
   height: 100%;
-}
-
-.size-6{
-  width: 1.5rem;
-  height: 1.5rem;
 }
 
 .h-12{
@@ -913,8 +913,8 @@ video {
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
-.-translate-x-\[37\%\]{
-  --tw-translate-x: -37%;
+.-translate-x-\[35\%\]{
+  --tw-translate-x: -35%;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
@@ -938,23 +938,18 @@ video {
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
-.-translate-x-\[35\%\]{
-  --tw-translate-x: -35%;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-}
-
 .rotate-0{
   --tw-rotate: 0deg;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
-.rotate-90{
-  --tw-rotate: 90deg;
+.rotate-180{
+  --tw-rotate: 180deg;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
-.rotate-180{
-  --tw-rotate: 180deg;
+.rotate-90{
+  --tw-rotate: 90deg;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
@@ -1185,18 +1180,13 @@ video {
   background-color: rgb(79 70 229 / var(--tw-bg-opacity));
 }
 
-.bg-bogoss-600\/60{
-  background-color: rgb(23 21 62 / 0.6);
-}
-
-.bg-bogoss-300{
-  --tw-bg-opacity: 1;
-  background-color: rgb(118 112 230 / var(--tw-bg-opacity));
-}
-
 .bg-bogoss-600{
   --tw-bg-opacity: 1;
   background-color: rgb(23 21 62 / var(--tw-bg-opacity));
+}
+
+.bg-bogoss-600\/60{
+  background-color: rgb(23 21 62 / 0.6);
 }
 
 .bg-transparent{
@@ -1261,11 +1251,6 @@ video {
 .py-1{
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;
-}
-
-.py-12{
-  padding-top: 3rem;
-  padding-bottom: 3rem;
 }
 
 .py-2{
@@ -1404,22 +1389,8 @@ video {
   color: rgb(255 255 255 / 0.9);
 }
 
-.text-white{
-  --tw-text-opacity: 1;
-  color: rgb(255 255 255 / var(--tw-text-opacity));
-}
-
-.\!text-white{
-  --tw-text-opacity: 1 !important;
-  color: rgb(255 255 255 / var(--tw-text-opacity)) !important;
-}
-
 .opacity-75{
   opacity: 0.75;
-}
-
-.opacity-100{
-  opacity: 1;
 }
 
 .outline{
@@ -1527,6 +1498,7 @@ body{
 
 body{
   max-width: none !important;
+  overflow-x: hidden;
   --tw-bg-opacity: 1;
   background-color: rgb(242 241 255 / var(--tw-bg-opacity));
   padding-left: 0.75rem;
@@ -2214,14 +2186,18 @@ body::-webkit-scrollbar-thumb {
   background-color: rgb(71 85 105 / var(--tw-bg-opacity));
 }
 
-.dark\:\!text-sm:is(.dark *){
-  font-size: 0.875rem !important;
-  line-height: 1.25rem !important;
-}
-
 .dark\:\!text-bogoss-200:is(.dark *){
   --tw-text-opacity: 1 !important;
   color: rgb(242 241 255 / var(--tw-text-opacity)) !important;
+}
+
+.dark\:\!text-white:is(.dark *){
+  --tw-text-opacity: 1 !important;
+  color: rgb(255 255 255 / var(--tw-text-opacity)) !important;
+}
+
+.dark\:\!text-white\/50:is(.dark *){
+  color: rgb(255 255 255 / 0.5) !important;
 }
 
 .dark\:text-belgoss-500:is(.dark *){
@@ -2237,15 +2213,6 @@ body::-webkit-scrollbar-thumb {
 .dark\:text-bogoss-700:is(.dark *){
   --tw-text-opacity: 1;
   color: rgb(14 12 37 / var(--tw-text-opacity));
-}
-
-.dark\:\!text-white:is(.dark *){
-  --tw-text-opacity: 1 !important;
-  color: rgb(255 255 255 / var(--tw-text-opacity)) !important;
-}
-
-.dark\:\!text-white\/50:is(.dark *){
-  color: rgb(255 255 255 / 0.5) !important;
 }
 
 .dark\:ring-belgoss-500:is(.dark *){

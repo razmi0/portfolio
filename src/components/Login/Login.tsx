@@ -5,13 +5,13 @@ import type { ErrorLoginFormType, LoginFormType, ResponseLoginType } from "@/typ
 import type { FormEvent, FormEventHandler } from "react";
 import { useState } from "react";
 import { useAuth } from "../../hooks/useAuth";
+import { useRouter } from "../../provider/routes-provider";
 import Form from "../Form/Form";
 import FormFooter from "../Form/FormFooter";
 import InputField from "../Form/InputField";
 import TextError from "../Form/TextError";
 import Show from "../ui/show";
 import { validate } from "./validation";
-import { useRouter } from "../Router/RoutesProvider";
 
 const errorinit: ErrorLoginFormType = {
   username: false,

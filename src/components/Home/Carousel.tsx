@@ -1,7 +1,7 @@
 import { ProjectType } from "@/types";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useCallback, useState } from "react";
-import Image from "./Image";
+import Image from "../Image";
 
 const Carousel = ({ content }: { content: ProjectType }) => {
   const [activeImage, setActiveImage] = useState<number>(0);

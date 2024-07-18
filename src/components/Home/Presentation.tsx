@@ -1,6 +1,6 @@
 import { ChefHat, PocketKnife, Rocket } from "lucide-react";
 import type { HTMLAttributes, ReactNode } from "react";
-import Image from "./Image";
+import Image from "../Image";
 
 const ListItem = ({ children }: { children: ReactNode }) => {
   return <li className="bg-gradient-to-t from-bogoss-500 to-bogoss-400 max-w-52">{children}</li>;

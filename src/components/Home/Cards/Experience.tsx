@@ -2,10 +2,10 @@ import { cn } from "@/lib/utils";
 import type { FormationType, ProType } from "@/types";
 import { Check } from "lucide-react";
 import { type HTMLAttributes, type ReactNode } from "react";
-import Dialog from "../Dialog";
-import Image from "../Image";
-import Tag, { type ValidTags } from "../Tag";
-import Show from "../ui/show";
+import Image from "../../Image";
+import Tag, { type ValidTags } from "../../Tag";
+import Dialog from "../../ui/Dialog";
+import Show from "../../ui/show";
 import CardWrapper from "./CardWrapper";
 
 const Text = ({ value, className, as }: { value: unknown & ReactNode; as?: ValidTags; className?: string }) => {

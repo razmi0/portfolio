@@ -1,17 +1,16 @@
-import Experience from "@/components/Cards/Experience";
-import Project from "@/components/Cards/Project";
+import Experience from "@/components/Home/Cards/Experience";
+import Project from "@/components/Home/Cards/Project";
 import { useState, type HTMLAttributes } from "react";
 import Dashboard from "./components/Admin/Admin";
-import Carousel from "./components/Carousel";
-import Contact from "./components/Contact";
-import HeadingTransition from "./components/HeadingTransition";
-import Hero from "./components/Hero";
+import Carousel from "./components/Home/Carousel";
+import Contact from "./components/Home/Contact";
+import HeadingTransition from "./components/Home/HeadingTransition";
+import Hero from "./components/Home/Hero";
+import Presentation from "./components/Home/Presentation";
+import Skills from "./components/Home/Skills";
 import Login from "./components/Login/Login";
-import Nav from "./components/Nav";
-import Presentation from "./components/Presentation";
+import Nav from "./components/Nav/Nav";
 import { RisingStars } from "./components/RisingStars/RisingStars";
-import Skills from "./components/Skills/Skills";
-import { useTheme } from "./components/theme-provider";
 import { NavButton } from "./components/ui/button";
 import Show from "./components/ui/show";
 import { formation, projects, skills, xp } from "./data.json";
@@ -19,7 +18,8 @@ import useAgent from "./hooks/useAgent";
 import useFilters from "./hooks/useFilter";
 import useTitle from "./hooks/useTitle";
 import { cn, uppercase } from "./lib/utils";
-import { useRouter } from "./components/Router/RoutesProvider";
+import { useRouter } from "./provider/routes-provider";
+import { useTheme } from "./provider/theme-provider";
 const initStates = {
   skills: Array(skills.data.length)
     .fill(false)

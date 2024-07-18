@@ -1,7 +1,7 @@
 import { Moon, Sun } from "lucide-react";
 
-import { useTheme } from "@/components/theme-provider";
-import Tooltip from "./ui/tooltip";
+import { useTheme } from "@/provider/theme-provider";
+import Tooltip from "../ui/tooltip";
 
 export function ModeToggle() {
   const { setTheme, theme } = useTheme();

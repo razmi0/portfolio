@@ -1,12 +1,12 @@
 import type { FormStatusType } from "@/hooks/useForm";
 import useForm from "@/hooks/useForm";
 import type { FormEvent, FormEventHandler } from "react";
-import Form from "./Form/Form";
-import FormFooter from "./Form/FormFooter";
-import InputField, { type InputProps } from "./Form/InputField";
-import TextError from "./Form/TextError";
-import Textarea from "./Form/Textarea";
-import Show from "./ui/show";
+import Form from "../Form/Form";
+import FormFooter from "../Form/FormFooter";
+import InputField, { type InputProps } from "../Form/InputField";
+import TextError from "../Form/TextError";
+import Textarea from "../Form/Textarea";
+import Show from "../ui/show";
 
 const slidePlaceholder = (e: FormEvent<HTMLInputElement>) => {
   e.currentTarget.value.length > 0 ? e.currentTarget.classList.add("slide") : e.currentTarget.classList.remove("slide");

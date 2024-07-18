@@ -3,8 +3,8 @@ import { cn } from "@/lib/utils";
 import type { ProjectType } from "@/types";
 import { ImagePlay } from "lucide-react";
 import { useState, type ReactNode } from "react";
-import Dialog from "../Dialog";
-import Image from "../Image";
+import Image from "../../Image";
+import Dialog from "../../ui/Dialog";
 import CardWrapper from "./CardWrapper";
 
 const CardGrid = ({ children, className }: { children: ReactNode; className?: string }) => {
