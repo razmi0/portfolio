@@ -703,6 +703,10 @@ video {
   margin-top: 1.25rem;
 }
 
+.mt-12{
+  margin-top: 3rem;
+}
+
 .flex{
   display: flex;
 }
@@ -759,13 +763,9 @@ video {
   height: 100%;
 }
 
-.size-10{
-  width: 2.5rem;
-  height: 2.5rem;
-}
-
-.h-10{
-  height: 2.5rem;
+.size-6{
+  width: 1.5rem;
+  height: 1.5rem;
 }
 
 .h-12{
@@ -828,10 +828,6 @@ video {
 
 .min-h-screen{
   min-height: 100vh;
-}
-
-.w-10{
-  width: 2.5rem;
 }
 
 .w-12{
@@ -952,6 +948,11 @@ video {
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
+.rotate-180{
+  --tw-rotate: 180deg;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
 .scale-0{
   --tw-scale-x: 0;
   --tw-scale-y: 0;
@@ -961,6 +962,12 @@ video {
 .scale-100{
   --tw-scale-x: 1;
   --tw-scale-y: 1;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.scale-90{
+  --tw-scale-x: .9;
+  --tw-scale-y: .9;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
@@ -1014,10 +1021,6 @@ video {
 
 .place-items-center{
   place-items: center;
-}
-
-.content-center{
-  align-content: center;
 }
 
 .items-start{
@@ -1172,11 +1175,6 @@ video {
   background-color: rgb(242 241 255 / var(--tw-bg-opacity));
 }
 
-.bg-bogoss-300{
-  --tw-bg-opacity: 1;
-  background-color: rgb(118 112 230 / var(--tw-bg-opacity));
-}
-
 .bg-bogoss-400{
   --tw-bg-opacity: 1;
   background-color: rgb(79 70 229 / var(--tw-bg-opacity));
@@ -1184,6 +1182,20 @@ video {
 
 .bg-bogoss-600\/60{
   background-color: rgb(23 21 62 / 0.6);
+}
+
+.bg-bogoss-300{
+  --tw-bg-opacity: 1;
+  background-color: rgb(118 112 230 / var(--tw-bg-opacity));
+}
+
+.bg-bogoss-600{
+  --tw-bg-opacity: 1;
+  background-color: rgb(23 21 62 / var(--tw-bg-opacity));
+}
+
+.bg-transparent{
+  background-color: transparent;
 }
 
 .bg-gradient-to-t{
@@ -1244,6 +1256,11 @@ video {
 .py-1{
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;
+}
+
+.py-12{
+  padding-top: 3rem;
+  padding-bottom: 3rem;
 }
 
 .py-2{
@@ -1382,8 +1399,22 @@ video {
   color: rgb(255 255 255 / 0.9);
 }
 
+.text-white{
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+.\!text-white{
+  --tw-text-opacity: 1 !important;
+  color: rgb(255 255 255 / var(--tw-text-opacity)) !important;
+}
+
 .opacity-75{
   opacity: 0.75;
+}
+
+.opacity-100{
+  opacity: 1;
 }
 
 .outline{
@@ -2178,6 +2209,11 @@ body::-webkit-scrollbar-thumb {
   background-color: rgb(71 85 105 / var(--tw-bg-opacity));
 }
 
+.dark\:\!text-sm:is(.dark *){
+  font-size: 0.875rem !important;
+  line-height: 1.25rem !important;
+}
+
 .dark\:\!text-bogoss-200:is(.dark *){
   --tw-text-opacity: 1 !important;
   color: rgb(242 241 255 / var(--tw-text-opacity)) !important;
@@ -2196,6 +2232,15 @@ body::-webkit-scrollbar-thumb {
 .dark\:text-bogoss-700:is(.dark *){
   --tw-text-opacity: 1;
   color: rgb(14 12 37 / var(--tw-text-opacity));
+}
+
+.dark\:\!text-white:is(.dark *){
+  --tw-text-opacity: 1 !important;
+  color: rgb(255 255 255 / var(--tw-text-opacity)) !important;
+}
+
+.dark\:\!text-white\/50:is(.dark *){
+  color: rgb(255 255 255 / 0.5) !important;
 }
 
 .dark\:ring-belgoss-500:is(.dark *){
@@ -2330,47 +2375,9 @@ body::-webkit-scrollbar-thumb {
   color: rgb(255 103 0 / var(--tw-text-opacity));
 }
 
-.\[\&\>div\]\:grid>div{
-  display: grid;
-}
-
-.\[\&\>div\]\:size-10>div{
-  width: 2.5rem;
-  height: 2.5rem;
-}
-
-.\[\&\>div\]\:place-content-center>div{
-  place-content: center;
-}
-
-.\[\&\>div\]\:bg-bogoss-300>div{
-  --tw-bg-opacity: 1;
-  background-color: rgb(118 112 230 / var(--tw-bg-opacity));
-}
-
 .\[\&\>div\]\:py-5>div{
   padding-top: 1.25rem;
   padding-bottom: 1.25rem;
-}
-
-.\[\&\>div\]\:px-2>div{
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
-}
-
-.\[\&\>div\]\:py-1>div{
-  padding-top: 0.25rem;
-  padding-bottom: 0.25rem;
-}
-
-.\[\&\>div\]\:px-3>div{
-  padding-left: 0.75rem;
-  padding-right: 0.75rem;
-}
-
-.\[\&\>div\]\:py-\[1px\]>div{
-  padding-top: 1px;
-  padding-bottom: 1px;
 }
 
 .\[\&\>h2\]\:text-bogoss-700>h2{

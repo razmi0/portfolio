@@ -3,6 +3,7 @@ import { uppercase } from "@/lib/utils";
 import { apiPaths, simpleFetch } from "@/services";
 import type { AgentType, PostType, UserType, ValidationErrorType } from "@/types";
 import { useState } from "react";
+import Tab from "../ui/tabs";
 
 type DataType = "errors" | "msgs" | "users" | "agents";
 const dataType = ["errors", "msgs", "users", "agents"] as readonly DataType[];
@@ -22,6 +23,20 @@ const Admin = () => {
     users: [],
     agents: [],
   });
+  const [opens, setOpens] = useState<Record<DataType, boolean>>({
+    errors: false,
+    msgs: false,
+    users: false,
+    agents: false,
+  });
+
+  const toggleTab = (type: DataType) => {
+    setOpens((prev) => {
+      const newOpens = { ...prev };
+      for (const key in newOpens) newOpens[key as DataType] = key === type ? !newOpens[key] : false;
+      return newOpens;
+    });
+  };
 
   const handleData = async (type: DataType) => {
     console.log(`[${type}] : `);
@@ -53,36 +68,49 @@ const Admin = () => {
   };
 
   return (
-    <section className="grid grid-cols-2 grid-rows-2 items-center justify-items-center gap-5 mt-20 grow h-full [&>div]:bg-bogoss-300 [&>div]:px-2 [&>div]:py-[1px] text-sm font-medium">
-      {dataType.map((value) => {
-        const handler = () => handleData(value as DataType);
-        return (
-          <>
-            <div key={value}>
-              <button onClick={handler}>{uppercase(value)}</button>
-
-              <section>
-                {data &&
-                  data[value as keyof ContentType].map((content, i) => {
-                    console.log("content", content);
-                    if (!content) return null;
-                    return (
-                      <div key={content.ID + i}>
-                        {Object.entries(content).map(([key, value]) => (
-                          <p key={key}>
-                            {key}: {value}
-                          </p>
-                        ))}
-                      </div>
-                    );
-                  })}
-              </section>
-            </div>
-          </>
-        );
-      })}
-    </section>
+    <div className="w-full grid place-content-center mt-12">
+      <section className="flex items-center gap-3 px-2 py-1 rounded-lg bg-bogoss-600 size-fit">
+        {dataType.map((value) => {
+          const handler = () => {
+            handleData(value);
+            toggleTab(value);
+          };
+          return (
+            <Tab onClick={handler} label={uppercase(value)} open={opens[value]} key={value}>
+              {data[value as keyof ContentType].map((content, i) => {
+                console.log("content", content);
+                if (!content) return null;
+                return (
+                  <div key={content.ID + i}>
+                    {Object.entries(content).map(([key, value]) => (
+                      <p key={key}>
+                        {key}: {value}
+                      </p>
+                    ))}
+                  </div>
+                );
+              })}
+            </Tab>
+          );
+        })}
+      </section>
+    </div>
   );
 };
 
 export default Admin;
+
+// {data &&
+//   data[value as keyof ContentType].map((content, i) => {
+//     console.log("content", content);
+//     if (!content) return null;
+//     return (
+//       <div key={content.ID + i}>
+//         {Object.entries(content).map(([key, value]) => (
+//           <p key={key}>
+//             {key}: {value}
+//           </p>
+//         ))}
+//       </div>
+//     );
+//   })}
