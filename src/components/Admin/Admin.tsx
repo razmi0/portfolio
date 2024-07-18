@@ -55,6 +55,8 @@ const Admin = () => {
             </div>
             <section>
               {data[value as keyof ContentType].map((content, i) => {
+                console.log("content", content);
+                if (!content) return null;
                 return (
                   <div key={content.ID + i}>
                     {Object.entries(content).map(([key, value]) => (
