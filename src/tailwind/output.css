@@ -588,6 +588,10 @@ video {
   bottom: -2.5rem;
 }
 
+.-right-2{
+  right: -0.5rem;
+}
+
 .bottom-0{
   bottom: 0px;
 }
@@ -602,18 +606,6 @@ video {
 
 .top-0{
   top: 0px;
-}
-
-.-right-3{
-  right: -0.75rem;
-}
-
-.-right-1{
-  right: -0.25rem;
-}
-
-.-right-2{
-  right: -0.5rem;
 }
 
 .-z-10{
@@ -740,6 +732,16 @@ video {
   height: 1.25rem;
 }
 
+.size-7{
+  width: 1.75rem;
+  height: 1.75rem;
+}
+
+.size-\[20px\]{
+  width: 20px;
+  height: 20px;
+}
+
 .size-\[99\%\]{
   width: 99%;
   height: 99%;
@@ -757,19 +759,13 @@ video {
   height: 100%;
 }
 
-.size-\[10px\]{
-  width: 10px;
-  height: 10px;
+.size-10{
+  width: 2.5rem;
+  height: 2.5rem;
 }
 
-.size-7{
-  width: 1.75rem;
-  height: 1.75rem;
-}
-
-.size-\[20px\]{
-  width: 20px;
-  height: 20px;
+.h-10{
+  height: 2.5rem;
 }
 
 .h-12{
@@ -778,10 +774,6 @@ video {
 
 .h-5{
   height: 1.25rem;
-}
-
-.h-7{
-  height: 1.75rem;
 }
 
 .h-\[1\.4rem\]{
@@ -838,6 +830,10 @@ video {
   min-height: 100vh;
 }
 
+.w-10{
+  width: 2.5rem;
+}
+
 .w-12{
   width: 3rem;
 }
@@ -848,10 +844,6 @@ video {
 
 .w-5{
   width: 1.25rem;
-}
-
-.w-7{
-  width: 1.75rem;
 }
 
 .w-72{
@@ -935,6 +927,11 @@ video {
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
+.-translate-y-3{
+  --tw-translate-y: -0.75rem;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
 .translate-y-\[2px\]{
   --tw-translate-y: 2px;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
@@ -942,26 +939,6 @@ video {
 
 .translate-y-full{
   --tw-translate-y: 100%;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-}
-
-.-translate-y-2{
-  --tw-translate-y: -0.5rem;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-}
-
-.-translate-y-3{
-  --tw-translate-y: -0.75rem;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-}
-
-.-translate-y-5{
-  --tw-translate-y: -1.25rem;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-}
-
-.-translate-y-6{
-  --tw-translate-y: -1.5rem;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
@@ -1037,6 +1014,10 @@ video {
 
 .place-items-center{
   place-items: center;
+}
+
+.content-center{
+  align-content: center;
 }
 
 .items-start{
@@ -1189,6 +1170,11 @@ video {
 .bg-bogoss-200{
   --tw-bg-opacity: 1;
   background-color: rgb(242 241 255 / var(--tw-bg-opacity));
+}
+
+.bg-bogoss-300{
+  --tw-bg-opacity: 1;
+  background-color: rgb(118 112 230 / var(--tw-bg-opacity));
 }
 
 .bg-bogoss-400{
@@ -2339,19 +2325,52 @@ body::-webkit-scrollbar-thumb {
   }
 }
 
-.\[\&\>\*\]\:size-7>*{
-  width: 1.75rem;
-  height: 1.75rem;
-}
-
 .hover\:\[\&\>\*\]\:text-belgoss-500>*:hover{
   --tw-text-opacity: 1;
   color: rgb(255 103 0 / var(--tw-text-opacity));
 }
 
+.\[\&\>div\]\:grid>div{
+  display: grid;
+}
+
+.\[\&\>div\]\:size-10>div{
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
+.\[\&\>div\]\:place-content-center>div{
+  place-content: center;
+}
+
+.\[\&\>div\]\:bg-bogoss-300>div{
+  --tw-bg-opacity: 1;
+  background-color: rgb(118 112 230 / var(--tw-bg-opacity));
+}
+
 .\[\&\>div\]\:py-5>div{
   padding-top: 1.25rem;
   padding-bottom: 1.25rem;
+}
+
+.\[\&\>div\]\:px-2>div{
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+.\[\&\>div\]\:py-1>div{
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+}
+
+.\[\&\>div\]\:px-3>div{
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+}
+
+.\[\&\>div\]\:py-\[1px\]>div{
+  padding-top: 1px;
+  padding-bottom: 1px;
 }
 
 .\[\&\>h2\]\:text-bogoss-700>h2{
