@@ -15,7 +15,7 @@ type ContentType = {
   agents: AgentType[];
 };
 
-const Admin = () => {
+const Dashboard = () => {
   const { authOptions } = useAuth();
   const [data, setData] = useState<ContentType>({
     errors: [],
@@ -71,12 +71,15 @@ const Admin = () => {
     <div className="w-full grid place-content-center mt-12">
       <section className="flex items-center gap-3 px-2 py-1 rounded-lg bg-bogoss-600 size-fit">
         {dataType.map((value) => {
-          const handler = () => {
-            handleData(value);
-            toggleTab(value);
-          };
           return (
-            <Tab onClick={handler} label={uppercase(value)} open={opens[value]} key={value}>
+            <Tab
+              onClick={() => {
+                handleData(value);
+                toggleTab(value);
+              }}
+              label={uppercase(value)}
+              open={opens[value]}
+              key={value}>
               {data[value as keyof ContentType].map((content, i) => {
                 console.log("content", content);
                 if (!content) return null;
@@ -98,7 +101,7 @@ const Admin = () => {
   );
 };
 
-export default Admin;
+export default Dashboard;
 
 // {data &&
 //   data[value as keyof ContentType].map((content, i) => {

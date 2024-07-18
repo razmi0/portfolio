@@ -123,7 +123,7 @@ export type SimpleFetchError = {
   message: string;
 };
 
-export type Routes = "index" | "login" | "admin";
+export type Routes = "index" | "login" | "dashboard";
 
 export type PostType = {
   ID: string;
