@@ -1,6 +1,7 @@
 import { useAuth } from "@/hooks/useAuth";
 import { uppercase } from "@/lib/utils";
 import { apiPaths, simpleFetch } from "@/services";
+import type { ValidationErrorType, AgentType, PostType, UserType } from "@/types";
 
 type DataType = "error" | "msg" | "user" | "agent";
 
@@ -13,16 +14,16 @@ const Admin = () => {
 
     switch (type) {
       case "error":
-        data = await simpleFetch(apiPaths.data.errors, authOptions);
+        data = (await simpleFetch(apiPaths.data.errors, authOptions)) as ValidationErrorType[];
         break;
       case "msg":
-        data = await simpleFetch(apiPaths.data.msgs, authOptions);
+        data = (await simpleFetch(apiPaths.data.msgs, authOptions)) as PostType[];
         break;
       case "user":
-        data = await simpleFetch(apiPaths.data.users, authOptions);
+        data = (await simpleFetch(apiPaths.data.users, authOptions)) as UserType[];
         break;
       case "agent":
-        data = await simpleFetch(apiPaths.data.agents, authOptions);
+        data = (await simpleFetch(apiPaths.data.agents, authOptions)) as AgentType[];
         break;
     }
 
