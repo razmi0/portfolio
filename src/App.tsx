@@ -1,17 +1,14 @@
 import Experience from "@/components/Cards/Experience";
 import Project from "@/components/Cards/Project";
-import { useState, type HTMLAttributes, type ReactNode } from "react";
+import { useState, type HTMLAttributes } from "react";
 import Dashboard from "./components/Admin/Admin";
-import DashbordButton from "./components/Admin/DashbordButton";
 import Carousel from "./components/Carousel";
 import Contact from "./components/Contact";
 import HeadingTransition from "./components/HeadingTransition";
 import Hero from "./components/Hero";
 import Login from "./components/Login/Login";
-import SignButton from "./components/Login/SignButton";
-import { ModeToggle } from "./components/ModeToggle";
+import Nav from "./components/Nav";
 import Presentation from "./components/Presentation";
-import PreviousButton from "./components/PreviousButton";
 import { RisingStars } from "./components/RisingStars/RisingStars";
 import Skills from "./components/Skills/Skills";
 import { useTheme } from "./components/theme-provider";
@@ -19,11 +16,10 @@ import { NavButton } from "./components/ui/button";
 import Show from "./components/ui/show";
 import { formation, projects, skills, xp } from "./data.json";
 import useAgent from "./hooks/useAgent";
-import { useAuth } from "./hooks/useAuth";
 import useFilters from "./hooks/useFilter";
-import useRouter from "./hooks/useRouter";
 import useTitle from "./hooks/useTitle";
 import { cn, uppercase } from "./lib/utils";
+import { useRouter } from "./components/Router/RoutesProvider";
 const initStates = {
   skills: Array(skills.data.length)
     .fill(false)
@@ -36,39 +32,18 @@ const initStates = {
 const App = () => {
   const [skillsHovered, setSkillsHovered] = useState<boolean[]>(initStates.skills);
 
-  const { isAuth, signOut } = useAuth();
-
   const { filters, handleFilterChange, values } = useFilters();
   const { titles } = useTitle();
   const { theme } = useTheme();
+  const { route } = useRouter();
+
   useAgent();
-
-  const { changeRoute, route, previous } = useRouter();
-
-  const handleSign = () => {
-    !isAuth
-      ? () => changeRoute("login") // router
-      : () => {
-          signOut(); // auth
-          changeRoute("index"); // router
-        };
-  };
 
   console.log("route", route);
 
   return (
     <main className="relative min-w-full min-h-screen flex flex-col" style={{ viewTransitionName: "none" }}>
-      <Header>
-        <SignButton onClick={handleSign} login={isAuth} />
-        <ModeToggle />
-        <DashbordButton isAuth={isAuth} onClick={() => changeRoute("dashboard")} />
-        <Spacer />
-        <PreviousButton
-          previous={previous[previous.length - 1]}
-          //
-          onClick={() => changeRoute(previous[previous.length - 1])}
-        />
-      </Header>
+      <Nav />
       <Show when={route === "login"}>
         <Login />
       </Show>
@@ -78,7 +53,6 @@ const App = () => {
       <RisingStars />
       <Show when={route === "index"}>
         <Hero id={titles.hero.selector} />
-
         <HeadingTransition
           h2="A propos de moi"
           small="présentation"
@@ -189,16 +163,6 @@ const App = () => {
         <RisingStars />
       </Show>
     </main>
-  );
-};
-
-const Spacer = () => <div className="grow" />;
-
-const Header = ({ children }: { children: ReactNode }) => {
-  return (
-    <header className="flex items-center justify-start flex-row-reverse absolute top-0 left-0 w-full mt-5 gap-3">
-      {children}
-    </header>
   );
 };
 

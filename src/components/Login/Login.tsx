@@ -1,5 +1,4 @@
 import type { FormStatusType } from "@/hooks/useForm";
-import useRouter from "@/hooks/useRouter";
 import { b64EncodeUnicode } from "@/lib/utils";
 import { apiPaths, simpleFetch } from "@/services";
 import type { ErrorLoginFormType, LoginFormType, ResponseLoginType } from "@/types";
@@ -12,6 +11,7 @@ import InputField from "../Form/InputField";
 import TextError from "../Form/TextError";
 import Show from "../ui/show";
 import { validate } from "./validation";
+import { useRouter } from "../Router/RoutesProvider";
 
 const errorinit: ErrorLoginFormType = {
   username: false,
