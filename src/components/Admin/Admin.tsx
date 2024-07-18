@@ -29,18 +29,25 @@ const Admin = () => {
       case "errors":
         const errors = (await simpleFetch(apiPaths.data.errors, authOptions)) as ValidationErrorType[];
         setData((prev) => ({ ...prev, errors }));
+        console.log("errors", errors);
         break;
+
       case "msgs":
         const msgs = (await simpleFetch(apiPaths.data.msgs, authOptions)) as PostType[];
         setData((prev) => ({ ...prev, msgs }));
+        console.log("msgs", msgs);
         break;
+
       case "users":
         const users = (await simpleFetch(apiPaths.data.users, authOptions)) as UserType[];
         setData((prev) => ({ ...prev, users }));
+        console.log("users", users);
         break;
+
       case "agents":
         const agents = (await simpleFetch(apiPaths.data.agents, authOptions)) as AgentType[];
         setData((prev) => ({ ...prev, agents }));
+        console.log("agents", agents);
         break;
     }
   };
