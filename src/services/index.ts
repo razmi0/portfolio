@@ -5,6 +5,12 @@ export const apiPaths = {
   auth: `${baseUrl}/auth`,
   agent: `${baseUrl}/agent`,
   contact: `${baseUrl}/contact`,
+  data: {
+    errors: `${baseUrl}/data/errors`,
+    msgs: `${baseUrl}/data/msgs`,
+    users: `${baseUrl}/data/users`,
+    agents: `${baseUrl}/data/agents`,
+  },
   base: baseUrl,
 } as const;
 
