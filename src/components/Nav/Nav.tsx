@@ -4,14 +4,22 @@ import SignButton from "../Login/SignButton";
 import { ModeToggle } from "./ModeToggle";
 import PreviousButton from "./PreviousButton";
 
-import type { ReactNode } from "react";
-import { useRouter } from "../../provider/routes-provider";
+import { useEffect, type ReactNode } from "react";
+// import { useRouter } from "../../provider/routes-provider";
+import type { Routes } from "@/types";
 
-const Nav = () => {
+// Nav  changeRoute={changeRoute} previous={previous}
+type NavProps = {
+  changeRoute: (route: Routes) => false | void;
+  previous: Routes[];
+};
+
+const Nav = ({ changeRoute, previous }: NavProps) => {
   const { isAuth, signOut } = useAuth();
-  const { changeRoute, previous } = useRouter();
+  // const { changeRoute, previous, route } = useRouter();
 
   const handleSign = () => {
+    console.log("isAuth", isAuth);
     !isAuth
       ? () => changeRoute("login") // router
       : () => {
@@ -19,6 +27,10 @@ const Nav = () => {
           changeRoute("index"); // router
         };
   };
+
+  useEffect(() => {
+    console.log("previous", previous);
+  }, [previous]);
 
   return (
     <Header>

@@ -9,11 +9,11 @@ import "./tailwind/output.css";
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
-      <RouterProvider>
-        <AuthProvider>
+      <AuthProvider>
+        <RouterProvider>
           <App />
-        </AuthProvider>
-      </RouterProvider>
+        </RouterProvider>
+      </AuthProvider>
     </ThemeProvider>
   </React.StrictMode>
 );

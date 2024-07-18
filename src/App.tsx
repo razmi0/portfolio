@@ -6,7 +6,7 @@ import Carousel from "./components/Home/Carousel";
 import Contact from "./components/Home/Contact";
 import HeadingTransition from "./components/Home/HeadingTransition";
 import Hero from "./components/Home/Hero";
-import Presentation from "./components/Home/Presentation";
+// import Presentation from "./components/Home/Presentation";
 import Skills from "./components/Home/Skills";
 import Login from "./components/Login/Login";
 import Nav from "./components/Nav/Nav";
@@ -35,7 +35,7 @@ const App = () => {
   const { filters, handleFilterChange, values } = useFilters();
   const { titles } = useTitle();
   const { theme } = useTheme();
-  const { route } = useRouter();
+  const { route, changeRoute, previous } = useRouter();
 
   useAgent();
 
@@ -43,7 +43,7 @@ const App = () => {
 
   return (
     <main className="relative min-w-full min-h-screen flex flex-col" style={{ viewTransitionName: "none" }}>
-      <Nav />
+      <Nav changeRoute={changeRoute} previous={previous} />
       <Show when={route === "login"}>
         <Login />
       </Show>
@@ -53,13 +53,13 @@ const App = () => {
       <RisingStars />
       <Show when={route === "index"}>
         <Hero id={titles.hero.selector} />
-        <HeadingTransition
+        {/* <HeadingTransition
           h2="A propos de moi"
           small="présentation"
           className="mb-20"
           id={titles.presentation.selector}
         />
-        <Presentation />
+        <Presentation /> */}
         {/* SKILLS */}
         {/* SKILLS */}
         {/* SKILLS */}

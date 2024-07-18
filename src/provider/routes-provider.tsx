@@ -57,6 +57,8 @@ const RouterProvider = ({ children }: { children: ReactNode }) => {
 
   const changeRoute = (route: Routes) => isValidRoute(route) && setRoute(route);
 
+  console.log("RouterProvider", state);
+
   return <RouterContext.Provider value={{ state, changeRoute }}>{children}</RouterContext.Provider>;
 };
 
