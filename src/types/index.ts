@@ -143,13 +143,14 @@ export type AgentType = {
 };
 
 export type UserType = {
+  ID: string;
   username: string;
   exp?: number;
 };
 
 type ErrorField = "contact" | "login";
 export type ValidationErrorType = {
-  id: string;
+  ID: string;
   errors: string[];
   field: ErrorField;
 };

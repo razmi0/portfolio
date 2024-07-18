@@ -1,33 +1,47 @@
 import { useAuth } from "@/hooks/useAuth";
 import { uppercase } from "@/lib/utils";
 import { apiPaths, simpleFetch } from "@/services";
-import type { ValidationErrorType, AgentType, PostType, UserType } from "@/types";
+import type { AgentType, PostType, UserType, ValidationErrorType } from "@/types";
+import { useState } from "react";
 
 type DataType = "error" | "msg" | "user" | "agent";
 
+type ContentType = {
+  errors: ValidationErrorType[];
+  msgs: PostType[];
+  users: UserType[];
+  agents: AgentType[];
+};
+
 const Admin = () => {
   const { authOptions } = useAuth();
+  const [data, setData] = useState<ContentType>({
+    errors: [],
+    msgs: [],
+    users: [],
+    agents: [],
+  });
 
   const handleData = async (type: DataType) => {
     console.log(`[${type}] : `);
-    let data = null;
-
     switch (type) {
       case "error":
-        data = (await simpleFetch(apiPaths.data.errors, authOptions)) as ValidationErrorType[];
+        const errors = (await simpleFetch(apiPaths.data.errors, authOptions)) as ValidationErrorType[];
+        setData((prev) => ({ ...prev, errors }));
         break;
       case "msg":
-        data = (await simpleFetch(apiPaths.data.msgs, authOptions)) as PostType[];
+        const msgs = (await simpleFetch(apiPaths.data.msgs, authOptions)) as PostType[];
+        setData((prev) => ({ ...prev, msgs }));
         break;
       case "user":
-        data = (await simpleFetch(apiPaths.data.users, authOptions)) as UserType[];
+        const users = (await simpleFetch(apiPaths.data.users, authOptions)) as UserType[];
+        setData((prev) => ({ ...prev, users }));
         break;
       case "agent":
-        data = (await simpleFetch(apiPaths.data.agents, authOptions)) as AgentType[];
+        const agents = (await simpleFetch(apiPaths.data.agents, authOptions)) as AgentType[];
+        setData((prev) => ({ ...prev, agents }));
         break;
     }
-
-    console.log(data);
   };
 
   return (
@@ -35,9 +49,24 @@ const Admin = () => {
       {["error", "msg", "user", "agent"].map((value) => {
         const handler = () => handleData(value as DataType);
         return (
-          <div key={value}>
-            <button onClick={handler}>{uppercase(value) + "s"}</button>
-          </div>
+          <>
+            <div key={value}>
+              <button onClick={handler}>{uppercase(value) + "s"}</button>
+            </div>
+            <section>
+              {data[value as keyof ContentType].map((content, i) => {
+                return (
+                  <div key={content.ID + i}>
+                    {Object.entries(content).map(([key, value]) => (
+                      <p key={key}>
+                        {key}: {value}
+                      </p>
+                    ))}
+                  </div>
+                );
+              })}
+            </section>
+          </>
         );
       })}
     </section>
