@@ -59,24 +59,25 @@ const Admin = () => {
         return (
           <>
             <div key={value}>
-              <button onClick={handler}>{uppercase(value) + "s"}</button>
+              <button onClick={handler}>{uppercase(value)}</button>
+
+              <section>
+                {data &&
+                  data[value as keyof ContentType].map((content, i) => {
+                    console.log("content", content);
+                    if (!content) return null;
+                    return (
+                      <div key={content.ID + i}>
+                        {Object.entries(content).map(([key, value]) => (
+                          <p key={key}>
+                            {key}: {value}
+                          </p>
+                        ))}
+                      </div>
+                    );
+                  })}
+              </section>
             </div>
-            <section>
-              {data &&
-                data[value as keyof ContentType].map((content, i) => {
-                  console.log("content", content);
-                  if (!content) return null;
-                  return (
-                    <div key={content.ID + i}>
-                      {Object.entries(content).map(([key, value]) => (
-                        <p key={key}>
-                          {key}: {value}
-                        </p>
-                      ))}
-                    </div>
-                  );
-                })}
-            </section>
           </>
         );
       })}
