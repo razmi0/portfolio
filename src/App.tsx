@@ -1,6 +1,7 @@
 import Experience from "@/components/Cards/Experience";
 import Project from "@/components/Cards/Project";
 import { useState, type HTMLAttributes, type ReactNode } from "react";
+import Dashboard from "./components/Admin/Admin";
 import DashbordButton from "./components/Admin/DashbordButton";
 import Carousel from "./components/Carousel";
 import Contact from "./components/Contact";
@@ -23,7 +24,6 @@ import useFilters from "./hooks/useFilter";
 import useRouter from "./hooks/useRouter";
 import useTitle from "./hooks/useTitle";
 import { cn, uppercase } from "./lib/utils";
-import Admin from "./components/Admin/Admin";
 const initStates = {
   skills: Array(skills.data.length)
     .fill(false)
@@ -43,21 +43,25 @@ const App = () => {
   const { theme } = useTheme();
   useAgent();
 
-  const { changeRoute, current, previous } = useRouter();
+  const { changeRoute, route, previous } = useRouter();
 
-  const handleLogOut = () => {
-    signOut();
-    changeRoute("index");
+  const handleSign = () => {
+    !isAuth
+      ? () => changeRoute("login") // router
+      : () => {
+          signOut(); // auth
+          changeRoute("index"); // router
+        };
   };
 
-  console.log("current", current);
+  console.log("route", route);
 
   return (
     <main className="relative min-w-full min-h-screen flex flex-col" style={{ viewTransitionName: "none" }}>
       <Header>
-        <SignButton onClick={!isAuth ? () => changeRoute("login") : handleLogOut} login={isAuth} />
+        <SignButton onClick={handleSign} login={isAuth} />
         <ModeToggle />
-        <DashbordButton isAuth={isAuth} onClick={() => changeRoute("admin")} />
+        <DashbordButton isAuth={isAuth} onClick={() => changeRoute("dashboard")} />
         <Spacer />
         <PreviousButton
           previous={previous[previous.length - 1]}
@@ -65,14 +69,14 @@ const App = () => {
           onClick={() => changeRoute(previous[previous.length - 1])}
         />
       </Header>
-      <Show when={current === "login"}>
+      <Show when={route === "login"}>
         <Login />
       </Show>
-      <Show when={current === "admin"}>
-        <Admin />
+      <Show when={route === "dashboard"}>
+        <Dashboard />
       </Show>
       <RisingStars />
-      <Show when={current === "index"}>
+      <Show when={route === "index"}>
         <Hero id={titles.hero.selector} />
 
         <HeadingTransition
