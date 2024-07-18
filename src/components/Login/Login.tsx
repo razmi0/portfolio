@@ -54,7 +54,7 @@ const Login = () => {
       return;
     }
     setFormStatus("success");
-    changeRoute("admin");
+    changeRoute("dashboard");
   };
 
   const handleChange: FormEventHandler<HTMLInputElement> = (e) => {
