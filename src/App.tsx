@@ -1,7 +1,7 @@
 import Experience from "@/components/Home/Cards/Experience";
 import Project from "@/components/Home/Cards/Project";
 import { useState, type HTMLAttributes } from "react";
-import Dashboard from "./components/Admin/Admin";
+import Dashboard from "./components/Admin/Dashboard";
 import Carousel from "./components/Home/Carousel";
 import Contact from "./components/Home/Contact";
 import HeadingTransition from "./components/Home/HeadingTransition";
@@ -59,13 +59,6 @@ const App = () => {
       <RisingStars />
       <Show when={route === "index"}>
         <Hero id={titles.hero.selector} />
-        {/* <HeadingTransition
-          h2="A propos de moi"
-          small="présentation"
-          className="mb-20"
-          id={titles.presentation.selector}
-        />
-        <Presentation /> */}
 
         {/* SKILLS */}
         {/* SKILLS */}
