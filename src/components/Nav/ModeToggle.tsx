@@ -8,19 +8,17 @@ import Tooltip from "../ui/tooltip";
 export function ModeToggle() {
   const { setTheme, theme } = useTheme();
 
-  const [handleWithTransition] = useMemo(
-    () =>
-      withViewTransition(() => {
-        if (theme === "system") {
-          setTheme("dark");
-        } else if (theme === "dark") {
-          setTheme("light");
-        } else {
-          setTheme("dark");
-        }
-      }),
-    [theme]
-  );
+  const handler = () => {
+    if (theme === "system") {
+      setTheme("dark");
+    } else if (theme === "dark") {
+      setTheme("light");
+    } else {
+      setTheme("dark");
+    }
+  };
+
+  const [handleWithTransition] = useMemo(() => withViewTransition(handler), [theme]);
 
   return (
     <Tooltip tooltip={"change theme"} className="-translate-x-[40%]">
