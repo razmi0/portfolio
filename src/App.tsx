@@ -6,7 +6,6 @@ import Carousel from "./components/Home/Carousel";
 import Contact from "./components/Home/Contact";
 import HeadingTransition from "./components/Home/HeadingTransition";
 import Hero from "./components/Home/Hero";
-// import Presentation from "./components/Home/Presentation";
 import Skills from "./components/Home/Skills";
 import Login from "./components/Login/Login";
 import Nav from "./components/Nav/Nav";
@@ -20,6 +19,8 @@ import useTitle from "./hooks/useTitle";
 import { cn, uppercase } from "./lib/utils";
 import { useRouter } from "./provider/routes-provider";
 import { useTheme } from "./provider/theme-provider";
+import { ContentType } from "./types";
+
 const initStates = {
   skills: Array(skills.data.length)
     .fill(false)
@@ -32,24 +33,28 @@ const initStates = {
 const App = () => {
   const [skillsHovered, setSkillsHovered] = useState<boolean[]>(initStates.skills);
 
+  const [data, setData] = useState<ContentType>({
+    errors: [],
+    msgs: [],
+    users: [],
+    agents: [],
+  });
+
   const { filters, handleFilterChange, values } = useFilters();
   const { titles } = useTitle();
   const { theme } = useTheme();
-  const { route, changeRoute, previous } = useRouter();
+  const { route } = useRouter();
 
   useAgent();
 
-  console.log("route", route);
-
   return (
     <main className="relative min-w-full min-h-screen flex flex-col" style={{ viewTransitionName: "none" }}>
-      {/* <Nav changeRoute={changeRoute} previous={previous} /> */}
       <Nav />
       <Show when={route === "login"}>
         <Login />
       </Show>
       <Show when={route === "dashboard"}>
-        <Dashboard />
+        <Dashboard data={data} setData={setData} />
       </Show>
       <RisingStars />
       <Show when={route === "index"}>
@@ -61,6 +66,7 @@ const App = () => {
           id={titles.presentation.selector}
         />
         <Presentation /> */}
+
         {/* SKILLS */}
         {/* SKILLS */}
         {/* SKILLS */}

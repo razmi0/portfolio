@@ -1,28 +1,20 @@
 import { useAuth } from "@/hooks/useAuth";
 import { uppercase } from "@/lib/utils";
 import { apiPaths, simpleFetch } from "@/services";
-import type { AgentType, PostType, UserType, ValidationErrorType } from "@/types";
+import type { AgentType, ContentType, PostType, UserType, ValidationErrorType, DataType } from "@/types";
 import { useState } from "react";
 import Tab from "../ui/tabs";
 
-type DataType = "errors" | "msgs" | "users" | "agents";
 const dataType = ["errors", "msgs", "users", "agents"] as readonly DataType[];
 
-type ContentType = {
-  errors: ValidationErrorType[];
-  msgs: PostType[];
-  users: UserType[];
-  agents: AgentType[];
+const timeout = 7000;
+
+type DashboardProps = {
+  data: ContentType;
+  setData: React.Dispatch<React.SetStateAction<ContentType>>;
 };
 
-const Dashboard = () => {
-  const { authOptions } = useAuth();
-  const [data, setData] = useState<ContentType>({
-    errors: [],
-    msgs: [],
-    users: [],
-    agents: [],
-  });
+const Dashboard = ({ data, setData }: DashboardProps) => {
   const [opens, setOpens] = useState<Record<DataType, boolean>>({
     errors: false,
     msgs: false,
@@ -38,29 +30,31 @@ const Dashboard = () => {
     });
   };
 
+  const { authOptions } = useAuth();
+
   const handleData = async (type: DataType) => {
     console.log(`[${type}] : `);
     switch (type) {
       case "errors":
-        const errors = (await simpleFetch(apiPaths.data.errors, authOptions)) as ValidationErrorType[];
+        const errors = (await simpleFetch(apiPaths.data.errors, authOptions, timeout)) as ValidationErrorType[];
         setData((prev) => ({ ...prev, errors }));
         console.log("errors", errors);
         break;
 
       case "msgs":
-        const msgs = (await simpleFetch(apiPaths.data.msgs, authOptions)) as PostType[];
+        const msgs = (await simpleFetch(apiPaths.data.msgs, authOptions, timeout)) as PostType[];
         setData((prev) => ({ ...prev, msgs }));
         console.log("msgs", msgs);
         break;
 
       case "users":
-        const users = (await simpleFetch(apiPaths.data.users, authOptions)) as UserType[];
+        const users = (await simpleFetch(apiPaths.data.users, authOptions, timeout)) as UserType[];
         setData((prev) => ({ ...prev, users }));
         console.log("users", users);
         break;
 
       case "agents":
-        const agents = (await simpleFetch(apiPaths.data.agents, authOptions)) as AgentType[];
+        const agents = (await simpleFetch(apiPaths.data.agents, authOptions, timeout)) as AgentType[];
         setData((prev) => ({ ...prev, agents }));
         console.log("agents", agents);
         break;
@@ -81,7 +75,6 @@ const Dashboard = () => {
               open={opens[value]}
               key={value}>
               {data[value as keyof ContentType].map((content, i) => {
-                console.log("content", content);
                 if (!content) return null;
                 return (
                   <div key={content.ID + i}>
@@ -102,18 +95,3 @@ const Dashboard = () => {
 };
 
 export default Dashboard;
-
-// {data &&
-//   data[value as keyof ContentType].map((content, i) => {
-//     console.log("content", content);
-//     if (!content) return null;
-//     return (
-//       <div key={content.ID + i}>
-//         {Object.entries(content).map(([key, value]) => (
-//           <p key={key}>
-//             {key}: {value}
-//           </p>
-//         ))}
-//       </div>
-//     );
-//   })}

@@ -75,13 +75,10 @@ const RouterProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const changeRoute = (route: Routes) => {
-    console.log("changeRoute", route);
     if (isValidRoute(route)) {
       reducer({ type: "SET_ROUTE", payload: route });
     }
   };
-
-  console.log("RouterProvider", routes);
 
   return <RouterContext.Provider value={{ routes, changeRoute }}>{children}</RouterContext.Provider>;
 };

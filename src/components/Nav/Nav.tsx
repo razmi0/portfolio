@@ -1,19 +1,10 @@
 import { useAuth } from "@/hooks/useAuth";
+import { useRouter } from "@/provider/routes-provider";
+import type { ReactNode } from "react";
 import DashbordButton from "../Admin/DashbordButton";
 import SignButton from "../Login/SignButton";
 import { ModeToggle } from "./ModeToggle";
 import PreviousButton from "./PreviousButton";
-
-import { useEffect, type ReactNode } from "react";
-// import { useRouter } from "../../provider/routes-provider";
-import { useRouter } from "@/provider/routes-provider";
-import type { Routes } from "@/types";
-
-// Nav  changeRoute={changeRoute} previous={previous}
-type NavProps = {
-  changeRoute: (route: Routes) => false | void;
-  previous: Routes[];
-};
 
 const Nav = () => {
   const { isAuth, signOut } = useAuth();
@@ -27,10 +18,6 @@ const Nav = () => {
     }
     changeRoute("login");
   };
-
-  useEffect(() => {
-    console.log("previous", previous);
-  }, [previous]);
 
   return (
     <Header>
