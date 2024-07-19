@@ -36,8 +36,6 @@ const Tooltip = ({ children, tooltip, className, disabled = false }: TooltipProp
     setFirstRender(false);
   }, [disabled]);
 
-  console.log(posX);
-
   return (
     <div className="relative flex group appearance-none size-fit select-none">
       {children}
