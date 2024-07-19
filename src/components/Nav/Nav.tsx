@@ -6,6 +6,7 @@ import PreviousButton from "./PreviousButton";
 
 import { useEffect, type ReactNode } from "react";
 // import { useRouter } from "../../provider/routes-provider";
+import { useRouter } from "@/provider/routes-provider";
 import type { Routes } from "@/types";
 
 // Nav  changeRoute={changeRoute} previous={previous}
@@ -14,8 +15,9 @@ type NavProps = {
   previous: Routes[];
 };
 
-const Nav = ({ changeRoute, previous }: NavProps) => {
+const Nav = () => {
   const { isAuth, signOut } = useAuth();
+  const { changeRoute, previous } = useRouter();
 
   const handleSign = () => {
     if (isAuth) {

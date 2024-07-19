@@ -43,7 +43,8 @@ const App = () => {
 
   return (
     <main className="relative min-w-full min-h-screen flex flex-col" style={{ viewTransitionName: "none" }}>
-      <Nav changeRoute={changeRoute} previous={previous} />
+      {/* <Nav changeRoute={changeRoute} previous={previous} /> */}
+      <Nav />
       <Show when={route === "login"}>
         <Login />
       </Show>
