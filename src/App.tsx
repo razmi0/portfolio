@@ -19,8 +19,6 @@ import useTitle from "./hooks/useTitle";
 import { cn, uppercase } from "./lib/utils";
 import { useRouter } from "./provider/routes-provider";
 import { useTheme } from "./provider/theme-provider";
-import { ContentType } from "./types";
-
 const initStates = {
   skills: Array(skills.data.length)
     .fill(false)
@@ -33,12 +31,12 @@ const initStates = {
 const App = () => {
   const [skillsHovered, setSkillsHovered] = useState<boolean[]>(initStates.skills);
 
-  const [data, setData] = useState<ContentType>({
-    errors: [],
-    msgs: [],
-    users: [],
-    agents: [],
-  });
+  // const [data, setData] = useState<ContentType>({
+  //   errors: [],
+  //   msgs: [],
+  //   users: [],
+  //   agents: [],
+  // });
 
   const { filters, handleFilterChange, values } = useFilters();
   const { titles } = useTitle();
@@ -54,7 +52,7 @@ const App = () => {
         <Login />
       </Show>
       <Show when={route === "dashboard"}>
-        <Dashboard data={data} setData={setData} />
+        <Dashboard />
       </Show>
       <RisingStars />
       <Show when={route === "index"}>
