@@ -2292,6 +2292,10 @@ body::-webkit-scrollbar-thumb {
   .sm\:text-left{
     text-align: left;
   }
+
+  .group:hover .sm\:group-hover\:block{
+    display: block;
+  }
 }
 
 @media (min-width: 768px){

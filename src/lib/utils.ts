@@ -10,3 +10,15 @@ export function uppercase(str: string) {
 }
 
 export const b64EncodeUnicode = (str: string) => btoa(encodeURIComponent(str));
+
+export const withViewTransition = (cb: () => void) => {
+  const cbWithTransition = () => {
+    if (!document.startViewTransition) {
+      cb();
+      return;
+    }
+    document.startViewTransition(cb);
+  };
+
+  return [cbWithTransition];
+};
