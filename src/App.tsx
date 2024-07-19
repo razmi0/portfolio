@@ -48,7 +48,7 @@ const App = () => {
   useAgent();
 
   return (
-    <main className="relative min-w-full min-h-screen flex flex-col" style={{ viewTransitionName: "none" }}>
+    <main className="relative min-w-full min-h-screen flex flex-col">
       <Nav />
       <Show when={route === "login"}>
         <Login />
