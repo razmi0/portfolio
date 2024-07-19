@@ -77,10 +77,10 @@ const Dashboard = () => {
         </section>
       </div>
       <section>
-        <Show when={opens.errors}>
-          {data.errors.map((error) => {
-            const cols = Object.keys(error);
-            const values = Object.values(error);
+        <Show when={opens.msgs}>
+          {data.msgs.map((msg) => {
+            const cols = Object.keys(msg);
+            const values = Object.values(msg);
 
             console.log(cols, values);
 
