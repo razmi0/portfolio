@@ -25,11 +25,7 @@ const Nav = () => {
       <ModeToggle />
       <DashbordButton isAuth={isAuth} onClick={() => changeRoute("dashboard")} />
       <Spacer />
-      <PreviousButton
-        previous={previous[previous.length - 1]}
-        //
-        onClick={() => changeRoute(previous[previous.length - 1])}
-      />
+      <PreviousButton previous={previous[previous.length - 1]} onClick={() => changeRoute("index")} />
     </Header>
   );
 };
