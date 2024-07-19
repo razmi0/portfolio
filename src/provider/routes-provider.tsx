@@ -1,4 +1,4 @@
-import { useCallback, useContext, useReducer } from "react";
+import { useContext, useState } from "react";
 
 import type { Routes } from "@/types";
 import { ReactNode, createContext } from "react";
@@ -12,61 +12,85 @@ type RouterState = {
 };
 
 type RouterAction = {
-  type: "SET_ROUTE" | "GO_BACK";
+  type: "SET_ROUTE";
   payload: Routes;
 };
 
 type RouterContextType = {
-  state: RouterState;
+  routes: RouterState;
   changeRoute: (route: Routes) => false | void;
 };
 
 const RouterContext = createContext<RouterContextType>({
-  state: { route: "index", previous: [] },
+  routes: { route: "index", previous: [] },
   changeRoute: () => {},
 });
 
-const routerReducer = (state: RouterState, action: RouterAction) => {
-  switch (action.type) {
-    case "SET_ROUTE": {
-      if (action.payload !== state.route) {
-        history.replaceState(null, "", action.payload === "index" ? "/" : `/${action.payload}`);
+// const routerReducer = (state: RouterState, action: RouterAction) => {
+//   switch (action.type) {
+//     case "SET_ROUTE": {
+//       if (action.payload !== state.route) {
+//         history.replaceState(null, "", action.payload === "index" ? "/" : `/${action.payload}`);
 
-        if (state.previous.length > 2) {
-          state.previous.shift();
-        }
-        return {
-          route: action.payload,
-          previous: [...state.previous, state.route],
-        };
-      }
-      return state;
-    }
+//         if (state.previous.length > 2) {
+//           state.previous.shift();
+//         }
+//         return {
+//           route: action.payload,
+//           previous: [...state.previous, state.route],
+//         };
+//       }
+//       return state;
+//     }
 
-    default:
-      return state;
-  }
-};
+//     default:
+//       return state;
+//   }
+// };
 
 const RouterProvider = ({ children }: { children: ReactNode }) => {
-  const [state, dispatch] = useReducer(routerReducer, { route: "index", previous: [] });
+  const [routes, setRoutes] = useState<RouterState>({ route: "index", previous: [] });
 
-  const setRoute = useCallback((route: Routes) => {
-    dispatch({ type: "SET_ROUTE", payload: route });
-  }, []);
+  const reducer = (action: RouterAction) => {
+    switch (action.type) {
+      case "SET_ROUTE": {
+        if (action.payload !== routes.route) {
+          history.replaceState(null, "", action.payload === "index" ? "/" : `/${action.payload}`);
 
-  const changeRoute = (route: Routes) => isValidRoute(route) && setRoute(route);
+          if (routes.previous.length > 2) {
+            routes.previous.shift();
+          }
 
-  console.log("RouterProvider", state);
+          setRoutes({
+            route: action.payload,
+            previous: [...routes.previous, routes.route],
+          });
+        }
+        break;
+      }
 
-  return <RouterContext.Provider value={{ state, changeRoute }}>{children}</RouterContext.Provider>;
+      default:
+        break;
+    }
+  };
+
+  const changeRoute = (route: Routes) => {
+    console.log("changeRoute", route);
+    if (isValidRoute(route)) {
+      reducer({ type: "SET_ROUTE", payload: route });
+    }
+  };
+
+  console.log("RouterProvider", routes);
+
+  return <RouterContext.Provider value={{ routes, changeRoute }}>{children}</RouterContext.Provider>;
 };
 
 const useRouter = () => {
-  const { state, changeRoute } = useContext(RouterContext);
+  const { routes, changeRoute } = useContext(RouterContext);
 
   return {
-    ...state,
+    ...routes,
     changeRoute,
   };
 };

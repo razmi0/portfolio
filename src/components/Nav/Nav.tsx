@@ -16,16 +16,14 @@ type NavProps = {
 
 const Nav = ({ changeRoute, previous }: NavProps) => {
   const { isAuth, signOut } = useAuth();
-  // const { changeRoute, previous, route } = useRouter();
 
   const handleSign = () => {
-    console.log("isAuth", isAuth);
-    !isAuth
-      ? () => changeRoute("login") // router
-      : () => {
-          signOut(); // auth
-          changeRoute("index"); // router
-        };
+    if (isAuth) {
+      signOut();
+      changeRoute("index");
+      return;
+    }
+    changeRoute("login");
   };
 
   useEffect(() => {
