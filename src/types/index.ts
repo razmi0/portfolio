@@ -154,3 +154,12 @@ export type ValidationErrorType = {
   errors: string[];
   field: ErrorField;
 };
+
+export type ContentType = {
+  errors: ValidationErrorType[];
+  msgs: PostType[];
+  users: UserType[];
+  agents: AgentType[];
+};
+
+export type DataType = "errors" | "msgs" | "users" | "agents";
