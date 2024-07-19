@@ -1,8 +1,9 @@
 import { useAuth } from "@/hooks/useAuth";
 import { uppercase } from "@/lib/utils";
 import { apiPaths, simpleFetch } from "@/services";
-import type { DataType } from "@/types";
+import type { ContentType, DataType } from "@/types";
 import { useState } from "react";
+import Show from "../ui/show";
 import Tab from "../ui/tabs";
 
 const dataType = ["errors", "msgs", "users", "agents"] as readonly DataType[];
@@ -31,6 +32,14 @@ const Dashboard = () => {
     users: false,
     agents: false,
   });
+
+  const [data, setData] = useState<ContentType>({
+    errors: [],
+    msgs: [],
+    users: [],
+    agents: [],
+  });
+
   const { authOptions } = useAuth();
 
   const toggleTab = (type: DataType) => {
@@ -45,6 +54,7 @@ const Dashboard = () => {
     if (!isObsolete(type)) return;
     const data = await simpleFetch(apiPaths.data[type], authOptions, timeout);
     localStorage.setItem(type, buildPayload(type, data));
+    setData((prev) => ({ ...prev, [type]: data }));
   };
 
   return (
@@ -60,30 +70,39 @@ const Dashboard = () => {
                 }}
                 label={uppercase(value)}
                 open={opens[value]}
-                key={value}>
-                <>oui 1</>
-                {/* {data[value as keyof ContentType].map((content, i) => {
-                if (!content) return null;
-                return (
-                  <div key={content.ID + i}>
-                    {Object.entries(content).map(([key, value]) => (
-                      <p key={key}>
-                      {key}: {value}
-                      </p>
-                    ))}
-                  </div>
-                );
-              })} */}
-              </Tab>
+                key={value}
+              />
             );
           })}
-          <>oui 2</>
         </section>
-        <>oui 3</>
       </div>
-      <>oui 4</>
+      <section>
+        <Show when={opens.errors}>
+          {data.errors.map((error) => {
+            const cols = Object.keys(error);
+            const values = Object.values(error);
+
+            console.log(cols, values);
+
+            return <></>;
+          })}
+        </Show>
+      </section>
     </>
   );
 };
 
 export default Dashboard;
+
+// {data[value as keyof ContentType].map((content, i) => {
+//   if (!content) return null;
+//   return (
+//     <div key={content.ID + i}>
+//       {Object.entries(content).map(([key, value]) => (
+//         <p key={key}>
+//         {key}: {value}
+//         </p>
+//       ))}
+//     </div>
+//   );
+// })}

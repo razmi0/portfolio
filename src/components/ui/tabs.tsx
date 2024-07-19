@@ -1,16 +1,13 @@
 import { cn } from "@/lib/utils";
 import { ChevronUp } from "lucide-react";
-import type { ReactNode } from "react";
 import { Button } from "./button";
-import Show from "./show";
 
 type TabProps = {
   label: string;
   open: boolean;
   onClick: () => void;
-  children: ReactNode;
 };
-const Tab = ({ label, open, onClick, children }: TabProps) => {
+const Tab = ({ label, open, onClick }: TabProps) => {
   return (
     <>
       <section className="flex items-center justify-center gap-2" data-is="tab">
@@ -24,7 +21,6 @@ const Tab = ({ label, open, onClick, children }: TabProps) => {
           <ChevronUp className={cn("size-6 transition-transform", open && "rotate-180")} />
         </Button>
       </section>
-      <Show when={open}>{children}</Show>
     </>
   );
 };
