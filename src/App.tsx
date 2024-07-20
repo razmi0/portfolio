@@ -1,7 +1,7 @@
 import Experience from "@/components/Home/Cards/Experience";
 import Project from "@/components/Home/Cards/Project";
 import { useState, type HTMLAttributes } from "react";
-import Dashboard from "./components/Admin/Dashboard";
+import Dashboard from "./components/Dashboard/Dashboard";
 import Carousel from "./components/Home/Carousel";
 import Contact from "./components/Home/Contact";
 import HeadingTransition from "./components/Home/HeadingTransition";
@@ -30,13 +30,6 @@ const initStates = {
 
 const App = () => {
   const [skillsHovered, setSkillsHovered] = useState<boolean[]>(initStates.skills);
-
-  // const [data, setData] = useState<ContentType>({
-  //   errors: [],
-  //   msgs: [],
-  //   users: [],
-  //   agents: [],
-  // });
 
   const { filters, handleFilterChange, values } = useFilters();
   const { titles } = useTitle();

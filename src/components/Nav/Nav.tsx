@@ -1,7 +1,7 @@
 import { useAuth } from "@/hooks/useAuth";
 import { useRouter } from "@/provider/routes-provider";
 import type { ReactNode } from "react";
-import DashbordButton from "../Admin/DashboardButton";
+import DashbordButton from "../Dashboard/DashboardButton";
 import SignButton from "../Login/SignButton";
 import { ModeToggle } from "./ModeToggle";
 import PreviousButton from "./PreviousButton";
