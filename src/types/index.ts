@@ -63,11 +63,7 @@ export type HandleIntersectionOptions = {
 };
 
 export type UserAgentInfo = {
-  userAgent: string;
   platform: string;
-  hardware: string;
-  locale: string;
-  connection: string;
 };
 
 export type MinimalResponse = {

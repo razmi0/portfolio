@@ -1,6 +1,6 @@
 import Experience from "@/components/Home/Cards/Experience";
 import Project from "@/components/Home/Cards/Project";
-import { useState, type HTMLAttributes } from "react";
+import { useEffect, useState, type HTMLAttributes } from "react";
 import Dashboard from "./components/Dashboard/Dashboard";
 import Carousel from "./components/Home/Carousel";
 import Contact from "./components/Home/Contact";
@@ -13,12 +13,13 @@ import { RisingStars } from "./components/RisingStars/RisingStars";
 import { NavButton } from "./components/ui/button";
 import Show from "./components/ui/show";
 import { formation, projects, skills, xp } from "./data.json";
-import useAgent from "./hooks/useAgent";
 import useFilters from "./hooks/useFilter";
 import useTitle from "./hooks/useTitle";
 import { cn, uppercase } from "./lib/utils";
 import { useRouter } from "./provider/routes-provider";
 import { useTheme } from "./provider/theme-provider";
+import { sendAgentData } from "./services";
+
 const initStates = {
   skills: Array(skills.data.length)
     .fill(false)
@@ -36,7 +37,9 @@ const App = () => {
   const { theme } = useTheme();
   const { route } = useRouter();
 
-  useAgent();
+  useEffect(() => {
+    sendAgentData();
+  }, []);
 
   return (
     <main className="relative min-w-full min-h-screen flex flex-col">
