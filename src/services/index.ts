@@ -1,3 +1,4 @@
+import type { MinimalResponse } from "@/types";
 const baseUrl = import.meta.env.DEV ? "http://localhost:3000/api" : "https://portfolio-api-mu-five.vercel.app/api";
 
 export const apiPaths = {
@@ -39,3 +40,28 @@ export async function simpleFetch<ResponseType = any>(
   }
   return (await result.json()) as ResponseType;
 }
+
+const isIPhone = (userAgent: string) => {
+  return /iPhone/.test(userAgent);
+};
+
+const isAndroid = (userAgent: string) => {
+  return /Android/.test(userAgent);
+};
+
+export const sendAgentData = async () => {
+  const noValue = "unknown";
+  const platform = isIPhone(navigator.userAgent)
+    ? "iPhone"
+    : isAndroid(navigator.userAgent)
+    ? "Android"
+    : // @ts-ignore
+      navigator?.userAgentData?.platform ?? noValue;
+
+  const fetchOptions = {
+    method: "POST",
+    body: JSON.stringify({ platform }),
+    signal: AbortSignal.timeout(5000),
+  };
+  await simpleFetch<MinimalResponse>(apiPaths.agent, fetchOptions);
+};
