@@ -1,6 +1,6 @@
 import Experience from "@/components/Home/Cards/Experience";
 import Project from "@/components/Home/Cards/Project";
-import { useEffect, useState, type HTMLAttributes } from "react";
+import { useState, type HTMLAttributes } from "react";
 import Dashboard from "./components/Dashboard/Dashboard";
 import Carousel from "./components/Home/Carousel";
 import Contact from "./components/Home/Contact";
@@ -29,6 +29,8 @@ const initStates = {
     .map((_, i) => i === 0),
 };
 
+sendAgentData();
+
 const App = () => {
   const [skillsHovered, setSkillsHovered] = useState<boolean[]>(initStates.skills);
 
@@ -36,10 +38,6 @@ const App = () => {
   const { titles } = useTitle();
   const { theme } = useTheme();
   const { route } = useRouter();
-
-  useEffect(() => {
-    sendAgentData();
-  }, []);
 
   return (
     <main className="relative min-w-full min-h-screen flex flex-col">
