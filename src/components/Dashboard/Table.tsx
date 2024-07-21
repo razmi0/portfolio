@@ -10,7 +10,7 @@ const Table = ({ show, data }: TableProps) => {
   const cols = Object.keys(data[0] || { "No Data": "" });
   return (
     <Show when={show}>
-      <section className="container mt-10 text-sm" role="grid">
+      <section className="mt-10 text-sm" role="grid">
         <Columns arr={cols} />
         {data.map((row) => (
           <Row row={Object.values(row)} key={row.id as string} />
