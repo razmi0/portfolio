@@ -85,11 +85,6 @@ const Dashboard = () => {
     }
   };
 
-  // const handleTab = async (type: DataType) => {
-  //   if (!opens[type]) await handleData(type);
-  //   toggleTab(type);
-  // };
-
   useEffect(onMount, []);
 
   return (

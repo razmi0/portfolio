@@ -130,12 +130,18 @@ export type PostType = {
 
 export type AgentType = {
   ID: string;
-  userAgent: string;
+  ip: string;
+  created_at: string;
+  updated_at: string;
   platform: string;
-  hardware: string;
-  locale: string;
-  connection: string;
-  population: string;
+  city: string;
+  continent: string;
+  country: string;
+  region: string;
+  latitude: string;
+  longitude: string;
+  timezone: string;
+  population: number;
 };
 
 export type UserType = {
