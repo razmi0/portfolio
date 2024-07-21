@@ -10,8 +10,7 @@ const dataType = ["errors", "msgs", "users", "agents"] as readonly DataType[];
 const timeout = 7000;
 const expireIn = 1000 * 60 * 60; // 1 hour
 
-const buildPayload = (type: DataType, payload: any) => {
-  console.log("buildPayload : ", type, payload);
+const buildPayload = (payload: any) => {
   return JSON.stringify({
     lastRefresh: Date.now(),
     exp: Date.now() + expireIn,
@@ -23,9 +22,7 @@ const isObsolete = (type: DataType) => {
   const payload = JSON.parse(localStorage.getItem(type) as string);
   if (!payload) return true;
   const isOld = Date.now() - payload.exp > expireIn;
-  if (isOld) {
-    console.log("isObsolete : ", type, isOld);
-  }
+
   return isOld;
 };
 
@@ -53,14 +50,13 @@ const Dashboard = () => {
   };
 
   const handleData = async (type: DataType) => {
-    console.log("handleData : ", type);
     if (!isObsolete(type)) return;
     const data = await simpleFetch(apiPaths.data[type], authOptions, timeout);
     if (!data) {
       console.error("No data found for ", type, " in handleData");
       return;
     }
-    localStorage.setItem(type, buildPayload(type, data));
+    localStorage.setItem(type, buildPayload(data));
     setData((prev) => ({ ...prev, [type]: data }));
   };
 
@@ -73,7 +69,6 @@ const Dashboard = () => {
 
   const onMount = () => {
     for (const type of dataType) {
-      console.log("onMount : ", type);
       const data = localStorage.getItem(type);
       if (!data) continue;
       const payload = JSON.parse(data);
@@ -81,7 +76,6 @@ const Dashboard = () => {
         setData((prev) => ({ ...prev, [type]: payload.data }));
         continue;
       }
-      console.log("onMount : ", type, " is obsolete");
     }
   };
 
