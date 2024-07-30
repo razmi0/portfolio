@@ -48,8 +48,8 @@ const useForm = () => {
     }
 
     let reachabilityError = false;
-    let emailError = !isValidEmail(data.email);
-    let telError = !isValidTel(data.tel);
+    const emailError = !isValidEmail(data.email);
+    const telError = !isValidTel(data.tel);
     if (emailError && telError) reachabilityError = true;
 
     const newErrors: ErrorsType = {
