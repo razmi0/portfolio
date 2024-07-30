@@ -37,6 +37,7 @@ const Card = ({ content, className, children }: CardProjectProps) => {
                 src={content.src[0]}
                 alt={"screenshot of an highlighted piece of this project named " + title.toLowerCase()}
                 className={cn("object-cover size-full object-center")}
+                loading="lazy"
               />
             </figure>
           </button>
