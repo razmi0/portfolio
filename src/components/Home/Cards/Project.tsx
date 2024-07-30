@@ -1,4 +1,3 @@
-import useImageGrid from "@/hooks/useImageGrid";
 import { cn } from "@/lib/utils";
 import type { ProjectType } from "@/types";
 import { ImagePlay } from "lucide-react";
@@ -33,7 +32,13 @@ const Card = ({ content, className, children }: CardProjectProps) => {
       <CardWrapper className={cn(className, "p-3 max-h-[450px] h-fit aspect-auto")} is={`project-${id}`} glassy={false}>
         {content.src && (
           <button onClick={openDialog}>
-            <ImageGrid srcs={content.src} projectName={title} />
+            <figure className={cn("max-w-[300px] h-[300px] rounded-xl overflow-hidden")}>
+              <Image
+                src={content.src[0]}
+                alt={"screenshot of an highlighted piece of this project named " + title.toLowerCase()}
+                className={cn("object-cover size-full object-center")}
+              />
+            </figure>
           </button>
         )}
         <section className="flex justify-between items-center size-full">
@@ -54,31 +59,6 @@ const Card = ({ content, className, children }: CardProjectProps) => {
         </section>
       </CardWrapper>
     </>
-  );
-};
-
-type ImageGridProps = {
-  srcs: string[];
-  alts?: string[];
-  projectName: string;
-};
-
-const ImageGrid = ({ srcs, alts, projectName }: ImageGridProps) => {
-  const { images, layout } = useImageGrid(srcs.length, srcs);
-  return (
-    <article className={cn("grid grid-cols-2 grid-rows-2 max-w-[300px] h-[300px] rounded-xl overflow-hidden", layout)}>
-      {images.map((src, i) => {
-        return (
-          <figure className={"anim-project-card"} key={src}>
-            <Image
-              src={src}
-              alt={alts?.[i] || "screenshot of an highlighted piece of this project named " + projectName.toLowerCase()}
-              className={cn("object-cover size-full object-center")}
-            />
-          </figure>
-        );
-      })}
-    </article>
   );
 };
 

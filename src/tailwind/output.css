@@ -1003,16 +1003,8 @@ video {
   grid-template-columns: repeat(1, minmax(0, 1fr));
 }
 
-.grid-cols-2{
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-
 .grid-cols-3{
   grid-template-columns: repeat(3, minmax(0, 1fr));
-}
-
-.grid-rows-2{
-  grid-template-rows: repeat(2, minmax(0, 1fr));
 }
 
 .flex-row{
@@ -1472,10 +1464,6 @@ video {
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }
 
-.filter{
-  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
-}
-
 .transition-all{
   transition-property: all;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
@@ -1893,184 +1881,6 @@ textarea {
   to {
     transform: translateY(0);
     opacity: 1;
-  }
-}
-
-/* PROJECT CARD THUMBNAILS ANIMATION */
-
-/* */
-
-*[class^="anim-project-card"] {
-  animation-duration: 0.15s;
-  animation-timing-function: ease-in-out;
-  animation-fill-mode: forwards;
-}
-
-.anim-project-card {
-  animation-name: scale-img-back;
-}
-
-.anim-project-card:hover {
-  animation-name: scale-img;
-}
-
-.anim-project-card-X {
-  animation-name: scaleX-img-back;
-}
-
-.anim-project-card-X:hover {
-  animation-name: scaleX-img;
-}
-
-.anim-project-card-Y {
-  animation-name: scaleY-img-back;
-}
-
-.anim-project-card-Y:hover {
-  animation-name: scaleY-img;
-}
-
-*[class^="anim-project-card"]:hover ~ *[class^="anim-project-card"],
-*[class^="anim-project-card"]:has(~ *[class^="anim-project-card"]:hover) {
-  transition: all 0.3s;
-  filter: brightness(0.5);
-  transform: scale(0.95);
-  & > img {
-    image-rendering: pixelated;
-    image-rendering: -moz-crisp-edges;
-    image-rendering: crisp-edges;
-  }
-}
-
-@keyframes scale-img {
-  0% {
-    z-index: 0;
-    transform: scale(1);
-  }
-
-  100% {
-    z-index: 10;
-    transform: scale(2);
-  }
-}
-
-@keyframes scale-img-back {
-  0% {
-    z-index: 10;
-    transform: scale(2);
-  }
-
-  100% {
-    z-index: 0;
-    transform: scale(1);
-  }
-}
-
-@keyframes scaleX-img {
-  0% {
-    z-index: 0;
-    transform: scaleX(1);
-  }
-
-  100% {
-    z-index: 10;
-    transform: scaleX(2);
-  }
-}
-
-@keyframes scaleX-img-back {
-  0% {
-    z-index: 10;
-    transform: scaleX(2);
-  }
-
-  100% {
-    z-index: 0;
-    transform: scaleX(1);
-  }
-}
-
-@keyframes scaleY-img {
-  0% {
-    z-index: 0;
-    transform: scaleY(1);
-  }
-
-  100% {
-    z-index: 10;
-    transform: scaleY(2);
-  }
-}
-
-@keyframes scaleY-img-back {
-  0% {
-    z-index: 10;
-    transform: scaleY(2);
-  }
-
-  100% {
-    z-index: 0;
-    transform: scaleY(1);
-  }
-}
-
-.grid-config-1 {
-  figure{
-    grid-column: span 2 / span 2;
-  }
-  figure{
-    grid-row: span 2 / span 2;
-  }
-  figure{
-    transform-origin: center;
-  }
-}
-
-.grid-config-2 {
-  figure{
-    grid-row: span 2 / span 2;
-  }
-  figure {
-    &:nth-child(1){
-      transform-origin: left;
-    }
-    &:nth-child(2){
-      transform-origin: right;
-    }
-  }
-}
-
-.grid-config-3 {
-  figure {
-    &:nth-child(1){
-      transform-origin: top left;
-    }
-    &:nth-child(2){
-      transform-origin: top right;
-    }
-    &:nth-child(3){
-      grid-column: span 2 / span 2;
-    }
-    &:nth-child(3){
-      transform-origin: bottom;
-    }
-  }
-}
-
-.grid-config-4 {
-  figure {
-    &:nth-child(1){
-      transform-origin: top left;
-    }
-    &:nth-child(2){
-      transform-origin: top right;
-    }
-    &:nth-child(3){
-      transform-origin: bottom left;
-    }
-    &:nth-child(4){
-      transform-origin: bottom right;
-    }
   }
 }
 
