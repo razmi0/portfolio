@@ -876,6 +876,10 @@ video {
   width: 100%;
 }
 
+.w-\[50ch\]{
+  width: 50ch;
+}
+
 .min-w-24{
   min-width: 6rem;
 }

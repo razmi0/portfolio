@@ -24,17 +24,12 @@ const TechArticle = ({ skills, skillHovered }: { skills: SkillType[]; skillHover
               "flex items-center justify-center w-full",
               skillHovered[i] ? "animation-start-skill-card" : "hidden"
             )}>
-            <div
-              className={cn(
-                "space-y-4 [&>h3]:text-belgoss-500 text-center sm:text-left ms:items-center sm:justify-center"
-              )}>
+            <div className={cn("space-y-4 [&>h3]:text-belgoss-500 text-center items-center justify-center")}>
               <h3 className="text-3xl">
                 {skill.title}
                 <small className="ml-2 text-sm text-bogoss-700 dark:text-bogoss-200">{skill.level}</small>
               </h3>
-              <p className="max-w-[50ch] w-full text-balance text-bogoss-700 dark:text-bogoss-200">
-                {skill.description}
-              </p>
+              <p className="w-[50ch] text-balance text-bogoss-700 dark:text-bogoss-200">{skill.description}</p>
             </div>
           </div>
         );
