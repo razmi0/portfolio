@@ -32,7 +32,7 @@ const Carousel = ({ content }: { content: ProjectType }) => {
                   alt={content.title}
                   key={path}
                   className="object-cover place-self-center"
-                  loading={"eager"}
+                  loading={"lazy"}
                 />
                 <div className="absolute bottom-0 right-0 translate-y-full text-sm inline-flex items-center gap-2">
                   <p className="font-semibold">{activeImage + 1}</p>
