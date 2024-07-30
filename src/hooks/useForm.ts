@@ -65,6 +65,7 @@ const useForm = () => {
     }
 
     setErrors(newErrors);
+    console.log(newErrors);
 
     if (Object.values(newErrors).some((err) => typeof err === "string")) {
       setFormStatus("error");
@@ -87,12 +88,10 @@ const useForm = () => {
         body: JSON.stringify({ email: data.email, tel: data.tel, msg: data.msg }),
         signal: AbortSignal.timeout(7000),
       };
-      const response = await simpleFetch<MinimalResponse>(apiPaths.contact, fetchOptions);
+      // const response = await simpleFetch<MinimalResponse>(apiPaths.contact, fetchOptions);
       const res = await simpleFetch<MinimalResponse>(apiPaths.contact, fetchOptions);
       res.success ? setFormStatus("success") : setFormStatus("error");
-
-      setFormStatus("error");
-      console.error(response);
+      console.error(res);
     } catch (error) {
       console.error(error);
       setFormStatus("error");
