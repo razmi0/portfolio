@@ -12,12 +12,15 @@ const Hero = ({ ...rest }: HTMLAttributes<HTMLDivElement>) => {
         <h2 className="text-lg mb-4">I'm web developer</h2>
         <div className="flex flex-wrap items-center justify-center gap-4">
           <a href="/CUESTA_THOMAS_cv.pdf" download={"/CUESTA_THOMAS_cv.pdf"}>
-            <Button variant="solid" className="whitespace-nowrap">
+            <Button variant="solid" className="whitespace-nowrap" ariaLabel="download my curriculum vitae">
               Telecharger mon CV
             </Button>
           </a>
-          <a href="#presentation">
-            <Button variant="outline" className="whitespace-nowrap">
+          <a href="#projects">
+            <Button
+              variant="outline"
+              className="whitespace-nowrap"
+              ariaLabel="go directly to my projects to discover what is important">
               En savoir plus
             </Button>
           </a>
@@ -37,7 +40,7 @@ const Hero = ({ ...rest }: HTMLAttributes<HTMLDivElement>) => {
           </a>
         </div>
         <img
-          src="/pp_large.webp"
+          src="/pp_sm.webp"
           className="h-[250px] sm:h-[300px] brightness-95 contrast-125 aspect-square object-cover"
           alt="hero picture of Thomas portfolio looking at the right side and smiling"
           loading="eager"
