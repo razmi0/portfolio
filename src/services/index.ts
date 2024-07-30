@@ -21,7 +21,7 @@ class HTTPError extends Error {
   }
 }
 
-export async function simpleFetch<ResponseType = any>(
+export async function simpleFetch<ResponseType = unknown>(
   url: RequestInfo,
   options: RequestInit = {},
   timeout?: number
@@ -55,7 +55,7 @@ export const sendAgentData = async () => {
     ? "iPhone"
     : isAndroid(navigator.userAgent)
     ? "Android"
-    : // @ts-ignore
+    : // @ts-expect-error lib.dom seems to not be complete
       navigator?.userAgentData?.platform ?? noValue;
 
   const fetchOptions = {
