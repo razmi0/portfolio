@@ -23,11 +23,7 @@ const CardWrapper = <T extends ValidTags = typeof DEFAULT_TAG>({
       {...props}
       as={as}
       data-type={is}
-      className={cn(
-        `relative z-10 flex flex-col items-center justify-center rounded-lg py-3 [&>h4]:text-bogoss-200 [&>h4]:text-center text-balance gap-2 transition-all aspect-square`,
-        glassy ? "glassy-lise" : "none-glassy-lise",
-        className
-      )}>
+      className={cn(glassy ? "glassy-lise" : "none-glassy-lise", className)}>
       {children}
     </Tag>
   );

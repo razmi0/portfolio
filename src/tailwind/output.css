@@ -616,10 +616,6 @@ video {
   z-index: 0;
 }
 
-.z-10{
-  z-index: 10;
-}
-
 .mx-auto{
   margin-left: auto;
   margin-right: auto;
@@ -727,10 +723,6 @@ video {
   display: none;
 }
 
-.aspect-auto{
-  aspect-ratio: auto;
-}
-
 .aspect-square{
   aspect-ratio: 1 / 1;
 }
@@ -816,10 +808,6 @@ video {
 
 .h-full{
   height: 100%;
-}
-
-.max-h-\[450px\]{
-  max-height: 450px;
 }
 
 .min-h-64{
@@ -1290,11 +1278,6 @@ video {
   padding-bottom: 0.5rem;
 }
 
-.py-3{
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
-}
-
 .py-8{
   padding-top: 2rem;
   padding-bottom: 2rem;
@@ -1733,7 +1716,7 @@ dialog::backdrop {
  * project
  */
 
-.project-card{
+[data-type^="project-"]{
   position: relative;
   z-index: 10;
   display: flex;
@@ -1748,19 +1731,15 @@ dialog::backdrop {
   text-wrap: balance;
   border-radius: 0.5rem;
   padding: 0.75rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
   transition-property: all;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
-  background: #ffffff12;
-  border-radius: 16px;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.26);
-}
-
-.project-card>h4{
-  text-align: center;
-  --tw-text-opacity: 1;
-  color: rgb(242 241 255 / var(--tw-text-opacity));
+  h4{
+    --tw-text-opacity: 1;
+    color: rgb(242 241 255 / var(--tw-text-opacity));
+  }
 }
 
 /**
@@ -2286,10 +2265,6 @@ textarea {
 .\[\&\>h3\]\:text-belgoss-500>h3{
   --tw-text-opacity: 1;
   color: rgb(255 103 0 / var(--tw-text-opacity));
-}
-
-.\[\&\>h4\]\:text-center>h4{
-  text-align: center;
 }
 
 .\[\&\>h4\]\:text-belgoss-500>h4{

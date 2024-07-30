@@ -35,11 +35,7 @@ export const ProjectCard = ({
           const { title, href, id } = content;
           const hidden = filterered === "tous" || content.type.includes(filterered) ? "" : "hidden";
           return (
-            <CardWrapper
-              className={cn(className, "max-h-[450px] h-fit aspect-auto p-3", hidden)}
-              is={`project-${id}`}
-              key={id}
-              glassy={false}>
+            <CardWrapper className={hidden} is={`project-${id}`} key={id} glassy={false}>
               {content.src && (
                 <button onClick={() => openDialog(content)}>
                   <figure className={cn("max-w-[300px] h-[300px] rounded-xl overflow-hidden")}>
