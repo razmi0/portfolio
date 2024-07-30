@@ -1,8 +1,7 @@
 import Experience from "@/components/Home/Cards/Experience";
-import Project from "@/components/Home/Cards/Project";
+import { ProjectCard } from "@/components/Home/Cards/Project";
 import { useState, type HTMLAttributes } from "react";
 import Dashboard from "./components/Dashboard/Dashboard";
-import Carousel from "./components/Home/Carousel";
 import Contact from "./components/Home/Contact";
 import HeadingTransition from "./components/Home/HeadingTransition";
 import Hero from "./components/Home/Hero";
@@ -19,7 +18,6 @@ import { cn, uppercase } from "./lib/utils";
 import { useRouter } from "./provider/routes-provider";
 import { useTheme } from "./provider/theme-provider";
 import { sendAgentData } from "./services";
-
 const initStates = {
   skills: Array(skills.data.length)
     .fill(false)
@@ -126,16 +124,12 @@ const App = () => {
             })}
           </NavSection>
           <section className="flex place-content-center gap-2 mt-10 w-full">
-            <Project.Grid>
-              {projects.map((content, i) => {
+            <ProjectCard projects={projects} filterered={filters.projects} />
+            {/* {projects.map((content, i) => {
                 const hidden = filters.projects === "tous" || content.type.includes(filters.projects) ? "" : "hidden";
-                return (
-                  <Project.Card key={content.id} content={content} className={hidden + " p-0"}>
-                    <Carousel content={content} key={i} />
-                  </Project.Card>
-                );
+                return <Project.Card key={content.id} content={content} className={hidden + " p-0"} />;
               })}
-            </Project.Grid>
+            </Project.Grid> */}
           </section>
         </Flex>
         <RisingStars />
