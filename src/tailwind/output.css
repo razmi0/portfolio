@@ -1762,6 +1762,14 @@ dialog::backdrop {
   border-color: rgb(242 241 255 / var(--tw-border-opacity));
 }
 
+.input[required] ~ label::after{
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  --tw-text-opacity: 1;
+  color: rgb(220 38 38 / var(--tw-text-opacity));
+  content: " * ";
+}
+
 .user-label{
   pointer-events: none;
   position: absolute;

@@ -1,6 +1,6 @@
 import { apiPaths, simpleFetch } from "@/services";
 import type { MinimalResponse } from "@/types";
-import { useState } from "react";
+import { FormEventHandler, useState } from "react";
 
 type ContactFormType = {
   tel: string;
@@ -65,7 +65,6 @@ const useForm = () => {
     }
 
     setErrors(newErrors);
-    console.log(newErrors);
 
     if (Object.values(newErrors).some((err) => typeof err === "string")) {
       setFormStatus("error");
@@ -88,7 +87,6 @@ const useForm = () => {
         body: JSON.stringify({ email: data.email, tel: data.tel, msg: data.msg }),
         signal: AbortSignal.timeout(7000),
       };
-      // const response = await simpleFetch<MinimalResponse>(apiPaths.contact, fetchOptions);
       const res = await simpleFetch<MinimalResponse>(apiPaths.contact, fetchOptions);
       res.success ? setFormStatus("success") : setFormStatus("error");
       console.error(res);
@@ -99,7 +97,28 @@ const useForm = () => {
     }
   };
 
-  return { errors, formStatus, setErrors, setFormStatus, validate, send, reset };
+  const requiredHandler: FormEventHandler<HTMLInputElement> = (e) => {
+    const form = e.currentTarget.parentElement?.parentElement as HTMLFormElement;
+    const tel = form?.querySelector<HTMLInputElement>("#tel") as HTMLInputElement;
+    const email = form?.querySelector<HTMLInputElement>("#email") as HTMLInputElement;
+    const msg = form?.querySelector<HTMLInputElement>("#message") as HTMLInputElement;
+
+    if (msg.value.length > msg.minLength) {
+      msg.removeAttribute("required");
+    } else {
+      msg.setAttribute("required", "");
+    }
+
+    if (tel.value.length > 0 || email.value.length > 0) {
+      tel.removeAttribute("required");
+      email.removeAttribute("required");
+    } else {
+      tel.setAttribute("required", "");
+      email.setAttribute("required", "");
+    }
+  };
+
+  return { errors, formStatus, setErrors, setFormStatus, validate, send, reset, requiredHandler };
 };
 
 export default useForm;

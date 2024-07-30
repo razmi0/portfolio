@@ -11,6 +11,7 @@ const Textarea = ({ children, onChange, className }: InputProps) => {
         className={cn("input", className)}
         id="message"
         onChange={onChange as ChangeEventHandler<HTMLTextAreaElement> | undefined}
+        required
       />
       <label className="user-label font-semibold" htmlFor="message">
         Message

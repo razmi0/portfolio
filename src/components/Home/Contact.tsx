@@ -13,7 +13,7 @@ const slidePlaceholder = (e: FormEvent<HTMLInputElement>) => {
 };
 
 const Contact = () => {
-  const { validate, send, reset, errors, formStatus } = useForm();
+  const { validate, send, reset, errors, formStatus, requiredHandler } = useForm(); //requiredHandler
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -25,6 +25,7 @@ const Contact = () => {
   const handleOnChange: FormEventHandler<HTMLInputElement> = (e) => {
     reset(e.currentTarget.name as "tel" | "email" | "msg");
     slidePlaceholder(e);
+    requiredHandler(e);
   };
 
   return (
@@ -63,7 +64,7 @@ const Telephone = (
   }
 ) => {
   return (
-    <InputField {...props} id="tel" name="tel" label="Téléphone">
+    <InputField {...props} id="tel" name="tel" label="Téléphone" required>
       <Show when={props.formStatus === "error" && props.telError}>
         <TextError>{props.telError}</TextError>
       </Show>
@@ -82,7 +83,7 @@ const Email = (
   }
 ) => {
   return (
-    <InputField {...props} id="email" name="email" label="Email">
+    <InputField {...props} id="email" name="email" label="Email" required>
       <Show when={props.formStatus === "error" && props.emailError}>
         <TextError>{props.emailError}</TextError>
       </Show>
