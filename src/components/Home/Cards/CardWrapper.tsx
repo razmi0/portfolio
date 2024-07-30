@@ -23,7 +23,7 @@ const CardWrapper = <T extends ValidTags = typeof DEFAULT_TAG>({
       {...props}
       as={as}
       data-type={is}
-      className={cn(glassy ? "glassy-lise" : "none-glassy-lise", className)}>
+      className={cn("card-wrapper", glassy ? "glassy-lise" : "none-glassy-lise", className)}>
       {children}
     </Tag>
   );

@@ -190,8 +190,8 @@ dialog::backdrop {
  * project
  */
 
-[data-type^="project-"] {
-  @apply relative z-10 flex flex-col items-center justify-center rounded-lg py-3 text-balance gap-2 transition-all max-h-[450px] h-fit aspect-auto p-3;
+.card-wrapper {
+  @apply relative z-10 flex flex-col items-center justify-center rounded-lg py-3 text-balance gap-2 transition-all max-h-[450px] h-fit p-3;
 
   h4 {
     @apply text-bogoss-200;

@@ -1716,11 +1716,10 @@ dialog::backdrop {
  * project
  */
 
-[data-type^="project-"]{
+.card-wrapper{
   position: relative;
   z-index: 10;
   display: flex;
-  aspect-ratio: auto;
   height: -moz-fit-content;
   height: fit-content;
   max-height: 450px;
