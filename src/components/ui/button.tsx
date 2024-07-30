@@ -22,6 +22,7 @@ const Button = ({ children, variant, onClick, className, ...props }: ButtonProps
       {...props}
       onClick={onClick}
       data-button="button"
+      type="button"
       className={cn(
         "rounded-md w-fit",
         "active:scale-95",
@@ -45,6 +46,7 @@ const NavButton = ({ match, onClick, children, ...props }: NavButtonProps) => {
   return (
     <Button
       {...props}
+      type="button"
       className={cn("whitespace-nowrap", match ? matchingStyles : "")}
       variant={"outline"}
       onClick={onClick}>
@@ -54,3 +56,5 @@ const NavButton = ({ match, onClick, children, ...props }: NavButtonProps) => {
 };
 
 export { Button, NavButton, type NavButtonProps };
+
+
