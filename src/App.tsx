@@ -173,7 +173,7 @@ const Flex = ({
 );
 
 const NavSection = ({ children, className }: { children: React.ReactNode; className?: string }) => (
-  <section className={cn(`flex mb-5 justify-start flex-wrap gap-5 sm:gap-12`, className)}>{children}</section>
+  <section className={cn(`flex mb-5 justify-center flex-wrap gap-5 sm:gap-12`, className)}>{children}</section>
 );
 
 export default App;
