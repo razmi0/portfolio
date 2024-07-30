@@ -58,9 +58,6 @@ export const ProjectCard = ({
                   <a href={href} className="text-sm w-full hover:underline dark:text-bogoss-200 text-bogoss-700">
                     Voir le projet en ligne
                   </a>
-                  {/* <Dialog externalTrigger open={dialogOpen} onClose={closeDialog} className="select-none">
-              <Carousel content={content} key={title} />
-            </Dialog> */}
                 </div>
                 {content.src && (
                   <button onClick={() => openDialog(content)} className="hover:[&>*]:text-belgoss-500">
