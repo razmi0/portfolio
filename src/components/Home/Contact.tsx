@@ -1,6 +1,6 @@
 import type { FormStatusType } from "@/hooks/useForm";
 import useForm from "@/hooks/useForm";
-import type { FormEvent, FormEventHandler } from "react";
+import { type FormEvent, type FormEventHandler } from "react";
 import Form from "../Form/Form";
 import FormFooter from "../Form/FormFooter";
 import InputField, { type InputProps } from "../Form/InputField";
@@ -13,7 +13,7 @@ const slidePlaceholder = (e: FormEvent<HTMLInputElement>) => {
 };
 
 const Contact = () => {
-  const { validate, send, reset, errors, formStatus, requiredHandler } = useForm(); //requiredHandler
+  const { validate, send, reset, errors, formStatus, requiredHandler, infoText } = useForm();
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -48,7 +48,12 @@ const Contact = () => {
             <TextError>{errors.msg}</TextError>
           </Show>
         </Textarea>
-        <FormFooter formStatus={formStatus} successText="Message envoyé !" failText="😔 I can't contact my server" />
+        <FormFooter
+          infoText={infoText}
+          formStatus={formStatus}
+          successText="Message envoyé !"
+          failText="😔 I can't contact my server"
+        />
       </Form>
     </section>
   );

@@ -7,9 +7,10 @@ type FormFooterType = {
   formStatus: FormStatusType;
   successText: string;
   failText: string;
+  infoText: string;
 };
 
-const FormFooter = ({ formStatus, successText, failText }: FormFooterType) => {
+const FormFooter = ({ formStatus, successText, failText, infoText }: FormFooterType) => {
   const colorAndText = () => {
     switch (formStatus) {
       case "success":
@@ -25,6 +26,8 @@ const FormFooter = ({ formStatus, successText, failText }: FormFooterType) => {
 
   const { color, text } = colorAndText();
 
+  const showInfo = () => formStatus !== "success" && formStatus !== "loading";
+
   return (
     <div className="flex justify-end items-center input-group gap-5">
       <Show when={formStatus === "success"}>
@@ -34,6 +37,9 @@ const FormFooter = ({ formStatus, successText, failText }: FormFooterType) => {
           <Check />
           {text}
         </p>
+      </Show>
+      <Show when={showInfo()}>
+        <p className={`inline-flex justify-center slide-from-bottom slide-from-active`}>{infoText}</p>
       </Show>
       <SubmitButton formStatus={formStatus} loadingText="Envoi en cours..">
         Envoyer

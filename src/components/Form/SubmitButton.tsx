@@ -10,7 +10,11 @@ type SubmitButtonProps = {
 };
 const SubmitButton = ({ children, formStatus, loadingText }: SubmitButtonProps) => {
   return (
-    <Button type="submit" className="w-fit inline-flex items-center gap-3" ariaLabel="">
+    <Button
+      type="submit"
+      className="w-fit inline-flex items-center gap-3"
+      ariaLabel="send your message"
+      disabled={formStatus === "loading"}>
       {formStatus === "loading" ? (
         <div className="slide-from-top slide-from-active">{loadingText}</div>
       ) : (

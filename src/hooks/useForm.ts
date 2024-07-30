@@ -1,6 +1,6 @@
 import { apiPaths, simpleFetch } from "@/services";
 import type { MinimalResponse } from "@/types";
-import { FormEventHandler, useState } from "react";
+import { FormEvent, useState } from "react";
 
 type ContactFormType = {
   tel: string;
@@ -36,6 +36,7 @@ export type FormStatusType = "idle" | "loading" | "success" | "error";
 
 const useForm = () => {
   const [errors, setErrors] = useState<ErrorsType>(errorsInit);
+  const [infoText, setInfoText] = useState("Au moins un moyen de contact est requis");
   const [formStatus, setFormStatus] = useState<FormStatusType>("idle");
 
   const validate = (formData: FormData) => {
@@ -97,7 +98,10 @@ const useForm = () => {
     }
   };
 
-  const requiredHandler: FormEventHandler<HTMLInputElement> = (e) => {
+  const requiredHandler = (e: FormEvent<HTMLInputElement>) => {
+    let reachabilityInfo = "";
+    let msgInfo = "";
+
     const form = e.currentTarget.parentElement?.parentElement as HTMLFormElement;
     const tel = form?.querySelector<HTMLInputElement>("#tel") as HTMLInputElement;
     const email = form?.querySelector<HTMLInputElement>("#email") as HTMLInputElement;
@@ -105,20 +109,25 @@ const useForm = () => {
 
     if (msg.value.length > msg.minLength) {
       msg.removeAttribute("required");
+      msgInfo = "";
     } else {
       msg.setAttribute("required", "");
+      msgInfo = "Le message doit contenir entre 20 et 500 caractères";
     }
 
     if (tel.value.length > 0 || email.value.length > 0) {
       tel.removeAttribute("required");
       email.removeAttribute("required");
+      reachabilityInfo = "";
     } else {
       tel.setAttribute("required", "");
       email.setAttribute("required", "");
+      reachabilityInfo = "Au moins un moyen de contact est requis";
     }
+    setInfoText(reachabilityInfo || msgInfo);
   };
 
-  return { errors, formStatus, setErrors, setFormStatus, validate, send, reset, requiredHandler };
+  return { errors, formStatus, setErrors, setFormStatus, validate, send, reset, requiredHandler, infoText };
 };
 
 export default useForm;

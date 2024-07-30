@@ -7,7 +7,8 @@ const Textarea = ({ children, onChange, className }: InputProps) => {
     <div className="input-group">
       <textarea
         name="msg"
-        minLength={1}
+        minLength={20}
+        maxLength={500}
         className={cn("input", className)}
         id="message"
         onChange={onChange as ChangeEventHandler<HTMLTextAreaElement> | undefined}
