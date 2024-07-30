@@ -5,6 +5,7 @@ type VariantType = "outline" | "solid";
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode;
   variant?: VariantType;
+  ariaLabel: string;
 }
 const variants = {
   solid:
@@ -16,15 +17,15 @@ const variants = {
   },
 };
 
-const Button = ({ children, variant, onClick, className, ...props }: ButtonProps) => {
+const Button = ({ children, variant, onClick, className, ariaLabel, type, ...props }: ButtonProps) => {
   return (
     <button
       {...props}
       onClick={onClick}
-      data-button="button"
-      type="button"
+      aria-label={ariaLabel}
+      type={type ?? "button"}
       className={cn(
-        "rounded-md w-fit",
+        "rounded-md w-fit select-none",
         "active:scale-95",
         "focus:outline-none",
         "transition-all",
@@ -37,16 +38,21 @@ const Button = ({ children, variant, onClick, className, ...props }: ButtonProps
 };
 
 interface NavButtonProps extends ButtonProps {
+  /**
+   * If condition is evaluated to true, the button will have a matching style
+   */
   match: boolean;
+  ariaLabel: string;
 }
 
 const matchingStyles =
   "text-belgoss-500 ring-belgoss-500 hover:text-belgoss-500 hover:ring-belgoss-500 dark:text-belgoss-500 dark:ring-belgoss-500 focus:ring-belgoss-500 focus:text-belgoss-500 dark:focus:ring-belgoss-500 dark:focus:text-belgoss-500";
-const NavButton = ({ match, onClick, children, ...props }: NavButtonProps) => {
+const NavButton = ({ match, onClick, children, ariaLabel, ...props }: NavButtonProps) => {
   return (
     <Button
       {...props}
       type="button"
+      ariaLabel={ariaLabel}
       className={cn("whitespace-nowrap", match ? matchingStyles : "")}
       variant={"outline"}
       onClick={onClick}>
@@ -56,5 +62,3 @@ const NavButton = ({ match, onClick, children, ...props }: NavButtonProps) => {
 };
 
 export { Button, NavButton, type NavButtonProps };
-
-

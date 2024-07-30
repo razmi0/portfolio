@@ -12,6 +12,7 @@ const Tab = ({ label, open, onClick }: TabProps) => {
     <>
       <section className="flex items-center justify-center gap-2" data-is="tab">
         <Button
+          ariaLabel="Toggle tab"
           className={cn(
             "flex gap-2 place-items-center dark:!text-white",
             !open && "scale-90 bg-transparent dark:!text-white/50"

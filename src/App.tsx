@@ -78,7 +78,7 @@ const App = () => {
             {values.xp.map((value) => {
               const handler = () => handleFilterChange("xp", value);
               return (
-                <NavButton match={filters.xp === value} key={value} onClick={handler}>
+                <NavButton match={filters.xp === value} key={value} onClick={handler} ariaLabel={`discover ${value}`}>
                   {uppercase(value)}
                 </NavButton>
               );
@@ -115,7 +115,11 @@ const App = () => {
             {values.projects.map((value) => {
               const handler = () => handleFilterChange("projects", value);
               return (
-                <NavButton match={filters.projects === value} key={value} onClick={handler}>
+                <NavButton
+                  match={filters.projects === value}
+                  key={value}
+                  onClick={handler}
+                  ariaLabel={`discover ${value}`}>
                   {uppercase(value)}
                 </NavButton>
               );

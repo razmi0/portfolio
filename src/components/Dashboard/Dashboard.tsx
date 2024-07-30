@@ -10,11 +10,11 @@ const dataType = ["errors", "msgs", "users", "agents"] as readonly DataType[];
 const timeout = 7000;
 const expireIn = 1000 * 60 * 60; // 1 hour
 
-const buildPayload = (payload: any) => {
+const buildPayload = <T,>(payload: T) => {
   return JSON.stringify({
     lastRefresh: Date.now(),
     exp: Date.now() + expireIn,
-    data: payload,
+    data: payload as T,
   });
 };
 
