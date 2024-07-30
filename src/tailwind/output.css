@@ -711,6 +711,10 @@ video {
   margin-top: 1.25rem;
 }
 
+.mt-28{
+  margin-top: 7rem;
+}
+
 .flex{
   display: flex;
 }
@@ -2178,6 +2182,10 @@ textarea {
 }
 
 @media (min-width: 768px){
+  .md\:mb-0{
+    margin-bottom: 0px;
+  }
+
   .md\:h-\[50vh\]{
     height: 50vh;
   }
@@ -2200,6 +2208,12 @@ textarea {
 
   .md\:self-baseline{
     align-self: baseline;
+  }
+}
+
+@media (min-width: 1024px){
+  .lg\:mb-20{
+    margin-bottom: 5rem;
   }
 }
 

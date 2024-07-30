@@ -7,7 +7,7 @@ const Root = ({ children, ...rest }: { children: ReactNode } & HTMLAttributes<HT
   return (
     <section
       {...rest}
-      className="grid md:grid-cols-2 md:h-[50vh] justify-center items-center md:justify-normal md:items-start gap-20 mt-20">
+      className="grid md:grid-cols-2 md:h-[50vh] justify-center items-center md:justify-normal md:items-start gap-20 mt-20 mb-20 md:mb-0">
       {children}
     </section>
   );

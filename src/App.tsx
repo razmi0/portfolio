@@ -73,7 +73,7 @@ const App = () => {
         {/* Experience */}
 
         <HeadingTransition h2="Mes expériences" small="mon parcours" className="my-20" id={titles.xp.selector} />
-        <Flex>
+        <Flex className="mb-20">
           <NavSection>
             {values.xp.map((value) => {
               const handler = () => handleFilterChange("xp", value);
