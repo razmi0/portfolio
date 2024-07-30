@@ -82,7 +82,7 @@ const Login = () => {
               <TextError>{errors.password}</TextError>
             </Show>
           </InputField>
-          <FormFooter formStatus={formStatus} successText="Success" failText="Never" />
+          <FormFooter formStatus={formStatus} successText="Success" failText="Never" infoText="" />
         </Form>
       </div>
     </section>
