@@ -27,7 +27,7 @@ const FormFooter = ({ formStatus, successText, failText }: FormFooterType) => {
     const { color, text } = colorAndText();
 
     return (
-      <Show when={formStatus}>
+      <Show when={formStatus === "success"}>
         <p
           className={`${color} gap-3 inline-flex justify-center slide-from-bottom slide-from-active`}
           style={{ color }}>
