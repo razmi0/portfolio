@@ -12,7 +12,7 @@ const Textarea = ({ children, onChange, className }: InputProps) => {
         id="message"
         onChange={onChange as ChangeEventHandler<HTMLTextAreaElement> | undefined}
       />
-      <label className="user-label" htmlFor="message">
+      <label className="user-label font-semibold" htmlFor="message">
         Message
       </label>
       {children}
