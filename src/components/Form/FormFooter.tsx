@@ -39,7 +39,7 @@ const FormFooter = ({ formStatus, successText, failText, infoText }: FormFooterT
         </p>
       </Show>
       <Show when={showInfo()}>
-        <p className={`inline-flex justify-center slide-from-bottom slide-from-active`}>{infoText}</p>
+        <p className={`inline-flex justify-center`}>{infoText}</p>
       </Show>
       <SubmitButton formStatus={formStatus} loadingText="Envoi en cours..">
         Envoyer
