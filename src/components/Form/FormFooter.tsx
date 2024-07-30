@@ -23,10 +23,10 @@ const FormFooter = ({ formStatus, successText, failText }: FormFooterType) => {
     }
   };
 
-  const Status = () => {
-    const { color, text } = colorAndText();
+  const { color, text } = colorAndText();
 
-    return (
+  return (
+    <div className="flex justify-end items-center input-group gap-5">
       <Show when={formStatus === "success"}>
         <p
           className={`${color} gap-3 inline-flex justify-center slide-from-bottom slide-from-active`}
@@ -35,12 +35,6 @@ const FormFooter = ({ formStatus, successText, failText }: FormFooterType) => {
           {text}
         </p>
       </Show>
-    );
-  };
-
-  return (
-    <div className="flex justify-end items-center input-group gap-5">
-      <Status />
       <SubmitButton formStatus={formStatus} loadingText="Envoi en cours..">
         Envoyer
       </SubmitButton>
