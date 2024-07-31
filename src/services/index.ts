@@ -49,8 +49,22 @@ const isAndroid = (userAgent: string) => {
   return /Android/.test(userAgent);
 };
 
+const timeBetweenTwoRequests = 1000 * 60 * 60; // 1 hours
+const isReadyForAgent = () => {
+  const lastVisit = localStorage.getItem("last-visit");
+  if (lastVisit) {
+    const diff = Date.now() - Number(lastVisit);
+    if (diff < timeBetweenTwoRequests) return false;
+  }
+  localStorage.setItem("last-visit", String(Date.now()));
+  return true;
+};
+
+const noValue = "unknown";
+const signalTimeout = 5000;
 export const sendAgentData = async () => {
-  const noValue = "unknown";
+  if (!isReadyForAgent()) return;
+
   const platform = isIPhone(navigator.userAgent)
     ? "iPhone"
     : isAndroid(navigator.userAgent)
@@ -61,7 +75,7 @@ export const sendAgentData = async () => {
   const fetchOptions = {
     method: "POST",
     body: JSON.stringify({ platform }),
-    signal: AbortSignal.timeout(5000),
+    signal: AbortSignal.timeout(signalTimeout),
   };
   await simpleFetch<MinimalResponse>(apiPaths.agent, fetchOptions);
 };
