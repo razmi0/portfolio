@@ -872,6 +872,10 @@ video {
   width: 100%;
 }
 
+.w-\[40ch\]{
+  width: 40ch;
+}
+
 .min-w-24{
   min-width: 6rem;
 }
@@ -2176,8 +2180,21 @@ textarea {
     width: 3.5rem;
   }
 
+  .sm\:w-\[50ch\]{
+    width: 50ch;
+  }
+
   .sm\:gap-12{
     gap: 3rem;
+  }
+
+  .sm\:p-0{
+    padding: 0px;
+  }
+
+  .sm\:px-0{
+    padding-left: 0px;
+    padding-right: 0px;
   }
 
   .group:hover .sm\:group-hover\:opacity-100{

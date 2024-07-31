@@ -29,7 +29,9 @@ const TechArticle = ({ skills, skillHovered }: { skills: SkillType[]; skillHover
                 {skill.title}
                 <small className="ml-2 text-sm text-bogoss-700 dark:text-bogoss-200">{skill.level}</small>
               </h3>
-              <p className="w-[50ch] text-balance text-bogoss-700 dark:text-bogoss-200">{skill.description}</p>
+              <p className="w-[40ch] sm:w-[50ch] text-balance text-bogoss-700 dark:text-bogoss-200 px-3 sm:px-0">
+                {skill.description}
+              </p>
             </div>
           </div>
         );
