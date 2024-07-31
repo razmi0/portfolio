@@ -1,12 +1,59 @@
 import { cn } from "@/lib/utils";
-import type { FormationType, ProType } from "@/types";
-import { Check } from "lucide-react";
-import { type HTMLAttributes, type ReactNode } from "react";
+import { useTheme } from "@/provider/theme-provider";
+import type { FormationType, ProType, XpFilter } from "@/types";
+import { ArrowBigRight, Check } from "lucide-react";
+import { useCallback, useState, type ReactNode } from "react";
 import Image from "../../Image";
 import Tag, { type ValidTags } from "../../Tag";
 import Dialog from "../../ui/Dialog";
 import Show from "../../ui/show";
 import CardWrapper from "./CardWrapper";
+
+export const Experience = ({
+  experiences,
+  filtered,
+}: {
+  experiences: (ProType | FormationType)[];
+  filtered: XpFilter;
+}) => {
+  const [activeExperience, setActiveExperience] = useState<ProType | FormationType>(experiences[0]);
+  const [dialogOpen, setDialogOpen] = useState(false);
+  const { theme } = useTheme();
+
+  const openDialog = (experience: ProType | FormationType) => {
+    setDialogOpen(true);
+    setActiveExperience(experience);
+  };
+  const closeDialog = () => setDialogOpen(false);
+
+  const folder = theme === "dark" ? `dark/` : "";
+
+  return (
+    <ExperienceGrid>
+      <ExperienceDialog experience={activeExperience} open={dialogOpen} onClose={closeDialog} />
+      {experiences.map((experience, i) => {
+        const is = `${experience.type === "pro" ? "pro" : "formation"}-${experience.id}`;
+        return (
+          <div
+            className={cn("relative", filtered === "tous" || experience.type.includes(filtered) ? "" : "hidden")}
+            key={is}>
+            <CardWrapper is={is} className={"aspect-square w-[175px] overflow-hidden"}>
+              <ExperienceCard experience={experience} />
+              <button
+                type="button"
+                onClick={() => openDialog(experience)}
+                className="flex items-center justify-center gap-1 text-sm group">
+                <p className="text-center w-full text-[15px] font-medium">Voir plus</p>
+                <ArrowBigRight size={24} className="group-hover:translate-x-2 transition-transform translate-y-[2px]" />
+              </button>
+            </CardWrapper>
+            <BackgroundImage src={`cards-bg/${folder}${i + 1}.webp`} />
+          </div>
+        );
+      })}
+    </ExperienceGrid>
+  );
+};
 
 const Text = ({ value, className, as }: { value: unknown & ReactNode; as?: ValidTags; className?: string }) => {
   return (
@@ -31,93 +78,106 @@ const Label = ({ children }: { children: ReactNode }) => (
   <div className="font-semibold text-bogoss-700 dark:text-bogoss-200">{children}</div>
 );
 
-interface ContentProps {
-  content: ProType | FormationType;
-}
-
-const Content = ({ content }: ContentProps) => {
-  const data = content as ProType & FormationType;
-
-  const program =
-    data.program && data.program.map((item) => item && item.length > 1 && <ProgramItem key={item}>{item}</ProgramItem>);
-
+const ExperienceCard = ({ experience }: { experience: ProType | FormationType }) => {
   return (
     <>
-      <h3 className="text-center w-full !text-bogoss-350 dark:!text-bogoss-200">{data.title}</h3>
-      <Show when={Array.isArray(data.date)}>
-        <Text className="text-sm text-center font-semibold w-full" value={data.date.join(" - ")} />
+      <h3 className="text-center w-full !text-bogoss-350 dark:!text-bogoss-200">{experience.title}</h3>
+      <Show when={Array.isArray(experience.date)}>
+        <Text className="text-sm text-center font-semibold w-full" value={experience.date.join(" - ")} />
       </Show>
-      <Dialog className="[&_p]:text-sm h-fit min-h-min [&>div]:py-5">
-        <section className="size-full px-3 flex flex-col justify-between text-left h-full">
-          <div>
-            <h4 className="w-full !text-bogoss-350 dark:!text-bogoss-200">{data.title} : </h4>
-            <Show when={data.subtitle}>
-              <h5 className="w-full text-sm">{data.subtitle}</h5>
-            </Show>
-            <Show when={Array.isArray(data.date)} fallback={<Text value={data.date} />}>
-              <Text className="inline-flex text-sm font-semibold" value={data.date.join(" - ")} />
-            </Show>
-          </div>
-          <div className="flex [&_*]:grow my-3 gap-3 flex-wrap">
-            <Text
-              value={
-                <div className="inline-flex">
-                  <Label>Durée</Label> : {data.duration}
-                </div>
-              }
-            />
-
-            <Show when={data.level}>
-              <Text
-                value={
-                  <div className="inline-flex">
-                    <Label>Niveau</Label> : {data.level}
-                  </div>
-                }
-              />
-            </Show>
-
-            <Show when={data.company}>
-              <Text
-                value={
-                  <div className="inline-flex">
-                    <Label>Entreprise</Label> : {data.company}
-                  </div>
-                }
-              />
-            </Show>
-
-            <Show when={data.lieu}>
-              <Text
-                value={
-                  <div className="inline-flex">
-                    <Label>Lieu</Label> : {data.lieu}
-                  </div>
-                }
-              />
-            </Show>
-
-            <Show when={data.status}>
-              <Text
-                value={
-                  <div className="inline-flex">
-                    <Label>Statut</Label> : {data.status}
-                  </div>
-                }
-              />
-            </Show>
-          </div>
-          <Show when={data.program}>
-            <Text as={"ul"} value={program} />
-          </Show>
-          <Text value={data.description} />
-        </section>
-      </Dialog>
     </>
   );
 };
 
-const Figure = ({ src }: { src: string }) => {
+const ExperienceDialog = ({
+  experience,
+  open,
+  onClose,
+}: {
+  experience: ProType | FormationType;
+  open: boolean;
+  onClose: () => void;
+}) => {
+  const content = experience as ProType & FormationType;
+
+  const program = useCallback(() => {
+    return (
+      content.program &&
+      content.program.map((item) => item && item.length > 1 && <ProgramItem key={item}>{item}</ProgramItem>)
+    );
+  }, [content.program]);
+
+  return (
+    <Dialog className="[&_p]:text-sm h-fit min-h-min [&>div]:py-5" externalTrigger open={open} onClose={onClose}>
+      <section className="size-full px-3 flex flex-col justify-between text-left h-full">
+        <div>
+          <h4 className="w-full !text-bogoss-350 dark:!text-bogoss-200">{content.title} : </h4>
+          <Show when={content.subtitle}>
+            <h5 className="w-full text-sm">{content.subtitle}</h5>
+          </Show>
+          <Show when={Array.isArray(content.date)} fallback={<Text value={content.date} />}>
+            <Text className="inline-flex text-sm font-semibold" value={content.date.join(" - ")} />
+          </Show>
+        </div>
+        <div className="flex [&_*]:grow my-3 gap-3 flex-wrap">
+          <Text
+            value={
+              <div className="inline-flex">
+                <Label>Durée</Label> : {content.duration}
+              </div>
+            }
+          />
+
+          <Show when={content.level}>
+            <Text
+              value={
+                <div className="inline-flex">
+                  <Label>Niveau</Label> : {content.level}
+                </div>
+              }
+            />
+          </Show>
+
+          <Show when={content.company}>
+            <Text
+              value={
+                <div className="inline-flex">
+                  <Label>Entreprise</Label> : {content.company}
+                </div>
+              }
+            />
+          </Show>
+
+          <Show when={content.lieu}>
+            <Text
+              value={
+                <div className="inline-flex">
+                  <Label>Lieu</Label> : {content.lieu}
+                </div>
+              }
+            />
+          </Show>
+
+          <Show when={content.status}>
+            <Text
+              value={
+                <div className="inline-flex">
+                  <Label>Statut</Label> : {content.status}
+                </div>
+              }
+            />
+          </Show>
+        </div>
+        <Show when={content.program}>
+          <Text as={"ul"} value={program()} />
+        </Show>
+        <Text value={content.description} />
+      </section>
+    </Dialog>
+  );
+};
+
+const BackgroundImage = ({ src }: { src: string }) => {
   return (
     <figure className="absolute -z-10 inset-0 rounded-[16px] size-[99%] overflow-hidden opacity-75">
       <Image src={src} className="anim-xp-img" role="presentation" alt="card background" />
@@ -125,36 +185,12 @@ const Figure = ({ src }: { src: string }) => {
   );
 };
 
-type CardXpProps = {
-  className?: string;
-  children: ReactNode;
-  is: `pro-${number}` | `formation-${number}`;
-  src: string;
-} & HTMLAttributes<HTMLDivElement>;
-
-const CardXp = ({ className, children, src, is }: CardXpProps) => {
-  return (
-    <div className={cn(`relative`, className)}>
-      <CardWrapper is={is} className={"aspect-square w-[175px] overflow-hidden"}>
-        {children}
-      </CardWrapper>
-      <Figure src={src} />
-    </div>
-  );
-};
-
-const CardGrid = ({ children, className }: { children: ReactNode; className?: string }) => {
+const ExperienceGrid = ({ children, className }: { children: ReactNode; className?: string }) => {
   return (
     <div className={cn("grid gap-9 grid-cols-1  2xs:grid-cols-2 md:grid-cols-3 xl:grid-cols-4", className)}>
       {children}
     </div>
   );
-};
-
-const Experience = {
-  Card: CardXp,
-  Root: CardGrid,
-  Content: Content,
 };
 
 export default Experience;

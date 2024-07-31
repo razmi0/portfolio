@@ -10,11 +10,11 @@ import CardWrapper from "./CardWrapper";
 export const ProjectCard = ({
   className,
   projects,
-  filterered,
+  filtered,
 }: {
   className?: string;
   projects: ProjectType[];
-  filterered: ProjectFilter;
+  filtered: ProjectFilter;
 }) => {
   const [dialogOpen, setDialogOpen] = useState(false);
   const [activeContent, setActiveContent] = useState<ProjectType>(projects[0]);
@@ -33,7 +33,7 @@ export const ProjectCard = ({
       <div className={cn("relative grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5", className)}>
         {projects.map((content) => {
           const { title, href, id } = content;
-          const hidden = filterered === "tous" || content.type.includes(filterered) ? "" : "hidden";
+          const hidden = filtered === "tous" || content.type.includes(filtered) ? "" : "hidden";
           return (
             <CardWrapper className={hidden} is={`project-${id}`} key={id} glassy={false}>
               {content.src && (

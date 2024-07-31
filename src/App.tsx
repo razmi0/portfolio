@@ -16,8 +16,10 @@ import useFilters from "./hooks/useFilter";
 import useTitle from "./hooks/useTitle";
 import { cn, uppercase } from "./lib/utils";
 import { useRouter } from "./provider/routes-provider";
-import { useTheme } from "./provider/theme-provider";
 import { sendAgentData } from "./services";
+
+// --
+
 const initStates = {
   skills: Array(skills.data.length)
     .fill(false)
@@ -27,14 +29,16 @@ const initStates = {
     .map((_, i) => i === 0),
 };
 
+// --
+
 sendAgentData();
+// --
 
 const App = () => {
   const [skillsHovered, setSkillsHovered] = useState<boolean[]>(initStates.skills);
 
   const { filters, handleFilterChange, values } = useFilters();
   const { titles } = useTitle();
-  const { theme } = useTheme();
   const { route } = useRouter();
 
   return (
@@ -82,10 +86,10 @@ const App = () => {
               );
             })}
           </NavSection>
-          <Experience.Root>
+          <Experience experiences={[...xp, ...formation]} filtered={filters.xp} />
+          {/* <Experience.Root>
             {[...xp, ...formation].map((content, i) => {
               const is = `${content.type === "pro" ? "pro" : "formation"}-${content.id}` as const;
-              const folder = theme === "dark" ? `dark/` : "";
               return (
                 <Experience.Card
                   key={content.id}
@@ -96,7 +100,7 @@ const App = () => {
                 </Experience.Card>
               );
             })}
-          </Experience.Root>
+          </Experience.Root> */}
         </Flex>
         <RisingStars />
 
@@ -107,7 +111,6 @@ const App = () => {
         {/* PROJECT */}
 
         <HeadingTransition h2="Mes projets" small="portfolio" className="mb-20 mt-44" id={titles.projects.selector} />
-
         <Flex>
           <NavSection>
             {values.projects.map((value) => {
@@ -124,12 +127,7 @@ const App = () => {
             })}
           </NavSection>
           <section className="flex place-content-center gap-2 mt-10 w-full">
-            <ProjectCard projects={projects} filterered={filters.projects} />
-            {/* {projects.map((content, i) => {
-                const hidden = filters.projects === "tous" || content.type.includes(filters.projects) ? "" : "hidden";
-                return <Project.Card key={content.id} content={content} className={hidden + " p-0"} />;
-              })}
-            </Project.Grid> */}
+            <ProjectCard projects={projects} filtered={filters.projects} />
           </section>
         </Flex>
         <RisingStars />

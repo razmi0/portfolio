@@ -1,7 +1,7 @@
 import type { ProjectFilter, SkillFilter, XpFilter } from "@/types";
 import { useState } from "react";
 
-type Filters = {
+export type Filters = {
   skills: SkillFilter;
   xp: XpFilter;
   projects: ProjectFilter;
