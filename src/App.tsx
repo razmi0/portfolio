@@ -87,20 +87,6 @@ const App = () => {
             })}
           </NavSection>
           <Experience experiences={[...xp, ...formation]} filtered={filters.xp} />
-          {/* <Experience.Root>
-            {[...xp, ...formation].map((content, i) => {
-              const is = `${content.type === "pro" ? "pro" : "formation"}-${content.id}` as const;
-              return (
-                <Experience.Card
-                  key={content.id}
-                  className={filters.xp === "tous" || content.type.includes(filters.xp) ? "" : "hidden"}
-                  src={`cards-bg/${folder}${i + 1}.webp`}
-                  is={is}>
-                  <Experience.Content content={content} />
-                </Experience.Card>
-              );
-            })}
-          </Experience.Root> */}
         </Flex>
         <RisingStars />
 
