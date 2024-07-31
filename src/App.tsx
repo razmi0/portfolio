@@ -11,7 +11,7 @@ import Nav from "./components/Nav/Nav";
 import { RisingStars } from "./components/RisingStars/RisingStars";
 import { NavButton } from "./components/ui/button";
 import Show from "./components/ui/show";
-// import { formation, projects, skills, xp } from "./data.json";
+// import { education, projects, skills, xp } from "./data.json";
 import { useData } from "./hooks/useData";
 import useFilters from "./hooks/useFilter";
 import useTitle from "./hooks/useTitle";
@@ -25,9 +25,9 @@ sendAgentData();
 // --
 
 const App = () => {
-  const { projects, xp, formation, skills } = useData();
+  const { projects, xp, education, skills } = useData();
   const [skillsHovered, setSkillsHovered] = useState<boolean[]>(
-    Array(projects.length)
+    Array(skills.data.length)
       .fill(false)
       .map((_, i) => i === 0)
   );
@@ -50,8 +50,8 @@ const App = () => {
         <Hero id={titles.hero.selector} />
 
         <HeadingTransition
-          h2="Mes compétences"
-          small="skills"
+          h2="My hard skills"
+          small="skills highlights"
           className="my-20 mt-44 [&_h2]:text-4xl sm:[&_h2]:text-5xl"
           id={titles.skills.selector}></HeadingTransition>
         <Skills.Root>
@@ -59,7 +59,7 @@ const App = () => {
           <Skills.Article skills={skills.data} skillHovered={skillsHovered} />
         </Skills.Root>
 
-        <HeadingTransition h2="Mes expériences" small="mon parcours" className="my-20" id={titles.xp.selector} />
+        <HeadingTransition h2="My experiences" small="my journey" className="my-20" id={titles.xp.selector} />
         <Flex className="mb-20">
           <NavSection>
             {values.xp.map((value) => {
@@ -71,10 +71,10 @@ const App = () => {
               );
             })}
           </NavSection>
-          <Experience experiences={[...xp, ...formation]} filtered={filters.xp} />
+          <Experience experiences={[...xp, ...education]} filtered={filters.xp} />
         </Flex>
 
-        <HeadingTransition h2="Mes projets" small="portfolio" className="mb-20 mt-44" id={titles.projects.selector} />
+        <HeadingTransition h2="My projects" small="portfolio" className="mb-20 mt-44" id={titles.projects.selector} />
         <Flex>
           <NavSection>
             {values.projects.map((value) => {
@@ -96,8 +96,8 @@ const App = () => {
         </Flex>
 
         <HeadingTransition
-          h2="Contactez-moi"
-          small="me joindre"
+          h2="Contact me"
+          small="get in touch"
           className="my-44 h-[5vh]"
           id={titles.contact.selector}
         />

@@ -18,7 +18,7 @@ const FormFooter = ({ formStatus, successText, failText, infoText }: FormFooterT
       case "error":
         return { color: "red", text: failText };
       case "loading":
-        return { color: "orange", text: "Envoi en cours.." };
+        return { color: "orange", text: "Envoi in progress.." };
       default:
         return { color: "", text: "" };
     }
@@ -41,8 +41,8 @@ const FormFooter = ({ formStatus, successText, failText, infoText }: FormFooterT
       <Show when={showInfo()}>
         <p className={`inline-flex justify-center`}>{infoText}</p>
       </Show>
-      <SubmitButton formStatus={formStatus} loadingText="Envoi en cours..">
-        Envoyer
+      <SubmitButton formStatus={formStatus} loadingText="Envoi in progress..">
+        Send
       </SubmitButton>
     </div>
   );

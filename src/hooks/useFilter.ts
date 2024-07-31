@@ -8,16 +8,16 @@ export type Filters = {
 };
 
 const values = {
-  skills: ["tous", "front-end", "back-end"] as const,
-  xp: ["tous", "pro", "formation"] as const,
-  projects: ["tous", "web", "outil", "documentation"] as const,
+  skills: ["all", "front-end", "back-end"] as const,
+  xp: ["all", "pro", "education"] as const,
+  projects: ["all", "web", "tool", "documentation"] as const,
 };
 
 const useFilters = () => {
   const [filters, setFilters] = useState<Filters>({
-    skills: "tous",
-    xp: "tous",
-    projects: "tous",
+    skills: "all",
+    xp: "all",
+    projects: "all",
   });
 
   type ValueType<T> = T extends "skills" ? SkillFilter : T extends "xp" ? XpFilter : ProjectFilter;

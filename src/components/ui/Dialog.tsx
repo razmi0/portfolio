@@ -33,7 +33,7 @@ const Dialog = ({
     <>
       {!externalTrigger && (
         <button type="button" onClick={openModal} className="flex items-center justify-center gap-1 text-sm group">
-          <p className="text-center w-full text-[15px] font-medium">Voir plus</p>
+          <p className="text-center w-full text-[15px] font-medium">See more</p>
           <ArrowBigRight size={24} className="group-hover:translate-x-2 transition-transform translate-y-[2px]" />
         </button>
       )}

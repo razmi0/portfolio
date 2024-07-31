@@ -2,7 +2,11 @@ import { cn } from "@/lib/utils";
 import type { ChangeEventHandler } from "react";
 import type { InputProps } from "./InputField";
 
-const Textarea = ({ children, onChange, className }: InputProps) => {
+interface TextAreaProps extends InputProps {
+  label: string;
+}
+
+const Textarea = ({ children, onChange, className, label }: TextAreaProps) => {
   return (
     <div className="input-group">
       <textarea
@@ -15,7 +19,7 @@ const Textarea = ({ children, onChange, className }: InputProps) => {
         required
       />
       <label className="user-label font-semibold" htmlFor="message">
-        Message
+        {label}
       </label>
       {children}
     </div>

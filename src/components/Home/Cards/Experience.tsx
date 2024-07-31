@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
 import { useTheme } from "@/provider/theme-provider";
-import type { FormationType, ProType, XpFilter } from "@/types";
+import type { EducationType, ProType, XpFilter } from "@/types";
 import { ArrowBigRight, Check } from "lucide-react";
 import { useCallback, useState, type ReactNode } from "react";
 import Image from "../../Image";
@@ -13,14 +13,14 @@ export const Experience = ({
   experiences,
   filtered,
 }: {
-  experiences: (ProType | FormationType)[];
+  experiences: (ProType | EducationType)[];
   filtered: XpFilter;
 }) => {
-  const [activeExperience, setActiveExperience] = useState<ProType | FormationType>(experiences[0]);
+  const [activeExperience, setActiveExperience] = useState<ProType | EducationType>(experiences[0]);
   const [dialogOpen, setDialogOpen] = useState(false);
   const { theme } = useTheme();
 
-  const openDialog = (experience: ProType | FormationType) => {
+  const openDialog = (experience: ProType | EducationType) => {
     setDialogOpen(true);
     setActiveExperience(experience);
   };
@@ -32,10 +32,10 @@ export const Experience = ({
     <ExperienceGrid>
       <ExperienceDialog experience={activeExperience} open={dialogOpen} onClose={closeDialog} />
       {experiences.map((experience, i) => {
-        const is = `${experience.type === "pro" ? "pro" : "formation"}-${experience.id}`;
+        const is = `${experience.type === "pro" ? "pro" : "education"}-${experience.id}`;
         return (
           <div
-            className={cn("relative", filtered === "tous" || experience.type.includes(filtered) ? "" : "hidden")}
+            className={cn("relative", filtered === "all" || experience.type.includes(filtered) ? "" : "hidden")}
             key={is}>
             <CardWrapper is={is} className={"aspect-square w-[175px] overflow-hidden"}>
               <ExperienceCard experience={experience} />
@@ -43,7 +43,7 @@ export const Experience = ({
                 type="button"
                 onClick={() => openDialog(experience)}
                 className="flex items-center justify-center gap-1 text-sm group">
-                <p className="text-center w-full text-[15px] font-medium">Voir plus</p>
+                <p className="text-center w-full text-[15px] font-medium">See more</p>
                 <ArrowBigRight size={24} className="group-hover:translate-x-2 transition-transform translate-y-[2px]" />
               </button>
             </CardWrapper>
@@ -78,7 +78,7 @@ const Label = ({ children }: { children: ReactNode }) => (
   <div className="font-semibold text-bogoss-700 dark:text-bogoss-200">{children}</div>
 );
 
-const ExperienceCard = ({ experience }: { experience: ProType | FormationType }) => {
+const ExperienceCard = ({ experience }: { experience: ProType | EducationType }) => {
   return (
     <>
       <h3 className="text-center w-full !text-bogoss-350 dark:!text-bogoss-200">{experience.title}</h3>
@@ -94,11 +94,11 @@ const ExperienceDialog = ({
   open,
   onClose,
 }: {
-  experience: ProType | FormationType;
+  experience: ProType | EducationType;
   open: boolean;
   onClose: () => void;
 }) => {
-  const content = experience as ProType & FormationType;
+  const content = experience as ProType & EducationType;
 
   const program = useCallback(() => {
     return (
@@ -123,7 +123,7 @@ const ExperienceDialog = ({
           <Text
             value={
               <div className="inline-flex">
-                <Label>Durée</Label> : {content.duration}
+                <Label>Duration</Label> : {content.duration}
               </div>
             }
           />
@@ -132,7 +132,7 @@ const ExperienceDialog = ({
             <Text
               value={
                 <div className="inline-flex">
-                  <Label>Niveau</Label> : {content.level}
+                  <Label>Level</Label> : {content.level}
                 </div>
               }
             />
@@ -142,7 +142,7 @@ const ExperienceDialog = ({
             <Text
               value={
                 <div className="inline-flex">
-                  <Label>Entreprise</Label> : {content.company}
+                  <Label>Company</Label> : {content.company}
                 </div>
               }
             />
@@ -152,7 +152,7 @@ const ExperienceDialog = ({
             <Text
               value={
                 <div className="inline-flex">
-                  <Label>Lieu</Label> : {content.lieu}
+                  <Label>Place</Label> : {content.lieu}
                 </div>
               }
             />
@@ -162,7 +162,7 @@ const ExperienceDialog = ({
             <Text
               value={
                 <div className="inline-flex">
-                  <Label>Statut</Label> : {content.status}
+                  <Label>Status</Label> : {content.status}
                 </div>
               }
             />

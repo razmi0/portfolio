@@ -3,7 +3,7 @@ import { useEffect } from "react";
 
 const titles = {
   hero: { selector: "hero", title: "Bienvenue", icon: "hero.ico" },
-  presentation: { selector: "presentation", title: "Présentation", icon: "presentation.ico" },
+  presentation: { selector: "presentation", title: "Presentation", icon: "presentation.ico" },
   skills: { selector: "skills", title: "Compétences", icon: "skills.ico" },
   xp: { selector: "xp", title: "Experiences", icon: "xp.ico" },
   projects: { selector: "projects", title: "Projets", icon: "projects.ico" },

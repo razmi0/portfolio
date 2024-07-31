@@ -30,7 +30,7 @@ const Contact = () => {
 
   return (
     <section className="w-full grid">
-      <Form onSubmit={handleSubmit} title="Pour en savoir plus ou me proposer une mission ?" withHoney>
+      <Form onSubmit={handleSubmit} title="Want to know more about me or offer me a mission?" withHoney>
         <Telephone
           onChange={handleOnChange}
           reachableError={errors.reachable}
@@ -43,7 +43,7 @@ const Contact = () => {
           formStatus={formStatus}
           emailError={errors.email}
         />
-        <Textarea onChange={handleOnChange}>
+        <Textarea onChange={handleOnChange} label="Message">
           <Show when={formStatus === "error" && errors.msg}>
             <TextError>{errors.msg}</TextError>
           </Show>
@@ -51,7 +51,7 @@ const Contact = () => {
         <FormFooter
           infoText={infoText}
           formStatus={formStatus}
-          successText="Message envoyé !"
+          successText="Message sent !"
           failText="😔 I can't contact my server"
         />
       </Form>
@@ -69,7 +69,7 @@ const Telephone = (
   }
 ) => {
   return (
-    <InputField {...props} id="tel" name="tel" label="Téléphone" required>
+    <InputField {...props} id="tel" name="tel" label="Phone" required>
       <Show when={props.formStatus === "error" && props.telError}>
         <TextError>{props.telError}</TextError>
       </Show>

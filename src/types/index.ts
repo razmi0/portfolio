@@ -9,9 +9,9 @@ export type ErrorLoginFormType = {
   password: string | false;
 };
 
-export type SkillFilter = "tous" | "front-end" | "back-end";
-export type XpFilter = "tous" | "pro" | "formation";
-export type ProjectFilter = "tous" | "web" | "outil" | "documentation";
+export type SkillFilter = "all" | "front-end" | "back-end";
+export type XpFilter = "all" | "pro" | "education";
+export type ProjectFilter = "all" | "web" | "tool" | "documentation";
 
 export type SkillType = {
   id: number;
@@ -46,7 +46,7 @@ export interface ProType extends Experience {
   program: string[];
 }
 
-export interface FormationType extends Experience {
+export interface EducationType extends Experience {
   level: string;
   status: string;
 }

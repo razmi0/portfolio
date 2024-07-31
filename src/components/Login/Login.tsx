@@ -72,12 +72,12 @@ const Login = () => {
             await handleSubmit(e);
           }}
           withHoney>
-          <InputField id="username" label="Nom d'utilisateur" name="username" onChange={handleChange}>
+          <InputField id="username" label="Username" name="username" onChange={handleChange}>
             <Show when={formStatus === "error" && errors.username}>
               <TextError>{errors.username}</TextError>
             </Show>
           </InputField>
-          <InputField type={"password"} id="password" label="Mot de passe" name="password" onChange={handleChange}>
+          <InputField type={"password"} id="password" label="Password" name="password" onChange={handleChange}>
             <Show when={formStatus === "error" && errors.password}>
               <TextError>{errors.password}</TextError>
             </Show>

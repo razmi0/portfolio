@@ -14,8 +14,8 @@ export const validate = (
   }
 
   const newErrors: ErrorLoginFormType = {
-    username: !data.username && "Nom d'utilisateur requis",
-    password: !data.password && "Mot de passe requis",
+    username: !data.username && "Username is required",
+    password: !data.password && "Password is required",
   };
 
   setErrors(newErrors);

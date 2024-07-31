@@ -13,7 +13,7 @@ const Hero = ({ ...rest }: HTMLAttributes<HTMLDivElement>) => {
         <div className="flex flex-wrap items-center justify-center gap-4">
           <a href="/CUESTA_THOMAS_cv.pdf" download={"/CUESTA_THOMAS_cv.pdf"}>
             <Button variant="solid" className="whitespace-nowrap" ariaLabel="download my curriculum vitae">
-              Telecharger mon CV
+              Download my CV
             </Button>
           </a>
           <a href="#projects">
@@ -21,7 +21,7 @@ const Hero = ({ ...rest }: HTMLAttributes<HTMLDivElement>) => {
               variant="outline"
               className="whitespace-nowrap"
               ariaLabel="go directly to my projects to discover what is important">
-              En savoir plus
+              Learn more..
             </Button>
           </a>
         </div>
@@ -45,7 +45,7 @@ const Hero = ({ ...rest }: HTMLAttributes<HTMLDivElement>) => {
           alt="hero picture of Thomas portfolio looking at the right side and smiling"
           loading="eager"
         />
-        <VerticalText text="Présentation" className="hidden sm:block" />
+        <VerticalText text="Presentation" className="hidden sm:block" />
       </div>
     </div>
   );

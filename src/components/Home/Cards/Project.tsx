@@ -33,7 +33,7 @@ export const ProjectCard = ({
       <div className={cn("relative grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5", className)}>
         {projects.map((content) => {
           const { title, href, id } = content;
-          const hidden = filtered === "tous" || content.type.includes(filtered) ? "" : "!hidden";
+          const hidden = filtered === "all" || content.type.includes(filtered) ? "" : "!hidden";
           return (
             <CardWrapper className={hidden} is={`project-${id}`} key={id} glassy={false}>
               {content.src && (
@@ -52,7 +52,7 @@ export const ProjectCard = ({
                 <div className="flex flex-col items-start text-left py-2 [&>h4]:text-belgoss-500 ">
                   <h4 className="w-full text-lg">{title}</h4>
                   <a href={href} className="text-sm w-full hover:underline dark:text-bogoss-200 text-bogoss-700">
-                    Voir le projet en ligne
+                    See deployed project
                   </a>
                 </div>
                 {content.src && (

@@ -32,11 +32,18 @@ const errorsInit = {
   reachable: false,
 };
 
+const errorsMessage = {
+  email: "Invalid email",
+  tel: "Invalid phone number",
+  msg: "Message is required",
+  reachable: "At least one valid means of contact is required",
+};
+
 export type FormStatusType = "idle" | "loading" | "success" | "error";
 
 const useForm = () => {
   const [errors, setErrors] = useState<ErrorsType>(errorsInit);
-  const [infoText, setInfoText] = useState("Au moins un moyen de contact est requis");
+  const [infoText, setInfoText] = useState(errorsMessage.reachable);
   const [formStatus, setFormStatus] = useState<FormStatusType>("idle");
 
   const validate = (formData: FormData) => {
@@ -44,7 +51,7 @@ const useForm = () => {
     const data = Object.fromEntries(formData.entries()) as ContactFormType;
 
     if (data.hp) {
-      window.location.href = "https://www.google.com";
+      window.location.reload();
       return { hasError: true, data };
     }
 
@@ -54,10 +61,10 @@ const useForm = () => {
     if (emailError && telError) reachabilityError = true;
 
     const newErrors: ErrorsType = {
-      email: emailError && "Email invalide",
-      tel: telError && "Téléphone invalide",
-      msg: !hasLength(data.msg) && "Message requis",
-      reachable: reachabilityError && "Au moins un moyen de contact valide est requis",
+      email: emailError && errorsMessage.email,
+      tel: telError && errorsMessage.tel,
+      msg: !hasLength(data.msg) && errorsMessage.msg,
+      reachable: reachabilityError && errorsMessage.reachable,
     };
 
     if (!newErrors.reachable) {
@@ -112,7 +119,7 @@ const useForm = () => {
       msgInfo = "";
     } else {
       msg.setAttribute("required", "");
-      msgInfo = "Le message doit contenir entre 20 et 500 caractères";
+      msgInfo = "The message must contain between 20 and 500 characters";
     }
 
     if (tel.value.length > 0 || email.value.length > 0) {
@@ -122,7 +129,7 @@ const useForm = () => {
     } else {
       tel.setAttribute("required", "");
       email.setAttribute("required", "");
-      reachabilityInfo = "Au moins un moyen de contact est requis";
+      reachabilityInfo = errorsMessage.reachable;
     }
     setInfoText(reachabilityInfo || msgInfo);
   };

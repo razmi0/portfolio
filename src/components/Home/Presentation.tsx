@@ -40,7 +40,7 @@ const Presentation = ({ ...rest }: HTMLAttributes<HTMLDivElement>) => {
         <p className="text-balance text-bogoss-700 dark:text-bogoss-200 font-normal">
           Je suis Thomas, 30 ans, passionné par le développement web et la programmation en général. À la rentrée 2024,
           j'intègre le Bachelor développement web de MyDigitalSchool. En 2023, j'ai eu l'opportunité de rejoindre
-          l'équipe de SlashBin pour une immersion de sept mois, où j'ai participé à deux projets novateurs. Sur un site
+          l'équipe de SlashBin pour une immersion de sept month, où j'ai participé à deux projets novateurs. Sur un site
           de recherche de freelance, j'ai contribué en développant des fonctionnalités pour améliorer l'expérience
           utilisateur. Dans le cadre d'un projet de cryptominage, j'ai géré des tâches telles que l'internationalisation
           et l'implémentation des politiques de cookies.{" "}

@@ -55,7 +55,7 @@
       {
         "id": 9,
         "title": "SolidJs",
-        "level": "conpetent",
+        "level": "competent",
         "type": ["front-end"],
         "description": "Solidjs is a declarative Javascript library for building user interfaces like React. It uses signal driven states instead of a virtual dom. SolidJs is a very performant way to build very interactive web application. If your application need a fast javascript framework, SolidJs is the way to go."
       },
@@ -69,14 +69,14 @@
       {
         "id": 11,
         "title": "NextJs",
-        "level": "conpetent",
+        "level": "competent",
         "type": ["back-end"],
         "description": "Next is my main React framework server side. I worked with Next in my last job."
       },
       {
         "id": 12,
         "title": "SQL",
-        "level": "conpetent",
+        "level": "competent",
         "type": ["back-end"],
         "description": "Sql is mature and reliable. I build a lot of blogs with SQL and Doctrine ORM."
       },
@@ -101,95 +101,95 @@
     {
       "id": 1,
       "type": "pro",
-      "title": "Développeur front-end",
+      "title": "Front-end developer",
       "company": "Freelance",
       "lieu": "Toulouse",
       "date": ["2024"],
-      "duration": "en cours",
-      "subtitle": "Développement de site vitrine et de site e-commerce",
+      "duration": "in progress",
+      "subtitle": "Development of showcase site and e-commerce site",
       "program": [""],
       "description": ""
     },
     {
       "id": 2,
       "type": "pro",
-      "title": "Développeur front-end",
+      "title": "Front-end developer",
       "company": "SlashBin",
       "lieu": "Toulouse",
       "date": ["2023"],
-      "duration": "6 mois",
-      "subtitle": "Developpement de site de recherche de freelance",
+      "duration": "6 month",
+      "subtitle": "Freelance job application site development",
       "program": [
-        "Reproduction de maquettes",
-        "Developpement de composants React",
-        "Intégration web",
-        "Implémentation logique coté client",
-        "Adaptation de l'environnement front-end, back-end (configuration du bundler, linter et des containers dockers).",
-        "Proposition de nouvelles fonctionnalités pour améliorer l'expérience utilisateur.",
-        "Utilisation de HTML, CSS, ChakraUI, TypeScript, ReactJS, Next.js, GraphQL, Docker, Notion."
+        "Reproduction of models",
+        "React component development",
+        "Web integration",
+        "Client-side logic implementation",
+        "Adaptation of the front-end, back-end environment (bundler configuration, linter and docker containers)",
+        "Proposal of new features to improve the user experience.",
+        "Using HTML, CSS, ChakraUI, TypeScript, ReactJS, Next.js, GraphQL, Docker, Notion."
       ],
       "description": ""
     },
     {
       "id": 3,
       "type": "pro",
-      "title": "Développeur front-end",
+      "title": "Developer front-end",
       "company": "SlashBin",
       "lieu": "Toulouse",
       "date": ["2023"],
-      "duration": "1 mois",
-      "subtitle": "Développement d'un site de prestation de cryptominage",
+      "duration": "1 month",
+      "subtitle": "Development of a cryptomining service site",
       "program": [
-        "Internationalisation du site.",
-        "Mise en place du système cookies front-end.",
-        "Utilisation de TypeScript, ReactJS, Next.js."
+        "Internationalization of the site.",
+        "Setting up the front-end cookie system.",
+        "Using TypeScript, ReactJS, Next.js."
       ],
       "description": ""
     }
   ],
-  "formation": [
+  "education": [
     {
       "id": 4,
-      "type": "formation",
-      "title": "Bachelor Développeur web",
+      "type": "education",
+      "title": "Bachelor web developer",
       "lieu": "My Digital School",
-      "duration": "1 an",
+      "duration": "1 year",
       "level": "bac+3",
       "date": ["2024", "2025"],
-      "status": "en cours",
+      "status": "in progress",
       "description": "En pleine recherche d'une alternance actuellement !!"
     },
     {
       "id": 5,
-      "type": "formation",
-      "title": "Titre professionnel Développeur web",
+      "type": "education",
+      "title": "Professional title web developer",
       "lieu": "WebForce3",
-      "duration": "3 mois",
+      "duration": "3 month",
       "level": "bac+2",
       "date": ["2023", "2023"],
-      "status": "terminé",
+      "status": "done",
       "description": ""
     },
     {
       "id": 6,
-      "type": "formation",
-      "title": "DEUG Psychologie",
-      "lieu": "Université Jean Jaurès",
+      "type": "education",
+      "title": "DEUG Psychology",
+      "lieu": "Jean Jaurès University",
       "duration": "2 ans",
       "level": "bac+2",
       "date": ["2015", "2017"],
-      "status": "terminé",
+      "status": "done",
       "description": ""
     },
     {
       "id": 7,
-      "type": "formation",
-      "title": "DEUG Biologie",
-      "lieu": "Université Paul Sabatier",
+      "type": "education",
+      "title": "DEUG Biology",
+      "lieu": "Paul Sabatier University",
       "duration": "2 ans",
       "level": "bac+2",
       "date": ["2012", "2016"],
-      "status": "terminé",
+      "status": "done",
       "description": ""
     }
   ],
@@ -277,7 +277,7 @@
     {
       "id": 8,
       "title": "RazCli",
-      "type": ["outil"],
+      "type": ["tool"],
       "href": "https://github.com/razmi0/raz-cli-tools",
       "src": ["/raz-cli/rc-1.webp", "/raz-cli/rc-2.webp"],
       "description": ""
@@ -292,7 +292,7 @@
     },
     {
       "id": 10,
-      "title": "Dossier de reflexion MDS",
+      "title": "MDS reflection file",
       "type": ["documentation"],
       "href": "https://dossier-reflexion-mds-cuesta-thomas.netlify.app/",
       "src": ["/doss-reflexion/dr-1.webp", "/doss-reflexion/dr-2.webp", "/doss-reflexion/dr-3.webp"],
