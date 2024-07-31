@@ -11,7 +11,8 @@ import Nav from "./components/Nav/Nav";
 import { RisingStars } from "./components/RisingStars/RisingStars";
 import { NavButton } from "./components/ui/button";
 import Show from "./components/ui/show";
-import { formation, projects, skills, xp } from "./data.json";
+// import { formation, projects, skills, xp } from "./data.json";
+import { useData } from "./hooks/useData";
 import useFilters from "./hooks/useFilter";
 import useTitle from "./hooks/useTitle";
 import { cn, uppercase } from "./lib/utils";
@@ -20,22 +21,16 @@ import { sendAgentData } from "./services";
 
 // --
 
-const initStates = {
-  skills: Array(skills.data.length)
-    .fill(false)
-    .map((_, i) => i === 0),
-  projects: Array(projects.length)
-    .fill(false)
-    .map((_, i) => i === 0),
-};
-
-// --
-
 sendAgentData();
 // --
 
 const App = () => {
-  const [skillsHovered, setSkillsHovered] = useState<boolean[]>(initStates.skills);
+  const { projects, xp, formation, skills } = useData();
+  const [skillsHovered, setSkillsHovered] = useState<boolean[]>(
+    Array(projects.length)
+      .fill(false)
+      .map((_, i) => i === 0)
+  );
 
   const { filters, handleFilterChange, values } = useFilters();
   const { titles } = useTitle();
@@ -54,10 +49,6 @@ const App = () => {
       <Show when={route === "index"}>
         <Hero id={titles.hero.selector} />
 
-        {/* SKILLS */}
-        {/* SKILLS */}
-        {/* SKILLS */}
-        {/* SKILLS */}
         <HeadingTransition
           h2="Mes compétences"
           small="skills"
@@ -67,12 +58,6 @@ const App = () => {
           <Skills.Grid setter={setSkillsHovered} skills={skills.data} />
           <Skills.Article skills={skills.data} skillHovered={skillsHovered} />
         </Skills.Root>
-        <RisingStars />
-
-        {/* Experience */}
-        {/* Experience */}
-        {/* Experience */}
-        {/* Experience */}
 
         <HeadingTransition h2="Mes expériences" small="mon parcours" className="my-20" id={titles.xp.selector} />
         <Flex className="mb-20">
@@ -88,13 +73,6 @@ const App = () => {
           </NavSection>
           <Experience experiences={[...xp, ...formation]} filtered={filters.xp} />
         </Flex>
-        <RisingStars />
-
-        {/* PROJECT */}
-        {/* PROJECT */}
-        {/* PROJECT */}
-        {/* PROJECT */}
-        {/* PROJECT */}
 
         <HeadingTransition h2="Mes projets" small="portfolio" className="mb-20 mt-44" id={titles.projects.selector} />
         <Flex>
@@ -116,13 +94,6 @@ const App = () => {
             <ProjectCard projects={projects} filtered={filters.projects} />
           </section>
         </Flex>
-        <RisingStars />
-
-        {/* CONTACT */}
-        {/* CONTACT */}
-        {/* CONTACT */}
-        {/* CONTACT */}
-        {/* CONTACT */}
 
         <HeadingTransition
           h2="Contactez-moi"
@@ -130,7 +101,6 @@ const App = () => {
           className="my-44 h-[5vh]"
           id={titles.contact.selector}
         />
-
         <Flex className="mb-44">
           <Contact />
         </Flex>
