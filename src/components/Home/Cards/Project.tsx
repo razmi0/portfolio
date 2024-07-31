@@ -33,7 +33,7 @@ export const ProjectCard = ({
       <div className={cn("relative grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5", className)}>
         {projects.map((content) => {
           const { title, href, id } = content;
-          const hidden = filtered === "tous" || content.type.includes(filtered) ? "" : "hidden";
+          const hidden = filtered === "tous" || content.type.includes(filtered) ? "" : "!hidden";
           return (
             <CardWrapper className={hidden} is={`project-${id}`} key={id} glassy={false}>
               {content.src && (
