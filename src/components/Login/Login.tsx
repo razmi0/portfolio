@@ -67,7 +67,7 @@ const Login = () => {
 
         if (ok) {
             setFormStatus("success");
-            changeRoute("dashboard");
+            setTimeout(() => changeRoute("dashboard"), 1000);
         }
     };
 

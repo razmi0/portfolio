@@ -35,6 +35,7 @@ export async function simpleFetch<ResponseType = unknown>(
         if (!result.ok) {
             onNotOk?.(result);
         }
+        console.log(await result.text());
         return (await result.json()) as ResponseType;
     } catch (error: unknown) {
         onErr?.(error);
