@@ -19,7 +19,7 @@ export async function simpleFetch<ResponseType = unknown>(
     url: RequestInfo,
     options: RequestInit = {},
     timeout?: number,
-    onNotOk?: (response: Response) => void,
+    onNotOk?: (response: Response) => void | Promise<void>,
     onErr?: (error: unknown) => void
 ): Promise<ResponseType | void> {
     const buildOptions = () => {
@@ -33,7 +33,8 @@ export async function simpleFetch<ResponseType = unknown>(
     try {
         const response = await fetch(url, buildOptions());
         if (!response.ok) {
-            onNotOk?.(response);
+            console.log("not ok");
+            await onNotOk?.(response);
             return;
         }
         return (await response.json()) as ResponseType;

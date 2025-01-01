@@ -58,6 +58,7 @@ const Login = () => {
                     errors: ErrorLoginFormType;
                 };
                 setErrors(dataErr.errors);
+                setErrorText("Invalid credentials, please try again");
             };
 
             const onErr = (error: unknown) => {
@@ -66,7 +67,7 @@ const Login = () => {
                 console.log(error);
             };
 
-            return await simpleFetch<ResponseLoginType>(apiPaths.login, option, 7000, onNotOk, onErr);
+            return await simpleFetch<ResponseLoginType>(apiPaths.login, option, 5000, onNotOk, onErr);
         });
 
         if (ok) {
