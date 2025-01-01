@@ -119,7 +119,15 @@ export type SimpleFetchError = {
     message: string;
 };
 
-export type Routes = "index" | "login" | "dashboard";
+export type Routes = "index" | "login" | "dashboard" | "blog";
+
+// Generate a tuple type with all elements of the union
+export type RoutesArray = [
+    Extract<"index", Routes>,
+    Extract<"login", Routes>,
+    Extract<"dashboard", Routes>,
+    Extract<"blog", Routes>
+];
 
 export type PostType = {
     ID: string;

@@ -1,11 +1,11 @@
 import { useContext, useState } from "react";
 
-import type { Routes } from "@/types";
+import type { Routes, RoutesArray } from "@/types";
 import { ReactNode, createContext } from "react";
 
-const routes = ["index", "login", "dashboard"] as Readonly<Routes[]>;
-const isValidRoute = (route: string): route is Routes => routes.includes(route as Routes);
-
+// const routes = ;
+const isValidRoute = (route: string): route is Routes =>
+    (["index", "login", "dashboard", "blog"] as RoutesArray).includes(route as Routes);
 type RouterState = {
     route: Routes;
     previous: Routes[];
@@ -32,6 +32,7 @@ const RouterProvider = ({ children }: { children: ReactNode }) => {
     const reducer = (action: RouterAction) => {
         switch (action.type) {
             case "SET_ROUTE": {
+                console.log(action.payload);
                 if (action.payload !== routes.route) {
                     history.replaceState(null, "", action.payload === "index" ? "/" : `/${action.payload}`);
 
@@ -54,6 +55,7 @@ const RouterProvider = ({ children }: { children: ReactNode }) => {
 
     const changeRoute = (route: Routes) => {
         if (isValidRoute(route)) {
+            console.log(route);
             reducer({ type: "SET_ROUTE", payload: route });
         }
     };

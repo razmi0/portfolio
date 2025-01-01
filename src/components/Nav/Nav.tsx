@@ -3,6 +3,7 @@ import { useRouter } from "@/provider/routes-provider";
 import type { ReactNode } from "react";
 import DashbordButton from "../Dashboard/DashboardButton";
 import SignButton from "../Login/SignButton";
+import BlogButton from "./BlogButton";
 import HomeButton from "./HomeButton";
 import { ModeToggle } from "./ModeToggle";
 
@@ -25,6 +26,7 @@ const Nav = () => {
             <ModeToggle />
             <DashbordButton isAuth={isAuth} onClick={() => changeRoute("dashboard")} />
             <Spacer />
+            <BlogButton onClick={() => changeRoute("blog")} />
             <HomeButton onClick={() => changeRoute("index")} />
         </Header>
     );
