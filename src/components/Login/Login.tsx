@@ -51,9 +51,13 @@ const Login = () => {
                 body: JSON.stringify({ ...data, password: b64EncodeUnicode(data.password) }),
             };
 
-            const onNotOk = (response: Response) => {
+            const onNotOk = async (response: Response) => {
                 setFormStatus("error");
-                setErrorText(response.statusText + " " + response.status);
+                const dataErr = (await response.json()) as {
+                    res: { authorized: boolean; success: boolean };
+                    errors: ErrorLoginFormType;
+                };
+                setErrors(dataErr.errors);
             };
 
             const onErr = (error: unknown) => {

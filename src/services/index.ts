@@ -31,14 +31,15 @@ export async function simpleFetch<ResponseType = unknown>(
     };
 
     try {
-        const result = await fetch(url, buildOptions());
-        if (!result.ok) {
-            onNotOk?.(result);
+        const response = await fetch(url, buildOptions());
+        if (!response.ok) {
+            onNotOk?.(response);
+            return;
         }
-        console.log(await result.text());
-        return (await result.json()) as ResponseType;
+        return (await response.json()) as ResponseType;
     } catch (error: unknown) {
         onErr?.(error);
+        return;
     }
 }
 
