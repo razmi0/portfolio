@@ -57,6 +57,7 @@ const Login = () => {
                     res: { authorized: boolean; success: boolean };
                     errors: ErrorLoginFormType;
                 };
+                console.log(dataErr);
                 setErrors(dataErr.errors);
                 setErrorText("Invalid credentials, please try again");
             };
