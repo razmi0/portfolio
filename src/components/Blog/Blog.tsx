@@ -45,14 +45,6 @@ export default function Blog() {
     return (
         <div className="mt-44 flex flex-col items-start justify-start h-[95vh] w-full">
             <div className="inline-flex justify-between flex-wrap">
-                {selectedBlog ? (
-                    <h3 className="!text-belgoss-500 sm:max-w-[50%] mb-5">
-                        {blogs.find((blog) => blog.id === selectedBlog)?.title || ""}
-                    </h3>
-                ) : (
-                    <h1 className="text-5xl !text-belgoss-500 mb-20">Blogs</h1>
-                )}
-
                 {selectedBlog && (
                     <Button
                         onClick={() => setSelectedBlog(null)}
@@ -61,6 +53,13 @@ export default function Blog() {
                         ariaLabel="go back to the list of blogs">
                         Back to the list
                     </Button>
+                )}
+                {selectedBlog ? (
+                    <h3 className="sm:max-w-[50%] mb-5 text-center text-black dark:text-white">
+                        {blogs.find((blog) => blog.id === selectedBlog)?.title || ""}
+                    </h3>
+                ) : (
+                    <h1 className="text-5xl !text-belgoss-500 mb-20">Blogs</h1>
                 )}
             </div>
             <div className="flex flex-col gap-3">
