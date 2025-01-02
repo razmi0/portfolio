@@ -711,10 +711,6 @@ video {
   display: block;
 }
 
-.inline{
-  display: inline;
-}
-
 .flex{
   display: flex;
 }
@@ -904,20 +900,16 @@ video {
   max-width: 300px;
 }
 
+.max-w-\[50\%\]{
+  max-width: 50%;
+}
+
 .max-w-\[670px\]{
   max-width: 670px;
 }
 
-.max-w-14{
-  max-width: 3.5rem;
-}
-
-.max-w-40{
-  max-width: 10rem;
-}
-
-.max-w-\[50\%\]{
-  max-width: 50%;
+.max-w-\[400px\]{
+  max-width: 400px;
 }
 
 .grow{
@@ -1005,10 +997,6 @@ video {
 
 .auto-cols-fr{
   grid-auto-columns: minmax(0, 1fr);
-}
-
-.grid-flow-row{
-  grid-auto-flow: row;
 }
 
 .grid-flow-col{
@@ -1296,6 +1284,11 @@ video {
   padding-right: 1rem;
 }
 
+.px-5{
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+
 .py-1{
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;
@@ -1319,11 +1312,6 @@ video {
 .py-\[16px\]{
   padding-top: 16px;
   padding-bottom: 16px;
-}
-
-.px-5{
-  padding-left: 1.25rem;
-  padding-right: 1.25rem;
 }
 
 .text-left{
@@ -1396,11 +1384,6 @@ video {
 .\!text-belgoss-500{
   --tw-text-opacity: 1 !important;
   color: rgb(255 103 0 / var(--tw-text-opacity)) !important;
-}
-
-.\!text-bogoss-200{
-  --tw-text-opacity: 1 !important;
-  color: rgb(242 241 255 / var(--tw-text-opacity)) !important;
 }
 
 .\!text-bogoss-300{
@@ -2264,6 +2247,11 @@ textarea {
   flex-grow: 1;
 }
 
+.\[\&_a\]\:text-belgoss-500 a{
+  --tw-text-opacity: 1;
+  color: rgb(255 103 0 / var(--tw-text-opacity));
+}
+
 .\[\&_h1\]\:text-2xl h1{
   font-size: 1.5rem;
   line-height: 2rem;
@@ -2277,6 +2265,11 @@ textarea {
 .\[\&_h2\]\:text-4xl h2{
   font-size: 2.25rem;
   line-height: 2.5rem;
+}
+
+.\[\&_p\]\:px-5 p{
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
 }
 
 .\[\&_p\]\:text-sm p{
