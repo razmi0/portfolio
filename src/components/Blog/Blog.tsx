@@ -65,7 +65,7 @@ export default function Blog() {
             <div className="flex flex-col gap-3">
                 {!selectedBlog &&
                     blogs.map((blog) => (
-                        <div key={blog.id} className="flex flex-col gap-4">
+                        <div key={blog.id}>
                             <BlogCard is={blog.id.toString()} onClick={() => onSelect(blog.id)}>
                                 {blog.title}
                             </BlogCard>
