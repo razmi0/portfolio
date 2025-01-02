@@ -14,7 +14,7 @@ type Blog = {
 const BlogCard = ({ children, onClick, is }: { children: ReactNode; onClick: () => void; is: string }) => {
     const [handleWithTransition] = useMemo(() => withViewTransition(onClick), [onClick]);
     return (
-        <CardWrapper is={is} className="w-fit inline-flex !flex-row">
+        <CardWrapper is={is} className="w-fit inline-flex !flex-row gap-2 max-w-[400px]">
             <h3 className="block text-1xl !text-bogoss-300 w-fit">{children}</h3>
             <Button
                 onClick={handleWithTransition}
@@ -29,7 +29,7 @@ const BlogCard = ({ children, onClick, is }: { children: ReactNode; onClick: () 
 
 const Article = ({ content }: { content: string }) => {
     return (
-        <div className="flex flex-col gap-4 px-5 [&_h1]:text-bogoss-300 [&_h1]:text-2xl">
+        <div className="flex flex-col gap-4 px-5 [&_h1]:text-bogoss-300 [&_h1]:text-2xl [&_a]:text-belgoss-500 sm:[&_p]:px-5">
             <Markdown>{content}</Markdown>
         </div>
     );
@@ -44,9 +44,9 @@ export default function Blog() {
 
     return (
         <div className="mt-44 flex flex-col items-start justify-start h-[95vh] w-full">
-            <div className="inline-flex justify-between">
+            <div className="inline-flex justify-between flex-wrap">
                 {selectedBlog ? (
-                    <h3 className="!text-belgoss-500 max-w-[50%]">
+                    <h3 className="!text-belgoss-500 sm:max-w-[50%] mb-5">
                         {blogs.find((blog) => blog.id === selectedBlog)?.title || ""}
                     </h3>
                 ) : (
