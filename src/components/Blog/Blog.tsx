@@ -58,7 +58,7 @@ export default function Blog() {
                 </div>
             )}
             {selectedBlog ? (
-                <h3 className="sm:max-w-[50%] text-3xl mb-5 text-center text-black dark:text-white">
+                <h3 className="max-w-[50%] text-3xl mb-5 text-center text-black dark:text-white">
                     {blogs.find((blog) => blog.id === selectedBlog)?.title || ""}
                 </h3>
             ) : (
